@@ -20,8 +20,7 @@ namespace Morkidios {
 		mSceneManager->destroyStaticGeometry(mGeometry);
 
 		// Bullet
-		int i;
- 		for (i=mWorld->getNumCollisionObjects()-1; i>=0 ;i--){
+ 		for (int i=mWorld->getNumCollisionObjects()-1; i>=0 ;i--){
 			btCollisionObject* obj = mWorld->getCollisionObjectArray()[i];
 			mWorld->removeCollisionObject( obj );
 			delete obj;
