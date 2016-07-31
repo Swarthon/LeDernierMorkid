@@ -45,7 +45,6 @@ namespace Morkidios {
 		}
 
 		mGeometry = mSceneManager->createStaticGeometry(mName.c_str());
-		std::cout << mGeometry->getName() << std::endl;
 		mSize = Ogre::Vector3(worldSize, height, worldSize);
 
 		// Bullet
