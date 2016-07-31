@@ -29,7 +29,7 @@ namespace Morkidios {
 		btDynamicsWorld* getWorld();
 		Ogre::Vector3 getSize();
 
-		// Méthodes divers
+		// Various methodes
 		void update(double time);
 		void addDroppedObject(Object* obj);
 		void removeDroppedObject(Object* obj);
