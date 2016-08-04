@@ -1,0 +1,5 @@
+#		Compile tools		#
+#########################################
+Makefile
+bin/*
+build/*
