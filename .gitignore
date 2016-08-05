@@ -2,5 +2,9 @@
 #########################################
 *.o
 Makefile
-Morkidios/bin/*
-LeDernierMorkid/bin/*
+Morkidios/bin/libMorkidios.a
+LeDernierMorkid/bin/LeDernierMorkid
+
+#		Run Files		#
+#########################################
+*.log
