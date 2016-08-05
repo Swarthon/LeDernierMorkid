@@ -4,6 +4,7 @@
 Makefile
 Morkidios/bin/libMorkidios.a
 LeDernierMorkid/bin/LeDernierMorkid
+LeDernierMorkid/bin/Map.bmp
 
 #		Run Files		#
 #########################################
