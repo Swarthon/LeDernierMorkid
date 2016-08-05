@@ -4,10 +4,6 @@
 #include <OgreCamera.h>
 #include <OgreEntity.h>
 #include <OgreLogManager.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
-#include <OgreOverlayManager.h>
-#include <OgreOverlaySystem.h>
 #include <OgreRoot.h>
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
@@ -51,8 +47,6 @@ namespace Morkidios {
 		OIS::InputManager*			mInputManager;
 		OIS::Keyboard*				mKeyboard;
 		OIS::Mouse*				mMouse;
-
-		Ogre::OverlaySystem*        		mOverlaySystem;
 	
 	private:
 		Framework(const Framework&);

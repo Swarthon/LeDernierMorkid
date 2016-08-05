@@ -48,8 +48,6 @@ namespace Morkidios {
 
 		mViewport->setCamera(0);
 
-		mOverlaySystem = new Ogre::OverlaySystem();
-
 		size_t hWnd = 0;
 		OIS::ParamList paramList;
 		mRenderWindow->getCustomAttribute("WINDOW", &hWnd);

@@ -18,7 +18,7 @@
 #include <Utils/OgreBulletCollisionsMeshToShapeConverter.h>
 
 #include "Utils.h"
-#include "MotionState/ObjectMotionState.h"
+#include "MotionStates/ObjectMotionState.h"
 
 namespace Morkidios {
 

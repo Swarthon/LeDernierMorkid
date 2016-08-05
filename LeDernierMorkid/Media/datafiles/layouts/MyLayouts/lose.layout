@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="AlfiskoSkin/FrameWindow" name="LoseWindow" >
+        <Property name="Area" value="{{0,0},{0,0},{0.5,0},{0.5,0}}" />
+        <Property name="Text" value="Information" />
+        <Property name="FrameEnabled" value="false" />
+        <Property name="RollUpEnabled" value="false" />
+        <Property name="SizingEnabled" value="false" />
+        <Property name="DragMovingEnabled" value="false" />
+        <Property name="VerticalAlignment" value="Centre" />
+        <Property name="CloseButtonEnabled" value="false" />
+        <Property name="HorizontalAlignment" value="Centre" />
+        <AutoWindow namePath="__auto_titlebar__" >
+            <Property name="AlwaysOnTop" value="false" />
+            <Property name="DraggingEnabled" value="false" />
+        </AutoWindow>
+        <Window type="AlfiskoSkin/Label" name="LoseLabel" >
+            <Property name="Area" value="{{0,0},{0,0},{0.65,0},{0.5,0}}" />
+            <Property name="Font" value="GreatVibes-22" />
+            <Property name="Text" value="Vous avez perdu ! Réessayez !" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="HorizontalAlignment" value="Centre" />
+        </Window>
+        <Window type="AlfiskoSkin/Button" name="LoseQuitter" >
+            <Property name="Area" value="{{0,0},{-0.1,0},{0.55,0},{0.1,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Quitter" />
+            <Property name="VerticalAlignment" value="Bottom" />
+            <Property name="HorizontalAlignment" value="Centre" />
+        </Window>
+        <Window type="AlfiskoSkin/Button" name="LoseRetourAuMenu" >
+            <Property name="Area" value="{{0,0},{-0.3,0},{0.55,0},{-0.1,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Retourner au menu principal" />
+            <Property name="VerticalAlignment" value="Bottom" />
+            <Property name="HorizontalAlignment" value="Centre" />
+        </Window>
+    </Window>
+</GUILayout>

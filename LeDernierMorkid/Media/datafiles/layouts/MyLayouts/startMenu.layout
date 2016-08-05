@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="StartMenuDefaultWindow" >
+        <Property name="Area" value="{{0,1},{0,-3},{1,1},{1,-3}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="AlfiskoSkin/Button" name="StartMenuSolo" >
+            <Property name="Area" value="{{0,0},{0.1,0},{0.2,0},{0.25,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Solo" />
+            <Property name="MinSize" value="{{0.2,0},{0.15,0}}" />
+            <Property name="HorizontalAlignment" value="Centre" />
+        </Window>
+        <Window type="AlfiskoSkin/Button" name="StartMenuOptions" >
+            <Property name="Area" value="{{0,0},{-0.1,0},{0.2,0},{0.05,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Options" />
+            <Property name="MinSize" value="{{0.2,0},{0.15,0}}" />
+            <Property name="VerticalAlignment" value="Bottom" />
+            <Property name="HorizontalAlignment" value="Centre" />
+        </Window>
+        <Window type="AlfiskoSkin/Button" name="StartMenuMultijoueurs" >
+            <Property name="Area" value="{{0.05,0},{0,0},{0.25,0},{0.15,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Multijoueurs" />
+            <Property name="VerticalAlignment" value="Centre" />
+        </Window>
+        <Window type="AlfiskoSkin/Button" name="StartMenuMise A Jour" >
+            <Property name="Area" value="{{-0.05,0},{0,0},{0.15,0},{0.15,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Mise A jour" />
+            <Property name="VerticalAlignment" value="Centre" />
+            <Property name="HorizontalAlignment" value="Right" />
+        </Window>
+        <Window type="AlfiskoSkin/Label" name="StartMenuLabel" >
+            <Property name="Area" value="{{0,0},{0,0},{0.5,0},{0.1,0}}" />
+            <Property name="Font" value="GreatVibes-22" />
+            <Property name="Text" value="Le Labyrinthe des oubliés" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="VerticalAlignment" value="Centre" />
+            <Property name="HorizontalAlignment" value="Centre" />
+        </Window>
+        <Window type="AlfiskoSkin/Button" name="StartMenuQuitter" >
+            <Property name="Area" value="{{0,0},{0,0},{0.15,0},{0.1,0}}" />
+            <Property name="Font" value="Jura-18" />
+            <Property name="Text" value="Quitter" />
+        </Window>
+    </Window>
+</GUILayout>
