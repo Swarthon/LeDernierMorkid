@@ -1,9 +1,11 @@
-#include "Installer.h"
+#include "Downloader.h"
 
-Installer::Installer(std::string address){
+Downloader::Downloader(std::string address, std::string name){
 	mAddress = address;
+	mName = name;
+	mOut = NULL;
 }
-bool Installer::run(){
+bool Downloader::run(){
 	CURL* easy;
 	CURLM *multi_handle;
 	int i;
@@ -12,7 +14,7 @@ bool Installer::run(){
 	multi_handle = curl_multi_init();
 
 	easy = curl_easy_init();
-	setup(easy, i, mAddress);
+	setup(easy, mAddress, mName);
 
 	curl_multi_add_handle(multi_handle, easy);
 	curl_multi_setopt(multi_handle, CURLMOPT_PIPELINING, CURLPIPE_MULTIPLEX);
@@ -79,11 +81,14 @@ bool Installer::run(){
 	curl_multi_cleanup(multi_handle);
 	curl_easy_cleanup(easy);
 
+	if(mOut)
+		fclose(mOut);
+
 	return 0;
 }
 
 // Static methodes
-void Installer::dump(const char *text, int num, unsigned char *ptr, size_t size, char nohex) {
+void Downloader::dump(const char *text, int num, unsigned char *ptr, size_t size, char nohex) {
 	size_t i;
 	size_t c;
 
@@ -105,7 +110,7 @@ void Installer::dump(const char *text, int num, unsigned char *ptr, size_t size,
 		}
 	}
 }
-int Installer::trace(CURL *handle, curl_infotype type, char *data, size_t size, void *userp){
+int Downloader::trace(CURL *handle, curl_infotype type, char *data, size_t size, void *userp){
 	const char *text;
 	int num = 0;
 	(void)handle;
@@ -120,15 +125,14 @@ int Installer::trace(CURL *handle, curl_infotype type, char *data, size_t size, 
 	dump(text, num, (unsigned char *)data, size, 1);
 	return 0;
 }
-void Installer::setup(CURL *hnd, int num, std::string address){
-	FILE *out;
+void Downloader::setup(CURL *hnd, std::string address, std::string name){
 	char filename[128];
 
-	snprintf(filename, 128, "dl-%d", num);
+	snprintf(filename, 128, name.c_str());
 
-	out = fopen(filename, "wb");
+	mOut = fopen(filename, "wb");
 
-	curl_easy_setopt(hnd, CURLOPT_WRITEDATA, out);
+	curl_easy_setopt(hnd, CURLOPT_WRITEDATA, mOut);
 
 	curl_easy_setopt(hnd, CURLOPT_URL, address.c_str());
 

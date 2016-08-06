@@ -1,5 +1,5 @@
-#ifndef INSTALLER_H
-#define INSTALLER_H
+#ifndef DOWNLOADER_H
+#define DOWNLOADER_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,20 +11,22 @@
 
 #include <curl/curl.h>
 
-#ifndef CURLPIPE_MULTIPLEX
-#define CURLPIPE_MULTIPLEX 0
-#endif
+//#ifndef CURLPIPE_MULTIPLEX
+//#define CURLPIPE_MULTIPLEX 0
+//#endif
 
-class Installer {
+class Downloader {
 public:
-	Installer(std::string address);
+	Downloader(std::string address, std::string name);
 	bool run();
 private:
 	static void dump(const char *text, int num, unsigned char *ptr, size_t size, char nohex);
 	static int trace(CURL *handle, curl_infotype type, char *data, size_t size, void *userp);
-	static void setup(CURL *hnd, int num, std::string address);
+	void setup(CURL *hnd, std::string address, std::string name);
 
 	std::string mAddress;
+	std::string mName;
+	FILE* mOut;
 };
 
-#endif // INSTALLER_H
+#endif // DOWNLOADER_H
