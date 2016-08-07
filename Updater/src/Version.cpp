@@ -45,13 +45,19 @@ std::vector<Version> Version::createVersions(std::string versionsFile){
 
 	return versions;
 }
+Version Version::searchVersionByName(std::vector<Version> versions, std::string name){
+	Version v;	
+	for(int i = 0; i < versions.size(); i++)
+		if(versions[i].mName == name)
+			return versions[i];
+	std::cout << "No " << name << " found in this vector\n";
+	return Version();
+}
 
 // Operators
 std::istream& operator>>(std::istream& is, Version& v){
 	char c;	
 	is >> v.mName >> c >> v.mVersionWebPath >> c >> v.mFileWebPath;
-	std::cout << v.mName << ' ' << v.mVersionWebPath << ' ' << v.mFileWebPath << std::endl;
-
 	// is.setstate(std::ios::failbit);
 
 	return is;
