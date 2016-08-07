@@ -17,6 +17,7 @@ public:
 
 	// Static public methodes
 	static std::vector<Version> createVersions(std::string versionsFile);
+	static Version searchVersionByName(std::vector<Version> versions, std::string name);
 
 	// Operators
 	friend std::istream& operator>>(std::istream& is, Version& v);
