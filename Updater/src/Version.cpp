@@ -2,12 +2,14 @@
 
 // Methodes
 void Version::downloadFile(){
-	std::cerr << mName << ' ' << mFileWebPath << std::endl << std::endl;
+	if(mName == std::string() || mFileWebPath == std::string())
+		return;
 	Downloader d(mFileWebPath, mName);
 	d.run();
 }
 void Version::downloadVersion(){
-	std::cerr << mName << ' ' << mVersionWebPath << std::endl << std::endl;
+	if(mName == std::string() || mVersionWebPath == std::string())
+		return;
 	Downloader d(mVersionWebPath, mName + "version.txt");
 	d.run();
 }
@@ -37,7 +39,8 @@ std::vector<Version> Version::createVersions(std::string versionsFile){
 
 		Version v;
 		ifs >> v;
-		versions.push_back(v);
+		if(v.mName != std::string() || v.mVersionWebPath != std::string() || v.mFileWebPath != std::string())
+			versions.push_back(v);
 	}
 
 	return versions;
