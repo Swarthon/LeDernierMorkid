@@ -11,9 +11,9 @@
 
 #include <curl/curl.h>
 
-//#ifndef CURLPIPE_MULTIPLEX
-//#define CURLPIPE_MULTIPLEX 0
-//#endif
+#ifndef CURLPIPE_MULTIPLEX
+#define CURLPIPE_MULTIPLEX 0
+#endif
 
 class Downloader {
 public:

@@ -15,16 +15,17 @@ void Zip::extract(){
 	int fd;
 	long long sum;
 
-	if ((za = zip_open(mName.c_str(), 0, &err)) == NULL) {
+	if ((za = zip_open((mName + ".download").c_str(), 0, &err)) == NULL) {
 		zip_error_to_str(buf, sizeof(buf), err, errno);
-		fprintf(stderr, "Can't open zip archive `%s': %s/n", mName.c_str(), buf);
+		fprintf(stderr, "Can't open zip archive `%s': %s/n", (mName + ".download").c_str(), buf);
 		return;
 	}
+
+	std::vector<std::string> listOfFiles;
 
 	for (int i = 0; i < zip_get_num_entries(za, 0); i++) {
 		if (zip_stat_index(za, i, 0, &sb) == 0) {
 			std::string path = mPath + std::string(sb.name);
-			printf("%s\n\n\n", path.c_str());
 			len = strlen(path.c_str());
 			if (path.c_str()[len - 1] == '/')
 				safe_create_dir(path.c_str());
@@ -51,14 +52,23 @@ void Zip::extract(){
 					write(fd, buf, len);
 					sum += len;
 				}
+
+				listOfFiles.push_back(path);
+
 				close(fd);
 				zip_fclose(zf);
 			}
 		}
-	}   
+	}
+
+	std::ofstream ofs;
+	ofs.open((mName + "_listOfFiles.txt").c_str());
+	for(int i = 0; i < listOfFiles.size(); i++)
+		ofs << listOfFiles[i] << std::endl;
+	ofs.close();
 
 	if (zip_close(za) == -1)
-		fprintf(stderr, "Can't close zip archive `%s'/n", mName.c_str());
+		fprintf(stderr, "Can't close zip archive `%s'/n", (mName + ".download").c_str());
 }
 
 // Static private methodes

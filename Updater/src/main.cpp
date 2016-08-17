@@ -29,16 +29,15 @@ int userInput(){
 	v.downloadFile();
 	v.downloadVersion();
 	std::cout << "Version downloaded\n";
-	std::cout << "Do you want to extract it ? [y/n](Default is yes)\n";
+	std::cout << "Do you want to install it ? [y/n](Default is yes)\n";
 	std::string answer;
 	std::cin >> answer;
 	if(answer == "n")
 		return 0;
-	std::cout << "Where do you want to extract it ?\n";
+	std::cout << "Where do you want to install it ?\n";
 	std::string path;
 	std::cin >> path;
-	Zip z(v.mName, path);
-	z.extract();
+	v.install("LeDernierMorkid.exe",path);
 	std::cout << "Work is done\n";
 
 	return 0;
@@ -61,8 +60,10 @@ int main(int argc, char** argv){
 		return userInput();
 
 	else if(memcmp(argv[1],"pipe",sizeof("pipe")) == 0){
-		if(argc <= 2)
+		if(argc <= 2){
 			std::cout << "No parameter given.\n\t" << argv[0] << ' ' << argv[1] << " [pipeName]\n";
+			return 1;
+		}
 		return pipe(argv[2]);
 	}
 

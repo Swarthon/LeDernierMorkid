@@ -18,7 +18,7 @@ std::string Pipe::read(const char* pipeName){
 }
 void Pipe::send(const char* pipeName, std::string data){
 	int fdw = open(pipeName, O_WRONLY);
-	write(fdw, data.c_str(), sizeof(data.c_str()));
+	write(fdw, data.c_str(), 512);
 	close(fdw);
 }
 std::string Pipe::process(std::string command){
@@ -48,7 +48,22 @@ std::string Pipe::process(std::string command){
 		std::vector<Version> versions = Version::createVersions("versions.txt");
 		for(int i = 0; i < versions.size(); i++)
 			if(versions[i].mName == args[0])
-				versions[i].downloadFile();	
+				versions[i].downloadFile("../Versions/");
+		answer = "Done";
+	}
+	else if(prg == "Install"){
+		std::vector<Version> versions = Version::createVersions("versions.txt");
+		for(int i = 0; i < versions.size(); i++)
+			if(versions[i].mName == args[0])
+				versions[i].install("LeDernierMorkid.exe");
+		answer = "Done";
+	}
+	else if(prg == "Shutdown"){
+		exit(0);
+	}
+	else {
+		answer = "Invalid pipe input " + command;
+		std::cout << answer << std::endl;
 	}
 
 

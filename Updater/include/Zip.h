@@ -1,3 +1,6 @@
+#ifndef ZIP_H
+#define ZIP_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,6 +20,9 @@
 #include <sys/types.h>
 #include <zip.h>
 #include <string>
+#include <iostream>
+#include <vector>
+#include <fstream>
 
 class Zip {
 public:
@@ -29,3 +35,5 @@ private:
 
 	static void safe_create_dir(const char *dir);
 };
+
+#endif // ZIP_H
