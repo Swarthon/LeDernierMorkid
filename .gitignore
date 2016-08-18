@@ -11,3 +11,7 @@ Updater/bin/Updater
 bin/
 *.log
 LeDernierMorkid/bin/Map.bmp
+
+#	Development tools		#
+#########################################
+Updater/TODO
