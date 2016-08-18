@@ -14,14 +14,14 @@
 
 #include "Downloader.h"
 #include "Version.h"
+#include "Process.h"
 
-class Pipe {
+class Pipe : public Process {
 public:
 	void run(const char* pipeName);
 private:
 	std::string read(const char* pipeName);
 	void send(const char* pipeName, std::string data);
-	std::string process(std::string command);
 };
 
 #endif // PIPE_H

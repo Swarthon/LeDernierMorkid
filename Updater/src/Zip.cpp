@@ -15,9 +15,9 @@ void Zip::extract(){
 	int fd;
 	long long sum;
 
-	if ((za = zip_open((mName + ".download").c_str(), 0, &err)) == NULL) {
+	if ((za = zip_open((mPath + mName + ".download").c_str(), 0, &err)) == NULL) {
 		zip_error_to_str(buf, sizeof(buf), err, errno);
-		fprintf(stderr, "Can't open zip archive `%s': %s/n", (mName + ".download").c_str(), buf);
+		fprintf(stderr, "Can't open zip archive `%s': %s\n", (mPath + mName + ".download").c_str(), buf);
 		return;
 	}
 
@@ -68,7 +68,7 @@ void Zip::extract(){
 	ofs.close();
 
 	if (zip_close(za) == -1)
-		fprintf(stderr, "Can't close zip archive `%s'/n", (mName + ".download").c_str());
+		fprintf(stderr, "Can't close zip archive `%s'\n", (mName + ".download").c_str());
 }
 
 // Static private methodes
