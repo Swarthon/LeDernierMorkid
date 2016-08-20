@@ -2,7 +2,7 @@
 #define OBJECT_H
 
 // Ogre includes
-#include <Ogre.h>
+#include <OGRE/Ogre.h>
 
 // Bullet includes
 #include <btBulletDynamicsCommon.h>
@@ -16,6 +16,8 @@
 #include <Shapes/OgreBulletCollisionsGImpactShape.h>
 #include <Shapes/OgreBulletCollisionsCompoundShape.h>
 #include <Utils/OgreBulletCollisionsMeshToShapeConverter.h>
+
+#include <iostream>
 
 #include "Utils.h"
 #include "MotionStates/ObjectMotionState.h"

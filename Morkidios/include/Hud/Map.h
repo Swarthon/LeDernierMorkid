@@ -4,6 +4,9 @@
 // CEGUI includes
 #include <CEGUI/CEGUI.h>
 
+// C++ includes
+#include <iostream>
+
 // My includes
 #include "Utils.h"
 

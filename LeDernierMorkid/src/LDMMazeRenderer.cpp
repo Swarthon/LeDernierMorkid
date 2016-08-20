@@ -244,10 +244,15 @@ void LDMMazeRenderer::build_3D(){
 	int numWall = 0;
 
 	Ogre::Entity* corner = mSceneManager->createEntity("CornerWall", "Corner.mesh");
+	corner->setMaterialName("WallMaterial");
 	Ogre::Entity* wall = mSceneManager->createEntity("Wall", "Wall.mesh");
+	wall->setMaterialName("WallMaterial");
 	Ogre::Entity* cross = mSceneManager->createEntity("CrossWall", "Cross.mesh");
+	cross->setMaterialName("WallMaterial");
 	Ogre::Entity* halfWall = mSceneManager->createEntity("HalfWall", "HalfWall.mesh");
+	halfWall->setMaterialName("WallMaterial");
 	Ogre::Entity* t = mSceneManager->createEntity("TWall", "T.mesh");
+	t->setMaterialName("WallMaterial");
 
 	for(int x = 0; x <= maze_size_x; x++){
 		for(int y = 0; y <= maze_size_y; y++){
