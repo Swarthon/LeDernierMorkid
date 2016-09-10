@@ -34,7 +34,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibility->setWidth(CEGUI::UDim(0.8,0));
 	mMouseSensibility->setHeight(CEGUI::UDim(0.05,0));
 	mMouseSensibility->setYPosition(CEGUI::UDim(0.1,0));
-	mMouseSensibility->setUnitIntervalScrollPosition(Morkidios::gMouseSensibility);
+	mMouseSensibility->setUnitIntervalScrollPosition(Morkidios::Input::getSingleton()->mMouseSensibility);
 	mMouseSensibility->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMOptionsMenuState::mouseSensibilityChanged, this));
 
 	mMouseSensibilityLabel = mWindow->createChild("Generic/Label", "OptionsMenuMouseSensibilityLabel");
@@ -79,6 +79,7 @@ void LDMOptionsMenuState::createGUI(){
 void LDMOptionsMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("OptionsMenu");
+	Morkidios::Framework::getSingletonPtr()->mInput->save();
 }
 void LDMOptionsMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
@@ -142,7 +143,7 @@ bool LDMOptionsMenuState::keyboardButtonPressed(const CEGUI::EventArgs& e){
 }
 bool LDMOptionsMenuState::mouseSensibilityChanged(const CEGUI::EventArgs& e){
 	double newVal = mMouseSensibility->getUnitIntervalScrollPosition();
-	Morkidios::gMouseSensibility = newVal;
+	Morkidios::Input::getSingleton()->mMouseSensibility = newVal;
 
 	return true;
 }

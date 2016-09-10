@@ -12,6 +12,11 @@ LDMGame::LDMGame(){
 
 	initGui();
 
+	Morkidios::GraphicOptions::getSingleton()->setRenderWindow(Morkidios::Framework::getSingletonPtr()->mRenderWindow);
+	if(!Morkidios::GraphicOptions::getSingleton()->load())
+		Morkidios::GraphicOptions::getSingleton()->save();
+	Morkidios::GraphicOptions::getSingleton()->config();
+
 	mStateManager = new Morkidios::StateManager();
 
 	LDMGameState::create(mStateManager, "GameState");

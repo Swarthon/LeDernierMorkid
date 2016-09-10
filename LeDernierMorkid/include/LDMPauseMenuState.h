@@ -4,6 +4,9 @@
 // Morkidios includes
 #include <Morkidios.h>
 
+// My includes
+#include "LDMQuitMenu.h"
+
 class LDMPauseMenuState : public Morkidios::State {
 public:
 	LDMPauseMenuState();
@@ -42,12 +45,8 @@ private:
 	CEGUI::Window* mOptionsButton;
 	CEGUI::Window* mQuitButton;
 	CEGUI::Window* mStatsWindow;
-	CEGUI::Window* mGreyWindow;
 
-	CEGUI::Window* mQuitWindow;
-	CEGUI::Window* mQuitCancel;
-	CEGUI::Window* mQuitMainMenu;
-	CEGUI::Window* mQuitDesktop;
+	LDMQuitMenu* mQuitMenu;
 };
 
 #endif // LDMPAUSEMENUSTATE_H

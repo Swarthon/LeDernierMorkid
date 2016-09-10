@@ -19,6 +19,8 @@
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
 #include "Utils.h"
+#include "Input.h"
+#include "GraphicOptions.h"
 
 namespace Morkidios {
 
@@ -38,15 +40,15 @@ namespace Morkidios {
 		bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 		bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 
+		void saveConfigs();
+
 		Ogre::Root*				mRoot;
 		Ogre::RenderWindow*			mRenderWindow;
 		Ogre::Viewport*				mViewport;
 		Ogre::Log*				mLog;
 		Ogre::Timer*				mTimer;
 
-		OIS::InputManager*			mInputManager;
-		OIS::Keyboard*				mKeyboard;
-		OIS::Mouse*				mMouse;
+		Input* mInput;
 	
 	private:
 		Framework(const Framework&);

@@ -38,9 +38,9 @@ void LDMKeyboardMenuState::createGUI(){
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.065,0)));
-	button->setProperty("Text", CEGUI::String("Avancer : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gForwardMoveKey)));
+	button->setProperty("Text", CEGUI::String("Avancer : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Forward"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");
-	button->setUserData(&Morkidios::gForwardMoveKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Forward"]);
 
 	button = mWindow->createChild("TaharezLook/Button", "LDMKeyboardMenuStateReculer");
 	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));	
@@ -48,9 +48,9 @@ void LDMKeyboardMenuState::createGUI(){
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.195,0)));
-	button->setProperty("Text", CEGUI::String("Reculer : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gBackwardMoveKey)));
+	button->setProperty("Text", CEGUI::String("Reculer : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Backward"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");
-	button->setUserData(&Morkidios::gBackwardMoveKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Backward"]);
 	
 	button = mWindow->createChild("TaharezLook/Button", "LDMKeyboardMenuStateGauche");
 	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));	
@@ -58,9 +58,9 @@ void LDMKeyboardMenuState::createGUI(){
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.325,0)));
-	button->setProperty("Text", CEGUI::String("Gauche : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gLeftMoveKey)));
+	button->setProperty("Text", CEGUI::String("Gauche : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Leftward"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");	
-	button->setUserData(&Morkidios::gLeftMoveKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Leftward"]);
 	
 	button = mWindow->createChild("TaharezLook/Button", "LDMKeyboardMenuStateDroite");
 	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));	
@@ -68,9 +68,9 @@ void LDMKeyboardMenuState::createGUI(){
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.455,0)));
-	button->setProperty("Text", CEGUI::String("Droite : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gRightMoveKey)));
+	button->setProperty("Text", CEGUI::String("Droite : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Rightward"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");	
-	button->setUserData(&Morkidios::gRightMoveKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Rightward"]);
 
 	button = mWindow->createChild("TaharezLook/Button", "LDMKeyboardMenuStateSaut");
 	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));	
@@ -78,19 +78,19 @@ void LDMKeyboardMenuState::createGUI(){
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.585,0)));
-	button->setProperty("Text", CEGUI::String("Saut : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gJumpKey)));
+	button->setProperty("Text", CEGUI::String("Saut : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Jump"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");
-	button->setUserData(&Morkidios::gJumpKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Jump"]);
 
 	button = mWindow->createChild("TaharezLook/Button", "LDMKeyboardMenuStateCourir");
-	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));	
+	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));
 	button->subscribeEvent(CEGUI::PushButton::EventKeyUp, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::keyPressed, this));	
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.715,0)));
-	button->setProperty("Text", CEGUI::String("Courir : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gRunKey)));
+	button->setProperty("Text", CEGUI::String("Courir : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Run"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");
-	button->setUserData(&Morkidios::gRunKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Run"]);
 
 	button = mWindow->createChild("TaharezLook/Button", "LDMKeyboardMenuStateAccroupir");
 	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::buttonClicked, this));	
@@ -98,9 +98,9 @@ void LDMKeyboardMenuState::createGUI(){
 	button->setWidth(CEGUI::UDim(0.2,0));
 	button->setHeight(CEGUI::UDim(0.1,0));
 	button->setPosition(CEGUI::UVector2(CEGUI::UDim(0.03,0),CEGUI::UDim(0.845,0)));
-	button->setProperty("Text", CEGUI::String("S'accroupir : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(Morkidios::gSneakKey)));
+	button->setProperty("Text", CEGUI::String("S'accroupir : ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(Morkidios::Input::getSingleton()->mKeyMap["Sneak"])));
 	button->setProperty("Font","LDMKeyboardMenuStateFont");
-	button->setUserData(&Morkidios::gSneakKey);
+	button->setUserData(&Morkidios::Input::getSingleton()->mKeyMap["Sneak"]);
 
 	mReturnButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "ReturnButton"));
 	mReturnButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMKeyboardMenuState::returnButtonPressed, this));	
@@ -186,7 +186,7 @@ bool LDMKeyboardMenuState::buttonClicked(const CEGUI::EventArgs& evt){
 					b = true;
 			}
 		}
-		button->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(*((OIS::KeyCode*)(button->getUserData())))));
+		button->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(*((OIS::KeyCode*)(button->getUserData())))));
 		mActive = NULL;
 	}
 
@@ -204,7 +204,7 @@ bool LDMKeyboardMenuState::buttonClicked(const CEGUI::EventArgs& evt){
 					if(c[i] == ']')
 						b = true;
 			}
-			mActive->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(*((OIS::KeyCode*)(mActive->getUserData())))));
+			mActive->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(*((OIS::KeyCode*)(mActive->getUserData())))));
 			mActive = NULL;
 		}
 
@@ -237,7 +237,7 @@ bool LDMKeyboardMenuState::windowClicked(const CEGUI::EventArgs& evt){
 				if(c[i] == ']')
 					b = true;
 		}
-		mActive->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(*((OIS::KeyCode*)(mActive->getUserData())))));
+		mActive->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(*((OIS::KeyCode*)(mActive->getUserData())))));
 		mActive = NULL;
 	}
 
@@ -261,7 +261,7 @@ bool LDMKeyboardMenuState::keyPressed(const CEGUI::EventArgs& evt){
 				if(c[i] == ']')
 					b = true;
 		}
-		mActive->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mKeyboard->getAsString(*((OIS::KeyCode*)(mActive->getUserData())))));
+		mActive->setProperty("Text", CEGUI::String(s) + CEGUI::String(" ") + CEGUI::String(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->getAsString(*((OIS::KeyCode*)(mActive->getUserData())))));
 		mActive = NULL;
 	}
 

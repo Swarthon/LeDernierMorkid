@@ -57,70 +57,31 @@ void LDMPauseMenuState::createGUI(){
 	mStatsWindow = mWindow->createChild("TaharezLook/Listbox", "PauseMenuStatsWindow");
 	mStatsWindow->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.9,0)));
 	mStatsWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0.15,0), CEGUI::UDim(0.05,0)));
-	
-	mGreyWindow = mWindow->createChild("Generic/Image", "PauseMenuGreyWindow");
-	mGreyWindow->setSize(CEGUI::USize(CEGUI::UDim(1,0),CEGUI::UDim(1,0)));
-	mGreyWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0,0), CEGUI::UDim(0,0)));
-	mGreyWindow->setAlpha(0.5);
-	CEGUI::Texture& tex = CEGUI::System::getSingleton().getRenderer()->createTexture("PauseMenuGreyWindowTexture", "grey.png", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-	Morkidios::Utils::addImageToImageset(tex, "PauseMenuGreyWindowImage");
-	mGreyWindow->setProperty("Image","PauseMenuGreyWindowImage");
-	mGreyWindow->setVisible(false);
-	mGreyWindow->setAlwaysOnTop(true);
-	mGreyWindow->setRiseOnClickEnabled(false);
 
-
-	CEGUI::FontManager::getSingleton().createFreeTypeFont ("PauseMenuQuitWindowButtonFont", 30, true, "GreatVibes-Regular.ttf");
-
-	mQuitWindow = mWindow->createChild("AlfiskoSkin/FrameWindow","PauseMenuQuitWindow");
-	mQuitWindow->setHorizontalAlignment(CEGUI::HA_CENTRE);
-	mQuitWindow->setVerticalAlignment(CEGUI::VA_CENTRE);
-	mQuitWindow->setAlwaysOnTop(true);
-	mQuitWindow->setVisible(false);
-	mQuitWindow->setWidth(CEGUI::UDim(0.4,0));
-	mQuitWindow->setHeight(CEGUI::UDim(0.3,0));
-
-	mQuitCancel = mQuitWindow->createChild("AlfiskoSkin/Button","PauseMenuQuitCancel");
-	mQuitCancel->setWidth(CEGUI::UDim(0.5,0));
-	mQuitCancel->setHeight(CEGUI::UDim(0.2,0));
-	mQuitCancel->setHorizontalAlignment(CEGUI::HA_CENTRE);
-	mQuitCancel->setYPosition(CEGUI::UDim(0.1,0));
-	mQuitCancel->setText("Annuler");
-	mQuitCancel->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitCancelButtonPressed, this));
-	mQuitCancel->setProperty("Font","PauseMenuQuitWindowButtonFont");
-
-	mQuitMainMenu = mQuitWindow->createChild("AlfiskoSkin/Button","PauseMenuQuitMenu");
-	mQuitMainMenu->setWidth(CEGUI::UDim(0.5,0));
-	mQuitMainMenu->setHeight(CEGUI::UDim(0.2,0));
-	mQuitMainMenu->setHorizontalAlignment(CEGUI::HA_CENTRE);
-	mQuitMainMenu->setYPosition(CEGUI::UDim(0.4,0));
-	mQuitMainMenu->setText("Retourner au menu principal");
-	mQuitMainMenu->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitMainMenuButtonPressed, this));
-	mQuitMainMenu->setProperty("Font","PauseMenuQuitWindowButtonFont");
-
-	mQuitDesktop = mQuitWindow->createChild("AlfiskoSkin/Button","PauseMenuQuitDesktop");
-	mQuitDesktop->setWidth(CEGUI::UDim(0.5,0));
-	mQuitDesktop->setHeight(CEGUI::UDim(0.2,0));
-	mQuitDesktop->setHorizontalAlignment(CEGUI::HA_CENTRE);
-	mQuitDesktop->setYPosition(CEGUI::UDim(0.7,0));
-	mQuitDesktop->setText("Retourner au bureau");
-	mQuitDesktop->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitDesktopButtonPressed, this));
-	mQuitDesktop->setProperty("Font","PauseMenuQuitWindowButtonFont");
+	mQuitMenu = new LDMQuitMenu(mWindow);
+	mQuitMenu->show(false);
+	mQuitMenu->getCancel()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitCancelButtonPressed, this));
+	mQuitMenu->getMainMenu()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitMainMenuButtonPressed, this));
+	mQuitMenu->getDesktop()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitDesktopButtonPressed, this));
 }
 void LDMPauseMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("PauseMenu");
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("PauseMenuGreyWindowTexture");
 	CEGUI::ImageManager::getSingleton().destroy("PauseMenuGreyWindowImage");
+
+	delete mQuitMenu;
 }
 void LDMPauseMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
+	mQuitMenu->show(false);
 }
 bool LDMPauseMenuState::pause(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 	mWindow->setVisible(false);
+	mQuitMenu->show(false);
 
 	return true;
 }
@@ -134,12 +95,10 @@ bool LDMPauseMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
 bool LDMPauseMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp((CEGUI::Key::Scan)keyEventRef.key);
 	
-	if(keyEventRef.key == OIS::KC_ESCAPE && !mGreyWindow->isVisible())
+	if(keyEventRef.key == OIS::KC_ESCAPE && !mQuitMenu->getWindow()->isVisible())
 		popState();
-	else if(keyEventRef.key == OIS::KC_ESCAPE && mGreyWindow->isVisible()){
-		mGreyWindow->setVisible(false);
-		mQuitWindow->setVisible(false);
-	}
+	else if(keyEventRef.key == OIS::KC_ESCAPE && mQuitMenu->getWindow()->isVisible())
+		mQuitMenu->show(false);
 	return true;
 }
 
@@ -174,14 +133,12 @@ bool LDMPauseMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
 	return true;
 }
 bool LDMPauseMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
-	mGreyWindow->setVisible(true);
-	mQuitWindow->setVisible(true);
+	mQuitMenu->show(true);
 
 	return true;
 }
 bool LDMPauseMenuState::quitCancelButtonPressed(const CEGUI::EventArgs& e){
-	mGreyWindow->setVisible(false);
-	mQuitWindow->setVisible(false);
+	mQuitMenu->show(false);
 
 	return true;
 }

@@ -35,7 +35,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFOV->setHeight(CEGUI::UDim(0.05,0));
 	mFOV->setYPosition(CEGUI::UDim(0.1,0));
 	mFOV->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMGraphicMenuState::FOVChanged, this));
-	mFOV->setUnitIntervalScrollPosition((Morkidios::Hero::getSingleton()->getCamera()->getFOVy().valueRadians()-Ogre::Degree(50).valueRadians())/Ogre::Degree(50).valueRadians());
+	mFOV->setUnitIntervalScrollPosition((Morkidios::GraphicOptions::getSingleton()->mFOV-Ogre::Degree(50).valueRadians())/Ogre::Degree(50).valueRadians());
 
 	mFOVLabel = mWindow->createChild("Generic/Label", "GraphicMenuFOVLabel");
 	mFOVLabel->setProperty("Text", "Champ de vision");
@@ -52,7 +52,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFullScreen = static_cast<CEGUI::PushButton*>(mWindow->createChild("TaharezLook/Button", "GraphicMenuFullscreen"));
 	mFullScreen->setProperty("Text","Plein ecran");
 	mFullScreen->setProperty("Font", "GraphicMenuFont");
-	if(Morkidios::Framework::getSingletonPtr()->mRenderWindow->isFullScreen())
+	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
 		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(" : Oui"));
 	else
 		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(" : Non"));
@@ -74,6 +74,8 @@ void LDMGraphicMenuState::createGUI(){
 void LDMGraphicMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("GraphicMenu");
+
+	Morkidios::GraphicOptions::getSingleton()->save();
 }
 void LDMGraphicMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
@@ -128,12 +130,14 @@ bool LDMGraphicMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
 }
 bool LDMGraphicMenuState::FOVChanged(const CEGUI::EventArgs& e){
 	double newVal = mFOV->getUnitIntervalScrollPosition() * Ogre::Degree(50).valueRadians() + Ogre::Degree(50).valueRadians();
-	Morkidios::Hero::getSingleton()->getCamera()->setFOVy(Ogre::Radian(newVal));
+	Morkidios::GraphicOptions::getSingleton()->mFOV = newVal;
+
+	Morkidios::GraphicOptions::getSingleton()->config();
 
 	return true;
 }
 bool LDMGraphicMenuState::fullScreenChanged(const CEGUI::EventArgs& e){
-	Morkidios::Framework::getSingletonPtr()->mRenderWindow->setFullscreen(!Morkidios::Framework::getSingletonPtr()->mRenderWindow->isFullScreen(), Morkidios::Framework::getSingletonPtr()->mRenderWindow->getWidth(), Morkidios::Framework::getSingletonPtr()->mRenderWindow->getHeight());
+	Morkidios::GraphicOptions::getSingleton()->mFullScreen = !Morkidios::GraphicOptions::getSingleton()->mFullScreen;
 
 	std::string s, c = mFullScreen->getText().c_str();
 	bool b = false;
@@ -143,10 +147,12 @@ bool LDMGraphicMenuState::fullScreenChanged(const CEGUI::EventArgs& e){
 		if(!b)
 			s += c[i];
 	}
-	if(Morkidios::Framework::getSingletonPtr()->mRenderWindow->isFullScreen())
+	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
 		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(": Oui"));
 	else
 		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(": Non"));
+
+	Morkidios::GraphicOptions::getSingleton()->config();
 
 	return true;
 }

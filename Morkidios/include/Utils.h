@@ -58,6 +58,10 @@ namespace Morkidios {
 		static std::string convertIntToString(int i);
 
 		// Ogre
+		static bool onLeft(Ogre::Vector3 start, Ogre::Vector3 end);
+		static bool onRight(Ogre::Vector3 start, Ogre::Vector3 end);
+		static Ogre::Vector3 getLeft(Ogre::Vector3 start);
+		static Ogre::Vector3 getRight(Ogre::Vector3 start);
 		static void destroyAllAttachedMovableObjects(Ogre::SceneNode* node);
 		static Ogre::Entity* merge(std::vector<Ogre::MeshPtr> meshes, Ogre::SceneManager* smgr);
 

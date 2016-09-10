@@ -111,8 +111,8 @@ namespace Morkidios {
 	}
 	void Hero::rotate(const OIS::MouseEvent &evt){
 		const OIS::MouseState &mouseState = evt.state;
-		Ogre::Radian rotationX = Ogre::Degree(-mouseState.Y.rel * gMouseSensibility);
-		Ogre::Radian rotationY = Ogre::Degree(-mouseState.X.rel * gMouseSensibility);
+		Ogre::Radian rotationX = Ogre::Degree(-mouseState.Y.rel * Input::getSingleton()->mMouseSensibility);
+		Ogre::Radian rotationY = Ogre::Degree(-mouseState.X.rel * Input::getSingleton()->mMouseSensibility);
 
 		mTotalRotationX += rotationX;
 		mTotalRotationY += rotationY;

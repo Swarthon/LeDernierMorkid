@@ -13,6 +13,8 @@ void LDMGameState::enter(){
 
 	createScene();
 	createGUI();
+
+	Morkidios::GraphicOptions::getSingleton()->config();
 }
 void LDMGameState::createScene(){	
 	mTerrain = new LDMMaze;
@@ -108,9 +110,8 @@ bool LDMGameState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	}
 	if(keyEventRef.key == OIS::KC_F){
 		Morkidios::Object* o = Morkidios::Hero::getSingleton()->get();
-		if(o){
+		if(o)
 			mTerrain->removeDroppedObject(o);
-		}
 	}
 
 	if(keyEventRef.key == OIS::KC_SYSRQ){
@@ -157,15 +158,15 @@ void LDMGameState::update(double timeSinceLastFrame){
 
 void LDMGameState::heroMove(){
 	int d = 0;
-	if(Morkidios::Framework::getSingletonPtr()->mKeyboard->isKeyDown(Morkidios::gForwardMoveKey))
+	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Forward"]))
 		d |= FORWARD;
-	if(Morkidios::Framework::getSingletonPtr()->mKeyboard->isKeyDown(Morkidios::gBackwardMoveKey))
+	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Backward"]))
 		d |= BACKWARD;
-	if(Morkidios::Framework::getSingletonPtr()->mKeyboard->isKeyDown(Morkidios::gLeftMoveKey))
+	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Leftward"]))
 		d |= LEFT;
-	if(Morkidios::Framework::getSingletonPtr()->mKeyboard->isKeyDown(Morkidios::gRightMoveKey))
+	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Rightward"]))
 		d |= RIGHT;
-	if(Morkidios::Framework::getSingletonPtr()->mKeyboard->isKeyDown(Morkidios::gJumpKey))
+	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Jump"]))
 		d |= UP;
 
 	Morkidios::Hero::getSingleton()->move(d);

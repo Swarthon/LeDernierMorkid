@@ -73,8 +73,8 @@ namespace Morkidios {
 			{
 				startTime = Framework::getSingletonPtr()->mTimer->getMillisecondsCPU();
 	
-				Framework::getSingletonPtr()->mKeyboard->capture();
-				Framework::getSingletonPtr()->mMouse->capture();
+				Framework::getSingletonPtr()->mInput->mKeyboard->capture();
+				Framework::getSingletonPtr()->mInput->mMouse->capture();
 	
 				mActiveStateStack.back()->update((float)(timeSinceLastFrame));
 		
@@ -167,8 +167,8 @@ namespace Morkidios {
 	
 	void StateManager::init(State* state)
 	{
-		Framework::getSingletonPtr()->mKeyboard->setEventCallback(state);
-		Framework::getSingletonPtr()->mMouse->setEventCallback(state);
+		Framework::getSingletonPtr()->mInput->mKeyboard->setEventCallback(state);
+		Framework::getSingletonPtr()->mInput->mMouse->setEventCallback(state);
 
 		Framework::getSingletonPtr()->mRenderWindow->resetStatistics();
 	}

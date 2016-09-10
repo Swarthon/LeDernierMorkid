@@ -10,6 +10,18 @@ namespace Morkidios {
 	}
 
 	// Ogre
+	bool Utils::onLeft(Ogre::Vector3 start, Ogre::Vector3 end){
+		return Ogre::Vector3(-start.z, 0, start.x).distance(end) < Ogre::Vector3(start.z, 0, -start.x).distance(end);
+	}
+	bool Utils::onRight(Ogre::Vector3 start, Ogre::Vector3 end){
+		return Ogre::Vector3(-start.z, 0, start.x).distance(end) > Ogre::Vector3(start.z, 0, -start.x).distance(end);
+	}
+	Ogre::Vector3 Utils::getLeft(Ogre::Vector3 start){
+		return Ogre::Vector3(-start.z, 0, start.x);
+	}
+	Ogre::Vector3 Utils::getRight(Ogre::Vector3 start){
+		return Ogre::Vector3(start.z, 0, -start.x);
+	}
 	void Utils::destroyAllAttachedMovableObjects(Ogre::SceneNode* node){
 		if(!node) return;
 
@@ -26,84 +38,6 @@ namespace Morkidios {
 			Ogre::SceneNode* pChildNode = static_cast<Ogre::SceneNode*>(itChild.getNext());
 			destroyAllAttachedMovableObjects(pChildNode);
 		}
-	}
-	Ogre::Entity* Utils::merge(std::vector< Ogre::MeshPtr > meshes, Ogre::SceneManager* smgr){
-		std::string m_ModelId = "MergedMesh";
-		Ogre::MeshPtr m_BaseMesh = Ogre::MeshManager::getSingleton().createManual( m_ModelId, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME );
-		//Lets add some submeshes
-		std::vector< Ogre::MeshPtr >::iterator itr = meshes.begin();
-		std::vector< Ogre::MeshPtr >::iterator itr_e = meshes.end();
-		for( ; itr !=itr_e; ++itr ){
-			Ogre::Mesh::SubMeshIterator mesh_itr = itr->getPointer()->getSubMeshIterator();
-			Ogre::SubMesh* in = 0;
-			Ogre::SubMesh* out = 0;
-			Ogre::VertexBoneAssignment vbass;
-			while( mesh_itr.hasMoreElements()){
-				in = mesh_itr.getNext();
-				out = m_BaseMesh->createSubMesh();
-				out->indexData = in->indexData->clone();
-				out->mLodFaceList = in->mLodFaceList;
-				out->operationType = in->operationType;
-				out->parent = m_BaseMesh.get();
-				out->useSharedVertices = false;
-				out->vertexData = in->vertexData->clone();
-				out->clearBoneAssignments();
-				for( size_t i = 0; i < in->vertexData->vertexCount; ++i ){
-					vbass.vertexIndex = i;
-					vbass.weight = 1.0f;
-					out->addBoneAssignment(vbass);
-				}
-			}
-		}
-
-		//define a extreme boundary values
-		Ogre::Real max_x = -1e+8;
-		Ogre::Real min_x = 1e+8;
-		Ogre::Real max_y = -1e+8;
-		Ogre::Real min_y = 1e+8;
-		Ogre::Real max_z = -1e+8;
-		Ogre::Real min_z = +1e+8;
-		// Setting bounding box
-		Ogre::SubMesh* in = 0;
-		Ogre::Mesh::SubMeshIterator mesh_itr = m_BaseMesh->getSubMeshIterator();
-		while( mesh_itr.hasMoreElements()){
-			in = mesh_itr.getNext();
-			Ogre::VertexData *vertex_data = in->vertexData;
-			const Ogre::VertexElement* posElem = vertex_data->vertexDeclaration->findElementBySemantic(Ogre::VES_POSITION);
-			Ogre::HardwareVertexBufferSharedPtr hwvb = in->vertexData->vertexBufferBinding->getBuffer( posElem->getSource() );
-			unsigned char *hbuff = static_cast<unsigned char*>( hwvb->lock( Ogre::HardwareBuffer::HBL_READ_ONLY ));
-			Ogre::Real *pValue;
-			Ogre::Real value;
- 
-			for( size_t idx = 0; idx < vertex_data->vertexCount; ++idx, hbuff += hwvb->getVertexSize()  )
-			{
-				posElem->baseVertexPointerToElement( hbuff, &pValue );
-				value = (*pValue++);
-				if( value > max_x )
-					max_x = value;
-				if( value < min_x )
-					min_x = value;
-				value = (*pValue++);
- 
-				if( value > max_y )
-					max_y = value;
-				if( value < min_y )
-					min_y = value;
-				value = (*pValue++);
- 
-				if( value > max_z )
-					max_z = value;
-				if( value < min_z )
-					min_z = value;
-			}
-			hwvb->unlock();
-		}
-		m_BaseMesh->_setBounds( Ogre::AxisAlignedBox( min_x, min_y, min_z, max_x, max_y, max_z ));
-
-		Ogre::Entity* ent = smgr->createEntity( "entName", m_BaseMesh->getName());
-		Ogre::MeshManager::getSingleton().remove( m_BaseMesh->getHandle());
-
-		return ent;
 	}
 
 	// Image

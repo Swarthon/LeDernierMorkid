@@ -13,15 +13,11 @@ namespace Morkidios {
 		mViewport		= 0;
 		mLog			= 0;
 		mTimer			= 0;
-
-		mInputManager		= 0;
-		mKeyboard		= 0;
-		mMouse			= 0;
 	}
 	Framework::~Framework()
 	{
 		Framework::getSingletonPtr()->mLog->logMessage("Shutdown OGRE...");
-		if(mInputManager)		OIS::InputManager::destroyInputSystem(mInputManager);
+		Input::destroy();
 		if(mRoot)			delete mRoot;
 	}
 
@@ -32,6 +28,7 @@ namespace Morkidios {
 		mLog = Ogre::LogManager::getSingleton().createLog("OgreLogfile.log", true, true, false);
 		mLog->setDebugOutputEnabled(true);
 
+		// Root
 		mRoot = new Ogre::Root();
 	
 		if(!mRoot->restoreConfig()){
@@ -42,36 +39,49 @@ namespace Morkidios {
 			rs->setConfigOption("VSync", "Yes");
 		}
 		mRenderWindow = mRoot->initialise(true, wndTitle);
+		// -------------------------------
 
+		// Viewport
 		mViewport = mRenderWindow->addViewport(0);
-		mViewport->setBackgroundColour(ColourValue(0.5f, 0.5f, 0.5f, 1.0f));
+		mViewport->setBackgroundColour(Ogre::ColourValue(0.6f,0.6f,0.6f,1.f));
 
 		mViewport->setCamera(0);
+		// -------------------------------
 
+		// Input
 		size_t hWnd = 0;
 		OIS::ParamList paramList;
 		mRenderWindow->getCustomAttribute("WINDOW", &hWnd);
 
 		paramList.insert(OIS::ParamList::value_type("WINDOW", Ogre::StringConverter::toString(hWnd)));
+		
+		mInput = Input::getSingleton();
 
-		mInputManager = OIS::InputManager::createInputSystem(paramList);
+		mInput->mInputManager = OIS::InputManager::createInputSystem(paramList);
 
-		mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject(OIS::OISKeyboard, true));
-		mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject(OIS::OISMouse, true));
+		mInput->mKeyboard = static_cast<OIS::Keyboard*>(mInput->mInputManager->createInputObject(OIS::OISKeyboard, true));
+		mInput->mMouse = static_cast<OIS::Mouse*>(mInput->mInputManager->createInputObject(OIS::OISMouse, true));
 
-		mMouse->getMouseState().height = mRenderWindow->getHeight();
-		mMouse->getMouseState().width	 = mRenderWindow->getWidth();
+		mInput->mMouse->getMouseState().height = mRenderWindow->getHeight();
+		mInput->mMouse->getMouseState().width  = mRenderWindow->getWidth();
 
 		if(pKeyListener == 0)
-			mKeyboard->setEventCallback(this);
+			mInput->mKeyboard->setEventCallback(this);
 		else
-			mKeyboard->setEventCallback(pKeyListener);
+			mInput->mKeyboard->setEventCallback(pKeyListener);
 
 		if(pMouseListener == 0)
-			mMouse->setEventCallback(this);
+			mInput->mMouse->setEventCallback(this);
 		else
-			mMouse->setEventCallback(pMouseListener);
+			mInput->mMouse->setEventCallback(pMouseListener);
+		// -------------------------------
 
+		// Input Loading
+		if(!mInput->load())
+			mInput->save();
+		// -------------------------------
+
+		// Ressources
 		Ogre::String secName, typeName, archName;
 		Ogre::ConfigFile cf;
 		cf.load("resources.cfg");
@@ -91,12 +101,14 @@ namespace Morkidios {
 		}
 		Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 		Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+		// -------------------------------
 
 		mTimer = new Ogre::Timer();
 		mTimer->reset();
 
 		mRenderWindow->setActive(true);
 
+		// CEGUI
 		mLog->logMessage("Initializing CEGUI");
 		CEGUI::OgreRenderer::bootstrapSystem();
 		CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
@@ -107,6 +119,7 @@ namespace Morkidios {
 
 		CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "RootWindow"));
 		mLog->logMessage("CEGUI initialized");
+		// -------------------------------
 
 		return true;
 	}
