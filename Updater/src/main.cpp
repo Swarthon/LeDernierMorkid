@@ -21,7 +21,7 @@ int pipe(const char* pipeName){
 	return 0;
 }
 
-int main(int argc, char** argv){
+/*int main(int argc, char** argv){
 	if(argc == 1){
 		std::cout << "No parameter given.\n\t" << argv[0] << " [userInput/pipe]\n";
 		return 1;
@@ -43,4 +43,4 @@ int main(int argc, char** argv){
 	}
 
 	return 0;
-}
+}*/

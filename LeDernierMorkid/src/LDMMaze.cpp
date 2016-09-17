@@ -17,11 +17,14 @@ void LDMMaze::init(std::string name, Ogre::SceneManager* smgr){
 	plane.normal = Ogre::Vector3::UNIT_Y;
 	plane.d = 0;
 
-	Ogre::MeshManager::getSingleton().createPlane("plane", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, MAZE_SIZE, MAZE_SIZE, 10, 10, true, 1, 50.0, 50.0, Ogre::Vector3::UNIT_Z);
+	Ogre::MeshManager::getSingleton().createPlane("plane", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, MAZE_SIZE, MAZE_SIZE, 50, 50, true, 1, 5, 5, Ogre::Vector3::UNIT_Z);
+
+	mGeometry->setRegionDimensions(Ogre::Vector3(MAZE_SIZE, MAZE_SIZE, MAZE_SIZE));
+	mGeometry->setOrigin(Ogre::Vector3(-MAZE_SIZE/2, 0, -MAZE_SIZE/2));
 
 	Ogre::Entity* mGround = smgr->createEntity("plane");
 	mGround->setMaterialName("Examples/GrassFloor");
-	mGround->setCastShadows(false);
+//	mGround->setCastShadows(true);
 	mGeometry->addEntity(mGround, Ogre::Vector3::ZERO);
 
 	mGroundShape = new btStaticPlaneShape(btVector3(0,1,0), 0);
@@ -33,7 +36,7 @@ void LDMMaze::init(std::string name, Ogre::SceneManager* smgr){
 
 	Ogre::Entity* mRoof = smgr->createEntity("plane");
 	mRoof->setMaterialName("Examples/GrassFloor");
-	mRoof->setCastShadows(false);
+//	mRoof->setCastShadows(true);
 	mGeometry->addEntity(mRoof, Ogre::Vector3(0,MAZE_HEIGHT,0), Ogre::Quaternion(Ogre::Degree(180),Ogre::Vector3(1,0,0)));
 
 	mMaze.init(mWorld, mGeometry, smgr, Ogre::Vector3(MAZE_SIZE, MAZE_HEIGHT, MAZE_SIZE));
@@ -41,8 +44,7 @@ void LDMMaze::init(std::string name, Ogre::SceneManager* smgr){
 	mMaze.run();
 	mMaze.getImage().save("Map.bmp");
 
-	mGeometry->setRegionDimensions(Ogre::Vector3(MAZE_SIZE, MAZE_SIZE, MAZE_SIZE));
-	mGeometry->setOrigin(Ogre::Vector3(-MAZE_SIZE/2, 0, -MAZE_SIZE/2));
+	mGeometry->setCastShadows(true);
 	mGeometry->build();
 }
 

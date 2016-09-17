@@ -20,8 +20,10 @@ void LDMMainMenuState::enter(){
 	mRollingMenu->getFaces()[0]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::playButtonPressed, this));
 	mRollingMenu->getFaces()[1]->setText("Options");
 	mRollingMenu->getFaces()[1]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::optionsButtonPressed, this));
-	mRollingMenu->getFaces()[2]->setText("Quitter");
-	mRollingMenu->getFaces()[2]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
+	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)"Mettre à jour");
+	mRollingMenu->getFaces()[2]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::updateButtonPressed, this));
+	mRollingMenu->getFaces()[3]->setText("Quitter");
+	mRollingMenu->getFaces()[3]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
 }
 void LDMMainMenuState::createScene(){
 	mHeroTexture = Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->createManual("RTTMainMenu", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::TEX_TYPE_2D, 512, 512, 0, Ogre::PF_R8G8B8, Ogre::TU_RENDERTARGET);
@@ -161,6 +163,11 @@ bool LDMMainMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
 }
 bool LDMMainMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
 	shutdown();
+
+	return true;
+}
+bool LDMMainMenuState::updateButtonPressed(const CEGUI::EventArgs& e){
+	pushState(findByName("UpdaterState"));
 
 	return true;
 }

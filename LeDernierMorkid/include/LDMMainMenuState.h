@@ -36,6 +36,7 @@ private:
 	bool playButtonPressed(const CEGUI::EventArgs& e);
 	bool optionsButtonPressed(const CEGUI::EventArgs& e);
 	bool quitButtonPressed(const CEGUI::EventArgs& e);
+	bool updateButtonPressed(const CEGUI::EventArgs& e);
 
 	CEGUI::Window* mWindow;
 	CEGUI::Window* mLabel;

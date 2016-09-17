@@ -1,0 +1,19 @@
+material Fire
+{
+   technique
+   {
+      pass
+      {
+         lighting off
+         scene_blend add
+         depth_write off
+         emissive 0.8 0.05 0.05 1
+
+         texture_unit
+         {
+            texture fire.jpg
+            tex_address_mode clamp
+         }
+      }
+   }
+}

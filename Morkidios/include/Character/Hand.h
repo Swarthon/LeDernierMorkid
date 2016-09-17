@@ -27,8 +27,8 @@ namespace Morkidios {
 		void setAnimation(std::string name, bool b);
 		void addTime(double time);
 
-		void setLeftHandObject(Ogre::Entity* ent);
-		void setRightHandObject(Ogre::Entity* ent);
+		void setLeftHandObject(Ogre::Entity* sn);
+		void setRightHandObject(Ogre::Entity* sn);
 	private:
 		// Constructeurs et Destructeurs privates
 		Hand();

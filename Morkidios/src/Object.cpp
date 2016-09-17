@@ -43,10 +43,12 @@ namespace Morkidios {
 		}
 
 		mEntity = smgr->createEntity(name, path);
-		mEntity->setVisible(false);
+		show(false);
 		mSceneNode = smgr->getRootSceneNode()->createChildSceneNode(name);
+		mSceneNode->attachObject(mEntity);
 		mName = name;
 		mWorld = world;
+		mSceneManager = smgr;
 
 		btCollisionShape* shape = OgreBulletCollisions::StaticMeshToShapeConverter(mEntity).createConvexDecomposition()->getBulletShape();	
 		
@@ -74,6 +76,9 @@ namespace Morkidios {
 	Ogre::Entity* Object::getEntity(){
 		return mEntity;
 	}
+	Ogre::SceneNode* Object::getSceneNode(){
+		return mSceneNode;
+	}
 	Object::Type Object::getType(){
 		return mType;
 	}
@@ -85,11 +90,11 @@ namespace Morkidios {
 		if(mActiveCollision != b){
 			if(b){
 				mWorld->addRigidBody(mBody);
-				setSceneNodeAsEntityParent();
+				attachEntityToSceneNode();
 			}
 			if(!b){
 				mWorld->removeRigidBody(mBody);
-				setSceneNodeAsEntityParent();
+				attachEntityToSceneNode();
 			}
 		}
 		mActiveCollision = b;
@@ -100,19 +105,25 @@ namespace Morkidios {
 			mBody->getWorldTransform().setOrigin(OgreBulletCollisions::OgreBtConverter::to(pos));
 		}
 	}
-	void Object::setSceneNodeAsEntityParent(){
-		if(mEntity->getParentSceneNode() != mSceneNode || mEntity->getParentSceneNode()){
-			mEntity->detachFromParent();
-			mSceneNode->attachObject(mEntity);
-		}
+	void Object::attachEntityToSceneNode(){
+		mEntity->detachFromParent();
+		mSceneNode->attachObject(mEntity);
 	}
 	void Object::drop(Ogre::Vector3 pos){
 		addToWorld(true);
 		setPosition(pos);
-		mEntity->setVisible(true);
+		show(true);
 	}
 	void Object::get(){
 		addToWorld(false);
-		mEntity->setVisible(false);
+		show(false);
+	}
+	void Object::show(bool b){
+		mEntity->setVisible(b);
+		Ogre::Entity::ChildObjectListIterator it =  mEntity->getAttachedObjectIterator();
+		while(it.hasMoreElements()){
+			Ogre::MovableObject* o = it.getNext();
+			o->setVisible(b);
+		}
 	}
 }

@@ -50,7 +50,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFOVLabel->setMousePassThroughEnabled(true);
 
 	mFullScreen = static_cast<CEGUI::PushButton*>(mWindow->createChild("TaharezLook/Button", "GraphicMenuFullscreen"));
-	mFullScreen->setProperty("Text","Plein ecran");
+	mFullScreen->setProperty("Text",(CEGUI::utf8*)"Plein écran");
 	mFullScreen->setProperty("Font", "GraphicMenuFont");
 	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
 		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(" : Oui"));

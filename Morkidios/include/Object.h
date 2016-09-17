@@ -51,15 +51,16 @@ namespace Morkidios {
 		// Return value methodes
 		std::string getName();
 		Ogre::Entity* getEntity();
+		Ogre::SceneNode* getSceneNode();
 		Type getType();
 		btRigidBody* getRigidBody();
 
 		// Méthdes diverses
 		void addToWorld(bool b);
 		void setPosition(Ogre::Vector3 pos);
-		void setSceneNodeAsEntityParent();
 		void drop(Ogre::Vector3 pos);
 		void get();
+		void show(bool b);
 	protected:
 		std::string mName;
 		Type mType;
@@ -73,6 +74,9 @@ namespace Morkidios {
 		// Bullet
 		btRigidBody* mBody;
 		btDynamicsWorld* mWorld;
+		Ogre::SceneManager* mSceneManager;
+		
+		void attachEntityToSceneNode();
 	};
 
 }

@@ -60,6 +60,7 @@ namespace Morkidios {
 		Features& getTotal();
 		std::vector<Object*> getObjects();
 		Ogre::Vector3 getPosition();
+		Ogre::SceneNode* getSceneNode();
 
 		// Various methodes
 		virtual void setDead(){};

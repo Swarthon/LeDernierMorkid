@@ -9,7 +9,7 @@ LDMGameState::~LDMGameState(){
 
 void LDMGameState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager("OctreeSceneManager");
-	mSceneManager->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
+	mSceneManager->setAmbientLight(Ogre::ColourValue(0.1f, 0.1f, 0.1f));
 
 	createScene();
 	createGUI();
@@ -43,6 +43,20 @@ void LDMGameState::createScene(){
 	o->setType(Morkidios::Object::Weapon);
 	Morkidios::Hero::getSingleton()->addObject(o);
 
+	o = new Morkidios::Object();
+	o->load(mSceneManager, mTerrain->getWorld(), "Torche","Torch.mesh");
+	o->setType(Morkidios::Object::Weapon);
+	Morkidios::Hero::getSingleton()->addObject(o);
+	Ogre::Light* spotLight = mSceneManager->createLight("Spotlight");
+	spotLight->setType(Ogre::Light::LT_POINT);
+	spotLight->setDiffuseColour(Ogre::ColourValue(1, 0.7, 0.7));
+	spotLight->setSpecularColour(Ogre::ColourValue(1, 0.7, 0.7));
+	spotLight->setAttenuation(160, 1.0, 0.027, 0.0028);
+	spotLight->setVisible(false);
+	o->getEntity()->attachObjectToBone("Flame",spotLight);
+	Ogre::ParticleSystem* sunParticle = mSceneManager->createParticleSystem("Sun", "Fire");
+	o->getEntity()->attachObjectToBone("Flame",sunParticle);
+
 	Morkidios::Hero::getSingleton()->getTotal() = c;
 	Morkidios::Hero::getSingleton()->getActual() = c;
 }
@@ -53,7 +67,7 @@ void LDMGameState::createGUI(){
 
 	mCrossHair = new Morkidios::CrossHair;
 	mCrossHair->init("CrossHair.png");
-	
+
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 
 	// Debug
@@ -142,10 +156,8 @@ bool LDMGameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID 
 
 void LDMGameState::update(double timeSinceLastFrame){
 	Morkidios::Hero::getSingleton()->update(timeSinceLastFrame);
-	mTerrain->update(timeSinceLastFrame);
 
-	Ogre::Vector3 pos = Morkidios::Hero::getSingleton()->getPosition();
-	mMap->updatePoint(Ogre::Vector2(pos.x,pos.z),"Hero");
+	mTerrain->update(timeSinceLastFrame);
 
 	// Input
 	heroMove();
@@ -153,7 +165,6 @@ void LDMGameState::update(double timeSinceLastFrame){
 	// Debug
 	if(mFPSVisible)
 		mFPSWindow->setText(std::string("FPS : ") + Morkidios::Utils::convertIntToString(Morkidios::Framework::getSingletonPtr()->mRenderWindow->getAverageFPS()));
-
 }
 
 void LDMGameState::heroMove(){
@@ -168,6 +179,11 @@ void LDMGameState::heroMove(){
 		d |= RIGHT;
 	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Jump"]))
 		d |= UP;
+
+	if(d != 0){
+		Ogre::Vector3 pos = Morkidios::Hero::getSingleton()->getPosition();
+		mMap->updatePoint(Ogre::Vector2(pos.x,pos.z),"Hero");
+	}
 
 	Morkidios::Hero::getSingleton()->move(d);
 }

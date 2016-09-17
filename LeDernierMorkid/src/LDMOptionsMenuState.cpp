@@ -38,7 +38,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibility->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMOptionsMenuState::mouseSensibilityChanged, this));
 
 	mMouseSensibilityLabel = mWindow->createChild("Generic/Label", "OptionsMenuMouseSensibilityLabel");
-	mMouseSensibilityLabel->setProperty("Text", "Sensibilite de la souris");
+	mMouseSensibilityLabel->setProperty("Text", (CEGUI::utf8*)"Sensibilité de la souris");
 	mMouseSensibilityLabel->setProperty("Font", "OptionsMenuButtonFont");
 	mMouseSensibilityLabel->setProperty("NormalTextColour", "FFFFFFFF");
 	mMouseSensibilityLabel->setProperty("DisabledTextColour", "FFFFFFFF");
@@ -50,7 +50,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibilityLabel->setMousePassThroughEnabled(true);
 
 	mKeyboardMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "KeyboardMenuOptions"));
-	mKeyboardMenuButton->setProperty("Text", "Controles");
+	mKeyboardMenuButton->setProperty("Text", (CEGUI::utf8*)"Contrôles");
 	mKeyboardMenuButton->setProperty("Font", "OptionsMenuButtonFont");
 	mKeyboardMenuButton->setWidth(CEGUI::UDim(0.3,0));
 	mKeyboardMenuButton->setHeight(CEGUI::UDim(0.1,0));

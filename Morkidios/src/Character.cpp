@@ -150,6 +150,9 @@ namespace Morkidios {
 	Ogre::Vector3 Character::getPosition(){
 		return mSceneNode->getPosition();
 	}
+	Ogre::SceneNode* Character::getSceneNode(){
+		return mSceneNode;
+	}
 	
 	// Various methodes
 	double Character::attack(){/*

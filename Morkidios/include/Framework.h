@@ -20,7 +20,6 @@
 
 #include "Utils.h"
 #include "Input.h"
-#include "GraphicOptions.h"
 
 namespace Morkidios {
 

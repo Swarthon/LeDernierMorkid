@@ -148,6 +148,7 @@ namespace Morkidios {
 	void Hero::equipeRightHand(Object* obj){
 		if(mRightHandObject)
 			unequipeRightHand();
+		obj->show(true);
 		mHand->setRightHandObject(obj->getEntity());
 		mRightHandObject = obj;
 	}
@@ -158,6 +159,7 @@ namespace Morkidios {
 	void Hero::equipeLeftHand(Object* obj){
 		if(mLeftHandObject)
 			unequipeLeftHand();
+		obj->show(true);
 		mHand->setLeftHandObject(obj->getEntity());
 		mLeftHandObject = obj;
 	}

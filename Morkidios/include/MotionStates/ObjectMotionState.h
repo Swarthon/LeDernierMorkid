@@ -1,5 +1,5 @@
-#ifndef OBJECTMOTIONSTATE
-#define OBJECTMOTIONSTATE
+#ifndef OBJECTMOTIONSTATE_H
+#define OBJECTMOTIONSTATE_H
 
 // Bullet includes
 #include <BulletCollision/CollisionDispatch/btGhostObject.h>
@@ -36,4 +36,4 @@ namespace Morkidios {
 
 }
 
-#endif // OBJECTMOTIONSTATE
+#endif // OBJECTMOTIONSTATE_H

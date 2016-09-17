@@ -2,10 +2,7 @@
 
 namespace Morkidios {
 	Inventory::Inventory(){
-		mFrameEvent = Ogre::FrameEvent();
-
 		mObjectEntity = NULL;
-
 		mActiveButton = NULL;
 	}
 	Inventory::~Inventory(){
@@ -45,7 +42,7 @@ namespace Morkidios {
 		
 		createLeftBarButton("InventoryWeaponsButton", "Armes", Object::Weapon);
 		createLeftBarButton("InventoryArmoursButton", "Armures", Object::Armour);
-		createLeftBarButton("InventoryObjectsQuestButton", "Objets de Quete", Object::Quest);
+		createLeftBarButton("InventoryObjectsQuestButton", "Objets de Quête", Object::Quest);
 		createLeftBarButton("InventoryObjectsVariousButton", "Objets Divers", Object::Various);
 		createLeftBarButton("InventoryObjectsEatablesButton", "Objets Comestibles", Object::Eatable);
 		createLeftBarButton("InventoryUtilsButton", "Outils", Object::Utils);
@@ -182,7 +179,7 @@ namespace Morkidios {
 		int* i = (int*)malloc(sizeof(int));		// It must be a pointer, else the UserData not work
 		*i = t;
 		wnd->setUserData(i);
-		wnd->setText(text);
+		wnd->setText((CEGUI::utf8*)text.c_str());
 		wnd->setProperty("Font","InventoryLeftBarButton");
 		wnd->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::typeBarButtonClicked, this));
 	}
@@ -190,7 +187,7 @@ namespace Morkidios {
 		CEGUI::Window* button = parent->createChild("AlfiskoSkin/Button", std::string("Inventory") + name);
 		button->setHeight(CEGUI::UDim(0.1666666666666666666,0));
 		button->setWidth(CEGUI::UDim(1,0));
-		button->setText(o->getName());
+		button->setText((CEGUI::utf8*)o->getName().c_str());
 		button->setProperty("Font","InventoryLeftBarButton");
 		button->setUserData(o);
 		button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::objectButtonClicked, this));

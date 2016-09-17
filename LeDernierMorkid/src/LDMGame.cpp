@@ -25,6 +25,7 @@ LDMGame::LDMGame(){
 	LDMOptionsMenuState::create(mStateManager, "OptionsMenuState");
 	LDMGraphicMenuState::create(mStateManager, "GraphicMenuState");
 	LDMKeyboardMenuState::create(mStateManager, "KeyboardMenuState");
+	Morkidios::UpdaterState::create(mStateManager, "UpdaterState");
 	Morkidios::Inventory::create(mStateManager, "InventoryState");
 
 	mStateManager->start(mStateManager->findByName("MainMenuState"));

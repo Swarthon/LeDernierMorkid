@@ -54,7 +54,7 @@ std::string Process::process(std::string command){
 		exit(0);
 	}
 	else {
-		answer = "Invalid pipe input " + command;
+		answer = "Invalid input " + command;
 	}
 
 
