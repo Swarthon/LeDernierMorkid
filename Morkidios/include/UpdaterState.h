@@ -6,6 +6,7 @@
 
 // Updater includes
 #include <Downloader.h>
+#include <Version.h>
 
 // My includes
 #include "State.h"
@@ -36,18 +37,25 @@ namespace Morkidios {
 		void update(double timeSinceLastFrame);
 	private:
 		// Private methodes
-		bool downloadWindow(const CEGUI::EventArgs&);
-		bool installWindow(const CEGUI::EventArgs&);
-		void downloadVersions();
+		void download(std::string url, std::string fileName);
+		void downloadFile();
+		bool downloadButtonClicked(const CEGUI::EventArgs& evt);
+		bool noButtonClicked(const CEGUI::EventArgs& evt);
+		bool yesButtonClicked(const CEGUI::EventArgs& evt);
 
 		Ogre::Camera* mCamera;
 		CEGUI::Window* mWindow;
 
-		CEGUI::Window* mVersionsDownloadWindow;
 		CEGUI::Window* mDownloadingWindow;
 		CEGUI::Window* mDownloadingWindowProgressBar;
 		CEGUI::Window* mDownloadingWindowText;
+		CEGUI::Window* mAvailableVersionsWindow;
+		CEGUI::Combobox* mAvailableVersionsWindowCombobox;
+		CEGUI::PushButton* mAvailableVersionsWindowButton;
 		CEGUI::Window* mInstallWindow;
+		CEGUI::Window* mInstallWindowText;
+		CEGUI::PushButton* mInstallWindowYes;
+		CEGUI::PushButton* mInstallWindowNo;
 
 		enum State {
 			DownloadingVersions,
@@ -58,6 +66,9 @@ namespace Morkidios {
 
 		State mState;
 		boost::thread mThread;
+		std::vector<Version> mVersions;
+		Version mActualVersion;
+		bool mThreadEnded;
 	};
 }
 

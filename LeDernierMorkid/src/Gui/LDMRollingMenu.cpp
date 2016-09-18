@@ -1,6 +1,5 @@
 #include "LDMRollingMenu.h"
 
-
 LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight){
 	// CEGUI in Ogre
 	CEGUI::Window* root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "RollingMenuRoot");

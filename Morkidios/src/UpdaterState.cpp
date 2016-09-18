@@ -17,7 +17,8 @@ namespace Morkidios {
 		createScene();
 		createGUI();
 
-		mThread = boost::thread(boost::bind(&UpdaterState::downloadVersions, this));
+		mThread = boost::thread(boost::bind(&UpdaterState::download, this, "https://sourceforge.net/projects/lederniermorkid/files/versions.txt/download", "versions.txt"));
+		mThreadEnded = false;
 		mState = DownloadingVersions;
 	}
 	void UpdaterState::createScene(){
@@ -39,12 +40,59 @@ namespace Morkidios {
 		mDownloadingWindowProgressBar->setSize(CEGUI::USize(CEGUI::UDim(0.4,0),CEGUI::UDim(0.1,0)));
 		mDownloadingWindowProgressBar->setHorizontalAlignment(CEGUI::HA_CENTRE);
 		mDownloadingWindowProgressBar->setVerticalAlignment(CEGUI::VA_CENTRE);
-		mDownloadingWindowText = mDownloadingWindow->createChild("Generic/Label","UpdaterStateDonwloadingWindowText");
+		mDownloadingWindowText = mDownloadingWindow->createChild("TaharezLook/Label","UpdaterStateDonwloadingWindowText");
 		mDownloadingWindowText->setSize(CEGUI::USize(CEGUI::UDim(0.4,0),CEGUI::UDim(0.1,0)));
 		mDownloadingWindowText->setHorizontalAlignment(CEGUI::HA_CENTRE);
 		mDownloadingWindowText->setYPosition(CEGUI::UDim(0.2,0));
 		mDownloadingWindowText->setProperty("Font","UpdaterStateFont");
 		mDownloadingWindowText->setProperty("Text",(CEGUI::utf8*)"Téléchargement en cours ...");
+
+		mAvailableVersionsWindow = mWindow->createChild("DefaultWindow","UpdaterStateAvailableVersionsWindow");
+		mAvailableVersionsWindow->setSize(CEGUI::USize(CEGUI::UDim(1,0),CEGUI::UDim(1,0)));
+		mAvailableVersionsWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0,0), CEGUI::UDim(0,0)));
+		mAvailableVersionsWindow->setAlwaysOnTop(true);
+		mAvailableVersionsWindow->setVisible(false);
+		mAvailableVersionsWindowCombobox = ((CEGUI::Combobox*)mAvailableVersionsWindow->createChild("TaharezLook/Combobox","UpdaterStateAvailableVersionsWindowCombobox"));
+		mAvailableVersionsWindowCombobox->setSize(CEGUI::USize(CEGUI::UDim(0.4,0),CEGUI::UDim(0.3,0)));
+		mAvailableVersionsWindowCombobox->setHorizontalAlignment(CEGUI::HA_CENTRE);
+		mAvailableVersionsWindowCombobox->setXPosition(CEGUI::UDim(-0.1,0));
+		mAvailableVersionsWindowCombobox->setVerticalAlignment(CEGUI::VA_CENTRE);
+		mAvailableVersionsWindowCombobox->setReadOnly(true);
+		mAvailableVersionsWindowButton = ((CEGUI::PushButton*)mAvailableVersionsWindow->createChild("TaharezLook/Button","UpdaterStateAvailableVersionsWindowButton"));
+		mAvailableVersionsWindowButton->setSize(CEGUI::USize(CEGUI::UDim(0.15,0),CEGUI::UDim(0.1,0)));
+		mAvailableVersionsWindowButton->setHorizontalAlignment(CEGUI::HA_CENTRE);
+		mAvailableVersionsWindowButton->setXPosition(CEGUI::UDim(0.2,0));
+		mAvailableVersionsWindowButton->setVerticalAlignment(CEGUI::VA_CENTRE);
+		mAvailableVersionsWindowButton->setProperty("Text",(CEGUI::utf8*)"Télécharger");
+		mAvailableVersionsWindowButton->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&UpdaterState::downloadButtonClicked, this));
+
+		mInstallWindow = mWindow->createChild("DefaultWindow","UpdaterStateInstallWindow");
+		mInstallWindow->setSize(CEGUI::USize(CEGUI::UDim(1,0),CEGUI::UDim(1,0)));
+		mInstallWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0,0), CEGUI::UDim(0,0)));
+		mInstallWindow->setAlwaysOnTop(true);
+		mInstallWindow->setVisible(false);
+		mInstallWindowText = mInstallWindow->createChild("TaharezLook/Label","UpdaterStateInstallWindowText");
+		mInstallWindowText->setSize(CEGUI::USize(CEGUI::UDim(0.6,0),CEGUI::UDim(0.1,0)));
+		mInstallWindowText->setHorizontalAlignment(CEGUI::HA_CENTRE);
+		mInstallWindowText->setYPosition(CEGUI::UDim(0.2,0));
+		mInstallWindowText->setProperty("Font","UpdaterStateFont");
+		mInstallWindowText->setProperty("Text","Voulez-vous installer cette version ?");
+		mInstallWindowYes = ((CEGUI::PushButton*)mInstallWindow->createChild("TaharezLook/Button","UpdaterStateInstallWindowYes"));
+		mInstallWindowYes->setText("Oui");
+		mInstallWindowYes->setHorizontalAlignment(CEGUI::HA_CENTRE);
+		mInstallWindowYes->setVerticalAlignment(CEGUI::VA_CENTRE);
+		mInstallWindowYes->setYPosition(CEGUI::UDim(0.1,0));
+		mInstallWindowYes->setXPosition(CEGUI::UDim(-0.1,0));
+		mInstallWindowYes->setSize(CEGUI::USize(CEGUI::UDim(0.1,0),CEGUI::UDim(0.1,0)));
+		mInstallWindowYes->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&UpdaterState::yesButtonClicked, this));
+		mInstallWindowNo = ((CEGUI::PushButton*)mInstallWindow->createChild("TaharezLook/Button","UpdaterStateInstallWindowNo"));
+		mInstallWindowNo->setText("Non");
+		mInstallWindowNo->setHorizontalAlignment(CEGUI::HA_CENTRE);
+		mInstallWindowNo->setVerticalAlignment(CEGUI::VA_CENTRE);
+		mInstallWindowNo->setYPosition(CEGUI::UDim(0.1,0));
+		mInstallWindowNo->setXPosition(CEGUI::UDim(0.1,0));
+		mInstallWindowNo->setSize(CEGUI::USize(CEGUI::UDim(0.1,0),CEGUI::UDim(0.1,0)));
+		mInstallWindowNo->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&UpdaterState::noButtonClicked, this));
 	}
 	void UpdaterState::exit(){
 		Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
@@ -93,21 +141,59 @@ namespace Morkidios {
 	}
 
 	void UpdaterState::update(double timeSinceLastFrame){
-		if(!mThread.try_join_for(boost::chrono::seconds(0)) && mState == DownloadingVersions){
+		if(!mThreadEnded && (mState == DownloadingVersions || mState == DownloadingFile)){
 			((CEGUI::ProgressBar*)mDownloadingWindowProgressBar)->step();
-			if(((CEGUI::ProgressBar*)mDownloadingWindowProgressBar)->getProgress() == 100)
+			if(((CEGUI::ProgressBar*)mDownloadingWindowProgressBar)->getProgress() == 1)
 				((CEGUI::ProgressBar*)mDownloadingWindowProgressBar)->setProgress(0);
 		}
-		if(mThread.try_join_for(boost::chrono::seconds(0)) && mState == DownloadingVersions){
-			mVersionsDownloadWindow->setVisible(false);
+		if(mThreadEnded && mState == DownloadingVersions){
+			mVersions = Version::createVersions("versions.txt");
+			for(int i = 0; i < mVersions.size(); i++)
+				mAvailableVersionsWindowCombobox->addItem(new CEGUI::ListboxTextItem(mVersions[i].mName));
+
+			mDownloadingWindow->setVisible(false);
+			mAvailableVersionsWindow->setVisible(true);
+			mState = UserInput;
+		}
+		if(mThreadEnded && mState == DownloadingFile){
+			mDownloadingWindow->setVisible(false);
+			mInstallWindow->setVisible(true);
+			mState = UserInput;
 		}
 	}
 
 	// Private methodes
-	bool UpdaterState::downloadWindow(const CEGUI::EventArgs& evt){
-	}
-	void UpdaterState::downloadVersions(){
-		Downloader downloader ("https://sourceforge.net/projects/lederniermorkid/files/v%200.5/bin/v0.5.zip/download", "versions.txt");
+	void UpdaterState::download(std::string url, std::string fileName){
+		mThreadEnded = false;
+
+		Downloader downloader (url, fileName);
 		downloader.run();
+
+		mThreadEnded = true;
+	}
+	void UpdaterState::downloadFile(){
+		mThreadEnded = false;
+
+		mActualVersion.downloadFile("../Versions/");
+
+		mThreadEnded = true;
+	}
+	bool UpdaterState::downloadButtonClicked(const CEGUI::EventArgs& evt){
+		mActualVersion = Version::searchVersionByName(mVersions,mAvailableVersionsWindowCombobox->getSelectedItem()->getText().c_str());
+		mThread = boost::thread(boost::bind(&UpdaterState::downloadFile, this));
+		mDownloadingWindow->setVisible(true);
+		mAvailableVersionsWindow->setVisible(false);
+		mState = DownloadingFile;
+
+		return true;
+	}
+	bool UpdaterState::noButtonClicked(const CEGUI::EventArgs& evt){
+		popState();
+		return true;
+	}
+	bool UpdaterState::yesButtonClicked(const CEGUI::EventArgs& evt){
+		mActualVersion.install("LeDernierMorkid.exe", "../Versions/");
+		popState();
+		return true;
 	}
 }
