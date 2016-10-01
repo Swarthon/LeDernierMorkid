@@ -119,7 +119,7 @@ void LDMMazeRenderer::init_sets(){
 
 	for(i = 0; i < maze_size_x*maze_size_y*2; i++){
 		t = hedges[i];
-		r = random()%(maze_size_x*maze_size_y*2);
+		r = rand()%(maze_size_x*maze_size_y*2);
 		hedges[i] = hedges[r];
 		hedges[r] = t;
 	}

@@ -13,7 +13,7 @@ void Version::downloadVersion(std::string path){
 	Downloader d(mVersionWebPath, path + mName + "version.txt");
 	d.run();
 }
-void Version::install(std::string executable, std::string path){
+void Version::install(std::string executable, std::string path, std::string pathExec){
 	if(mName == std::string() || mVersionWebPath == std::string())
 		return;
 	Zip z(mName,path);
@@ -29,13 +29,23 @@ void Version::install(std::string executable, std::string path){
 	while(ifs && executablePath != executable){
 		ifs >> executablePath;
 		origin = executablePath;
+/*		Example :
+ *		executablePath = ../../Test/Example
+ *		Then we reverse	: executablePath = elpmaxE/tseT/../..
+ *		Then we cut	: executablePath = elpmaxE
+ *		Then we reverse	: executablePath = Example
+ */
 		std::reverse(executablePath.begin(),executablePath.end());
 		executablePath = getStringTo(executablePath, '/', false);
 		std::reverse(executablePath.begin(),executablePath.end());
+		//executablePath = getStringTo(executablePath, '.', false);
+
+		std::cout << std::endl << "origin :\t" << origin << std::endl << "executablePath :\t" << executablePath << std::endl << "executable :\t" << executable << std::endl << std::endl;
 	}
 	ifs.close();
+
 	if(executablePath == executable)
-		createShortcut(origin.substr(3,origin.size()),"../",executable);	// Delete ../ from origin
+		createShortcut(origin,pathExec,executable);
 }
 
 // Static public methodes
@@ -82,7 +92,6 @@ Version Version::searchVersionByName(std::vector<Version> versions, std::string 
 std::istream& operator>>(std::istream& is, Version& v){
 	char c;	
 	is >> v.mName >> c >> v.mVersionWebPath >> c >> v.mFileWebPath;
-	// is.setstate(std::ios::failbit);
 
 	return is;
 }
@@ -90,34 +99,39 @@ std::istream& operator>>(std::istream& is, Version& v){
 // Static private methodes
 void Version::createShortcut(std::string strSrcFile, std::string strDstPath, std::string strName){
 #ifdef _WIN32
-	if (FAILED(CoInitialize(NULL))
-		 return false;
-	IShellLink *pShl = NULL;
-	IPersistFile *pPPF = NULL;
-	HRESULT rc = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, (void**)(&pShl));
-	if (FAILED(rc))
-		return false;
-	do {
-		rc = pShl->SetPath(strSrcFile);
-		if (FAILED(rc))
-			break;
-		rc = pShl->QueryInterface(IID_IPersistFile, (void**)&pPPF);
-		if (FAILED(rc))
-			break;
-		WORD wsz[MAX_PATH];
-		TCHAR path[MAX_PATH] = { 0 };
-		lstrcat(path, strDstPath);
-		lstrcat(path, "\\");
-		lstrcat(path, strName);
-		lstrcat(path, ".lnk");
-		MultiByteToWideChar(CP_ACP, 0, buf, -1, wsz, MAX_PATH);
-		rc = pPPF->Save(wsz, TRUE);
-	} while(0);
-	if (pPPF)
-		pPPF->Release();
-	if (pShl)
-		pShl->Release();
-	CoUninitialize();
+	HRESULT hres;
+	IShellLink* psl;
+
+	// Get a pointer to the IShellLink interface. It is assumed that CoInitialize
+	// has already been called.
+	hres = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, (LPVOID*)&psl);
+	if (SUCCEEDED(hres))
+	{
+		IPersistFile* ppf;
+
+		// Set the path to the shortcut target and add the description. 
+		psl->SetPath(strDstPath.c_str());
+
+		// Query IShellLink for the IPersistFile interface, used for saving the 
+		// shortcut in persistent storage. 
+		hres = psl->QueryInterface(IID_IPersistFile, (LPVOID*)&ppf);
+
+		if (SUCCEEDED(hres))
+		{
+			WCHAR wsz[MAX_PATH];
+
+			// Ensure that the string is Unicode. 
+			MultiByteToWideChar(CP_ACP, 0, strSrcFile.c_str(), -1, wsz, MAX_PATH);
+
+			// Add code here to check return value from MultiByteWideChar 
+			// for success.
+
+			// Save the link by calling IPersistFile::Save. 
+			hres = ppf->Save(wsz, TRUE); 
+			ppf->Release(); 
+		} 
+		psl->Release(); 
+		}
 #elif defined(__gnu_linux__)
 	std::ofstream ofs;
 	ofs.open((strDstPath + strName + ".desktop").c_str());

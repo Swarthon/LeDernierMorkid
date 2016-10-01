@@ -57,8 +57,8 @@ private:
 	CEGUI::Window* mActive;
 
 	void createMenuShape(int numFaces, double faceWidth, double faceHeight);
-	void down();
-	void up();
+	bool down(const CEGUI::EventArgs& evt = CEGUI::EventArgs());
+	bool up(const CEGUI::EventArgs& evt = CEGUI::EventArgs());
 
 	// Event
 	bool activeClicked(const CEGUI::EventArgs& evt = CEGUI::EventArgs());

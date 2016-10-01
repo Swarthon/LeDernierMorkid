@@ -13,6 +13,11 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include <winnls.h>
+#include <shobjidl.h>
+#include <objbase.h>
+#include <objidl.h>
+#include <shlguid.h>
 #elif defined(__APPLE__)  && defined(__MACH__)
 #endif
 
@@ -21,7 +26,7 @@ public:
 	// Methodes
 	void downloadFile(std::string path = std::string());
 	void downloadVersion(std::string path = std::string());
-	void install(std::string executable, std::string path = std::string());
+	void install(std::string executable, std::string path, std::string pathExec);
 
 	// Static public methodes
 	static std::vector<Version> createVersions(std::string versionsFile);

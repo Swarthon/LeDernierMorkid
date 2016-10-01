@@ -34,7 +34,7 @@ namespace Morkidios {
 			mMouseSensibility = Ogre::StringConverter::parseReal(cfg.getSetting("MouseSensibility", "Mouse"));
 			Ogre::ConfigFile::SettingsIterator settings = cfg.getSettingsIterator("Keyboard");
 			for(Ogre::ConfigFile::SettingsMultiMap::iterator it = settings.begin(); it != settings.end(); it++)
-				mKeyMap[it->first] = (OIS::KeyCode)Ogre::StringConverter::parseReal(it->second);
+				mKeyMap[it->first] = (OIS::KeyCode)Ogre::StringConverter::parseInt(it->second);
 
 			return true;
 		}

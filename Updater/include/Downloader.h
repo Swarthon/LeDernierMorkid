@@ -6,8 +6,10 @@
 #include <string.h>
 #include <string>
 
+#ifdef __linux
 #include <sys/time.h>
 #include <unistd.h>
+#endif
 
 #include <curl/curl.h>
 

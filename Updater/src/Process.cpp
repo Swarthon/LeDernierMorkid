@@ -36,7 +36,7 @@ std::string Process::process(std::string command){
 		for(int i = 0; i < versions.size(); i++)
 			for(int j = 0; j < args.size(); j++)
 				if(versions[i].mName == args[j])
-					versions[i].downloadFile("../Versions/");
+					versions[i].downloadFile("../../../Versions/");
 		answer = "Done";
 	}
 	else if(prg == "Install"){
@@ -47,7 +47,7 @@ std::string Process::process(std::string command){
 		std::vector<Version> versions = Version::createVersions("versions.txt");
 		for(int i = 0; i < versions.size(); i++)
 			if(versions[i].mName == args[0])
-				versions[i].install("LeDernierMorkid.exe", "../Versions/");
+				versions[i].install("LeDernierMorkid.exe", "../../../Versions/", "../../../");
 		answer = "Done";
 	}
 	else if(prg == "Shutdown"){

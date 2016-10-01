@@ -159,7 +159,7 @@ namespace Morkidios {
 
 	void Inventory::update(double timeSinceLastFrame){
 		double numRoundPerMinutes = 20;
-		double rotate = timeSinceLastFrame * (numRoundPerMinutes / 60.0 / 1000.0) * 360;
+		double rotate = timeSinceLastFrame * (numRoundPerMinutes / 60.0) * 360;
 		if(mObjectEntity){
 			mObjectSceneNode->yaw(Ogre::Degree(rotate));
 			mObjectSceneNode->pitch(Ogre::Degree(rotate));

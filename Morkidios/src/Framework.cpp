@@ -30,15 +30,25 @@ namespace Morkidios {
 
 		// Root
 		mRoot = new Ogre::Root();
-	
-		if(!mRoot->restoreConfig()){
+
+		int h, v;
+		if (!mRoot->restoreConfig()){
 			Ogre::RenderSystem *rs = mRoot->getRenderSystemByName("OpenGL Rendering Subsystem");
 			mRoot->setRenderSystem(rs);
 			rs->setConfigOption("Full Screen", "Yes");
+#ifdef _WIN32
+			Utils::winGetScreenSize(h, v);
+			rs->setConfigOption("Video Mode", (Utils::convertIntToString(h) + std::string(" x ") + Utils::convertIntToString(v) + std::string(" @ 32-bit colour")).c_str());
+#else
+			h = 1920;
+			v = 1080;
 			rs->setConfigOption("Video Mode", "1920 x 1080 @ 32-bit colour");
+#endif
 			rs->setConfigOption("VSync", "Yes");
 		}
 		mRenderWindow = mRoot->initialise(true, wndTitle);
+		mRenderWindow->resize(h, v);
+		mRenderWindow->setFullscreen(true, mRenderWindow->getWidth(), mRenderWindow->getHeight());
 		// -------------------------------
 
 		// Viewport

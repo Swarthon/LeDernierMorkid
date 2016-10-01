@@ -128,9 +128,13 @@ int Downloader::trace(CURL *handle, curl_infotype type, char *data, size_t size,
 void Downloader::setup(CURL *hnd, std::string address, std::string name){
 	char filename[128];
 
+#ifdef __linux__
 	snprintf(filename, 128, name.c_str());
-
 	mOut = fopen(filename, "wb");
+#elif defined(_WIN32)
+	_snprintf_s(filename, 128, name.c_str());
+	fopen_s(&mOut, filename, "wb");
+#endif
 
 	curl_easy_setopt(hnd, CURLOPT_WRITEDATA, mOut);
 

@@ -67,7 +67,7 @@ namespace Morkidios {
 	// Various methodes
 	void Terrain::update(double time){
 		// Bullet
-		mWorld->stepSimulation (time / 1000.0, 1, btScalar(1.)/btScalar(60.));
+		mWorld->stepSimulation (time, 1, btScalar(1.)/btScalar(60.));
 
 		// AI
 

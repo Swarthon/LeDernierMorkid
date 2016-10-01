@@ -10,7 +10,7 @@ LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight
 		w->setText(Morkidios::Utils::convertIntToString(i));
 		mFaces.push_back(w);
 	}
-	 
+
 	CEGUI::System& ceguiSystem = CEGUI::System::getSingleton();
 	mRenderer = static_cast<CEGUI::OgreRenderer *>(ceguiSystem.getRenderer());
 	CEGUI::Sizef size(static_cast<float>(faceWidth*5), static_cast<float>(faceHeight*5*numFaces));
@@ -28,7 +28,7 @@ LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight
 	Ogre::Pass* pass = technique->getPass(0);
 	Ogre::TextureUnitState* textureUnit = pass->createTextureUnitState();
 	textureUnit->setTextureName(ogreTexture->getName());
-
+ 
 	// Ogre in CEGUI
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager("OctreeSceneManager");
 	mSceneManager->setAmbientLight(Ogre::ColourValue(1.f, 1.f, 1.f));
@@ -160,8 +160,8 @@ void LDMRollingMenu::update(double timeSinceLastFrame){
 
 	if(mToRotate != Ogre::Degree(0)){
 		Ogre::Degree d;
-		if(mToRotate > Ogre::Degree((720*timeSinceLastFrame)/1000) || mToRotate < -Ogre::Degree((720*timeSinceLastFrame)/1000))
-			d = Ogre::Degree((720*timeSinceLastFrame)/1000);
+		if(mToRotate > Ogre::Degree(360/mNumFaces*timeSinceLastFrame*2) || mToRotate < -Ogre::Degree(360/mNumFaces*timeSinceLastFrame*2))
+			d = Ogre::Degree(360/mNumFaces*timeSinceLastFrame*2);
 		else
 			d = Ogre::Math::Abs(mToRotate);
 		d = (mToRotate < Ogre::Degree(0)) ? d * -1 : d * 1;
@@ -180,8 +180,8 @@ std::vector<CEGUI::Window*> LDMRollingMenu::getFaces(){
 
 // Private methodes
 void LDMRollingMenu::createMenuShape(int numFaces, double faceWidth, double faceHeight){
-	double x[numFaces];
-	double y[numFaces];
+	double* x = new double[numFaces];
+	double* y = new double[numFaces];
 	double r = faceHeight / (2 * sin(3.141592/numFaces));
 	double XPosition = r - 50 / (2 * sin(3.141592/8));
 	double YPosition = 0;
@@ -227,30 +227,36 @@ void LDMRollingMenu::createMenuShape(int numFaces, double faceWidth, double face
 	mSceneNode->setPosition(Ogre::Vector3(200+XPosition,0+YPosition,0));
 	mSceneNode->pitch(Ogre::Degree(90-360/numFaces/2));
 }
-void LDMRollingMenu::down(){
+bool LDMRollingMenu::down(const CEGUI::EventArgs& evt){
 	mToRotate -= Ogre::Degree(360/mNumFaces);
-	mLastClick += 360/mNumFaces*1000/720;
+	mLastClick += 0.5;
 
 	std::vector<CEGUI::Window*>::iterator it = std::find(mFaces.begin(), mFaces.end(), mActive);
 	if(it != mFaces.end() && it+1 != mFaces.end())
 		mActive = *(it+1);
 	if(it+1 == mFaces.end())
 		mActive = *mFaces.begin();
+
+	return true;
 }
 
-void LDMRollingMenu::up(){
+bool LDMRollingMenu::up(const CEGUI::EventArgs& evt){
 	mToRotate += Ogre::Degree(360/mNumFaces);
-	mLastClick += 360/mNumFaces*1000/720;
+	mLastClick += 1;
 
 	std::vector<CEGUI::Window*>::iterator it = std::find(mFaces.begin(), mFaces.end(), mActive);
 	if(it != mFaces.end() && it != mFaces.begin())
 		mActive = *(it-1);
 	if(it == mFaces.begin())
 		mActive = *(mFaces.end()-1);
+
+	return true;
 }
 
 // 
 bool LDMRollingMenu::activeClicked(const CEGUI::EventArgs& evt){
 	CEGUI::EventArgs wnd = CEGUI::WindowEventArgs(mActive);
 	mActive->fireEvent(CEGUI::Window::EventMouseClick, wnd);
+
+	return true;
 }

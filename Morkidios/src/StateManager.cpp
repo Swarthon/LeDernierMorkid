@@ -7,6 +7,7 @@ namespace Morkidios {
 	StateManager::StateManager()
 	{
 		mbShutdown = false;
+		Framework::getSingletonPtr()->mRoot->addFrameListener(this);
 	}
 
 	StateManager::~StateManager()
@@ -60,9 +61,6 @@ namespace Morkidios {
 	{
 		changeState(state);
 	
-		int timeSinceLastFrame = 1;
-		int startTime = 0;
-	
 		while(!mbShutdown)
 		{
 			if(Framework::getSingletonPtr()->mRenderWindow->isClosed())mbShutdown = true;
@@ -70,19 +68,7 @@ namespace Morkidios {
 			Ogre::WindowEventUtilities::messagePump();
 	
 			if(Framework::getSingletonPtr()->mRenderWindow->isActive())
-			{
-				startTime = Framework::getSingletonPtr()->mTimer->getMillisecondsCPU();
-	
-				Framework::getSingletonPtr()->mInput->mKeyboard->capture();
-				Framework::getSingletonPtr()->mInput->mMouse->capture();
-	
-				mActiveStateStack.back()->update((float)(timeSinceLastFrame));
-		
-				Framework::getSingletonPtr()->updateOgre((float)(timeSinceLastFrame));
 				Framework::getSingletonPtr()->mRoot->renderOneFrame();
-
-				timeSinceLastFrame = Framework::getSingletonPtr()->mTimer->getMillisecondsCPU() - startTime;
-			}
 			else
 			{
 		#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
@@ -173,4 +159,14 @@ namespace Morkidios {
 		Framework::getSingletonPtr()->mRenderWindow->resetStatistics();
 	}
 
+	bool StateManager::frameRenderingQueued(const Ogre::FrameEvent& evt){
+		Framework::getSingletonPtr()->mInput->mKeyboard->capture();
+		Framework::getSingletonPtr()->mInput->mMouse->capture();
+
+		mActiveStateStack.back()->update((float)(evt.timeSinceLastFrame));
+
+		Framework::getSingletonPtr()->updateOgre((float)(evt.timeSinceLastFrame));
+
+		return true;
+	}
 }

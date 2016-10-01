@@ -36,7 +36,12 @@ void Zip::extract(){
 				    exit(100);
 				}
 
+#ifdef __linux__
 				fd = open(path.c_str(), O_RDWR | O_TRUNC | O_CREAT, 0644);
+#elif defined(_WIN32)
+				fd = _sopen_s(&fd, path.c_str(), O_RDWR | O_TRUNC | O_CREAT, 0,0);
+#endif
+
 				if (fd < 0) {
 					fprintf(stderr, "Could not open file %s\n", path.c_str());
 					exit(101);
@@ -49,13 +54,21 @@ void Zip::extract(){
 						fprintf(stderr, "The length of the archive isn't good\n");
 						exit(102);
 					}
+#ifdef _WIN32
+					_write(fd, buf, len);
+#elif defined(__linux__)
 					write(fd, buf, len);
+#endif
 					sum += len;
 				}
 
 				listOfFiles.push_back(path);
 
+#ifdef __linux__
 				close(fd);
+#elif defined(_WIN32)
+				_close(fd);
+#endif
 				zip_fclose(zf);
 			}
 		}
@@ -73,7 +86,11 @@ void Zip::extract(){
 
 // Static private methodes
 void Zip::safe_create_dir(const char *dir){
+#ifdef __linux__
 	if (mkdir(dir, 0755) < 0) {
+#elif defined(_WIN32)
+	if (!CreateDirectory(dir, NULL)){
+#endif
 		if (errno != EEXIST) {
 			perror(dir);
 			exit(1);

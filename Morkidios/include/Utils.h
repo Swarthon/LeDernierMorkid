@@ -28,11 +28,11 @@
 
 
 // Defines
-#define LEFT 		0b1
-#define RIGHT		0b10
-#define FORWARD		0b100
-#define BACKWARD	0b1000
-#define UP		0b10000
+#define LEFT 		1
+#define RIGHT		2
+#define FORWARD		4
+#define BACKWARD	8
+#define UP		16
 
 
 
@@ -84,6 +84,12 @@ namespace Morkidios {
 
 		// CEGUI
 		static CEGUI::BasicImage* addImageToImageset(CEGUI::Texture& tex, std::string name);
+
+		// Various
+			// Screen
+#ifdef _WIN32
+		static void winGetScreenSize(int& horizontal, int& vertical);
+#endif
 	private:
 		Utils();
 	};

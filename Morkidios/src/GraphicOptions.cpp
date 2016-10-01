@@ -57,7 +57,7 @@ namespace Morkidios {
 	GraphicOptions::GraphicOptions(){
 		mFileName = "graphics.cfg";
 		mRenderWindow = NULL;
-		mFullScreen = false;
+		mFullScreen = true;
 		mFOV = Ogre::Degree(30).valueRadians();
 	}
 	GraphicOptions::~GraphicOptions(){

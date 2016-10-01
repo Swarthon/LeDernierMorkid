@@ -209,4 +209,16 @@ namespace Morkidios {
 
 		return image;
 	}
+
+	// Various
+		// Screen
+#ifdef _WIN32
+	void Utils::winGetScreenSize(int& h, int& v){
+		RECT desktop;
+		const HWND hDesktop = GetDesktopWindow();
+		GetWindowRect(hDesktop, &desktop);
+		h = desktop.right;
+		v = desktop.bottom;
+	}
+#endif
 }

@@ -18,15 +18,15 @@
 #define START_SQUARE	0x2000
 #define END_SQUARE	0x1000
 
-#define DOOR_TOP	0b10000000
-#define DOOR_RIGHT	0b1000000
-#define DOOR_BOTTOM	0b100000
-#define DOOR_LEFT	0b10000
+#define DOOR_TOP	128
+#define DOOR_RIGHT	64
+#define DOOR_BOTTOM	32
+#define DOOR_LEFT	16
 
-#define WALL_TOP	0b1000
-#define WALL_RIGHT	0b100
-#define WALL_BOTTOM	0b10
-#define WALL_LEFT	0b1
+#define WALL_TOP	8
+#define WALL_RIGHT	4
+#define WALL_BOTTOM	2
+#define WALL_LEFT	1
 #define WALL_ANY	0xF
 
 #define	border_x        (0)

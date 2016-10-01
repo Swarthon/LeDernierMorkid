@@ -142,7 +142,7 @@ bool LDMMainMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButto
 void LDMMainMenuState::update(double timeSinceLastFrame){
 	// Heros Rotate
 	double numRoundPerMinutes = 10;
-	double rotate = timeSinceLastFrame * (numRoundPerMinutes / 60.0 / 1000.0) * 360;
+	double rotate = timeSinceLastFrame * (numRoundPerMinutes / 60.0) * 360;
 
 	mHeroSceneNode->yaw(Ogre::Degree(rotate));
 	//------------------------------------------------

@@ -5,19 +5,26 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+
+#ifdef __linux__
 #include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <dirent.h>
-#include <limits.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <dirent.h>
-#include <fcntl.h>
-#include <limits.h>
 #include <sys/resource.h>
 #include <sys/types.h>
+#endif
+
+#ifdef _WIN32
+#include <windows.h>
+#include <io.h>
+#endif
+
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <limits.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <limits.h>
 #include <zip.h>
 #include <string>
 #include <iostream>

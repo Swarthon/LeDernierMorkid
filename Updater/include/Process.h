@@ -8,7 +8,10 @@
 #include <sstream>
 
 // C include
+#ifdef __linux__
 #include <unistd.h>
+#endif
+
 #include <sys/stat.h>
 #include <fcntl.h>
 

@@ -6,7 +6,7 @@
 
 namespace Morkidios {
 
-	class StateManager : public StateListener
+	class StateManager : public StateListener, public Ogre::FrameListener
 	{
 	public:
 		typedef struct
@@ -36,6 +36,8 @@ namespace Morkidios {
 		std::vector<State*>		mActiveStateStack;
 		std::vector<state_info>		mStates;
 		bool				mbShutdown;
+
+		virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 	};
 
 }

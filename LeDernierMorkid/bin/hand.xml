@@ -5,7 +5,7 @@
 	<Property name="pitch" value="50" />
 	<Property name="roll" value="0" />
 	<Property name="yaw" value="180" />
-	<Property name="timeScale" value="0.0025" />
+	<Property name="timeScale" value="1" />
 	<Property name="mesh" value="Body_Body.mesh" />
 
 	<Animation name="Walk" meshName="walk" loop="true" />

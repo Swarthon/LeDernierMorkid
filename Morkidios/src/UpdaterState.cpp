@@ -174,7 +174,7 @@ namespace Morkidios {
 	void UpdaterState::downloadFile(){
 		mThreadEnded = false;
 
-		mActualVersion.downloadFile("../Versions/");
+		mActualVersion.downloadFile("../../../Versions/");
 
 		mThreadEnded = true;
 	}
@@ -192,7 +192,7 @@ namespace Morkidios {
 		return true;
 	}
 	bool UpdaterState::yesButtonClicked(const CEGUI::EventArgs& evt){
-		mActualVersion.install("LeDernierMorkid.exe", "../Versions/");
+		mActualVersion.install("LeDernierMorkid.exe", "../../../Versions/","../../../");
 		popState();
 		return true;
 	}

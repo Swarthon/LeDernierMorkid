@@ -11,7 +11,9 @@ Updater/bin/Updater
 bin/
 *.log
 LeDernierMorkid/bin/Map.bmp
+LeDernierMorkid/bin/ogre.cfg
 
 #	Development tools		#
 #########################################
-Updater/TODO
+TODO
+*.xmi
