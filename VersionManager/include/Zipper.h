@@ -1,11 +1,12 @@
-#ifndef ZIP_H
-#define ZIP_H
+#ifndef ZIPPER_H
+#define ZIPPER_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 
+// Linux
 #ifdef __linux__
 #include <unistd.h>
 #include <dirent.h>
@@ -13,6 +14,7 @@
 #include <sys/types.h>
 #endif
 
+// Windows
 #ifdef _WIN32
 #include <windows.h>
 #include <io.h>
@@ -31,16 +33,21 @@
 #include <vector>
 #include <fstream>
 
-class Zip {
-public:
-	Zip(std::string archiveName, std::string path = "");
-	void extract();
+// My includes
+#include "File.h"
 
-private:
-	std::string mName;
-	std::string mPath;
+namespace VersionManager {
 
-	static void safe_create_dir(const char *dir);
-};
+	class Zipper {
+	public:
+		static bool unzip(File src, File dst, std::vector<File>& listOfFiles);
+	protected:		
+		static void createDir(std::string dir);
+	private:
+		Zipper();
+		virtual ~Zipper() = 0;
+	};
 
-#endif // ZIP_H
+}
+
+#endif // ZIPPER_H
