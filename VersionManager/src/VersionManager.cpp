@@ -1,33 +1,63 @@
 #include "VersionManager.h"
 
 namespace VersionManager {
-	
-	// Construction methodes
-	VersionManager::VersionManager(std::string versionsFileURL, std::string downloadPath, std::string installPath, File downloadedHistory, File installedHistory){
-		mDownloadPath = downloadPath;
-		mInstallPath = installPath;
-		
-		loadDownloadedVersions(downloadedHistory);
-		loadInstalledVersion(installedHistory);
 
-		if(versionsFileURL != std::string())
-			loadVersionsFromFile(versionsFileURL);
+	// Construction methodes
+	VersionManager::VersionManager(){
+		mVersionsHistory = File("versions.versions", "./");
+	}
+	void VersionManager::loadFromInternet(std::string versionsFileURL){
+		loadVersionsFromFile(versionsFileURL);
+	}
+	void VersionManager::loadVersions(File file){
+		std::ifstream ifs((file.getPath() + file.getName()).c_str());
+		if(!ifs){
+			std::cout << "Could not open file " << file.getPath() + file.getName() << std::endl;
+			return;
+		}
+                boost::archive::text_iarchive ia(ifs);
+                ia >> mVersions;
+	}
+	void VersionManager::setDownloadPath(std::string downloadPath){
+		mDownloadPath = downloadPath;
+	}
+	void VersionManager::setInstallPath(std::string installPath){
+		mUnzipPath = installPath;
 	}
 
-	bool VersionManager::download(std::string name){
-		for(unsigned int i = 0; i < mDownloadedVersions.size(); i++)
-			if(mDownloadedVersions[i]->getName() == name)
+	bool VersionManager::download(std::string name, int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t), void* userData){
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->getName() == name && mVersions[i]->isDownloaded())
 				return true;
 
-		Version* v;
-		for(unsigned int i = 0; i < mLoadedVersions.size(); i++)
-			if(mLoadedVersions[i]->getName() == name)
-				v = mLoadedVersions[i];
+		Version* v = NULL;
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->getName() == name && !mVersions[i]->isDownloaded() && !mVersions[i]->isUnziped() && !mVersions[i]->isInstalled())
+				v = mVersions[i];
 
-		if(v->getName() != std::string()){
-			if(v->download()){
-				mDownloadedVersions.push_back(v);
-				saveDownloadedVersions();
+		if(v){
+			if(v->download(progressFunc, userData)){
+				save();
+				return true;
+			}
+			else
+				return false;
+		}
+		return false;
+	}
+	bool VersionManager::unzip(std::string name){
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->getName() == name && mVersions[i]->isUnziped())
+				return true;
+
+		Version* v = NULL;
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->getName() == name && mVersions[i]->isDownloaded() && !mVersions[i]->isUnziped() && !mVersions[i]->isInstalled())
+				v = mVersions[i];
+
+		if(v){
+			if(v->unzip()){
+				save();
 				return true;
 			}
 			else
@@ -36,15 +66,19 @@ namespace VersionManager {
 		return false;
 	}
 	bool VersionManager::install(std::string name, std::string execName, std::string shortcutName, std::string execPath){
-		Version* v;
-		for(unsigned int i = 0; i < mDownloadedVersions.size(); i++)
-			if(mDownloadedVersions[i]->getName() == name)
-				v = mDownloadedVersions[i];
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->getName() == name && mVersions[i]->isInstalled())
+				return true;
 
-		if(v->getName() != std::string()){
+		Version* v = NULL;
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->getName() == name && mVersions[i]->isDownloaded() && mVersions[i]->isUnziped() && !mVersions[i]->isInstalled())
+				v = mVersions[i];
+
+
+		if(v){
 			if(v->install(execName, shortcutName, execPath)){
-				mInstalledVersion = v;
-				saveInstalledVersion();
+				save();
 				return true;
 			}
 			return false;
@@ -55,58 +89,33 @@ namespace VersionManager {
 	// Return value methodes
 	std::vector<std::string> VersionManager::getLoadedVersionsName(){
 		std::vector<std::string> v;
-		for(unsigned int i = 0; i < mLoadedVersions.size(); i++)
-			v.push_back(mLoadedVersions[i]->getName());
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			v.push_back(mVersions[i]->getName());
+
+		return v;
+	}
+	std::vector<std::string> VersionManager::getUnzipedVersionsName(){
+		std::vector<std::string> v;
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->isUnziped())
+				v.push_back(mVersions[i]->getName());
 
 		return v;
 	}
 	std::vector<std::string> VersionManager::getDownloadedVersionsName(){
 		std::vector<std::string> v;
-		for(unsigned int i = 0; i < mDownloadedVersions.size(); i++)
-			v.push_back(mDownloadedVersions[i]->getName());
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->isDownloaded())
+				v.push_back(mVersions[i]->getName());
 
 		return v;
 	}
 
 	// Private methodes
-	void VersionManager::loadDownloadedVersions(File file){
-		mDownloadedHistory = file;
-		std::ifstream ifs;
-		ifs.open((file.getPath() + file.getName()).c_str());
-		while(ifs){
-			std::string name, url;
-			char buffer;
-			ifs >> name >> buffer >> url;
-			if(name != std::string() && url != std::string())
-				mDownloadedVersions.push_back(new Version(name, url, mDownloadPath, mInstallPath, true));
-		}
-		ifs.close();
-	}
-	void VersionManager::loadInstalledVersion(File file){
-		mInstalledHistory = file;
-		std::ifstream ifs;
-		ifs.open((file.getPath() + file.getName()).c_str());
-		if(!ifs)
-			return;
-		std::string name, url;
-		char buffer;
-		ifs >> name >> buffer >> url;
-		if(name != std::string() && url != std::string())
-			mInstalledVersion = new Version(name, url, mDownloadPath, mInstallPath, true, true);
-		ifs.close();
-	}
-	void VersionManager::saveDownloadedVersions(){
-		std::ofstream ofs;
-		ofs.open((mDownloadedHistory.getPath() + mDownloadedHistory.getName()).c_str());
-		for(unsigned int i = 0; i < mDownloadedVersions.size(); i++)
-			ofs << mDownloadedVersions[i]->getName() << " = " << mDownloadedVersions[i]->getURL() << std::endl;
-		ofs.close();
-	}
-	void VersionManager::saveInstalledVersion(){
-		std::ofstream ofs;
-		ofs.open((mInstalledHistory.getPath() + mInstalledHistory.getName()).c_str());
-		ofs << mInstalledVersion->getName() << " = " << mInstalledVersion->getURL() << std::endl;
-		ofs.close();
+	void VersionManager::save(File file){
+		std::ofstream ofs((file.getPath() + file.getName()).c_str());
+		boost::archive::text_oarchive oa(ofs);
+                oa << mVersions;
 	}
 	void VersionManager::loadVersionsFromFile(std::string versionsFileURL){
 		Downloader::download(File("versions.txt", "./"), versionsFileURL);
@@ -134,7 +143,18 @@ namespace VersionManager {
 			std::string name, url;
 			char buffer;
 			ifs >> name >> buffer >> url;
-			mLoadedVersions.push_back(new Version(name, url, mDownloadPath, mInstallPath));
+
+			if(name != std::string()){
+				bool b = false;
+				for (size_t i = 0; i < mVersions.size(); i++) {
+					if(mVersions[i]->getName() == name){
+						b = true;
+						break;
+					}
+				}
+				if(!b)
+					mVersions.push_back(new Version(name, url, mDownloadPath, mUnzipPath));
+			}
 		}
 		ifs.close();
 	}

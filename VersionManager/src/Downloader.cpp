@@ -1,15 +1,9 @@
 #include "Downloader.h"
 
 namespace VersionManager {
-	bool Downloader::download(File dir, std::string url){
+	bool Downloader::download(File dir, std::string url, int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t), void* userData){
 		CURL* easy;
-		CURLM *multi_handle;
 		FILE* file;
-		int still_running;
-
-		multi_handle = curl_multi_init();
-
-		easy = curl_easy_init();
 
 		char filename[128];
 
@@ -20,13 +14,20 @@ namespace VersionManager {
 		_snprintf_s(filename, 128, (dir.getPath() + dir.getName()).c_str());
 		fopen_s(&file, filename, "wb");
 #endif
+		if(!file){
+			std::cout << "Impossible d'ouvrir le fichier " << dir.getPath() + dir.getName() << std::endl;
+			return false;
+		}
+
+
+		easy = curl_easy_init();
 
 		curl_easy_setopt(easy, CURLOPT_WRITEDATA, file);
 
 		curl_easy_setopt(easy, CURLOPT_URL, url.c_str());
 
 		curl_easy_setopt(easy, CURLOPT_VERBOSE, 1L);
-		curl_easy_setopt(easy, CURLOPT_DEBUGFUNCTION, trace);
+	//	curl_easy_setopt(easy, CURLOPT_DEBUGFUNCTION, trace);
 
 		curl_easy_setopt(easy, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
 
@@ -34,73 +35,17 @@ namespace VersionManager {
 		curl_easy_setopt(easy, CURLOPT_SSL_VERIFYHOST, 0L);
 		curl_easy_setopt(easy, CURLOPT_FOLLOWLOCATION, 1);
 
-#if (CURLPIPE_MULTIPLEX > 0)
-		curl_easy_setopt(easy, CURLOPT_PIPEWAIT, 1L);
-#endif
+		if(progressFunc)
+			curl_easy_setopt(easy, CURLOPT_XFERINFOFUNCTION, progressFunc);
+		if(userData)
+			curl_easy_setopt(easy, CURLOPT_XFERINFODATA, userData);
+		curl_easy_setopt(easy, CURLOPT_NOPROGRESS, 0L);
+		CURLcode res = curl_easy_perform(easy);
+		if(res != CURLE_OK){
+		      fprintf(stderr, "%s\n", curl_easy_strerror(res));
+		      return false;
+	      	}
 
-		curl_multi_add_handle(multi_handle, easy);
-		curl_multi_setopt(multi_handle, CURLMOPT_PIPELINING, CURLPIPE_MULTIPLEX);
-		curl_multi_perform(multi_handle, &still_running);
-
-		do {
-			struct timeval timeout;
-			int rc; 
-			CURLMcode mc;
-
-			fd_set fdread;
-			fd_set fdwrite;
-			fd_set fdexcep;
-			int maxfd = -1;
-
-			long curl_timeo = -1;
-
-			FD_ZERO(&fdread);
-			FD_ZERO(&fdwrite);
-			FD_ZERO(&fdexcep);
-
-			timeout.tv_sec = 1;
-			timeout.tv_usec = 0;
-
-			curl_multi_timeout(multi_handle, &curl_timeo);
-			if(curl_timeo >= 0) {
-				timeout.tv_sec = curl_timeo / 1000;
-				if(timeout.tv_sec > 1)
-					timeout.tv_sec = 1;
-				else
-					timeout.tv_usec = (curl_timeo % 1000) * 1000;
-			}
-
-			mc = curl_multi_fdset(multi_handle, &fdread, &fdwrite, &fdexcep, &maxfd);
-
-			if(mc != CURLM_OK) {
-				fprintf(stderr, "curl_multi_fdset() failed, code %d.\n", mc);
-				break;
-			}
-
-			if(maxfd == -1) {
-	#ifdef _WIN32
-				Sleep(100);
-				rc = 0;
-	#else
-				struct timeval wait = { 0, 100 * 1000 };
-				rc = select(0, NULL, NULL, NULL, &wait);
-	#endif
-			}
-			else {
-				rc = select(maxfd+1, &fdread, &fdwrite, &fdexcep, &timeout);
-			}
-
-			switch(rc) {
-			case -1:
-				break;
-			case 0:
-			default:
-				curl_multi_perform(multi_handle, &still_running);
-		     		break;
-			}
-		} while(still_running);
-
-		curl_multi_cleanup(multi_handle);
 		curl_easy_cleanup(easy);
 
 		if(file)

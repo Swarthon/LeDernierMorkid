@@ -22,8 +22,9 @@ void LDMMainMenuState::enter(){
 	mRollingMenu->getFaces()[1]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::optionsButtonPressed, this));
 	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)"Mettre à jour");
 	mRollingMenu->getFaces()[2]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::updateButtonPressed, this));
-	mRollingMenu->getFaces()[3]->setText("Quitter");
-	mRollingMenu->getFaces()[3]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
+	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)"Multijoueur (Prochainement)");
+	mRollingMenu->getFaces()[4]->setText("Quitter");
+	mRollingMenu->getFaces()[4]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
 }
 void LDMMainMenuState::createScene(){
 	mHeroTexture = Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->createManual("RTTMainMenu", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::TEX_TYPE_2D, 512, 512, 0, Ogre::PF_R8G8B8, Ogre::TU_RENDERTARGET);
@@ -57,7 +58,7 @@ void LDMMainMenuState::createScene(){
 	image->setTexture(&guiTex);
 	image->setArea(rect);
 	image->setAutoScaled(CEGUI::ASM_Both);
-	
+
 	mHeroWindow->setProperty("Image", "MainMenuHeroImage");
 }
 void LDMMainMenuState::createGUI(){

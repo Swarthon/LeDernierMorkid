@@ -16,7 +16,7 @@ void LDMGameState::enter(){
 
 	Morkidios::GraphicOptions::getSingleton()->config();
 }
-void LDMGameState::createScene(){	
+void LDMGameState::createScene(){
 	mTerrain = new LDMMaze;
 	mTerrain->init("Maze", mSceneManager);
 	Morkidios::Terrain::setActiveTerrain(mTerrain);

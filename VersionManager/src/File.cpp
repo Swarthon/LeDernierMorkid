@@ -41,6 +41,8 @@ namespace VersionManager {
  *		2. For each directory in src add ../
  *		3. Add the dest path
  */
+
+		std::cout << mPath << std::endl << to.getPath() << std::endl;
 		
 		char* s = new char[400];
 		realpath(mPath.c_str(),s);
@@ -104,6 +106,7 @@ namespace VersionManager {
 		}
 
 		resultingPath += dst.substr(j, dst.size());
+
 		return resultingPath;
 	}
 

@@ -15,11 +15,13 @@
 // Morkidios includes
 #include <Morkidios.h>
 
+#define ROLLSPEED 0.33
+
 class LDMRollingMenu {
 public:
 	LDMRollingMenu(int numFaces, double faceWidth, double faceHeight);
 	~LDMRollingMenu();
-
+	
 	// Input methodes
 	bool keyPressed(const OIS::KeyEvent &keyEventRef);
 	bool keyReleased(const OIS::KeyEvent &keyEventRef);
@@ -39,7 +41,7 @@ private:
 	CEGUI::TextureTarget* mTextureTarget;
 	CEGUI::OgreRenderer* mRenderer;
 	Ogre::Entity* mEntity;
-	Ogre::SceneNode* mSceneNode;	
+	Ogre::SceneNode* mSceneNode;
 	Ogre::SceneManager* mSceneManager;
 	Ogre::Camera* mCamera;
 	Ogre::Viewport* mViewport;

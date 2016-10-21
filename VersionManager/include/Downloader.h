@@ -25,7 +25,7 @@ namespace VersionManager {
 
 	class Downloader {
 	public:
-		static bool download(File dir, std::string url);
+		static bool download(File dir, std::string url, int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t) = NULL, void* userData = NULL);
 	protected:
 		static void dump(const char *text, int num, unsigned char *ptr, size_t size, char nohex);
 		static int trace(CURL *handle, curl_infotype type, char *data, size_t size, void *userp);

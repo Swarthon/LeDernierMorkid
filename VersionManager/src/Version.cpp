@@ -7,39 +7,54 @@ namespace VersionManager {
 		mDownloaded = false;
 		mInstalled = false;
 	}
-	Version::Version(std::string name, std::string url, std::string downloadPath, std::string installPath, bool downloaded, bool installed){
+	Version::Version(std::string name, std::string url, std::string downloadPath, std::string installPath, bool downloaded, bool unziped, bool installed){
 		mName = name;
 		mURL = url;
 		mInstallPath = installPath;
 		mDownloadPath = downloadPath;
 		mDownloaded = downloaded;
+		mUnziped = unziped;
 		mInstalled = installed;
 	}
 	Version::~Version(){
 	}
 
 	// Various methodes
-	bool Version::download(){
-		if(!mDownloaded && !mInstalled){
-			mDownloaded = Downloader::download(File(mName+".download",mDownloadPath),mURL);
+	bool Version::download(int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t), void* userData){
+		if(!mDownloaded && !mUnziped && !mInstalled){
+			mDownloaded = Downloader::download(File(mName+".download",mDownloadPath),mURL,progressFunc, userData);
 			if(!mDownloaded)
 				return false;
 		}
 		return true;
 	}
+	bool Version::unzip(){
+		if(mDownloaded && !mUnziped && !mInstalled){
+			if(Zipper::unzip(File(mName+".download",mDownloadPath),File(std::string(),mInstallPath), mFiles)){
+				mUnziped = true;
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
 	bool Version::install(std::string execName, std::string shortcutName, std::string execPath){
-		if(mDownloaded && !mInstalled){
-			if(!Zipper::unzip(File(mName+".download",mDownloadPath),File(std::string(),mInstallPath), mFiles))
-				return false;
+		if(mDownloaded && mUnziped && !mInstalled){
 			for(unsigned int i = 0; i < mFiles.size(); i++){
 				if(execName == mFiles[i].getName()){
-					createShortcut(File(std::string(),execPath+mInstallPath).getRelativePath(mFiles[i])+execName, execPath, shortcutName);
+					createShortcut(File(std::string(),execPath).getRelativePath(File(std::string(),mFiles[i].getPath()))+execName, execPath, shortcutName);
 					break;
 				}
 			}
 			mInstalled = true;
 		}
 		return true;
+	}
+
+	void Version::save(){
+		std::ofstream ofs((mName + std::string(".version").c_str()));
+		boost::archive::text_oarchive oa(ofs);
+                oa << *this;
 	}
 
 	// Return value methodes
@@ -55,6 +70,15 @@ namespace VersionManager {
 	std::string Version::getURL(){
 		return mURL;
 	}
+	bool Version::isDownloaded(){
+		return mDownloaded;
+	}
+	bool Version::isUnziped(){
+		return mUnziped;
+	}
+	bool Version::isInstalled(){
+		return mInstalled;
+	}
 
 	// Static protected methodes
 	void Version::createShortcut(std::string strSrcFile, std::string strDstPath, std::string strName){
@@ -69,28 +93,28 @@ namespace VersionManager {
 		{
 			IPersistFile* ppf;
 
-			// Set the path to the shortcut target and add the description. 
+			// Set the path to the shortcut target and add the description.
 			psl->SetPath(strDstPath.c_str());
 
-			// Query IShellLink for the IPersistFile interface, used for saving the 
-			// shortcut in persistent storage. 
+			// Query IShellLink for the IPersistFile interface, used for saving the
+			// shortcut in persistent storage.
 			hres = psl->QueryInterface(IID_IPersistFile, (LPVOID*)&ppf);
 
 			if (SUCCEEDED(hres))
 			{
 				WCHAR wsz[MAX_PATH];
 
-				// Ensure that the string is Unicode. 
+				// Ensure that the string is Unicode.
 				MultiByteToWideChar(CP_ACP, 0, strSrcFile.c_str(), -1, wsz, MAX_PATH);
 
-				// Add code here to check return value from MultiByteWideChar 
+				// Add code here to check return value from MultiByteWideChar
 				// for success.
 
-				// Save the link by calling IPersistFile::Save. 
-				hres = ppf->Save(wsz, TRUE); 
-				ppf->Release(); 
-			} 
-			psl->Release(); 
+				// Save the link by calling IPersistFile::Save.
+				hres = ppf->Save(wsz, TRUE);
+				ppf->Release();
+			}
+			psl->Release();
 			}
 #elif defined(__gnu_linux__)
 		std::ofstream ofs;

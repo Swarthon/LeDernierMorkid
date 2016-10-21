@@ -9,32 +9,30 @@ namespace VersionManager {
 	class VersionManager {
 	public:
 		// Construction methodes
-		VersionManager(std::string versionsFileURL, std::string downloadPath = "./", std::string installPath = "./", File downloadedHistory = File("download.history","./"), File installedHistory = File("installed.history","./"));
-		void setDownloadPath(std::string);
-		void setInstallPath(std::string);
+		VersionManager();
+		void loadFromInternet(std::string versionsFileURL);
+		void loadVersions(File file = File("versions.versions","./"));
+		void setDownloadPath(std::string downloadPath);
+		void setInstallPath(std::string installPath);
 
-		bool download(std::string name);
+		bool download(std::string name, int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t) = NULL, void* userData = NULL);
+		bool unzip(std::string name);
 		bool install(std::string name, std::string execName, std::string shortcutName, std::string execPath);
 
 		// Return value methodes
 		std::vector<std::string> getLoadedVersionsName();
+		std::vector<std::string> getUnzipedVersionsName();
 		std::vector<std::string> getDownloadedVersionsName();
 	protected:
-		std::vector<Version*> mLoadedVersions;
-		std::vector<Version*> mDownloadedVersions;
-		Version* mInstalledVersion;
+		std::vector<Version*> mVersions;
 
-		File mDownloadedHistory;
-		File mInstalledHistory;
+		File mVersionsHistory;
 
 		std::string mDownloadPath;
-		std::string mInstallPath;
+		std::string mUnzipPath;
 
 		// Private methodes
-		void loadDownloadedVersions(File file = File("downloaded.history","./"));
-		void loadInstalledVersion(File file = File("installed.history","./"));
-		void saveDownloadedVersions();
-		void saveInstalledVersion();
+		void save(File file = File("versions.versions","./"));
 		void loadVersionsFromFile(std::string versionsFileURL);
 	};
 

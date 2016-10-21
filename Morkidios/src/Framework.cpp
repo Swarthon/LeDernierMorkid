@@ -64,7 +64,7 @@ namespace Morkidios {
 		mRenderWindow->getCustomAttribute("WINDOW", &hWnd);
 
 		paramList.insert(OIS::ParamList::value_type("WINDOW", Ogre::StringConverter::toString(hWnd)));
-		
+
 		mInput = Input::getSingleton();
 
 		mInput->mInputManager = OIS::InputManager::createInputSystem(paramList);
@@ -154,7 +154,7 @@ namespace Morkidios {
 	{
 		return true;
 	}
-	
+
 	void Framework::updateOgre(double timeSinceLastFrame)
 	{
 		CEGUI::System::getSingleton().injectTimePulse(timeSinceLastFrame);

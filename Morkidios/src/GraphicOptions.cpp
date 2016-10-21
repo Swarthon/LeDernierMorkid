@@ -31,14 +31,9 @@ namespace Morkidios {
 		try {
 			Ogre::ConfigFile cfg;
 			cfg.load(mFileName.c_str());
-			
+
 			mFOV = Ogre::StringConverter::parseReal(cfg.getSetting("FOV", "Graphics"));
 			mFullScreen = Ogre::StringConverter::parseReal(cfg.getSetting("FullScreen", "Graphics"));
-
-			if(mFullScreen)
-				std::cout << "True" << std::endl;
-			else
-				std::cout << "False" << std::endl;
 
 			return true;
 		}
