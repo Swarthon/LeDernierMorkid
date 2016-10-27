@@ -14,7 +14,6 @@
 #include "Utils.h"
 #include "Input.h"
 #include "GraphicOptions.h"
-#include "UpdaterState.h"
 #include "Character/Hand.h"
 #include "Character/Hero.h"
 #include "Character/AI.h"

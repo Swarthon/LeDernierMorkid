@@ -11,13 +11,13 @@ namespace VersionManager {
 		// Construction methodes
 		VersionManager();
 		void loadFromInternet(std::string versionsFileURL);
-		void loadVersions(File file = File("versions.versions","./"));
+		void loadVersions(File file = File("versions.versions","../../"));
 		void setDownloadPath(std::string downloadPath);
 		void setInstallPath(std::string installPath);
 
 		bool download(std::string name, int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t) = NULL, void* userData = NULL);
 		bool unzip(std::string name);
-		bool install(std::string name, std::string execName, std::string shortcutName, std::string execPath);
+		bool install(std::string name);
 
 		// Return value methodes
 		std::vector<std::string> getLoadedVersionsName();
@@ -32,7 +32,7 @@ namespace VersionManager {
 		std::string mUnzipPath;
 
 		// Private methodes
-		void save(File file = File("versions.versions","./"));
+		void save();
 		void loadVersionsFromFile(std::string versionsFileURL);
 	};
 

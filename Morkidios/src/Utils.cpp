@@ -55,7 +55,7 @@ namespace Morkidios {
 	void Utils::drawLine(Ogre::Image& img, Ogre::ColourValue c, int x, int y, int xx, int yy, int pixelSize){
 		if(y == yy)
 			for(int i = 0; i < pixelSize; i++)
-				drawLine(img, c, x, y + i, xx + pixelSize - 1, yy + i); 
+				drawLine(img, c, x, y + i, xx + pixelSize - 1, yy + i);
 		if(x == xx)
 			for(int i = 0; i < pixelSize; i++)
 				drawLine(img, c, x + i, y, xx + i, yy + pixelSize - 1);
@@ -142,29 +142,22 @@ namespace Morkidios {
 		}
 		else
 			mo = new Ogre::ManualObject(name);
-		Ogre::MaterialPtr ma = Ogre::MaterialManager::getSingleton().create(name,materialName); 
-		ma->setReceiveShadows(false); 
-		ma->getTechnique(0)->setLightingEnabled(true); 
-		ma->getTechnique(0)->getPass(0)->setDiffuse(0,0,1,0); 
-		ma->getTechnique(0)->getPass(0)->setAmbient(0,0,1); 
-		ma->getTechnique(0)->getPass(0)->setSelfIllumination(0,0,1); 
- 
- 
-		mo->begin(name, Ogre::RenderOperation::OT_LINE_LIST); 
-		mo->position(start); 
+		Ogre::MaterialPtr ma = Ogre::MaterialManager::getSingleton().create(name,materialName);
+		ma->setReceiveShadows(false);
+		ma->getTechnique(0)->setLightingEnabled(true);
+		ma->getTechnique(0)->getPass(0)->setDiffuse(0,0,1,0);
+		ma->getTechnique(0)->getPass(0)->setAmbient(0,0,1);
+		ma->getTechnique(0)->getPass(0)->setSelfIllumination(0,0,1);
+
+
+		mo->begin(name, Ogre::RenderOperation::OT_LINE_LIST);
+		mo->position(start);
 		mo->position(end);
 		mo->end();
 
 		mo->convertToMesh(mo->getName());
 
 		return smgr->createEntity(mo->getName());
-	}
-	void Utils::addCubeToStaticGeometry(Ogre::SceneManager* smgr, btDynamicsWorld* world, Ogre::StaticGeometry* sg, Ogre::Vector3 pos, Ogre::Vector3 size, std::string materialName, double widthTextureBegin, double widthTextureEnd, double heightTextureBegin, double heightTextureEnd, double deepTextureBegin, double deepTextureEnd, std::string name){
-		sg->addEntity(drawCube(smgr,size,materialName,widthTextureBegin,widthTextureEnd,heightTextureBegin,heightTextureEnd,deepTextureBegin,deepTextureEnd,name), pos);
-		world->addRigidBody(addCube(pos,size));
-	}
-	void Utils::addCubeToStaticGeometry(CubeConstructionInfo c){
-		addCubeToStaticGeometry(c.smgr, c.world, c.geometry, c.pos, c.size, c.materialName, c.widthTextureBegin, c.widthTextureEnd, c.heightTextureBegin, c.heightTextureEnd, c.deepTextureBegin, c.deepTextureEnd, c.name);
 	}
 
 	// Collision
@@ -191,9 +184,9 @@ namespace Morkidios {
 		case OIS::MB_Left:
 			return CEGUI::LeftButton;
 		case OIS::MB_Right:
-			return CEGUI::RightButton; 
+			return CEGUI::RightButton;
 		case OIS::MB_Middle:
-			return CEGUI::MiddleButton; 
+			return CEGUI::MiddleButton;
 		default:
 			return CEGUI::LeftButton;
 		}

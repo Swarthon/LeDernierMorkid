@@ -39,7 +39,7 @@ namespace Morkidios {
 
 		mTypeBar = static_cast<CEGUI::VerticalLayoutContainer*>(CEGUI::WindowManager::getSingleton().createWindow("VerticalLayoutContainer"));
 		mTypePane->addChild(mTypeBar);
-		
+
 		createLeftBarButton("InventoryWeaponsButton", "Armes", Object::Weapon);
 		createLeftBarButton("InventoryArmoursButton", "Armures", Object::Armour);
 		createLeftBarButton("InventoryObjectsQuestButton", "Objets de Quête", Object::Quest);
@@ -51,7 +51,7 @@ namespace Morkidios {
 		mObjectPane->setWidth(CEGUI::UDim(0.5,0));
 		mObjectPane->setHeight(CEGUI::UDim(0.98,0));
 		mObjectPane->setPosition(CEGUI::UVector2(CEGUI::UDim(0.26,0), CEGUI::UDim(0.18,0)));
-		
+
 		mObjectBar = static_cast<CEGUI::VerticalLayoutContainer*>(CEGUI::WindowManager::getSingleton().createWindow("VerticalLayoutContainer"));
 		mObjectPane->addChild(mObjectBar);
 
@@ -63,7 +63,7 @@ namespace Morkidios {
 		mObjectLabel->setProperty("NormalTextColour", "FFFFFFFF");
 		mObjectLabel->setProperty("DisabledTextColour", "FFFFFFFF");
 
-		
+
 		mDescBar = static_cast<CEGUI::VerticalLayoutContainer*>(CEGUI::WindowManager::getSingleton().createWindow("VerticalLayoutContainer"));
 		mDescBar->setPosition(CEGUI::UVector2(CEGUI::UDim(0.78,0),CEGUI::UDim(0.01,0)));
 		mDescBar->setWidth(CEGUI::UDim(0.1,0));
@@ -103,12 +103,13 @@ namespace Morkidios {
 		image->setTexture(&guiTex);
 		image->setArea(rect);
 		image->setAutoScaled(CEGUI::ASM_Both);
-	
+
 		mDesc3D->setProperty("Image", "InventoryObjectImage");
 		// --------------------------------------------------------
 	}
 	void Inventory::exit(){
 		Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
+		Framework::getSingletonPtr()->mRoot->getTextureManager()->remove("RTTInventory");
 		CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("Inventory");
 
 		CEGUI::System::getSingleton().getRenderer()->destroyTexture("TextureInventory");
@@ -191,7 +192,7 @@ namespace Morkidios {
 		button->setProperty("Font","InventoryLeftBarButton");
 		button->setUserData(o);
 		button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::objectButtonClicked, this));
-		
+
 		CEGUI::HorizontalLayoutContainer* layout = static_cast<CEGUI::HorizontalLayoutContainer*>(CEGUI::WindowManager::getSingleton().createWindow("HorizontalLayoutContainer"));
 		layout->setVisible(false);
 		button->addChild(layout);
@@ -201,7 +202,7 @@ namespace Morkidios {
 		equipe->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::equipeButtonClicked, this));
 		equipe->setProperty("Font","InventoryEquiperButton");
 		equipe->setWidth(CEGUI::UDim(0.2,0));
-		
+
 		equipe = layout->createChild("AlfiskoSkin/Button", std::string("InventoryEquiperDroite") + name);
 		equipe->setText("Main Droite");
 		equipe->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::equipeButtonClicked, this));
@@ -218,7 +219,7 @@ namespace Morkidios {
 	}
 	bool Inventory::typeBarButtonClicked(const CEGUI::EventArgs& e){
 		const CEGUI::WindowEventArgs& we = static_cast<const CEGUI::WindowEventArgs&>(e);
-		mObjectLabel->setText(we.window->getText()); 
+		mObjectLabel->setText(we.window->getText());
 		refresh(*(Object::Type*)(we.window->getUserData()));
 		return true;
 	}
@@ -263,7 +264,7 @@ namespace Morkidios {
 
 		return true;
 	}
-	void Inventory::clear(){	
+	void Inventory::clear(){
 		while(mObjectBar->getChildCount() != 0)
 			mObjectBar->getChildAtIdx(0)->destroy();
 		if(mObjectEntity){

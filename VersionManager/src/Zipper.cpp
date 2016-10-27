@@ -14,7 +14,7 @@ namespace VersionManager {
 
 		if ((za = zip_open((src.getPath()+src.getName()).c_str(), 0, &err)) == NULL) {
 			zip_error_to_str(buf, sizeof(buf), err, errno);
-			fprintf(stderr, "Can't open zip archive `%s': %s\n", (src.getPath()+src.getName()).c_str(), buf);
+			std::cout << "Can't open zip archive '" << (src.getPath() + src.getName()).c_str() << "' : "<< buf << "\n";
 			return false;
 		}
 
@@ -27,18 +27,16 @@ namespace VersionManager {
 				else {
 					zf = zip_fopen_index(za, i, 0);
 					if (!zf) {
-						fprintf(stderr, "Could not open zip index\n");
+						std::cout << "Could not open zip index\n";
 						return false;
 					}
-
-	#ifdef __linux__
+#ifdef __linux__
 					fd = open(path.c_str(), O_RDWR | O_TRUNC | O_CREAT, 0644);
-	#elif defined(_WIN32)
-					fd = _sopen_s(&fd, path.c_str(), O_RDWR | O_TRUNC | O_CREAT, 0,0);
-	#endif
-
+#elif defined(_WIN32)
+					fd = open(path.c_str(), O_RDWR | O_TRUNC | O_CREAT | O_BINARY, 0644);
+#endif
 					if (fd < 0) {
-						fprintf(stderr, "Could not open file %s\n", path.c_str());
+						std::cout << "Could not open file " << path.c_str() << "\n";
 						return false;
 					}
 
@@ -46,14 +44,10 @@ namespace VersionManager {
 					while (sum != sb.size) {
 						len = zip_fread(zf, buf, 100);
 						if (len < 0) {
-							fprintf(stderr, "The length of the archive isn't good\n");
+							std::cout << "The length of the archive isn't good\n";
 							return false;
 						}
-	#ifdef _WIN32
-						_write(fd, buf, len);
-	#elif defined(__linux__)
 						write(fd, buf, len);
-	#endif
 						sum += len;
 					}
 
@@ -66,18 +60,14 @@ namespace VersionManager {
 					}
 					listOfFiles.push_back(File(name,path));
 
-	#ifdef __linux__
 					close(fd);
-	#elif defined(_WIN32)
-					_close(fd);
-	#endif
 					zip_fclose(zf);
 				}
 			}
 		}
 
 		if (zip_close(za) == -1)
-			fprintf(stderr, "Can't close zip archive `%s'\n", (src.getPath() + src.getName()).c_str());
+			std::cout << "Can't close zip archive `" << src.getPath() + src.getName() << "'\n";
 		return true;
 	}
 

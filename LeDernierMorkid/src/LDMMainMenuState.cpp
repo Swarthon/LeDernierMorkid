@@ -20,9 +20,8 @@ void LDMMainMenuState::enter(){
 	mRollingMenu->getFaces()[0]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::playButtonPressed, this));
 	mRollingMenu->getFaces()[1]->setText("Options");
 	mRollingMenu->getFaces()[1]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::optionsButtonPressed, this));
-	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)"Mettre à jour");
-	mRollingMenu->getFaces()[2]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::updateButtonPressed, this));
-	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)"Multijoueur (Prochainement)");
+	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)"Multijoueur (Prochainement)");
+	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)"Encyclopédie");
 	mRollingMenu->getFaces()[4]->setText("Quitter");
 	mRollingMenu->getFaces()[4]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
 }
@@ -164,11 +163,6 @@ bool LDMMainMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
 }
 bool LDMMainMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
 	shutdown();
-
-	return true;
-}
-bool LDMMainMenuState::updateButtonPressed(const CEGUI::EventArgs& e){
-	pushState(findByName("UpdaterState"));
 
 	return true;
 }

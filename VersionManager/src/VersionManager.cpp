@@ -4,12 +4,13 @@ namespace VersionManager {
 
 	// Construction methodes
 	VersionManager::VersionManager(){
-		mVersionsHistory = File("versions.versions", "./");
+		mVersionsHistory = File("versions.versions", "../../");
 	}
 	void VersionManager::loadFromInternet(std::string versionsFileURL){
 		loadVersionsFromFile(versionsFileURL);
 	}
 	void VersionManager::loadVersions(File file){
+		mVersionsHistory = file;
 		std::ifstream ifs((file.getPath() + file.getName()).c_str());
 		if(!ifs){
 			std::cout << "Could not open file " << file.getPath() + file.getName() << std::endl;
@@ -65,10 +66,15 @@ namespace VersionManager {
 		}
 		return false;
 	}
-	bool VersionManager::install(std::string name, std::string execName, std::string shortcutName, std::string execPath){
+	bool VersionManager::install(std::string name){
 		for(unsigned int i = 0; i < mVersions.size(); i++)
 			if(mVersions[i]->getName() == name && mVersions[i]->isInstalled())
 				return true;
+
+
+		for(unsigned int i = 0; i < mVersions.size(); i++)
+			if(mVersions[i]->isInstalled())
+				mVersions[i]->uninstall();
 
 		Version* v = NULL;
 		for(unsigned int i = 0; i < mVersions.size(); i++)
@@ -77,7 +83,7 @@ namespace VersionManager {
 
 
 		if(v){
-			if(v->install(execName, shortcutName, execPath)){
+			if(v->install()){
 				save();
 				return true;
 			}
@@ -112,8 +118,8 @@ namespace VersionManager {
 	}
 
 	// Private methodes
-	void VersionManager::save(File file){
-		std::ofstream ofs((file.getPath() + file.getName()).c_str());
+	void VersionManager::save(){
+		std::ofstream ofs((mVersionsHistory.getPath() + mVersionsHistory.getName()).c_str());
 		boost::archive::text_oarchive oa(ofs);
                 oa << mVersions;
 	}

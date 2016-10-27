@@ -42,41 +42,45 @@ namespace VersionManager {
  *		3. Add the dest path
  */
 
-		std::cout << mPath << std::endl << to.getPath() << std::endl;
-		
+		std::string src, dst;
+
+#ifdef __linux__
 		char* s = new char[400];
 		realpath(mPath.c_str(),s);
-		std::string src = s;
-#ifdef __linux__
+		src = s;
 		DIR* directory = opendir(s);
 		if(directory){
 			src += '/';
 			closedir(directory);
 		}
+		delete s;
 #elif defined(_WIN32)
+		char* s = new char[400];
+		GetFullPathName(mPath.c_str(), 400, s, NULL);
 		DWORD dwAttrib = GetFileAttributes(s);
 
 		if(dwAttrib != INVALID_FILE_ATTRIBUTES && (dwAttrib & FILE_ATTRIBUTE_DIRECTORY))
 			src += '/';
 #endif
-		delete s;
 
-		char* d = new char[400];
-		realpath(to.getPath().c_str(),d);
-		std::string dst = d;
 #ifdef __linux__
+		char* d = new char[400];
+		realpath(to.getPath().c_str(), d);
+		dst = d;
 		directory = opendir(d);
 		if(directory){
 			dst += '/';
 			closedir(directory);
 		}
+		delete d;
 #elif defined(_WIN32)
-		DWORD dwAttrib = GetFileAttributes(d);
+		char* d = new char[400];
+		GetFullPathName(mPath.c_str(), 400, d, NULL);
+		dwAttrib = GetFileAttributes(d);
 
 		if(dwAttrib != INVALID_FILE_ATTRIBUTES && (dwAttrib & FILE_ATTRIBUTE_DIRECTORY))
 			dst += '/';
 #endif
-		delete d;
 
 		if(src == dst){
 			return "./";
@@ -101,7 +105,7 @@ namespace VersionManager {
 			int i2 = i;
 			i = src.find('/', i2) + 1;
 			if(i == 0)
-				break;		
+				break;
 			resultingPath += "../";
 		}
 

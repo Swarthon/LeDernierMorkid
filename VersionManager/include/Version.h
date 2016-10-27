@@ -3,9 +3,18 @@
 
 #include <vector>
 
-#include "File.h"
 #include "Downloader.h"
+#include "File.h"
 #include "Zipper.h"
+
+#ifdef _WIN32
+#include <windows.h>
+#include <winnls.h>
+#include <shobjidl.h>
+#include <objbase.h>
+#include <objidl.h>
+#include <shlguid.h>
+#endif // _WIN32
 
 namespace VersionManager {
 
@@ -19,7 +28,8 @@ namespace VersionManager {
 		// Various methodes
 		bool download(int(*progressFunc)(void*, curl_off_t, curl_off_t, curl_off_t, curl_off_t) = NULL, void* userData = NULL);
 		bool unzip();
-		bool install(std::string execName, std::string shortcutName, std::string execPath);
+		bool install();
+		bool uninstall();
 
 		void save();
 
