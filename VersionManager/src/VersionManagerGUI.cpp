@@ -215,8 +215,8 @@ namespace VersionManager {
 
 	// Private methodes
 	void VersionManagerGUI::initVMWithInternet(){
-		mVersionManager.setDownloadPath("Downloads/");
-		mVersionManager.setInstallPath("Versions/");
+		mVersionManager.setDownloadPath("../../Downloads/");
+		mVersionManager.setInstallPath("../../Versions/");
 		mVersionManager.loadVersions(File("versions.versions","./"));
 		mVersionManager.loadFromInternet("https://sourceforge.net/projects/lederniermorkid/files/versions.txt/download");
 	}
@@ -259,8 +259,8 @@ namespace VersionManager {
 	}
 
 	void VersionManagerGUI::initVMWithFiles(){
-		mVersionManager.setDownloadPath("Downloads/");
-		mVersionManager.setInstallPath("Versions/");
+		mVersionManager.setDownloadPath("../../Downloads/");
+		mVersionManager.setInstallPath("../../Versions/");
 		mVersionManager.loadVersions();
 	}
 	bool VersionManagerGUI::installClicked(const CEGUI::EventArgs& evt){
