@@ -19,5 +19,6 @@
 #include "Character/AI.h"
 #include "Hud/CrossHair.h"
 #include "Hud/Map.h"
+#include "MorkidiosPrerequisites.h"
 
 #endif // MORKIDIOS_H

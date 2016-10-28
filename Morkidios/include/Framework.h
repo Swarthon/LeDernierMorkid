@@ -1,22 +1,7 @@
 #ifndef FRAMEWORK_H
 #define FRAMEWORK_H
 
-#include <OgreCamera.h>
-#include <OgreEntity.h>
-#include <OgreLogManager.h>
-#include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
-#include <OgreConfigFile.h>
-
-#include <OISEvents.h>
-#include <OISInputManager.h>
-#include <OISKeyboard.h>
-#include <OISMouse.h>
-
-#include <CEGUI/CEGUI.h>
-#include <CEGUI/RendererModules/Ogre/Renderer.h>
+#include <MorkidiosPrerequisites.h>
 
 #include "Utils.h"
 #include "Input.h"
@@ -48,7 +33,7 @@ namespace Morkidios {
 		Ogre::Timer*				mTimer;
 
 		Input* mInput;
-	
+
 	private:
 		Framework(const Framework&);
 		Framework& operator= (const Framework&);

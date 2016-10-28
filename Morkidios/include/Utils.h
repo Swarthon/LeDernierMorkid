@@ -1,44 +1,7 @@
 #ifndef OUTILS_H
 #define OUTILS_H
 
-// Ogre includes
-#include <Ogre.h>
-#include <OgrePixelFormat.h>
-
-// Bullet includes
-#ifndef NO_COLLISION
-#include <btBulletCollisionCommon.h>
-#include <BulletCollision/CollisionShapes/btBoxShape.h>
-#include <BulletDynamics/Dynamics/btDynamicsWorld.h>
-#include <BulletDynamics/Dynamics/btRigidBody.h>
-#endif // NO_COLLISION
-
-// OgreBullet includes
-#ifndef NO_COLLISION
-#include <OgreBulletCollisions.h>
-#include <Utils/OgreBulletConverter.h>
-#endif // NO_COLLISION
-
-// CEGUI includes
-#include <CEGUI/CEGUI.h>
-#include <CEGUI/RendererModules/Ogre/Renderer.h>
-
-// OIS includes
-#include <OIS/OIS.h>
-
-// C++ includes
-#include <string>
-#include <sstream>
-
-
-// Defines
-#define LEFT 		1
-#define RIGHT		2
-#define FORWARD		4
-#define BACKWARD	8
-#define UP		16
-
-
+#include <MorkidiosPrerequisites.h>
 
 namespace Morkidios {
 

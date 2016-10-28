@@ -34,7 +34,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibility->setWidth(CEGUI::UDim(0.8,0));
 	mMouseSensibility->setHeight(CEGUI::UDim(0.05,0));
 	mMouseSensibility->setYPosition(CEGUI::UDim(0.1,0));
-	mMouseSensibility->setUnitIntervalScrollPosition(Morkidios::Input::getSingleton()->mMouseSensibility);
+	mMouseSensibility->setUnitIntervalScrollPosition(Morkidios::Input::getSingleton()->mMouseSensibility / Morkidios::Input::getSingleton()->mMouseSensibilityMax);
 	mMouseSensibility->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMOptionsMenuState::mouseSensibilityChanged, this));
 
 	mMouseSensibilityLabel = mWindow->createChild("Generic/Label", "OptionsMenuMouseSensibilityLabel");
@@ -56,7 +56,7 @@ void LDMOptionsMenuState::createGUI(){
 	mKeyboardMenuButton->setHeight(CEGUI::UDim(0.1,0));
 	mKeyboardMenuButton->setYPosition(CEGUI::UDim(0.2, 0));
 	mKeyboardMenuButton->setXPosition(CEGUI::UDim(0.1,0));
-	mKeyboardMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::keyboardButtonPressed, this));	
+	mKeyboardMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::keyboardButtonPressed, this));
 
 	mGraphicsMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "GraphicMenuOptions"));
 	mGraphicsMenuButton->setProperty("Text", "Graphismes");
@@ -133,16 +133,20 @@ bool LDMOptionsMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
 }
 bool LDMOptionsMenuState::graphicButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("GraphicMenuState"));
-	
+
 	return true;
 }
 bool LDMOptionsMenuState::keyboardButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("KeyboardMenuState"));
-	
+
 	return true;
 }
 bool LDMOptionsMenuState::mouseSensibilityChanged(const CEGUI::EventArgs& e){
-	double newVal = mMouseSensibility->getUnitIntervalScrollPosition();
+/* getUnitIntervalScrollPosition returns value beetween 0 and 1
+ * but the mMouseSensibility has to be between 0 and mMouseSensibilityMax
+ * so we have to convert the value
+ */
+	double newVal = mMouseSensibility->getUnitIntervalScrollPosition() * Morkidios::Input::getSingleton()->mMouseSensibilityMax;
 	Morkidios::Input::getSingleton()->mMouseSensibility = newVal;
 
 	return true;

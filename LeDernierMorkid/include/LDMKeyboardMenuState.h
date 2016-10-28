@@ -33,6 +33,7 @@ private:
 	CEGUI::PushButton* mReturnButton;
 
 	// Private methodes
+	void createButton();
 	bool returnButtonPressed(const CEGUI::EventArgs& e);
 	bool buttonClicked(const CEGUI::EventArgs& evt);
 	bool windowClicked(const CEGUI::EventArgs& evt);

@@ -30,7 +30,7 @@ namespace Morkidios {
 		try {
 			Ogre::ConfigFile cfg;
 			cfg.load(mFileName.c_str());
-			
+
 			mMouseSensibility = Ogre::StringConverter::parseReal(cfg.getSetting("MouseSensibility", "Mouse"));
 			Ogre::ConfigFile::SettingsIterator settings = cfg.getSettingsIterator("Keyboard");
 			for(Ogre::ConfigFile::SettingsMultiMap::iterator it = settings.begin(); it != settings.end(); it++)
@@ -44,14 +44,14 @@ namespace Morkidios {
 	}
 
 	// Construction methodes
-	Input::Input(){
+	Input::Input() : mMouseSensibilityMax(0.66) {
 		mInputManager = 0;
 		mKeyboard = 0;
 		mMouse = 0;
 
 		mFileName = "input.cfg";
 
-		mMouseSensibility = 10;
+		mMouseSensibility = 0.33;
 		mKeyMap["Forward"] = OIS::KC_Z;
 		mKeyMap["Backward"] = OIS::KC_S;
 		mKeyMap["Leftward"] = OIS::KC_Q;

@@ -1,8 +1,9 @@
 #ifndef STATE_MANAGER_H
 #define	STATE_MANAGER_H
 
+#include <MorkidiosPrerequisites.h>
+
 #include "State.h"
-#include <vector>
 
 namespace Morkidios {
 

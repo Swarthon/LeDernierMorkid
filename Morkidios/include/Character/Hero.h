@@ -1,9 +1,7 @@
 #ifndef HEROS_H
 #define HEROS_H
 
-// Bullet includes
-#include <BulletCollision/CollisionDispatch/btGhostObject.h>
-#include <BulletDynamics/Character/btKinematicCharacterController.h>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Weapon.h"
@@ -12,7 +10,6 @@
 #include "Global.h"
 #include "Character.h"
 #include "Hand.h"
-
 #define SPEED 0.025
 
 namespace Morkidios {

@@ -1,18 +1,7 @@
 #ifndef HAND_H
 #define HAND_H
 
-// TinyXML includes
-#ifndef TIXML_USE_STL
-#define TIXML_USE_STL
-#endif
-#include <tinyxml.h>
-
-// Ogre includes
-#include <OGRE/Ogre.h>
-
-// C++ includes
-#include <string>
-#include <iostream>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Global.h"

@@ -1,23 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-// Ogre includes
-#include <OGRE/Ogre.h>
-
-// Bullet includes
-#include <btBulletDynamicsCommon.h>
-#include <btBulletCollisionCommon.h>
-
-// OgreBullet includes
-#include <OgreBulletDynamicsRigidBody.h>
-#include <Shapes/OgreBulletCollisionsCapsuleShape.h>
-#include <Shapes/OgreBulletCollisionsConvexHullShape.h>
-#include <Shapes/OgreBulletCollisionsBoxShape.h>
-#include <Shapes/OgreBulletCollisionsGImpactShape.h>
-#include <Shapes/OgreBulletCollisionsCompoundShape.h>
-#include <Utils/OgreBulletCollisionsMeshToShapeConverter.h>
-
-#include <iostream>
+#include <MorkidiosPrerequisites.h>
 
 #include "Utils.h"
 #include "MotionStates/ObjectMotionState.h"
@@ -75,7 +59,7 @@ namespace Morkidios {
 		btRigidBody* mBody;
 		btDynamicsWorld* mWorld;
 		Ogre::SceneManager* mSceneManager;
-		
+
 		void attachEntityToSceneNode();
 	};
 

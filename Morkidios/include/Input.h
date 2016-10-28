@@ -1,13 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-// C++ includes
-#include <map>
-#include <string>
-#include <iostream>
-
-// OIS includes
-#include <OIS/OIS.h>
+#include <MorkidiosPrerequisites.h>
 
 // OGRE includes
 #include <OGRE/Ogre.h>
@@ -37,7 +31,8 @@ namespace Morkidios {
 		std::string mFileName;
 
 	public:
-		float mMouseSensibility;
+		float mMouseSensibility;	// Belong to the interval [0;mMouseSensibilityMax]
+		const float mMouseSensibilityMax;
 		std::map <std::string, OIS::KeyCode> mKeyMap;
 	};
 }

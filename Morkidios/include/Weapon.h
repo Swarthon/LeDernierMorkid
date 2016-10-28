@@ -1,11 +1,7 @@
 #ifndef ARME_H
 #define ARME_H
 
-// C++ includes
-#include <sstream>
-
-// Ogre includes
-#include <Ogre.h>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Object.h"
@@ -31,7 +27,7 @@ namespace Morkidios {
 		// Construction methodes
 		Weapon();
 		~Weapon();
-		
+
 		// Return value methodes
 		Features& getFeatures();
 

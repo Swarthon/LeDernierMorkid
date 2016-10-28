@@ -1,8 +1,7 @@
 #ifndef ARMURE_H
 #define ARMURE_H
 
-// C++ includes
-#include <sstream>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Object.h"
@@ -36,7 +35,7 @@ namespace Morkidios {
 		Armour();
 		~Armour();
 		void setType(Type t);
-		
+
 		// Return value methodes
 		Type getType();
 		Features& getFeatures();

@@ -1,13 +1,7 @@
 #ifndef GRAPHICOPTIONS_H
 #define GRAPHICOPTIONS_H
 
-// C++ includes
-#include <map>
-#include <string>
-#include <iostream>
-
-// OGRE includes
-#include <OGRE/Ogre.h>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Character/Hero.h"

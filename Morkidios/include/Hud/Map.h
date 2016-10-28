@@ -1,11 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 
-// CEGUI includes
-#include <CEGUI/CEGUI.h>
-
-// C++ includes
-#include <iostream>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Utils.h"

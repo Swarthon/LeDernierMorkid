@@ -1,15 +1,6 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-// C++ includes
-#include <vector>
-
-// Bullet includes
-#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
-
-// Ogre includes
-#include <Terrain/OgreTerrain.h>
-
 // My includes
 #include "Framework.h"
 #include "Character/AI.h"

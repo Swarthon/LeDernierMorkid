@@ -1,9 +1,7 @@
 #ifndef OBJECTMOTIONSTATE_H
 #define OBJECTMOTIONSTATE_H
 
-// Bullet includes
-#include <BulletCollision/CollisionDispatch/btGhostObject.h>
-#include <BulletDynamics/Character/btKinematicCharacterController.h>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Utils.h"
@@ -18,7 +16,7 @@ namespace Morkidios {
 		}
 		virtual ~ObjectMotionState(){
 		}
-	
+
 		virtual void getWorldTransform(btTransform& worldTrans) const {
 			worldTrans = mInitialPosition;
 		}

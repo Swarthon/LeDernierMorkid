@@ -1,11 +1,7 @@
 #ifndef CROSSHAIR_H
 #define CROSSHAIR_H
 
-// Ogre includes
-#include <OGRE/Ogre.h>
-
-// CEGUI includes
-#include <CEGUI/CEGUI.h>
+#include <MorkidiosPrerequisites.h>
 
 // My includes
 #include "Utils.h"
