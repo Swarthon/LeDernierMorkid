@@ -1,0 +1,183 @@
+# English translations for PACKAGE package.
+# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#  <swarthon.gokan@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-11-03 18:45+0000\n"
+"PO-Revision-Date: 2016-11-02 16:13+0000\n"
+"Last-Translator:  <swarthon.gokan@gmail.com>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/LDMGraphicMenuState.cpp:58 ../src/LDMGraphicMenuState.cpp:90
+msgid " : No"
+msgstr " : No"
+
+#: ../src/LDMGraphicMenuState.cpp:56 ../src/LDMGraphicMenuState.cpp:88
+msgid " : Yes"
+msgstr " : Yes"
+
+#: ../src/LDMGraphicMenuState.cpp:160
+msgid ": No"
+msgstr ": No"
+
+#: ../src/LDMGraphicMenuState.cpp:158
+msgid ": Yes"
+msgstr ": Yes"
+
+#: ../../Morkidios/src/Inventory.cpp:44
+msgid "Armours"
+msgstr "Armours"
+
+#: ../../Morkidios/src/Input.cpp:56
+msgid "Backward"
+msgstr "Backward"
+
+#: ../src/LDMPauseMenuState.cpp:33
+msgid "Continue"
+msgstr "Continue"
+
+#: ../src/LDMOptionsMenuState.cpp:53 ../src/LDMOptionsMenuState.cpp:98
+msgid "Controles"
+msgstr "Controles"
+
+#: ../../Morkidios/src/Input.cpp:59
+msgid "Drop Left Hand"
+msgstr "Drop Left Hand"
+
+#: ../../Morkidios/src/Input.cpp:60
+msgid "Drop Right Hand"
+msgstr "Drop Right Hand"
+
+#: ../../Morkidios/src/Inventory.cpp:47
+msgid "Eatable Objects"
+msgstr "Eatable Objects"
+
+#: ../src/LDMMainMenuState.cpp:24 ../src/LDMMainMenuState.cpp:103
+msgid "Encyclopedia"
+msgstr "Encyclopedia"
+
+#: ../src/LDMMainMenuState.cpp:25 ../src/LDMMainMenuState.cpp:104
+msgid "Exit"
+msgstr "Exit"
+
+#: ../src/LDMGraphicMenuState.cpp:41 ../src/LDMGraphicMenuState.cpp:84
+msgid "Field of View"
+msgstr "Field of View"
+
+#: ../../Morkidios/src/Input.cpp:55
+msgid "Forward"
+msgstr "Forward"
+
+#: ../src/LDMGraphicMenuState.cpp:53 ../src/LDMGraphicMenuState.cpp:86
+msgid "Fullscreen"
+msgstr "Fullscreen"
+
+#: ../src/LDMOptionsMenuState.cpp:62 ../src/LDMOptionsMenuState.cpp:99
+msgid "Graphics"
+msgstr "Graphics"
+
+#: ../../Morkidios/src/Input.cpp:64
+msgid "Inventory"
+msgstr "Inventory"
+
+#: ../src/LDMOptionsMenuState.cpp:71 ../src/LDMOptionsMenuState.cpp:100
+msgid "Language"
+msgstr "Language"
+
+#: ../../Morkidios/src/Input.cpp:57
+msgid "Leftward"
+msgstr "Leftward"
+
+#: ../src/LDMOptionsMenuState.cpp:41 ../src/LDMOptionsMenuState.cpp:97
+msgid "Mouse Sensibility"
+msgstr "Mouse Sensibility"
+
+#: ../src/LDMMainMenuState.cpp:23 ../src/LDMMainMenuState.cpp:102
+msgid "Multiplayer (Incoming)"
+msgstr "Multiplayer (Incoming)"
+
+#: ../src/LDMMainMenuState.cpp:21 ../src/LDMMainMenuState.cpp:101
+#: ../src/LDMPauseMenuState.cpp:41
+msgid "Options"
+msgstr "Options"
+
+#: ../src/LDMLanguageChange.cpp:38
+msgid "Please select your language"
+msgstr "Please select your language"
+
+#: ../../Morkidios/src/Inventory.cpp:45
+msgid "Quest Objects"
+msgstr "Quest Objects"
+
+#: ../src/LDMPauseMenuState.cpp:50
+msgid "Quit"
+msgstr "Quit"
+
+#: ../src/LDMLanguageChange.cpp:45 ../src/LDMLanguageChange.cpp:114
+#: ../src/LDMOptionsMenuState.cpp:80 ../src/LDMOptionsMenuState.cpp:101
+#: ../src/LDMGraphicMenuState.cpp:66 ../src/LDMGraphicMenuState.cpp:85
+#: ../src/LDMKeyboardMenuState.cpp:44
+msgid "Return"
+msgstr "Return"
+
+#: ../../Morkidios/src/Input.cpp:58
+msgid "Rightward"
+msgstr "Rightward"
+
+#: ../../Morkidios/src/Input.cpp:61
+#, fuzzy
+msgid "Run"
+msgstr "Run"
+
+#: ../../Morkidios/src/Input.cpp:65
+msgid "Screenshot"
+msgstr "Screenshot"
+
+#: ../../Morkidios/src/Input.cpp:66
+msgid "Show FPS"
+msgstr "Show FPS"
+
+#: ../src/LDMGameState.cpp:42
+msgid "Sinbad"
+msgstr "Sinbad"
+
+#: ../../Morkidios/src/Input.cpp:62
+msgid "Sneek"
+msgstr "Sneek"
+
+#: ../src/LDMMainMenuState.cpp:19 ../src/LDMMainMenuState.cpp:100
+msgid "Solo"
+msgstr "Solo"
+
+#: ../src/LDMGameState.cpp:37
+msgid "Sword"
+msgstr "Sword"
+
+#: ../../Morkidios/src/Input.cpp:63
+msgid "Take"
+msgstr "Take"
+
+#: ../src/LDMGameState.cpp:47
+msgid "Torch"
+msgstr "Torch"
+
+#: ../../Morkidios/src/Inventory.cpp:48
+msgid "Utils"
+msgstr "Utils"
+
+#: ../../Morkidios/src/Inventory.cpp:46
+msgid "Various Objects"
+msgstr "Various Objects"
+
+#: ../../Morkidios/src/Inventory.cpp:43
+msgid "Weapons"
+msgstr "Weapons"

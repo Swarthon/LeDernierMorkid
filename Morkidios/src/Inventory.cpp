@@ -40,12 +40,12 @@ namespace Morkidios {
 		mTypeBar = static_cast<CEGUI::VerticalLayoutContainer*>(CEGUI::WindowManager::getSingleton().createWindow("VerticalLayoutContainer"));
 		mTypePane->addChild(mTypeBar);
 
-		createLeftBarButton("InventoryWeaponsButton", "Armes", Object::Weapon);
-		createLeftBarButton("InventoryArmoursButton", "Armures", Object::Armour);
-		createLeftBarButton("InventoryObjectsQuestButton", "Objets de Quête", Object::Quest);
-		createLeftBarButton("InventoryObjectsVariousButton", "Objets Divers", Object::Various);
-		createLeftBarButton("InventoryObjectsEatablesButton", "Objets Comestibles", Object::Eatable);
-		createLeftBarButton("InventoryUtilsButton", "Outils", Object::Utils);
+		createLeftBarButton("InventoryWeaponsButton", "Weapons", Object::Weapon);
+		createLeftBarButton("InventoryArmoursButton", "Armours", Object::Armour);
+		createLeftBarButton("InventoryObjectsQuestButton", "Quest Objects", Object::Quest);
+		createLeftBarButton("InventoryObjectsVariousButton", "Various Objects", Object::Various);
+		createLeftBarButton("InventoryObjectsEatablesButton", "Eatable Objects", Object::Eatable);
+		createLeftBarButton("InventoryUtilsButton", "Utils", Object::Utils);
 
 		mObjectPane = static_cast<CEGUI::ScrollablePane*>(mWindow->createChild("TaharezLook/ScrollablePane", "InventoryWeaponWindow"));
 		mObjectPane->setWidth(CEGUI::UDim(0.5,0));
@@ -68,7 +68,7 @@ namespace Morkidios {
 		mDescBar->setPosition(CEGUI::UVector2(CEGUI::UDim(0.78,0),CEGUI::UDim(0.01,0)));
 		mDescBar->setWidth(CEGUI::UDim(0.1,0));
 		mWindow->addChild(mDescBar);
-		
+
 		mDesc3D = mWindow->createChild("TaharezLook/StaticImage", "Inventory3D");
 		mDesc3D->setWidth(CEGUI::UDim(0.2,0));
 		mDesc3D->setHeight(CEGUI::UDim(0.58,0));
@@ -174,13 +174,13 @@ namespace Morkidios {
 			std::cout << "Error : Trying to use createLeftBarButton but mWindow is not initialized\n";
 			shutdown();
 		}
-		CEGUI::Window* wnd = mTypeBar->createChild("AlfiskoSkin/Button", std::string("Inventory") + name);
+		CEGUI::Window* wnd = mTypeBar->createChild("AlfiskoSkin/Button", name);
 		wnd->setWidth(CEGUI::UDim(1,0));
 		wnd->setHeight(CEGUI::UDim(0.1666666666666666666,0));
 		int* i = (int*)malloc(sizeof(int));		// It must be a pointer, else the UserData not work
 		*i = t;
 		wnd->setUserData(i);
-		wnd->setText((CEGUI::utf8*)text.c_str());
+		wnd->setText((CEGUI::utf8*)_(text.c_str()));
 		wnd->setProperty("Font","InventoryLeftBarButton");
 		wnd->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::typeBarButtonClicked, this));
 	}
@@ -188,7 +188,7 @@ namespace Morkidios {
 		CEGUI::Window* button = parent->createChild("AlfiskoSkin/Button", std::string("Inventory") + name);
 		button->setHeight(CEGUI::UDim(0.1666666666666666666,0));
 		button->setWidth(CEGUI::UDim(1,0));
-		button->setText((CEGUI::utf8*)o->getName().c_str());
+		button->setText((CEGUI::utf8*)_(o->getName().c_str()));
 		button->setProperty("Font","InventoryLeftBarButton");
 		button->setUserData(o);
 		button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::objectButtonClicked, this));

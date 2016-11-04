@@ -13,6 +13,7 @@
 #include "Terrain.h"
 #include "Utils.h"
 #include "Input.h"
+#include "Language.h"
 #include "GraphicOptions.h"
 #include "Character/Hand.h"
 #include "Character/Hero.h"

@@ -1,15 +1,15 @@
-#ifndef LDMGRAPHICMENUSTATE_H
-#define LDMGRAPHICMENUSTATE_H
+#ifndef LDMLANGUAGECHANGESTATE_H
+#define LDMLANGUAGECHANGESTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
-class LDMGraphicMenuState : public Morkidios::State {
+class LDMLanguageChangeState : public Morkidios::State {
 public:
-	LDMGraphicMenuState();
-	virtual ~LDMGraphicMenuState();
+	LDMLanguageChangeState();
+	virtual ~LDMLanguageChangeState();
 
-	DECLARE_APPSTATE_CLASS(LDMGraphicMenuState)
+	DECLARE_APPSTATE_CLASS(LDMLanguageChangeState)
 
 	void enter();
 	void createScene();
@@ -26,20 +26,17 @@ public:
 	bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id);
 
 	void update(double timeSinceLastFrame);
-
 private:
-	CEGUI::Window* mWindow;
-	CEGUI::Scrollbar* mFOV;
-	CEGUI::Window* mFOVLabel;
-	CEGUI::PushButton* mFullScreen;
-	CEGUI::PushButton* mReturnButton;
-
-	// Private methodes
+	// Methodes privates
+	void initCombobox();
 	bool returnButtonPressed(const CEGUI::EventArgs& e);
-	bool FOVChanged(const CEGUI::EventArgs& e);
-	bool fullScreenChanged(const CEGUI::EventArgs& e);
+	bool languageChanged(const CEGUI::EventArgs& e);
+
+	CEGUI::Window* mWindow;
+	CEGUI::PushButton* mReturnButton;
+	CEGUI::Combobox* mCombobox;
 
 	Ogre::Camera* mCamera;
 };
 
-#endif // LDMGRAPHICMENUSTATE_H
+#endif // LDMLANGUAGECHANGESTATE_H

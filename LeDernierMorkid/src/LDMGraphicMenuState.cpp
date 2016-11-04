@@ -38,7 +38,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFOV->setUnitIntervalScrollPosition((Morkidios::GraphicOptions::getSingleton()->mFOV-Ogre::Degree(50).valueRadians())/Ogre::Degree(50).valueRadians());
 
 	mFOVLabel = mWindow->createChild("Generic/Label", "GraphicMenuFOVLabel");
-	mFOVLabel->setProperty("Text", "Champ de vision");
+	mFOVLabel->setProperty("Text", _("Field of View"));
 	mFOVLabel->setProperty("Font", "GraphicMenuFont");
 	mFOVLabel->setProperty("NormalTextColour", "FFFFFFFF");
 	mFOVLabel->setProperty("DisabledTextColour", "FFFFFFFF");
@@ -50,12 +50,12 @@ void LDMGraphicMenuState::createGUI(){
 	mFOVLabel->setMousePassThroughEnabled(true);
 
 	mFullScreen = static_cast<CEGUI::PushButton*>(mWindow->createChild("TaharezLook/Button", "GraphicMenuFullscreen"));
-	mFullScreen->setProperty("Text",(CEGUI::utf8*)"Plein écran");
+	mFullScreen->setProperty("Text",(CEGUI::utf8*)_("Fullscreen"));
 	mFullScreen->setProperty("Font", "GraphicMenuFont");
 	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
-		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(" : Oui"));
+		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(_(" : Yes")));
 	else
-		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(" : Non"));
+		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(_(" : No")));
 	mFullScreen->setWidth(CEGUI::UDim(0.25,0));
 	mFullScreen->setHeight(CEGUI::UDim(0.1,0));
 	mFullScreen->setYPosition(CEGUI::UDim(0.2,0));
@@ -63,7 +63,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFullScreen->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMGraphicMenuState::fullScreenChanged, this));
 
 	mReturnButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "ReturnButton"));
-	mReturnButton->setProperty("Text", "Retour");
+	mReturnButton->setProperty("Text", _("Return"));
 	mReturnButton->setProperty("Font", "GraphicMenuFont");
 	mReturnButton->setWidth(CEGUI::UDim(0.3,0));
 	mReturnButton->setHeight(CEGUI::UDim(0.1,0));
@@ -81,6 +81,13 @@ void LDMGraphicMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
+	mFOVLabel->setProperty("Text", _("Field of View"));
+	mReturnButton->setProperty("Text", _("Return"));
+	mFullScreen->setProperty("Text",(CEGUI::utf8*)_("Fullscreen"));
+	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
+		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(_(" : Yes")));
+	else
+		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(_(" : No")));
 }
 bool LDMGraphicMenuState::pause(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
@@ -148,9 +155,9 @@ bool LDMGraphicMenuState::fullScreenChanged(const CEGUI::EventArgs& e){
 			s += c[i];
 	}
 	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
-		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(": Oui"));
+		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(_(": Yes")));
 	else
-		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(": Non"));
+		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(_(": No")));
 
 	Morkidios::GraphicOptions::getSingleton()->config();
 

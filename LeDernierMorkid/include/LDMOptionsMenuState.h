@@ -32,12 +32,14 @@ private:
 	bool mouseSensibilityChanged(const CEGUI::EventArgs& e);
 	bool graphicButtonPressed(const CEGUI::EventArgs& e);
 	bool keyboardButtonPressed(const CEGUI::EventArgs& e);
+	bool languageButtonPressed(const CEGUI::EventArgs& e);
 
-	CEGUI::Window* mWindow;	
+	CEGUI::Window* mWindow;
 	CEGUI::Scrollbar* mMouseSensibility;
 	CEGUI::Window* mMouseSensibilityLabel;
 	CEGUI::PushButton* mKeyboardMenuButton;
 	CEGUI::PushButton* mGraphicsMenuButton;
+	CEGUI::PushButton* mLanguageMenuButton;
 	CEGUI::PushButton* mReturnButton;
 
 	Ogre::Camera* mCamera;

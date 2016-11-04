@@ -30,10 +30,11 @@ public:
 private:
 	CEGUI::Window* mWindow;
 	CEGUI::Window* mActive;
+	CEGUI::ScrollablePane* mPane;
 	CEGUI::PushButton* mReturnButton;
 
 	// Private methodes
-	void createButton();
+	void createButton(std::string name, OIS::KeyCode* k, int n, double width, double height, double offset);
 	bool returnButtonPressed(const CEGUI::EventArgs& e);
 	bool buttonClicked(const CEGUI::EventArgs& evt);
 	bool windowClicked(const CEGUI::EventArgs& evt);

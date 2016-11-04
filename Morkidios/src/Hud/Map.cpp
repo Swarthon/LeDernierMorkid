@@ -32,9 +32,9 @@ namespace Morkidios {
 		mPoints[name] = mMap->createChild("Generic/Image", name);
 		mPoints[name]->setSize(CEGUI::USize(CEGUI::UDim(0.05,0),CEGUI::UDim(0.05,0)));
 		mPoints[name]->setProperty("Image", name);
-		mPoints[name]->setInheritsAlpha(false);
+		mPoints[name]->setInheritsAlpha(true);
 
-		CEGUI::UVector2 size = CEGUI::UVector2(mPoints[name]->getSize().d_width, mPoints[name]->getSize().d_height) / CEGUI::UVector2(CEGUI::UDim(2,0), CEGUI::UDim(2,0));		
+		CEGUI::UVector2 size = CEGUI::UVector2(mPoints[name]->getSize().d_width, mPoints[name]->getSize().d_height) / CEGUI::UVector2(CEGUI::UDim(2,0), CEGUI::UDim(2,0));
 		CEGUI::UVector2 p = CEGUI::UVector2(CEGUI::UDim((pos.x + mTerrainSize.x/2)/mTerrainSize.x,0), CEGUI::UDim((pos.y + mTerrainSize.y/2)/mTerrainSize.y,0)) - size;
 		mPoints[name]->setPosition(p);
 		mPoints[name]->setMousePassThroughEnabled(true);
@@ -69,7 +69,7 @@ namespace Morkidios {
 		CEGUI::UVector2 p = CEGUI::UVector2(CEGUI::UDim((newPos.x + mTerrainSize.x/2)/mTerrainSize.x,0), CEGUI::UDim((newPos.y + mTerrainSize.y/2)/mTerrainSize.y,0)) - size;
 		mPoints[name]->setPosition(p);
 	}
-	
+
 	// Private methodes
 	bool Map::showFullScreen(const CEGUI::EventArgs& e){
 		if(!mFullScreen){

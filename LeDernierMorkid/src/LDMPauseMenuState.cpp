@@ -30,7 +30,7 @@ void LDMPauseMenuState::createGUI(){
 	CEGUI::FontManager::getSingleton().createFreeTypeFont ("PauseMenuButtonFont", 40, true, "GreatVibes-Regular.ttf");
 
 	mContinueButton = mWindow->createChild("AlfiskoSkin/Button", "PauseMenuContinuerButton");
-	mContinueButton->setProperty("Text", "Continuer");
+	mContinueButton->setProperty("Text", (CEGUI::utf8*)_("Continue"));
 	mContinueButton->setProperty("Font", "PauseMenuButtonFont");
 	mContinueButton->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.1,0)));
 	mContinueButton->setHorizontalAlignment(CEGUI::HA_RIGHT);
@@ -38,7 +38,7 @@ void LDMPauseMenuState::createGUI(){
 	mContinueButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::continueButtonPressed, this));
 
 	mOptionsButton = mWindow->createChild("AlfiskoSkin/Button", "PauseMenuOptionsButton");
-	mOptionsButton->setProperty("Text", "Options");
+	mOptionsButton->setProperty("Text", (CEGUI::utf8*)_("Options"));
 	mOptionsButton->setProperty("Font", "PauseMenuButtonFont");
 	mOptionsButton->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.1,0)));
 	mOptionsButton->setVerticalAlignment(CEGUI::VA_CENTRE);
@@ -47,7 +47,7 @@ void LDMPauseMenuState::createGUI(){
 	mOptionsButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::optionsButtonPressed, this));
 
 	mQuitButton = mWindow->createChild("AlfiskoSkin/Button", "PauseMenuQuitButton");
-	mQuitButton->setProperty("Text", "Quitter");
+	mQuitButton->setProperty("Text", (CEGUI::utf8*)_("Quit"));
 	mQuitButton->setProperty("Font", "PauseMenuButtonFont");
 	mQuitButton->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.1,0)));
 	mQuitButton->setHorizontalAlignment(CEGUI::HA_RIGHT);
@@ -94,7 +94,7 @@ bool LDMPauseMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
 }
 bool LDMPauseMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp((CEGUI::Key::Scan)keyEventRef.key);
-	
+
 	if(keyEventRef.key == OIS::KC_ESCAPE && !mQuitMenu->getWindow()->isVisible())
 		popState();
 	else if(keyEventRef.key == OIS::KC_ESCAPE && mQuitMenu->getWindow()->isVisible())

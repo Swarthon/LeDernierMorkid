@@ -18,7 +18,7 @@ namespace Morkidios {
 		// Various methodes
 		void save();
 		bool load();
-
+		
 		OIS::InputManager*			mInputManager;
 		OIS::Keyboard*				mKeyboard;
 		OIS::Mouse*				mMouse;

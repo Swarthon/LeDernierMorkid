@@ -131,6 +131,10 @@ namespace Morkidios {
 		mLog->logMessage("CEGUI initialized");
 		// -------------------------------
 
+		// Language
+		Language::getSingleton()->load();
+		// -------------------------------
+
 		return true;
 	}
 

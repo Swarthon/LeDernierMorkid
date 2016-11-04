@@ -5,6 +5,7 @@
 
 #include "Utils.h"
 #include "Input.h"
+#include "Language.h"
 
 namespace Morkidios {
 

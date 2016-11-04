@@ -31,13 +31,13 @@ namespace Morkidios {
 	}
 	void Hero::initGraphics(std::string name, Ogre::SceneManager* smgr){
 		Character::initGraphics(name, smgr);
-		
+
 		mHand = Hand::load("hand.xml", mSceneManager);
 		mHand->setParent(mSceneNode);
 	}
 	void Hero::initGraphics(std::string name, std::string path, Ogre::SceneManager* smgr){
 		Character::initGraphics(name, path, smgr);
-		
+
 		mHand = Hand::load("hand.xml", mSceneManager);
 		mHand->setParent(mSceneNode);
 	}
@@ -77,7 +77,7 @@ namespace Morkidios {
 		btVector3 forward = ghostTransform.getBasis()[2];
 		forward[0] *= -1;
 		forward.normalize();
-	
+
 		btVector3 direction = btVector3(0,0,0);
 		if((d & FORWARD) != 0)
 			direction -= forward;
@@ -97,7 +97,7 @@ namespace Morkidios {
 			moveForward[0] *= -1;
 			direction += moveForward;
 		}
-	
+
 		if((d & UP) != 0)
 			mCharacter->jump();
 
@@ -106,7 +106,7 @@ namespace Morkidios {
 
 		if(direction == btVector3(0,0,0))
 			mHand->setAnimation("Walk", false);
-		else 
+		else
 			mHand->setAnimation("Walk", true);
 	}
 	void Hero::rotate(const OIS::MouseEvent &evt){
@@ -176,17 +176,22 @@ namespace Morkidios {
 	}
 	void Hero::dropRightHandObject(){
 		Object* o = mRightHandObject;
-		unequipeRightHand();	
+		unequipeRightHand();
 		drop(o);
 	}
 	Object* Hero::get(){
 		btVector3 start = OgreBulletCollisions::OgreBtConverter::to(mSceneNode->getPosition());
-		btVector3 end = OgreBulletCollisions::OgreBtConverter::to(mSceneNode->getPosition() + (mSceneNode->getOrientation()*Ogre::Vector3::NEGATIVE_UNIT_Z).normalisedCopy() * 10);
-		btCollisionWorld::ClosestRayResultCallback rayTest = btCollisionWorld::ClosestRayResultCallback(start, end);
+		btVector3 end = OgreBulletCollisions::OgreBtConverter::to(mSceneNode->getPosition() + (mSceneNode->getOrientation()*Ogre::Vector3::NEGATIVE_UNIT_Z).normalisedCopy() * mActual.range);
+		btCollisionWorld::AllHitsRayResultCallback rayTest = btCollisionWorld::AllHitsRayResultCallback(start, end);
 		mWorld->rayTest(start, end, rayTest);
 		if(rayTest.hasHit()){
-			if(rayTest.m_collisionObject->getUserPointer()){
-				Object* o = (Object*)rayTest.m_collisionObject->getUserPointer();
+			const btCollisionObject* obj;
+			if(rayTest.m_collisionObjects[0] == mGhostObject && rayTest.m_collisionObjects.size() > 1)
+				obj = rayTest.m_collisionObjects[1];
+			else
+				obj = rayTest.m_collisionObjects[0];
+			if(obj->getUserPointer()){
+				Object* o = (Object*)obj->getUserPointer();
 				o->get();
 				mObjects.push_back(o);
 				return o;

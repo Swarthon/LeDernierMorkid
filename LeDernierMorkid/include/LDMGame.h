@@ -11,6 +11,7 @@
 #include "LDMOptionsMenuState.h"
 #include "LDMGraphicMenuState.h"
 #include "LDMKeyboardMenuState.h"
+#include "LDMLanguageChangeState.h"
 
 class LDMGame {
 public:

@@ -38,7 +38,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibility->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMOptionsMenuState::mouseSensibilityChanged, this));
 
 	mMouseSensibilityLabel = mWindow->createChild("Generic/Label", "OptionsMenuMouseSensibilityLabel");
-	mMouseSensibilityLabel->setProperty("Text", (CEGUI::utf8*)"Sensibilité de la souris");
+	mMouseSensibilityLabel->setProperty("Text", (CEGUI::utf8*)_("Mouse Sensibility"));
 	mMouseSensibilityLabel->setProperty("Font", "OptionsMenuButtonFont");
 	mMouseSensibilityLabel->setProperty("NormalTextColour", "FFFFFFFF");
 	mMouseSensibilityLabel->setProperty("DisabledTextColour", "FFFFFFFF");
@@ -50,7 +50,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibilityLabel->setMousePassThroughEnabled(true);
 
 	mKeyboardMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "KeyboardMenuOptions"));
-	mKeyboardMenuButton->setProperty("Text", (CEGUI::utf8*)"Contrôles");
+	mKeyboardMenuButton->setProperty("Text", (CEGUI::utf8*)_("Controles"));
 	mKeyboardMenuButton->setProperty("Font", "OptionsMenuButtonFont");
 	mKeyboardMenuButton->setWidth(CEGUI::UDim(0.3,0));
 	mKeyboardMenuButton->setHeight(CEGUI::UDim(0.1,0));
@@ -59,7 +59,7 @@ void LDMOptionsMenuState::createGUI(){
 	mKeyboardMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::keyboardButtonPressed, this));
 
 	mGraphicsMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "GraphicMenuOptions"));
-	mGraphicsMenuButton->setProperty("Text", "Graphismes");
+	mGraphicsMenuButton->setProperty("Text", (CEGUI::utf8*)_("Graphics"));
 	mGraphicsMenuButton->setProperty("Font", "OptionsMenuButtonFont");
 	mGraphicsMenuButton->setWidth(CEGUI::UDim(0.3,0));
 	mGraphicsMenuButton->setHeight(CEGUI::UDim(0.1,0));
@@ -67,8 +67,17 @@ void LDMOptionsMenuState::createGUI(){
 	mGraphicsMenuButton->setXPosition(CEGUI::UDim(0.6,0));
 	mGraphicsMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::graphicButtonPressed, this));
 
+	mLanguageMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "LanguageMenuOptions"));
+	mLanguageMenuButton->setProperty("Text", (CEGUI::utf8*)_("Language"));
+	mLanguageMenuButton->setProperty("Font", "OptionsMenuButtonFont");
+	mLanguageMenuButton->setWidth(CEGUI::UDim(0.3,0));
+	mLanguageMenuButton->setHeight(CEGUI::UDim(0.1,0));
+	mLanguageMenuButton->setYPosition(CEGUI::UDim(0.35, 0));
+	mLanguageMenuButton->setXPosition(CEGUI::UDim(0.1,0));
+	mLanguageMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::languageButtonPressed, this));
+
 	mReturnButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "ReturnButton"));
-	mReturnButton->setProperty("Text", "Retour");
+	mReturnButton->setProperty("Text", (CEGUI::utf8*)_("Return"));
 	mReturnButton->setProperty("Font", "OptionsMenuButtonFont");
 	mReturnButton->setWidth(CEGUI::UDim(0.3,0));
 	mReturnButton->setHeight(CEGUI::UDim(0.1,0));
@@ -85,11 +94,16 @@ void LDMOptionsMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
+	mMouseSensibilityLabel->setProperty("Text", (CEGUI::utf8*)_("Mouse Sensibility"));
+	mKeyboardMenuButton->setProperty("Text", (CEGUI::utf8*)_("Controles"));
+	mGraphicsMenuButton->setProperty("Text", (CEGUI::utf8*)_("Graphics"));
+	mLanguageMenuButton->setProperty("Text", (CEGUI::utf8*)_("Language"));
+	mReturnButton->setProperty("Text", (CEGUI::utf8*)_("Return"));
 }
 bool LDMOptionsMenuState::pause(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 	mWindow->setVisible(false);
-
+	
 	return true;
 }
 
@@ -138,6 +152,11 @@ bool LDMOptionsMenuState::graphicButtonPressed(const CEGUI::EventArgs& e){
 }
 bool LDMOptionsMenuState::keyboardButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("KeyboardMenuState"));
+
+	return true;
+}
+bool LDMOptionsMenuState::languageButtonPressed(const CEGUI::EventArgs& e){
+	pushState(findByName("LanguageMenuState"));
 
 	return true;
 }

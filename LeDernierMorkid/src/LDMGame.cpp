@@ -8,7 +8,7 @@ LDMGame::LDMGame(){
 		exit(1);
 	}
 
-	Morkidios::Framework::getSingletonPtr()->mLog->logMessage("Le Dernier Morkid est lance");
+	Morkidios::Framework::getSingletonPtr()->mLog->logMessage("Le Dernier Morkid is started");
 
 	initGui();
 
@@ -25,6 +25,7 @@ LDMGame::LDMGame(){
 	LDMOptionsMenuState::create(mStateManager, "OptionsMenuState");
 	LDMGraphicMenuState::create(mStateManager, "GraphicMenuState");
 	LDMKeyboardMenuState::create(mStateManager, "KeyboardMenuState");
+	LDMLanguageChangeState::create(mStateManager, "LanguageMenuState");
 	Morkidios::Inventory::create(mStateManager, "InventoryState");
 
 	mStateManager->start(mStateManager->findByName("MainMenuState"));

@@ -16,19 +16,19 @@ void LDMMainMenuState::enter(){
 	createScene();
 
 	mRollingMenu = new LDMRollingMenu(5,100,50);
-	mRollingMenu->getFaces()[0]->setText("Solo");
+	mRollingMenu->getFaces()[0]->setText((CEGUI::utf8*)(_("Solo")));
 	mRollingMenu->getFaces()[0]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::playButtonPressed, this));
-	mRollingMenu->getFaces()[1]->setText("Options");
+	mRollingMenu->getFaces()[1]->setText((CEGUI::utf8*)(_("Options")));
 	mRollingMenu->getFaces()[1]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::optionsButtonPressed, this));
-	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)"Multijoueur (Prochainement)");
-	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)"Encyclopédie");
-	mRollingMenu->getFaces()[4]->setText("Quitter");
+	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)(_("Multiplayer (Incoming)")));
+	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)(_("Encyclopedia")));
+	mRollingMenu->getFaces()[4]->setText((CEGUI::utf8*)(_("Exit")));
 	mRollingMenu->getFaces()[4]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
 }
 void LDMMainMenuState::createScene(){
 	mHeroTexture = Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->createManual("RTTMainMenu", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::TEX_TYPE_2D, 512, 512, 0, Ogre::PF_R8G8B8, Ogre::TU_RENDERTARGET);
 	Ogre::RenderTexture *rtex = mHeroTexture->getBuffer()->getRenderTarget();
-
+	
 	mHeroCamera = mHeroSceneManager->createCamera("MainMenuHeroBaseCamera");
 	mHeroCamera->setNearClipDistance(1);
 	mHeroViewport = rtex->addViewport(mHeroCamera);
@@ -97,6 +97,11 @@ void LDMMainMenuState::resume(){
 	mWindow->setVisible(true);
 	mRollingMenu->show(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
+	mRollingMenu->getFaces()[0]->setText((CEGUI::utf8*)(_("Solo")));
+	mRollingMenu->getFaces()[1]->setText((CEGUI::utf8*)(_("Options")));
+	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)(_("Multiplayer (Incoming)")));
+	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)(_("Encyclopedia")));
+	mRollingMenu->getFaces()[4]->setText((CEGUI::utf8*)(_("Exit")));
 }
 bool LDMMainMenuState::pause(){
 	mWindow->setVisible(false);

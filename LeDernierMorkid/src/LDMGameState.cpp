@@ -34,7 +34,7 @@ void LDMGameState::createScene(){
 	c.range = 10;
 
 	Morkidios::Object* o = new Morkidios::Object();
-	o->load(mSceneManager, mTerrain->getWorld(), "Epee","Sword.mesh");
+	o->load(mSceneManager, mTerrain->getWorld(), "Sword","Sword.mesh");
 	o->setType(Morkidios::Object::Weapon);
 	Morkidios::Hero::getSingleton()->addObject(o);
 
@@ -44,7 +44,7 @@ void LDMGameState::createScene(){
 	Morkidios::Hero::getSingleton()->addObject(o);
 
 	o = new Morkidios::Object();
-	o->load(mSceneManager, mTerrain->getWorld(), "Torche","Torch.mesh");
+	o->load(mSceneManager, mTerrain->getWorld(), "Torch","Torch.mesh");
 	o->setType(Morkidios::Object::Weapon);
 	Morkidios::Hero::getSingleton()->addObject(o);
 	Ogre::Light* spotLight = mSceneManager->createLight("Spotlight");
@@ -105,36 +105,36 @@ bool LDMGameState::keyPressed(const OIS::KeyEvent &keyEventRef){
 bool LDMGameState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	if(keyEventRef.key == OIS::KC_ESCAPE)
 	        pushState(findByName("PauseMenuState"));
-	if(keyEventRef.key == OIS::KC_E)
+	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Inventory"])
 	        pushState(findByName("InventoryState"));
 
-	if(keyEventRef.key == OIS::KC_U){
+	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Drop Left Hand"]){
 		Morkidios::Object* o = Morkidios::Hero::getSingleton()->getLeftHandObject();
 		if(o){
 			Morkidios::Hero::getSingleton()->dropLeftHandObject();
 			mTerrain->addDroppedObject(o);
 		}
 	}
-	if(keyEventRef.key == OIS::KC_I){
+	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Drop Right Hand"]){
 		Morkidios::Object* o = Morkidios::Hero::getSingleton()->getRightHandObject();
 		if(o){
 			Morkidios::Hero::getSingleton()->dropRightHandObject();
 			mTerrain->addDroppedObject(o);
 		}
 	}
-	if(keyEventRef.key == OIS::KC_F){
+	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Take"]){
 		Morkidios::Object* o = Morkidios::Hero::getSingleton()->get();
 		if(o)
 			mTerrain->removeDroppedObject(o);
 	}
 
-	if(keyEventRef.key == OIS::KC_SYSRQ){
+	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Screenshot"]){
 		Morkidios::Framework::getSingletonPtr()->mRenderWindow->writeContentsToTimestampedFile("Screenshot_", ".jpg");
 		return true;
 	}
 
 	// Debug
-	if(keyEventRef.key == OIS::KC_F3){
+	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Show FPS"]){
 		mFPSWindow->setVisible(mFPSVisible = !mFPSVisible);
 		return true;
 	}

@@ -27,6 +27,10 @@
 #include <cstdlib>
 #include <map>
 
+// C includes
+#include <libintl.h>
+#include <locale.h>
+
 // Bullet includes
 #include <btBulletDynamicsCommon.h>
 #include <btBulletCollisionCommon.h>
@@ -48,3 +52,5 @@
 #define FORWARD		4
 #define BACKWARD	8
 #define UP		16
+
+#define _(STRING) gettext(STRING)
