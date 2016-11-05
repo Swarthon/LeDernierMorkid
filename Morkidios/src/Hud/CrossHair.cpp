@@ -20,8 +20,11 @@ namespace Morkidios {
 		mCrossHair->setProperty("Image","CrossHairImage");
 		mCrossHair->setHorizontalAlignment(CEGUI::HA_CENTRE);
 		mCrossHair->setVerticalAlignment(CEGUI::VA_CENTRE);
+		mCrossHair->setAspectMode(CEGUI::AM_EXPAND);
 		mCrossHair->setWidth(CEGUI::UDim(0.1,0));
-		mCrossHair->setAspectMode(CEGUI::AM_SHRINK);
+	}
+	void CrossHair::setSize(CEGUI::UDim u){
+		mCrossHair->setWidth(u);
 	}
 
 	// Various methodes

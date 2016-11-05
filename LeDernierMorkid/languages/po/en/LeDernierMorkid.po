@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-03 18:45+0000\n"
+"POT-Creation-Date: 2016-11-05 22:43+0000\n"
 "PO-Revision-Date: 2016-11-02 16:13+0000\n"
 "Last-Translator:  <swarthon.gokan@gmail.com>\n"
 "Language-Team: English\n"
@@ -18,18 +18,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/LDMGraphicMenuState.cpp:58 ../src/LDMGraphicMenuState.cpp:90
+#: ../src/LDMGraphicMenuState.cpp:78 ../src/LDMGraphicMenuState.cpp:111
 msgid " : No"
 msgstr " : No"
 
 #: ../src/LDMGraphicMenuState.cpp:56 ../src/LDMGraphicMenuState.cpp:88
+#: ../src/LDMGraphicMenuState.cpp:76 ../src/LDMGraphicMenuState.cpp:109
 msgid " : Yes"
 msgstr " : Yes"
 
-#: ../src/LDMGraphicMenuState.cpp:160
+#: ../src/LDMGraphicMenuState.cpp:160 ../src/LDMGraphicMenuState.cpp:189
 msgid ": No"
 msgstr ": No"
 
-#: ../src/LDMGraphicMenuState.cpp:158
+#: ../src/LDMGraphicMenuState.cpp:158 ../src/LDMGraphicMenuState.cpp:187
 msgid ": Yes"
 msgstr ": Yes"
 
@@ -37,9 +39,21 @@ msgstr ": Yes"
 msgid "Armours"
 msgstr "Armours"
 
+#: ../src/Gui/LDMQuitMenu.cpp:46
+msgid "Back to desktop"
+msgstr "Back to desktop"
+
+#: ../src/Gui/LDMQuitMenu.cpp:38
+msgid "Back to main menu"
+msgstr "Back to main menu"
+
 #: ../../Morkidios/src/Input.cpp:56
 msgid "Backward"
 msgstr "Backward"
+
+#: ../src/Gui/LDMQuitMenu.cpp:30
+msgid "Cancel"
+msgstr "Cancel"
 
 #: ../src/LDMPauseMenuState.cpp:33
 msgid "Continue"
@@ -48,6 +62,10 @@ msgstr "Continue"
 #: ../src/LDMOptionsMenuState.cpp:53 ../src/LDMOptionsMenuState.cpp:98
 msgid "Controles"
 msgstr "Controles"
+
+#: ../src/LDMGraphicMenuState.cpp:61 ../src/LDMGraphicMenuState.cpp:105
+msgid "Cross Hair"
+msgstr "Cross Hair"
 
 #: ../../Morkidios/src/Input.cpp:59
 msgid "Drop Left Hand"
@@ -70,6 +88,7 @@ msgid "Exit"
 msgstr "Exit"
 
 #: ../src/LDMGraphicMenuState.cpp:41 ../src/LDMGraphicMenuState.cpp:84
+#: ../src/LDMGraphicMenuState.cpp:104
 msgid "Field of View"
 msgstr "Field of View"
 
@@ -78,6 +97,7 @@ msgid "Forward"
 msgstr "Forward"
 
 #: ../src/LDMGraphicMenuState.cpp:53 ../src/LDMGraphicMenuState.cpp:86
+#: ../src/LDMGraphicMenuState.cpp:73 ../src/LDMGraphicMenuState.cpp:107
 msgid "Fullscreen"
 msgstr "Fullscreen"
 
@@ -125,7 +145,8 @@ msgstr "Quit"
 #: ../src/LDMLanguageChange.cpp:45 ../src/LDMLanguageChange.cpp:114
 #: ../src/LDMOptionsMenuState.cpp:80 ../src/LDMOptionsMenuState.cpp:101
 #: ../src/LDMGraphicMenuState.cpp:66 ../src/LDMGraphicMenuState.cpp:85
-#: ../src/LDMKeyboardMenuState.cpp:44
+#: ../src/LDMKeyboardMenuState.cpp:44 ../src/LDMLanguageChange.cpp:115
+#: ../src/LDMGraphicMenuState.cpp:86 ../src/LDMGraphicMenuState.cpp:106
 msgid "Return"
 msgstr "Return"
 

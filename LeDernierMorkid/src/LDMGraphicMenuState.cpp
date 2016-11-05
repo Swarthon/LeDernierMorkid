@@ -49,6 +49,26 @@ void LDMGraphicMenuState::createGUI(){
 	mFOVLabel->setAlwaysOnTop(true);
 	mFOVLabel->setMousePassThroughEnabled(true);
 
+	mCrossHair = static_cast<CEGUI::Scrollbar*>(mWindow->createChild("TaharezLook/HorizontalScrollbar", "GraphicMenuCrossHair"));
+	mCrossHair->setHorizontalAlignment(CEGUI::HA_CENTRE);
+	mCrossHair->setWidth(CEGUI::UDim(0.8,0));
+	mCrossHair->setHeight(CEGUI::UDim(0.05,0));
+	mCrossHair->setYPosition(CEGUI::UDim(0.2,0));
+	mCrossHair->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMGraphicMenuState::CrossHairChanged, this));
+	mCrossHair->setUnitIntervalScrollPosition(Morkidios::GraphicOptions::getSingleton()->mCrossHairSize.d_scale);
+
+	mCrossHairLabel = mWindow->createChild("Generic/Label", "GraphicMenuCrossHairLabel");
+	mCrossHairLabel->setProperty("Text", _("Cross Hair"));
+	mCrossHairLabel->setProperty("Font", "GraphicMenuFont");
+	mCrossHairLabel->setProperty("NormalTextColour", "FFFFFFFF");
+	mCrossHairLabel->setProperty("DisabledTextColour", "FFFFFFFF");
+	mCrossHairLabel->setHorizontalAlignment(CEGUI::HA_CENTRE);
+	mCrossHairLabel->setWidth(CEGUI::UDim(0.8,0));
+	mCrossHairLabel->setHeight(CEGUI::UDim(0.1,0));
+	mCrossHairLabel->setYPosition(CEGUI::UDim(0.175,0));
+	mCrossHairLabel->setAlwaysOnTop(true);
+	mCrossHairLabel->setMousePassThroughEnabled(true);
+
 	mFullScreen = static_cast<CEGUI::PushButton*>(mWindow->createChild("TaharezLook/Button", "GraphicMenuFullscreen"));
 	mFullScreen->setProperty("Text",(CEGUI::utf8*)_("Fullscreen"));
 	mFullScreen->setProperty("Font", "GraphicMenuFont");
@@ -58,7 +78,7 @@ void LDMGraphicMenuState::createGUI(){
 		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(_(" : No")));
 	mFullScreen->setWidth(CEGUI::UDim(0.25,0));
 	mFullScreen->setHeight(CEGUI::UDim(0.1,0));
-	mFullScreen->setYPosition(CEGUI::UDim(0.2,0));
+	mFullScreen->setYPosition(CEGUI::UDim(0.3,0));
 	mFullScreen->setXPosition(CEGUI::UDim(0.05,0));
 	mFullScreen->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMGraphicMenuState::fullScreenChanged, this));
 
@@ -82,6 +102,7 @@ void LDMGraphicMenuState::resume(){
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
 	mFOVLabel->setProperty("Text", _("Field of View"));
+	mCrossHairLabel->setProperty("Text", _("Cross Hair"));
 	mReturnButton->setProperty("Text", _("Return"));
 	mFullScreen->setProperty("Text",(CEGUI::utf8*)_("Fullscreen"));
 	if(Morkidios::GraphicOptions::getSingleton()->mFullScreen)
@@ -138,6 +159,14 @@ bool LDMGraphicMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
 bool LDMGraphicMenuState::FOVChanged(const CEGUI::EventArgs& e){
 	double newVal = mFOV->getUnitIntervalScrollPosition() * Ogre::Degree(50).valueRadians() + Ogre::Degree(50).valueRadians();
 	Morkidios::GraphicOptions::getSingleton()->mFOV = newVal;
+
+	Morkidios::GraphicOptions::getSingleton()->config();
+
+	return true;
+}
+bool LDMGraphicMenuState::CrossHairChanged(const CEGUI::EventArgs& e){
+	double newVal = mCrossHair->getUnitIntervalScrollPosition();
+	Morkidios::GraphicOptions::getSingleton()->mCrossHairSize = CEGUI::UDim(newVal,0);
 
 	Morkidios::GraphicOptions::getSingleton()->config();
 

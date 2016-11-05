@@ -7,7 +7,7 @@ LDMGame::LDMGame(){
 		std::cout << "Framework initialization problem";
 		exit(1);
 	}
-
+	
 	Morkidios::Framework::getSingletonPtr()->mLog->logMessage("Le Dernier Morkid is started");
 
 	initGui();

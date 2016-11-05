@@ -31,12 +31,15 @@ private:
 	CEGUI::Window* mWindow;
 	CEGUI::Scrollbar* mFOV;
 	CEGUI::Window* mFOVLabel;
+	CEGUI::Scrollbar* mCrossHair;
+	CEGUI::Window* mCrossHairLabel;
 	CEGUI::PushButton* mFullScreen;
 	CEGUI::PushButton* mReturnButton;
 
 	// Private methodes
 	bool returnButtonPressed(const CEGUI::EventArgs& e);
 	bool FOVChanged(const CEGUI::EventArgs& e);
+	bool CrossHairChanged(const CEGUI::EventArgs& e);
 	bool fullScreenChanged(const CEGUI::EventArgs& e);
 
 	Ogre::Camera* mCamera;

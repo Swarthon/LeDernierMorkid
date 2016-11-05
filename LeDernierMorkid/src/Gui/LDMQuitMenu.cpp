@@ -27,7 +27,7 @@ LDMQuitMenu::LDMQuitMenu(CEGUI::Window* parent){
 	mCancel->setHeight(CEGUI::UDim(0.2,0));
 	mCancel->setHorizontalAlignment(CEGUI::HA_CENTRE);
 	mCancel->setYPosition(CEGUI::UDim(0.1,0));
-	mCancel->setText("Annuler");
+	mCancel->setText((CEGUI::utf8*)_("Cancel"));
 	mCancel->setProperty("Font","QuitWindowButtonFont");
 
 	mMainMenu = mWindow->createChild("AlfiskoSkin/Button","QuitMenu");
@@ -35,7 +35,7 @@ LDMQuitMenu::LDMQuitMenu(CEGUI::Window* parent){
 	mMainMenu->setHeight(CEGUI::UDim(0.2,0));
 	mMainMenu->setHorizontalAlignment(CEGUI::HA_CENTRE);
 	mMainMenu->setYPosition(CEGUI::UDim(0.4,0));
-	mMainMenu->setText("Retourner au menu principal");
+	mMainMenu->setText((CEGUI::utf8*)_("Back to main menu"));
 	mMainMenu->setProperty("Font","QuitWindowButtonFont");
 
 	mDesktop = mWindow->createChild("AlfiskoSkin/Button","QuitDesktop");
@@ -43,7 +43,7 @@ LDMQuitMenu::LDMQuitMenu(CEGUI::Window* parent){
 	mDesktop->setHeight(CEGUI::UDim(0.2,0));
 	mDesktop->setHorizontalAlignment(CEGUI::HA_CENTRE);
 	mDesktop->setYPosition(CEGUI::UDim(0.7,0));
-	mDesktop->setText("Retourner au bureau");
+	mDesktop->setText((CEGUI::utf8*)_("Back to desktop"));
 	mDesktop->setProperty("Font","QuitWindowButtonFont");
 }
 LDMQuitMenu::~LDMQuitMenu(){

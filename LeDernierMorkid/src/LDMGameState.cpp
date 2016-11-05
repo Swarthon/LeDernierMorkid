@@ -67,6 +67,7 @@ void LDMGameState::createGUI(){
 
 	mCrossHair = new Morkidios::CrossHair;
 	mCrossHair->init("CrossHair.png");
+	Morkidios::GraphicOptions::getSingleton()->setCrossHair(mCrossHair);
 
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 

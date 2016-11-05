@@ -4,6 +4,7 @@
 #include <MorkidiosPrerequisites.h>
 
 // My includes
+#include "Hud/CrossHair.h"
 #include "Character/Hero.h"
 
 namespace Morkidios {
@@ -15,11 +16,17 @@ namespace Morkidios {
 		// Construction methodes
 		void setFileName(std::string fileName);
 		void setRenderWindow(Ogre::RenderWindow* wnd);
+		void setCrossHair(CrossHair* ch);
 
 		// Various methodes
 		void save();
 		bool load();
 		void config();
+
+		// Options
+		bool mFullScreen;
+		double mFOV;
+		CEGUI::UDim mCrossHairSize;
 	private:
 		// Construction methodes
 		GraphicOptions();
@@ -28,11 +35,7 @@ namespace Morkidios {
 
 		std::string mFileName;
 		Ogre::RenderWindow* mRenderWindow;
-
-	public:
-		// Options
-		bool mFullScreen;
-		double mFOV;
+		CrossHair* mCrossHair;
 	};
 }
 

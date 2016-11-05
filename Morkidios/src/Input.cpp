@@ -52,18 +52,18 @@ namespace Morkidios {
 		mFileName = "input.cfg";
 
 		mMouseSensibility = 0.33;
-		mKeyMap["Forward"] = OIS::KC_Z;			_("Forward");
-		mKeyMap["Backward"] = OIS::KC_S;		_("Backward");
-		mKeyMap["Leftward"] = OIS::KC_Q;		_("Leftward");
-		mKeyMap["Rightward"] = OIS::KC_D;		_("Rightward");
-		mKeyMap["Drop Left Hand"] = OIS::KC_U;		_("Drop Left Hand");
-		mKeyMap["Drop Right Hand"] = OIS::KC_I;		_("Drop Right Hand");
-		mKeyMap["Run"] = OIS::KC_LMENU;			_("Run");
-		mKeyMap["Sneek"] = OIS::KC_LSHIFT;		_("Sneek");
-		mKeyMap["Take"] = OIS::KC_F;			_("Take");
-		mKeyMap["Inventory"] = OIS::KC_E;		_("Inventory");
-		mKeyMap["Screenshot"] = OIS::KC_SYSRQ;		_("Screenshot");
-		mKeyMap["Show FPS"] = OIS::KC_F3;		_("Show FPS");
+		mKeyMap["Forward"]		= OIS::KC_Z;		_("Forward");
+		mKeyMap["Backward"]		= OIS::KC_S;		_("Backward");
+		mKeyMap["Leftward"]		= OIS::KC_Q;		_("Leftward");
+		mKeyMap["Rightward"]		= OIS::KC_D;		_("Rightward");
+		mKeyMap["Drop Left Hand"]	= OIS::KC_U;		_("Drop Left Hand");
+		mKeyMap["Drop Right Hand"]	= OIS::KC_I;		_("Drop Right Hand");
+		mKeyMap["Run"]			= OIS::KC_LMENU;	_("Run");
+		mKeyMap["Sneek"]		= OIS::KC_LSHIFT;	_("Sneek");
+		mKeyMap["Take"]			= OIS::KC_F;		_("Take");
+		mKeyMap["Inventory"]		= OIS::KC_E;		_("Inventory");
+		mKeyMap["Screenshot"]		= OIS::KC_SYSRQ;	_("Screenshot");
+		mKeyMap["Show FPS"]		= OIS::KC_F3;		_("Show FPS");
 	}
 	Input::~Input(){
 		if(mInputManager)

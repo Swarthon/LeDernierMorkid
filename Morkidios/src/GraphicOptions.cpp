@@ -19,6 +19,10 @@ namespace Morkidios {
 	void GraphicOptions::setRenderWindow(Ogre::RenderWindow* wnd){
 		mRenderWindow = wnd;
 	}
+	void GraphicOptions::setCrossHair(CrossHair* ch){
+		mCrossHair = ch;
+		mCrossHair->setSize(mCrossHairSize);
+	}
 
 	// Various methodes
 	void GraphicOptions::save(){
@@ -26,6 +30,8 @@ namespace Morkidios {
 		cfg << "[Graphics]" << std::endl;
 		cfg << "FOV=" << mFOV << std::endl;
 		cfg << "FullScreen=" << mFullScreen << std::endl;
+		cfg << "[GUI]" << std::endl;
+		cfg << "CrossHair=" << mCrossHairSize.d_scale << std::endl;
 	}
 	bool GraphicOptions::load(){
 		try {
@@ -34,6 +40,7 @@ namespace Morkidios {
 
 			mFOV = Ogre::StringConverter::parseReal(cfg.getSetting("FOV", "Graphics"));
 			mFullScreen = Ogre::StringConverter::parseReal(cfg.getSetting("FullScreen", "Graphics"));
+			mCrossHairSize = CEGUI::UDim(Ogre::StringConverter::parseReal(cfg.getSetting("CrossHair", "GUI")),0);
 
 			return true;
 		}
@@ -46,6 +53,8 @@ namespace Morkidios {
 			Hero::getSingleton()->getCamera()->setFOVy(Ogre::Radian(mFOV));
 		if(mRenderWindow)
 			mRenderWindow->setFullscreen(mFullScreen, mRenderWindow->getWidth(), mRenderWindow->getHeight());
+		if(mCrossHair)
+			mCrossHair->setSize(mCrossHairSize);
 	}
 
 	// Construction methodes
@@ -54,6 +63,8 @@ namespace Morkidios {
 		mRenderWindow = NULL;
 		mFullScreen = true;
 		mFOV = Ogre::Degree(30).valueRadians();
+		mCrossHair = NULL;
+		mCrossHairSize = CEGUI::UDim(0.1,0);
 	}
 	GraphicOptions::~GraphicOptions(){
 	}

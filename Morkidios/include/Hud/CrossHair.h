@@ -14,6 +14,7 @@ namespace Morkidios {
 		CrossHair();
 		~CrossHair();
 		void init(std::string fileName);
+		void setSize(CEGUI::UDim u);
 
 		// Various methodes
 		void show(bool b);
