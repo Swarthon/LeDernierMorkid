@@ -49,7 +49,7 @@ namespace Morkidios {
 		mMouse = 0;
 
 		mFileName = "input.cfg";
-		
+
 		mMouseSensibility = 0.33;
 		mKeyMap["Forward"]		= OIS::KC_Z;		_("Forward");
 		mKeyMap["Backward"]		= OIS::KC_S;		_("Backward");
@@ -63,6 +63,7 @@ namespace Morkidios {
 		mKeyMap["Inventory"]		= OIS::KC_E;		_("Inventory");
 		mKeyMap["Screenshot"]		= OIS::KC_SYSRQ;	_("Screenshot");
 		mKeyMap["Show FPS"]		= OIS::KC_F3;		_("Show FPS");
+		mKeyMap["Jump"]			= OIS::KC_SPACE;	_("Jump");
 	}
 	Input::~Input(){
 		if(mInputManager)

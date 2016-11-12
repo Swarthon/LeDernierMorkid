@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-05 22:43+0000\n"
+"POT-Creation-Date: 2016-11-12 11:28+0000\n"
 "PO-Revision-Date: 2016-11-02 16:08+0000\n"
 "Last-Translator:  <swarthon.gokan@gmail.com>\n"
 "Language-Team: French\n"
@@ -47,7 +47,7 @@ msgstr "Retour au bureau"
 msgid "Back to main menu"
 msgstr "Retour au menu principal"
 
-#: ../../Morkidios/src/Input.cpp:56
+#: ../../Morkidios/src/Input.cpp:56 ../../Morkidios/src/Input.cpp:55
 msgid "Backward"
 msgstr "Reculer"
 
@@ -67,11 +67,11 @@ msgstr "Contrôles"
 msgid "Cross Hair"
 msgstr "Curseur"
 
-#: ../../Morkidios/src/Input.cpp:59
+#: ../../Morkidios/src/Input.cpp:59 ../../Morkidios/src/Input.cpp:58
 msgid "Drop Left Hand"
 msgstr "Jeter la Main Gauche"
 
-#: ../../Morkidios/src/Input.cpp:60
+#: ../../Morkidios/src/Input.cpp:60 ../../Morkidios/src/Input.cpp:59
 msgid "Drop Right Hand"
 msgstr "Jeter la Main Droite"
 
@@ -92,7 +92,7 @@ msgstr "Quitter"
 msgid "Field of View"
 msgstr "Champs de Vision"
 
-#: ../../Morkidios/src/Input.cpp:55
+#: ../../Morkidios/src/Input.cpp:55 ../../Morkidios/src/Input.cpp:54
 msgid "Forward"
 msgstr "Avancer"
 
@@ -105,15 +105,19 @@ msgstr "Plein écran"
 msgid "Graphics"
 msgstr "Graphismes"
 
-#: ../../Morkidios/src/Input.cpp:64
+#: ../../Morkidios/src/Input.cpp:64 ../../Morkidios/src/Input.cpp:63
 msgid "Inventory"
 msgstr "Inventaire"
+
+#: ../../Morkidios/src/Input.cpp:66
+msgid "Jump"
+msgstr ""
 
 #: ../src/LDMOptionsMenuState.cpp:71 ../src/LDMOptionsMenuState.cpp:100
 msgid "Language"
 msgstr "Langue"
 
-#: ../../Morkidios/src/Input.cpp:57
+#: ../../Morkidios/src/Input.cpp:57 ../../Morkidios/src/Input.cpp:56
 msgid "Leftward"
 msgstr "Avancer à gauche"
 
@@ -150,20 +154,19 @@ msgstr "Quitter"
 msgid "Return"
 msgstr "Retour"
 
-#: ../../Morkidios/src/Input.cpp:58
+#: ../../Morkidios/src/Input.cpp:58 ../../Morkidios/src/Input.cpp:57
 msgid "Rightward"
 msgstr "Avancer à droite"
 
-#: ../../Morkidios/src/Input.cpp:61
-#, fuzzy
+#: ../../Morkidios/src/Input.cpp:61 ../../Morkidios/src/Input.cpp:60
 msgid "Run"
-msgstr "Retour"
+msgstr "Courir"
 
-#: ../../Morkidios/src/Input.cpp:65
+#: ../../Morkidios/src/Input.cpp:65 ../../Morkidios/src/Input.cpp:64
 msgid "Screenshot"
 msgstr "Capture d'écran"
 
-#: ../../Morkidios/src/Input.cpp:66
+#: ../../Morkidios/src/Input.cpp:66 ../../Morkidios/src/Input.cpp:65
 msgid "Show FPS"
 msgstr "Afficher les FPS"
 
@@ -171,7 +174,7 @@ msgstr "Afficher les FPS"
 msgid "Sinbad"
 msgstr "Sinbad"
 
-#: ../../Morkidios/src/Input.cpp:62
+#: ../../Morkidios/src/Input.cpp:62 ../../Morkidios/src/Input.cpp:61
 msgid "Sneek"
 msgstr "S'Accroupir"
 
@@ -183,7 +186,7 @@ msgstr "Solo"
 msgid "Sword"
 msgstr "Épée"
 
-#: ../../Morkidios/src/Input.cpp:63
+#: ../../Morkidios/src/Input.cpp:63 ../../Morkidios/src/Input.cpp:62
 msgid "Take"
 msgstr "Prendre"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-05 22:43+0000\n"
+"POT-Creation-Date: 2016-11-12 11:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Back to main menu"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:56
+#: ../../Morkidios/src/Input.cpp:56 ../../Morkidios/src/Input.cpp:55
 msgid "Backward"
 msgstr ""
 
@@ -67,11 +67,11 @@ msgstr ""
 msgid "Cross Hair"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:59
+#: ../../Morkidios/src/Input.cpp:59 ../../Morkidios/src/Input.cpp:58
 msgid "Drop Left Hand"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:60
+#: ../../Morkidios/src/Input.cpp:60 ../../Morkidios/src/Input.cpp:59
 msgid "Drop Right Hand"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Field of View"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:55
+#: ../../Morkidios/src/Input.cpp:55 ../../Morkidios/src/Input.cpp:54
 msgid "Forward"
 msgstr ""
 
@@ -105,15 +105,19 @@ msgstr ""
 msgid "Graphics"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:64
+#: ../../Morkidios/src/Input.cpp:64 ../../Morkidios/src/Input.cpp:63
 msgid "Inventory"
+msgstr ""
+
+#: ../../Morkidios/src/Input.cpp:66
+msgid "Jump"
 msgstr ""
 
 #: ../src/LDMOptionsMenuState.cpp:71 ../src/LDMOptionsMenuState.cpp:100
 msgid "Language"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:57
+#: ../../Morkidios/src/Input.cpp:57 ../../Morkidios/src/Input.cpp:56
 msgid "Leftward"
 msgstr ""
 
@@ -150,19 +154,19 @@ msgstr ""
 msgid "Return"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:58
+#: ../../Morkidios/src/Input.cpp:58 ../../Morkidios/src/Input.cpp:57
 msgid "Rightward"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:61
+#: ../../Morkidios/src/Input.cpp:61 ../../Morkidios/src/Input.cpp:60
 msgid "Run"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:65
+#: ../../Morkidios/src/Input.cpp:65 ../../Morkidios/src/Input.cpp:64
 msgid "Screenshot"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:66
+#: ../../Morkidios/src/Input.cpp:66 ../../Morkidios/src/Input.cpp:65
 msgid "Show FPS"
 msgstr ""
 
@@ -170,7 +174,7 @@ msgstr ""
 msgid "Sinbad"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:62
+#: ../../Morkidios/src/Input.cpp:62 ../../Morkidios/src/Input.cpp:61
 msgid "Sneek"
 msgstr ""
 
@@ -182,7 +186,7 @@ msgstr ""
 msgid "Sword"
 msgstr ""
 
-#: ../../Morkidios/src/Input.cpp:63
+#: ../../Morkidios/src/Input.cpp:63 ../../Morkidios/src/Input.cpp:62
 msgid "Take"
 msgstr ""
 
