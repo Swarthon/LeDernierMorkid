@@ -1,5 +1,7 @@
 #include "Weapon.h"
 
+std::vector<std::pair<std::string,Morkidios::Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)>> Morkidios::Weapon::mLoadedWeaponsClass = std::vector<std::pair<std::string,Morkidios::Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)>>();
+
 namespace Morkidios {
 
 	// Construction methodes
@@ -7,10 +9,12 @@ namespace Morkidios {
 		mFeatures = Features();
 	}
 	Weapon::~Weapon(){
-		if(mEntity){
-			mEntity->detachFromParent();
-			mEntity->_getManager()->destroyEntity(mEntity);
-		}
+	}
+	void Weapon::addLoadedWeaponsClass(std::pair<std::string,Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)>constructor){
+		mLoadedWeaponsClass.push_back(constructor);
+	}
+	std::vector<std::pair<std::string,Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)>> Weapon::getLoadedWeaponsClass(){
+		return mLoadedWeaponsClass;
 	}
 
 	// Return value methodes

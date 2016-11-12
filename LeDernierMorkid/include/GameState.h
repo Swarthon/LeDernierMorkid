@@ -1,18 +1,18 @@
-#ifndef LDMGAMESTATE_H
-#define LDMGAMESTATE_H
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
-// My includes
+// LeDernierMorkid includes
 #include "LDMMaze.h"
 
-class LDMGameState : public Morkidios::State {
+class GameState : public Morkidios::State {
 public:
-	LDMGameState();
-	virtual ~LDMGameState();
+	GameState();
+	virtual ~GameState();
 
-	DECLARE_APPSTATE_CLASS(LDMGameState)
+	DECLARE_APPSTATE_CLASS(GameState)
 
 	void enter();
 	void createScene();
@@ -43,4 +43,4 @@ private:
 	CEGUI::Window* mFPSWindow;
 };
 
-#endif // LDMGAMESTATE_H
+#endif // GAMESTATE_H

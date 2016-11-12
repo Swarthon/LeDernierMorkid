@@ -1,12 +1,12 @@
-#include "LDMOptionsMenuState.h"
+#include "OptionsMenuState.h"
 
-LDMOptionsMenuState::LDMOptionsMenuState(){
+OptionsMenuState::OptionsMenuState(){
 	mFrameEvent = Ogre::FrameEvent();
 }
-LDMOptionsMenuState::~LDMOptionsMenuState(){
+OptionsMenuState::~OptionsMenuState(){
 }
 
-void LDMOptionsMenuState::enter(){
+void OptionsMenuState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager(Ogre::ST_GENERIC);
 	mSceneManager->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
@@ -17,9 +17,9 @@ void LDMOptionsMenuState::enter(){
 	createScene();
 	createGUI();
 }
-void LDMOptionsMenuState::createScene(){
+void OptionsMenuState::createScene(){
 }
-void LDMOptionsMenuState::createGUI(){
+void OptionsMenuState::createGUI(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 
 	mWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("DefaultWindow", "OptionsMenu");
@@ -35,7 +35,7 @@ void LDMOptionsMenuState::createGUI(){
 	mMouseSensibility->setHeight(CEGUI::UDim(0.05,0));
 	mMouseSensibility->setYPosition(CEGUI::UDim(0.1,0));
 	mMouseSensibility->setUnitIntervalScrollPosition(Morkidios::Input::getSingleton()->mMouseSensibility / Morkidios::Input::getSingleton()->mMouseSensibilityMax);
-	mMouseSensibility->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMOptionsMenuState::mouseSensibilityChanged, this));
+	mMouseSensibility->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&OptionsMenuState::mouseSensibilityChanged, this));
 
 	mMouseSensibilityLabel = mWindow->createChild("Generic/Label", "OptionsMenuMouseSensibilityLabel");
 	mMouseSensibilityLabel->setProperty("Text", (CEGUI::utf8*)_("Mouse Sensibility"));
@@ -56,7 +56,7 @@ void LDMOptionsMenuState::createGUI(){
 	mKeyboardMenuButton->setHeight(CEGUI::UDim(0.1,0));
 	mKeyboardMenuButton->setYPosition(CEGUI::UDim(0.2, 0));
 	mKeyboardMenuButton->setXPosition(CEGUI::UDim(0.1,0));
-	mKeyboardMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::keyboardButtonPressed, this));
+	mKeyboardMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&OptionsMenuState::keyboardButtonPressed, this));
 
 	mGraphicsMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "GraphicMenuOptions"));
 	mGraphicsMenuButton->setProperty("Text", (CEGUI::utf8*)_("Graphics"));
@@ -65,7 +65,7 @@ void LDMOptionsMenuState::createGUI(){
 	mGraphicsMenuButton->setHeight(CEGUI::UDim(0.1,0));
 	mGraphicsMenuButton->setYPosition(CEGUI::UDim(0.2, 0));
 	mGraphicsMenuButton->setXPosition(CEGUI::UDim(0.6,0));
-	mGraphicsMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::graphicButtonPressed, this));
+	mGraphicsMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&OptionsMenuState::graphicButtonPressed, this));
 
 	mLanguageMenuButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "LanguageMenuOptions"));
 	mLanguageMenuButton->setProperty("Text", (CEGUI::utf8*)_("Language"));
@@ -74,7 +74,7 @@ void LDMOptionsMenuState::createGUI(){
 	mLanguageMenuButton->setHeight(CEGUI::UDim(0.1,0));
 	mLanguageMenuButton->setYPosition(CEGUI::UDim(0.35, 0));
 	mLanguageMenuButton->setXPosition(CEGUI::UDim(0.1,0));
-	mLanguageMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::languageButtonPressed, this));
+	mLanguageMenuButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&OptionsMenuState::languageButtonPressed, this));
 
 	mReturnButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "ReturnButton"));
 	mReturnButton->setProperty("Text", (CEGUI::utf8*)_("Return"));
@@ -83,14 +83,14 @@ void LDMOptionsMenuState::createGUI(){
 	mReturnButton->setHeight(CEGUI::UDim(0.1,0));
 	mReturnButton->setYPosition(CEGUI::UDim(0.8, 0));
 	mReturnButton->setXPosition(CEGUI::UDim(0.6,0));
-	mReturnButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMOptionsMenuState::returnButtonPressed, this));
+	mReturnButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&OptionsMenuState::returnButtonPressed, this));
 }
-void LDMOptionsMenuState::exit(){
+void OptionsMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("OptionsMenu");
 	Morkidios::Framework::getSingletonPtr()->mInput->save();
 }
-void LDMOptionsMenuState::resume(){
+void OptionsMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
@@ -100,27 +100,27 @@ void LDMOptionsMenuState::resume(){
 	mLanguageMenuButton->setProperty("Text", (CEGUI::utf8*)_("Language"));
 	mReturnButton->setProperty("Text", (CEGUI::utf8*)_("Return"));
 }
-bool LDMOptionsMenuState::pause(){
+bool OptionsMenuState::pause(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 	mWindow->setVisible(false);
-	
+
 	return true;
 }
 
-bool LDMOptionsMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
+bool OptionsMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
 	CEGUI::GUIContext& context = CEGUI::System::getSingleton().getDefaultGUIContext();
 	context.injectKeyDown((CEGUI::Key::Scan)keyEventRef.key);
 	context.injectChar((CEGUI::Key::Scan)keyEventRef.text);
 	return true;
 }
-bool LDMOptionsMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
+bool OptionsMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp((CEGUI::Key::Scan)keyEventRef.key);
 	if(keyEventRef.key == OIS::KC_ESCAPE)
 		popState();
 	return true;
 }
 
-bool LDMOptionsMenuState::mouseMoved(const OIS::MouseEvent &evt){
+bool OptionsMenuState::mouseMoved(const OIS::MouseEvent &evt){
 	CEGUI::System &sys = CEGUI::System::getSingleton();
 	sys.getDefaultGUIContext().injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
 
@@ -128,39 +128,39 @@ bool LDMOptionsMenuState::mouseMoved(const OIS::MouseEvent &evt){
 		sys.getDefaultGUIContext().injectMouseWheelChange(evt.state.Z.rel / 120.0f);
 	return true;
 }
-bool LDMOptionsMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool OptionsMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(Morkidios::Utils::convertButton(id));
 	return true;
 }
-bool LDMOptionsMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool OptionsMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(Morkidios::Utils::convertButton(id));
 	return true;
 }
 
-void LDMOptionsMenuState::update(double timeSinceLastFrame){
+void OptionsMenuState::update(double timeSinceLastFrame){
 }
 
-bool LDMOptionsMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
+bool OptionsMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
 	popState();
 
 	return true;
 }
-bool LDMOptionsMenuState::graphicButtonPressed(const CEGUI::EventArgs& e){
+bool OptionsMenuState::graphicButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("GraphicMenuState"));
 
 	return true;
 }
-bool LDMOptionsMenuState::keyboardButtonPressed(const CEGUI::EventArgs& e){
+bool OptionsMenuState::keyboardButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("KeyboardMenuState"));
 
 	return true;
 }
-bool LDMOptionsMenuState::languageButtonPressed(const CEGUI::EventArgs& e){
+bool OptionsMenuState::languageButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("LanguageMenuState"));
 
 	return true;
 }
-bool LDMOptionsMenuState::mouseSensibilityChanged(const CEGUI::EventArgs& e){
+bool OptionsMenuState::mouseSensibilityChanged(const CEGUI::EventArgs& e){
 /* getUnitIntervalScrollPosition returns value beetween 0 and 1
  * but the mMouseSensibility has to be between 0 and mMouseSensibilityMax
  * so we have to convert the value

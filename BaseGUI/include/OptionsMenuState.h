@@ -1,15 +1,15 @@
-#ifndef LDMOPTIONSMENUSTATE_H
-#define LDMOPTIONSMENUSTATE_H
+#ifndef OPTIONSMENUSTATE_H
+#define OPTIONSMENUSTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
-class LDMOptionsMenuState : public Morkidios::State {
+class OptionsMenuState : public Morkidios::State {
 public:
-	LDMOptionsMenuState();
-	virtual ~LDMOptionsMenuState();
+	OptionsMenuState();
+	virtual ~OptionsMenuState();
 
-	DECLARE_APPSTATE_CLASS(LDMOptionsMenuState)
+	DECLARE_APPSTATE_CLASS(OptionsMenuState)
 
 	void enter();
 	void createScene();
@@ -45,4 +45,4 @@ private:
 	Ogre::Camera* mCamera;
 };
 
-#endif // LDMOPTIONSMENUSTATE_H
+#endif // OPTIONSMENUSTATE_H

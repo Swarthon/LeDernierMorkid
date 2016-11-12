@@ -66,6 +66,7 @@ namespace Morkidios {
 
 		Features mActual;
 		Features mTotal;
+		bool mRunning;
 
 		// Ogre
 		Ogre::Entity* mEntity;

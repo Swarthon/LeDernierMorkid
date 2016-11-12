@@ -29,22 +29,24 @@ namespace Morkidios {
 		// Construction methodes
 		Object();
 		virtual ~Object();
-		void load(Ogre::SceneManager* smgr, btDynamicsWorld* world, std::string name, std::string path);
-		void setType(Type t);
+		virtual void load(Ogre::SceneManager* smgr, btDynamicsWorld* world, std::string name, std::string path);
+		virtual void setType(Type t);
 
 		// Return value methodes
-		std::string getName();
-		Ogre::Entity* getEntity();
-		Ogre::SceneNode* getSceneNode();
-		Type getType();
-		btRigidBody* getRigidBody();
+		virtual std::string getName();
+		virtual Ogre::Entity* getEntity();
+		virtual Ogre::SceneNode* getSceneNode();
+		virtual Type getType();
+		virtual btRigidBody* getRigidBody();
 
-		// Méthdes diverses
-		void addToWorld(bool b);
-		void setPosition(Ogre::Vector3 pos);
-		void drop(Ogre::Vector3 pos);
-		void get();
-		void show(bool b);
+		// Various methodes
+		virtual void addToWorld(bool b);
+		virtual void drop(Ogre::Vector3 pos);
+		virtual void get();
+		virtual void equipe();				// This is just a callback when equiped
+		virtual void unequipe();			// This is just a callback when unequiped
+		virtual void show(bool b);
+		virtual void update(double timeSinceLastFrame);
 	protected:
 		std::string mName;
 		Type mType;
@@ -60,7 +62,9 @@ namespace Morkidios {
 		btDynamicsWorld* mWorld;
 		Ogre::SceneManager* mSceneManager;
 
+		// Private methodes
 		void attachEntityToSceneNode();
+		void setPosition(Ogre::Vector3 pos);
 	};
 
 }

@@ -1,6 +1,6 @@
-#include "LDMQuitMenu.h"
+#include "QuitMenu.h"
 
-LDMQuitMenu::LDMQuitMenu(CEGUI::Window* parent){
+QuitMenu::QuitMenu(CEGUI::Window* parent){
 	mGreyWindow = parent->createChild("Generic/Image", "GreyWindow");
 	mGreyWindow->setSize(CEGUI::USize(CEGUI::UDim(1,0),CEGUI::UDim(1,0)));
 	mGreyWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0,0), CEGUI::UDim(0,0)));
@@ -46,7 +46,7 @@ LDMQuitMenu::LDMQuitMenu(CEGUI::Window* parent){
 	mDesktop->setText((CEGUI::utf8*)_("Back to desktop"));
 	mDesktop->setProperty("Font","QuitWindowButtonFont");
 }
-LDMQuitMenu::~LDMQuitMenu(){
+QuitMenu::~QuitMenu(){
 	if(CEGUI::WindowManager::getSingleton().isAlive(mWindow))
 		mWindow->destroy();
 	if(CEGUI::WindowManager::getSingleton().isAlive(mGreyWindow))
@@ -56,21 +56,21 @@ LDMQuitMenu::~LDMQuitMenu(){
 }
 
 // Various methodes
-void LDMQuitMenu::show(bool b){
+void QuitMenu::show(bool b){
 	mWindow->setVisible(b);
 	mGreyWindow->setVisible(b);
 }
 
 // Return value methodes
-CEGUI::Window* LDMQuitMenu::getWindow(){
+CEGUI::Window* QuitMenu::getWindow(){
 	return mWindow;
 }
-CEGUI::Window* LDMQuitMenu::getCancel(){
+CEGUI::Window* QuitMenu::getCancel(){
 	return mCancel;
 }
-CEGUI::Window* LDMQuitMenu::getMainMenu(){
+CEGUI::Window* QuitMenu::getMainMenu(){
 	return mMainMenu;
 }
-CEGUI::Window* LDMQuitMenu::getDesktop(){
+CEGUI::Window* QuitMenu::getDesktop(){
 	return mDesktop;
 }

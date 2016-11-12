@@ -1,17 +1,14 @@
-#ifndef LDMGAME_H
-#define LDMGAME_H
+#ifndef GAME_H
+#define GAME_H
 
-// Morkidios
+// Morkidios includes
 #include <Morkidios.h>
 
+// Core includes
+#include <Core.h>
+
 // My includes
-#include "LDMGameState.h"
-#include "LDMMainMenuState.h"
-#include "LDMPauseMenuState.h"
-#include "LDMOptionsMenuState.h"
-#include "LDMGraphicMenuState.h"
-#include "LDMKeyboardMenuState.h"
-#include "LDMLanguageChangeState.h"
+#include "GameState.h"
 
 class LDMGame {
 public:
@@ -24,4 +21,4 @@ private:
 	Morkidios::StateManager* mStateManager;
 };
 
-#endif // LDMGAME_H
+#endif // GAME_H

@@ -16,27 +16,19 @@ namespace Morkidios {
 		TiXmlHandle hdl(&doc);
 		TiXmlElement *name = hdl.FirstChildElement().Element();
 		name->QueryStringAttribute("name", &h->mName);
-		
+
 		TiXmlHandle hdl2(&doc);
-		TiXmlElement *elem = hdl2.FirstChildElement().FirstChildElement("Property").Element();
-		while(elem){
+		for(TiXmlElement *elem = hdl2.FirstChildElement().FirstChildElement("Property").Element(); elem; elem = elem->NextSiblingElement())
 			h->setAttribute(elem);
-			elem = elem->NextSiblingElement();
-		}
 
 		TiXmlHandle hdl3(&doc);
-		TiXmlElement *elem2 = hdl3.FirstChildElement().FirstChildElement("Animation").Element();
-		while(elem2){
-			h->setAnimation(elem2);
-			elem2 = elem2->NextSiblingElement();
-		}
+		for(TiXmlElement *elem = hdl3.FirstChildElement().FirstChildElement("Property").Element(); elem; elem = elem->NextSiblingElement())
+			h->setAnimation(elem);
+
 
 		TiXmlHandle hdl4(&doc);
-		TiXmlElement *elem3 = hdl4.FirstChildElement().FirstChildElement("Bone").Element();
-		while(elem3){
-			h->setBone(elem3);
-			elem3 = elem3->NextSiblingElement();
-		}
+		for(TiXmlElement *elem = hdl4.FirstChildElement().FirstChildElement("Property").Element(); elem; elem = elem->NextSiblingElement())
+			h->setBone(elem);
 
 		return h;
 	}
@@ -62,7 +54,7 @@ namespace Morkidios {
 	void Hand::setAnimation(std::string name, bool b){
 		if(mAnimations[name].first == std::string()){
 			std::cout << "WARNING : Trying to access to animation " << name << " but it doesn't exist\n";
-			return; 
+			return;
 		}
 
 		Ogre::AnimationState* state = mEntity->getAnimationState(mAnimations[name].first);
@@ -85,23 +77,18 @@ namespace Morkidios {
 			std::cout << "WARNING : Trying to set an object to LeftHand bone but this one itsn't set\n";
 			return;
 		}
- 	
+
 		if(ent){
-			if(mLeftHand){
+			if(mLeftHand)
 				mEntity->detachObjectFromBone(mLeftHand);
-				mLeftHand->setVisible(false);
-			}
 			if(ent->getParentSceneNode())
 				ent->detachFromParent();
 			mEntity->attachObjectToBone(mBones["LeftHand"], ent);
-			ent->setVisible(true);
 
 		}
 		else		// if ent is NULL just clear the hand
-			if(mLeftHand){
+			if(mLeftHand)
 				mEntity->detachObjectFromBone(mLeftHand);
-				mLeftHand->setVisible(false);
-			}
 
 		mLeftHand = ent;
 	}
@@ -112,22 +99,17 @@ namespace Morkidios {
 		}
 
 		if(ent){
-			if(mRightHand){
+			if(mRightHand)
 				mEntity->detachObjectFromBone(mRightHand);
-				mRightHand->setVisible(false);
-			}
 			if(ent->getParentSceneNode())
 				ent->detachFromParent();
 			mEntity->attachObjectToBone(mBones["RightHand"], ent);
-			ent->setVisible(true);
 		}
 		else		// if ent is NULL just cler the hand
-			if(mRightHand){
+			if(mRightHand)
 				mEntity->detachObjectFromBone(mRightHand);
-				mRightHand->setVisible(false);
-			}
 		mRightHand = ent;
-	}	
+	}
 
 	// Constructeurs et Destructeurs privates
 	Hand::Hand(){
@@ -151,64 +133,30 @@ namespace Morkidios {
 	void Hand::setAttribute(TiXmlElement* elem){
 		if(elem->Attribute("name")){
 			if(std::string(elem->Attribute("name")) == std::string("offset")){
-				double x, y, z;
+				double x,y,z;
 				elem->QueryDoubleAttribute("x", &x);
 				elem->QueryDoubleAttribute("y", &y);
 				elem->QueryDoubleAttribute("z", &z);
-
-				if(mOffset != Ogre::Vector3::ZERO)
-					std::cout << "WARNING : An offset has already been declared for this object\n";
-				mOffset = Ogre::Vector3 (x,y,z);
+				mOffset = Ogre::Vector3(x,y,z);
 			}
 			if(std::string(elem->Attribute("name")) == std::string("scale")){
-				double x, y, z;
+				double x,y,z;
 				elem->QueryDoubleAttribute("x", &x);
 				elem->QueryDoubleAttribute("y", &y);
 				elem->QueryDoubleAttribute("z", &z);
-
-				if(mScale != Ogre::Vector3::ZERO)
-					std::cout << "WARNING : A scale has already been declared for this object\n";
-				mScale = Ogre::Vector3 (x,y,z);
+				mScale = Ogre::Vector3(x,y,z);
 			}
-			if(std::string(elem->Attribute("name")) == std::string("pitch")){
-				double pitch;
-				elem->QueryDoubleAttribute("value", &pitch);
-
-				if(mPitch != 0)
-					std::cout << "WARNING : A pitch has already been declared for this object\n";
-				mPitch = pitch;
-			}
-			if(std::string(elem->Attribute("name")) == std::string("yaw")){
-				double yaw;
-				elem->QueryDoubleAttribute("value", &yaw);
-
-				if(mYaw != 0)
-					std::cout << "WARNING : A yaw has already been declared for this object\n";
-				mYaw = yaw;
-			}
-			if(std::string(elem->Attribute("name")) == std::string("roll")){
-				double roll;
-				elem->QueryDoubleAttribute("value", &roll);
-
-				if(mRoll != 0)
-					std::cout << "WARNING : A roll has already been declared for this object\n";
-				mRoll = roll;
-			}
-			if(std::string(elem->Attribute("name")) == std::string("timeScale")){
-				double timeScale;
-				elem->QueryDoubleAttribute("value", &timeScale);
-
-				if(mTimeScale != 1)
-					std::cout << "WARNING : A timeScale has already been declared for this object\n";
-				mTimeScale = timeScale;
-			}
+			if(std::string(elem->Attribute("name")) == std::string("pitch"))
+				elem->QueryDoubleAttribute("value", &mPitch);
+			if(std::string(elem->Attribute("name")) == std::string("yaw"))
+				elem->QueryDoubleAttribute("value", &mYaw);
+			if(std::string(elem->Attribute("name")) == std::string("roll"))
+				elem->QueryDoubleAttribute("value", &mRoll);
+			if(std::string(elem->Attribute("name")) == std::string("timeScale"))
+				elem->QueryDoubleAttribute("value", &mTimeScale);
 			if(std::string(elem->Attribute("name")) == std::string("mesh")){
 				std::string meshName;
 				elem->QueryStringAttribute("value", &meshName);
-	
-				if(mEntity)
-					std::cout << "WARNING : An entity has already been declared for this object\n";
-				
 				if(mName != std::string())
 					mEntity = mSceneManager->createEntity(mName.c_str(),meshName.c_str());
 				else {
@@ -230,9 +178,8 @@ namespace Morkidios {
 		}
 	}
 	void Hand::setBone(TiXmlElement* elem){
-		if(elem->Attribute("name") && elem->Attribute("boneName")){
+		if(elem->Attribute("name") && elem->Attribute("boneName"))
 			mBones[elem->Attribute("name")] = std::string(elem->Attribute("boneName"));
-		}
 	}
 
 }

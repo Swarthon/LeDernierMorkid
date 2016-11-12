@@ -31,14 +31,17 @@ namespace Morkidios {
 		void shutdown();
 		void popAllAndPushState(State* state);
 
+		static void loadAllStates(StateManager* sm);
+		static void addToLoadState(std::string name, void(*createMethod)(StateListener*, const Ogre::String name));
 	protected:
 		void init(State *state);
+		virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 
 		std::vector<State*>		mActiveStateStack;
 		std::vector<state_info>		mStates;
 		bool				mbShutdown;
 
-		virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
+		static std::vector<std::pair<std::string,void(*)(StateListener*,const Ogre::String)>> mToLoadStates;
 	};
 
 }

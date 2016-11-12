@@ -7,7 +7,6 @@
 #include "Weapon.h"
 #include "Armour.h"
 #include "Framework.h"
-#include "Global.h"
 #include "Character.h"
 #include "Hand.h"
 #define SPEED 0.025

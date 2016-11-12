@@ -1,7 +1,7 @@
 #include "Character.h"
 
 namespace Morkidios {
-	
+
 	// Construction methodes
 	Character::Character(){
 		mLeftHandObject = NULL;
@@ -17,6 +17,8 @@ namespace Morkidios {
 
 		mGhostObject = NULL;
 		mCharacter = NULL;
+
+		mRunning = false;
 	}
 	Character::~Character(){
 		for(int i = 0; i < mObjects.size(); i++)
@@ -30,12 +32,12 @@ namespace Morkidios {
 			delete mGreaves;
 		if(mShoes)
 			delete mShoes;
-		
+
 		if(mSceneNode){
-			Utils::destroyAllAttachedMovableObjects(mSceneNode);			
+			Utils::destroyAllAttachedMovableObjects(mSceneNode);
 			mSceneManager->getRootSceneNode()->removeChild(mSceneNode);
 		}
-		
+
 	}
 	void Character::initGraphics(std::string name, Ogre::SceneManager* smgr){
 		if(name == std::string()){
@@ -153,7 +155,7 @@ namespace Morkidios {
 	Ogre::SceneNode* Character::getSceneNode(){
 		return mSceneNode;
 	}
-	
+
 	// Various methodes
 	double Character::attack(){/*
 		std::srand(std::time(NULL));

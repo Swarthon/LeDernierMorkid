@@ -4,7 +4,6 @@
 #include <MorkidiosPrerequisites.h>
 
 // My includes
-#include "Global.h"
 #include "Utils.h"
 
 namespace Morkidios {

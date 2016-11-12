@@ -1,15 +1,15 @@
-#ifndef LDMLANGUAGECHANGESTATE_H
-#define LDMLANGUAGECHANGESTATE_H
+#ifndef LANGUAGECHANGESTATE_H
+#define LANGUAGECHANGESTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
-class LDMLanguageChangeState : public Morkidios::State {
+class LanguageChangeState : public Morkidios::State {
 public:
-	LDMLanguageChangeState();
-	virtual ~LDMLanguageChangeState();
+	LanguageChangeState();
+	virtual ~LanguageChangeState();
 
-	DECLARE_APPSTATE_CLASS(LDMLanguageChangeState)
+	DECLARE_APPSTATE_CLASS(LanguageChangeState)
 
 	void enter();
 	void createScene();
@@ -39,4 +39,4 @@ private:
 	Ogre::Camera* mCamera;
 };
 
-#endif // LDMLANGUAGECHANGESTATE_H
+#endif // LANGUAGECHANGESTATE_H

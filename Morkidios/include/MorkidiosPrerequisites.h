@@ -52,5 +52,6 @@
 #define FORWARD		4
 #define BACKWARD	8
 #define UP		16
+#define RUN		32
 
 #define _(STRING) gettext(STRING)

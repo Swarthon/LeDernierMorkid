@@ -1,18 +1,18 @@
-#ifndef LDMPAUSEMENUSTATE_H
-#define LDMPAUSEMENUSTATE_H
+#ifndef PAUSEMENUSTATE_H
+#define PAUSEMENUSTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
 // My includes
-#include "LDMQuitMenu.h"
+#include "QuitMenu.h"
 
-class LDMPauseMenuState : public Morkidios::State {
+class PauseMenuState : public Morkidios::State {
 public:
-	LDMPauseMenuState();
-	virtual ~LDMPauseMenuState();
+	PauseMenuState();
+	virtual ~PauseMenuState();
 
-	DECLARE_APPSTATE_CLASS(LDMPauseMenuState)
+	DECLARE_APPSTATE_CLASS(PauseMenuState)
 
 	void enter();
 	void createScene();
@@ -46,7 +46,7 @@ private:
 	CEGUI::Window* mQuitButton;
 	CEGUI::Window* mStatsWindow;
 
-	LDMQuitMenu* mQuitMenu;
+	QuitMenu* mQuitMenu;
 };
 
-#endif // LDMPAUSEMENUSTATE_H
+#endif // PAUSEMENUSTATE_H

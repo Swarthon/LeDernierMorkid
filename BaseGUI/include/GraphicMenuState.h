@@ -1,15 +1,15 @@
-#ifndef LDMKEYBOARDMENUSTATE_H
-#define LDMKEYBOARDMENUSTATE_H
+#ifndef GRAPHICMENUSTATE_H
+#define GRAPHICMENUSTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
-class LDMKeyboardMenuState : public Morkidios::State {
+class GraphicMenuState : public Morkidios::State {
 public:
-	LDMKeyboardMenuState();
-	virtual ~LDMKeyboardMenuState();
+	GraphicMenuState();
+	virtual ~GraphicMenuState();
 
-	DECLARE_APPSTATE_CLASS(LDMKeyboardMenuState)
+	DECLARE_APPSTATE_CLASS(GraphicMenuState)
 
 	void enter();
 	void createScene();
@@ -29,18 +29,20 @@ public:
 
 private:
 	CEGUI::Window* mWindow;
-	CEGUI::Window* mActive;
-	CEGUI::ScrollablePane* mPane;
+	CEGUI::Scrollbar* mFOV;
+	CEGUI::Window* mFOVLabel;
+	CEGUI::Scrollbar* mCrossHair;
+	CEGUI::Window* mCrossHairLabel;
+	CEGUI::PushButton* mFullScreen;
 	CEGUI::PushButton* mReturnButton;
 
 	// Private methodes
-	void createButton(std::string name, OIS::KeyCode* k, int n, double width, double height, double offset);
 	bool returnButtonPressed(const CEGUI::EventArgs& e);
-	bool buttonClicked(const CEGUI::EventArgs& evt);
-	bool windowClicked(const CEGUI::EventArgs& evt);
-	bool keyPressed(const CEGUI::EventArgs& evt);
+	bool FOVChanged(const CEGUI::EventArgs& e);
+	bool CrossHairChanged(const CEGUI::EventArgs& e);
+	bool fullScreenChanged(const CEGUI::EventArgs& e);
 
 	Ogre::Camera* mCamera;
 };
 
-#endif // LDMKEYBOARDMENUSTATE_H
+#endif // GRAPHICMENUSTATE_H

@@ -26,14 +26,18 @@ namespace Morkidios {
 
 		// Construction methodes
 		Weapon();
-		~Weapon();
+		virtual ~Weapon();
+		static void addLoadedWeaponsClass(std::pair<std::string,Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)> constructor);
+		static std::vector<std::pair<std::string,Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)>> getLoadedWeaponsClass();
 
 		// Return value methodes
-		Features& getFeatures();
+		virtual Features& getFeatures();
 
 		// Various methodes
 	private:
 		Features mFeatures;
+
+		static std::vector<std::pair<std::string,Weapon*(*)(Ogre::SceneManager*, btDynamicsWorld*)>> mLoadedWeaponsClass;
 	};
 
 }

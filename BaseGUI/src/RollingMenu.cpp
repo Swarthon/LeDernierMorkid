@@ -1,6 +1,6 @@
-#include "LDMRollingMenu.h"
+#include "RollingMenu.h"
 
-LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight){
+RollingMenu::RollingMenu(int numFaces, double faceWidth, double faceHeight){
 	// CEGUI in Ogre
 	CEGUI::Window* root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "RollingMenuRoot");
 	for(int i = 0; i < numFaces; i++){
@@ -63,7 +63,7 @@ LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight
 	mClickArea->setHorizontalAlignment(CEGUI::HA_CENTRE);
 	mClickArea->setVerticalAlignment(CEGUI::VA_CENTRE);
 	mClickArea->setSize(CEGUI::USize(CEGUI::UDim(0.75,0),CEGUI::UDim(0.5,0)));
-	mClickArea->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMRollingMenu::activeClicked, this));
+	mClickArea->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&RollingMenu::activeClicked, this));
 
 	CEGUI::Texture& tex = CEGUI::System::getSingleton().getRenderer()->createTexture("DownArrowTexture", "DownArrow.png", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 	Morkidios::Utils::addImageToImageset(tex, "DownArrow");
@@ -78,7 +78,7 @@ LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight
 	mDownButtonLeft->setProperty("DisabledImage","DownArrow");
 	mDownButtonLeft->setProperty("PushedImage","DownArrow");
 	mDownButtonLeft->setSize(CEGUI::USize(CEGUI::UDim(0.1,0),CEGUI::UDim(0.1,0)));
-	mDownButtonLeft->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMRollingMenu::down, this));
+	mDownButtonLeft->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&RollingMenu::down, this));
 
 	mUpButtonLeft = mWindow->createChild("TaharezLook/ImageButton", "UpArrow");
 	mUpButtonLeft->setHorizontalAlignment(CEGUI::HA_LEFT);
@@ -88,7 +88,7 @@ LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight
 	mUpButtonLeft->setProperty("DisabledImage","UpArrow");
 	mUpButtonLeft->setProperty("PushedImage","UpArrow");
 	mUpButtonLeft->setSize(CEGUI::USize(CEGUI::UDim(0.1,0),CEGUI::UDim(0.1,0)));
-	mUpButtonLeft->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMRollingMenu::up, this));
+	mUpButtonLeft->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&RollingMenu::up, this));
 
 	createMenuShape(numFaces, faceWidth, faceHeight);
 
@@ -100,7 +100,7 @@ LDMRollingMenu::LDMRollingMenu(int numFaces, double faceWidth, double faceHeight
 
 	update(0);
 }
-LDMRollingMenu::~LDMRollingMenu(){
+RollingMenu::~RollingMenu(){
 	CEGUI::System::getSingleton().destroyGUIContext(*mContext);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("RollingMenu");
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
@@ -116,16 +116,16 @@ LDMRollingMenu::~LDMRollingMenu(){
 }
 
 // Input methodes
-bool LDMRollingMenu::keyPressed(const OIS::KeyEvent &keyEventRef){
+bool RollingMenu::keyPressed(const OIS::KeyEvent &keyEventRef){
 	return true;
 }
-bool LDMRollingMenu::keyReleased(const OIS::KeyEvent &keyEventRef){
+bool RollingMenu::keyReleased(const OIS::KeyEvent &keyEventRef){
 	if(keyEventRef.key == OIS::KC_RETURN)
 		activeClicked();
 	return true;
 }
 
-bool LDMRollingMenu::mouseMoved(const OIS::MouseEvent &evt){
+bool RollingMenu::mouseMoved(const OIS::MouseEvent &evt){
 	if(mLastClick == 0){
 		if(evt.state.Z.rel < 0)
 			down();
@@ -134,15 +134,15 @@ bool LDMRollingMenu::mouseMoved(const OIS::MouseEvent &evt){
 	}
 	return true;
 }
-bool LDMRollingMenu::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool RollingMenu::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	return true;
 }
-bool LDMRollingMenu::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool RollingMenu::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	return true;
 }
 
 // Various methodes
-void LDMRollingMenu::update(double timeSinceLastFrame){
+void RollingMenu::update(double timeSinceLastFrame){
 	mRenderer->beginRendering();
 	mTextureTarget->clear();
 	mContext->draw();
@@ -169,17 +169,17 @@ void LDMRollingMenu::update(double timeSinceLastFrame){
 		mToRotate -= d;
 	}
 }
-void LDMRollingMenu::show(bool b){
+void RollingMenu::show(bool b){
 	mWindow->setVisible(b);
 }
 
 // Return value methodes
-std::vector<CEGUI::Window*> LDMRollingMenu::getFaces(){
+std::vector<CEGUI::Window*> RollingMenu::getFaces(){
 	return mFaces;
 }
 
 // Private methodes
-void LDMRollingMenu::createMenuShape(int numFaces, double faceWidth, double faceHeight){
+void RollingMenu::createMenuShape(int numFaces, double faceWidth, double faceHeight){
 	double* x = new double[numFaces];
 	double* y = new double[numFaces];
 	double r = faceHeight / (2 * sin(3.141592/numFaces));
@@ -227,7 +227,7 @@ void LDMRollingMenu::createMenuShape(int numFaces, double faceWidth, double face
 	mSceneNode->setPosition(Ogre::Vector3(200+XPosition,0+YPosition,0));
 	mSceneNode->pitch(Ogre::Degree(90-360/numFaces/2));
 }
-bool LDMRollingMenu::down(const CEGUI::EventArgs& evt){
+bool RollingMenu::down(const CEGUI::EventArgs& evt){
 	mToRotate -= Ogre::Degree(360/mNumFaces);
 	mLastClick += ROLLSPEED;
 
@@ -240,7 +240,7 @@ bool LDMRollingMenu::down(const CEGUI::EventArgs& evt){
 	return true;
 }
 
-bool LDMRollingMenu::up(const CEGUI::EventArgs& evt){
+bool RollingMenu::up(const CEGUI::EventArgs& evt){
 	mToRotate += Ogre::Degree(360/mNumFaces);
 	mLastClick += ROLLSPEED;
 
@@ -254,7 +254,7 @@ bool LDMRollingMenu::up(const CEGUI::EventArgs& evt){
 }
 
 //
-bool LDMRollingMenu::activeClicked(const CEGUI::EventArgs& evt){
+bool RollingMenu::activeClicked(const CEGUI::EventArgs& evt){
 	CEGUI::EventArgs wnd = CEGUI::WindowEventArgs(mActive);
 	mActive->fireEvent(CEGUI::Window::EventMouseClick, wnd);
 

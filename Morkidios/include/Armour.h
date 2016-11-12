@@ -11,7 +11,7 @@ namespace Morkidios {
 	class Armour : public Object {
 	public:
 		// Public enums, structs and classes
-		enum Type {
+		enum ArmourType {
 			HELMET,
 			BREASTPLATE,
 			GREAVES,
@@ -34,15 +34,15 @@ namespace Morkidios {
 		// Construction methodes
 		Armour();
 		~Armour();
-		void setType(Type t);
+		void setType(ArmourType t);
 
 		// Return value methodes
-		Type getType();
+		ArmourType getArmourType();
 		Features& getFeatures();
 
 		// Various methodes
 	private:
-		Type mType;
+		ArmourType mArmourType;
 		Features mFeatures;
 	};
 

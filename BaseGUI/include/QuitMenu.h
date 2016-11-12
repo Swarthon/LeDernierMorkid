@@ -1,5 +1,5 @@
-#ifndef LDMQUIT_MENU_H
-#define LDMQUIT_MENU_H
+#ifndef QUIT_MENU_H
+#define QUIT_MENU_H
 
 // OGRE includes
 #include <OGRE/Ogre.h>
@@ -10,10 +10,10 @@
 // Morkidios includes
 #include <Morkidios.h>
 
-class LDMQuitMenu {
+class QuitMenu {
 public:
-	LDMQuitMenu(CEGUI::Window* parent = 0);
-	~LDMQuitMenu();
+	QuitMenu(CEGUI::Window* parent = 0);
+	~QuitMenu();
 
 	// Various methodes
 	void show(bool b);
@@ -31,4 +31,4 @@ private:
 	CEGUI::Window* mGreyWindow;
 };
 
-#endif // LDMQUIT_MENU_H
+#endif // QUIT_MENU_H

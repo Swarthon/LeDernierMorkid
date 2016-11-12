@@ -1,20 +1,19 @@
-#ifndef LDMMAINMENUSTATE_H
-#define LDMMAINMENUSTATE_H
+#ifndef MAINMENUSTATE_H
+#define MAINMENUSTATE_H
 
 // Morkidios includes
 #include <Morkidios.h>
 
 // My includes
-#include "LDMMaze.h"
-#include "LDMRollingMenu.h"
-#include "LDMQuitMenu.h"
+#include "RollingMenu.h"
+#include "QuitMenu.h"
 
-class LDMMainMenuState : public Morkidios::State {
+class MainMenuState : public Morkidios::State {
 public:
-	LDMMainMenuState();
-	virtual ~LDMMainMenuState();
+	MainMenuState();
+	virtual ~MainMenuState();
 
-	DECLARE_APPSTATE_CLASS(LDMMainMenuState)
+	DECLARE_APPSTATE_CLASS(MainMenuState)
 
 	void enter();
 	void createScene();
@@ -51,7 +50,7 @@ private:
 
 	Ogre::Camera* mCamera;
 
-	LDMRollingMenu* mRollingMenu;
+	RollingMenu* mRollingMenu;
 };
 
-#endif // LDMMAINMENUSTATE_H
+#endif // MAINMENUSTATE_H

@@ -7,7 +7,7 @@ LDMGame::LDMGame(){
 		std::cout << "Framework initialization problem";
 		exit(1);
 	}
-	
+
 	Morkidios::Framework::getSingletonPtr()->mLog->logMessage("Le Dernier Morkid is started");
 
 	initGui();
@@ -17,16 +17,14 @@ LDMGame::LDMGame(){
 		Morkidios::GraphicOptions::getSingleton()->save();
 	Morkidios::GraphicOptions::getSingleton()->config();
 
+
+	Core::Core co;
+	co.load();
+
 	mStateManager = new Morkidios::StateManager();
 
-	LDMGameState::create(mStateManager, "GameState");
-	LDMMainMenuState::create(mStateManager, "MainMenuState");
-	LDMPauseMenuState::create(mStateManager, "PauseMenuState");
-	LDMOptionsMenuState::create(mStateManager, "OptionsMenuState");
-	LDMGraphicMenuState::create(mStateManager, "GraphicMenuState");
-	LDMKeyboardMenuState::create(mStateManager, "KeyboardMenuState");
-	LDMLanguageChangeState::create(mStateManager, "LanguageMenuState");
-	Morkidios::Inventory::create(mStateManager, "InventoryState");
+	GameState::create(mStateManager, "GameState");
+	Morkidios::StateManager::loadAllStates(mStateManager);
 
 	mStateManager->start(mStateManager->findByName("MainMenuState"));
 }

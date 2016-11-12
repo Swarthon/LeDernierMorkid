@@ -41,33 +41,33 @@ void LDMMazeRenderer::draw_wall(int i, int j, int dir){
 	switch (dir) {									// UP WALL
 	case 0:
 		Morkidios::Utils::drawLine(mImage, Ogre::ColourValue(1,1,1),
-			border_x + grid_width * i, 
+			border_x + grid_width * i,
 			border_y + grid_height * j,
-			border_x + grid_width * (i+1), 
+			border_x + grid_width * (i+1),
 			border_y + grid_height * j,
 			BRUSH_SIZE);
 		break;
 	case 1:										// RIGHT WALL
 		Morkidios::Utils::drawLine(mImage, Ogre::ColourValue(1,1,1),
-			border_x + grid_width * (i+1), 
+			border_x + grid_width * (i+1),
 			border_y + grid_height * j,
-			border_x + grid_width * (i+1), 
+			border_x + grid_width * (i+1),
 			border_y + grid_height * (j+1),
 			BRUSH_SIZE);
 		break;
 	case 2:										// DOWN WALL
 		Morkidios::Utils::drawLine(mImage, Ogre::ColourValue(1,1,1),
-			border_x + grid_width * i, 
+			border_x + grid_width * i,
 			border_y + grid_height * (j+1),
-			border_x + grid_width * (i+1), 
+			border_x + grid_width * (i+1),
 			border_y + grid_height * (j+1),
 			BRUSH_SIZE);
 		break;
 	case 3:										// LEFT WALL
 		Morkidios::Utils::drawLine(mImage, Ogre::ColourValue(1,1,1),
-			border_x + grid_width * i, 
+			border_x + grid_width * i,
 			border_y + grid_height * j,
-			border_x + grid_width * i, 
+			border_x + grid_width * i,
 			border_y + grid_height * (j+1),
 			BRUSH_SIZE);
 		break;
@@ -95,7 +95,7 @@ void LDMMazeRenderer::init_sets(){
 	for(i = 0; i < maze_size_x*maze_size_y; i++){
 		sets[i] = i;
 	}
-  
+
 	if(hedges)
 		free(hedges);
 	hedges = (int *)malloc(maze_size_x*maze_size_y*2*sizeof(int));
@@ -142,7 +142,7 @@ void LDMMazeRenderer::join_sets(int num1, int num2) {
 
 	s1 = get_set(num1);
 	s2 = get_set(num2);
-  
+
 	if(s1<s2)
 		sets[s2] = s1;
 	else
@@ -159,12 +159,12 @@ void LDMMazeRenderer::exit_sets(){
 }
 void LDMMazeRenderer::set_create_maze(){
 	int i, h, xx, yy, dir, v, w;
-	
+
 	/* Do almo all the setup. */
 	init_sets();
 
 	/* art running through the hedges. */
-	for(i = 0; i < 2*maze_size_x*maze_size_y; i++) { 
+	for(i = 0; i < 2*maze_size_x*maze_size_y; i++) {
 		h = hedges[i];
 
 		/* This one is in the logo or outside border. */
@@ -192,13 +192,13 @@ void LDMMazeRenderer::set_create_maze(){
 		}
 		else {
 			/* Don't join the sets. */
-			build_wall(xx, yy, dir); 
+			build_wall(xx, yy, dir);
 		}
 	}
 
 	build_maze_border();
 	build_all();
-	
+
 
 	/* Free some memory. */
 	exit_sets();
@@ -272,7 +272,7 @@ void LDMMazeRenderer::build_3D(){
 					intersec |= WALL_RIGHT;
 			if(x == maze_size_x && y == maze_size_y){
 				if(maze[x-1][y-1] & WALL_RIGHT)
-					intersec |= WALL_TOP;				
+					intersec |= WALL_TOP;
 				if(maze[x-1][y-1] & WALL_BOTTOM)
 					intersec |= WALL_LEFT;
 			}
@@ -360,7 +360,7 @@ void LDMMazeRenderer::build_collisions(){
 				if(maze[x][y] & WALL_BOTTOM){
 					btRigidBody* body = new btRigidBody(0, new btDefaultMotionState(), box);
 					btTransform transform = btTransform::getIdentity();
-					transform.setOrigin(OgreBulletCollisions::OgreBtConverter::to(Ogre::Vector3(x,height/2,y+1)*scale - halfSize));
+					transform.setOrigin(OgreBulletCollisions::OgreBtConverter::to(Ogre::Vector3(x+0.5,height/2,y+1)*scale - halfSize));
 					transform.setRotation(btQuaternion(btVector3(0,1,0),Ogre::Degree(90).valueRadians()));
 					body->setWorldTransform(transform);
 					mWorld->addRigidBody(body);
@@ -387,10 +387,10 @@ LDMMazeRenderer::LDMMazeRenderer() : mMazeSizeX(1025), mMazeSizeY(1025){
 
 	x = 0;
 	y = 0;
-	
+
 	sets = NULL;
 	hedges = NULL;
-	
+
 	maze = new unsigned short*[MAX_MAZE_SIZE_X];
 	for(int i = 0; i < MAX_MAZE_SIZE_X; i++){
 		maze[i] = new unsigned short[MAX_MAZE_SIZE_Y];
@@ -417,10 +417,10 @@ LDMMazeRenderer::LDMMazeRenderer(int xs, int ys) : mMazeSizeX(xs), mMazeSizeY(ys
 
 	x = 0;
 	y = 0;
-	
+
 	sets = NULL;
 	hedges = NULL;
-	
+
 	maze = new unsigned short*[MAX_MAZE_SIZE_X];
 	for(int i = 0; i < MAX_MAZE_SIZE_X; i++)
 		maze[i] = new unsigned short[MAX_MAZE_SIZE_Y];
@@ -437,7 +437,7 @@ void LDMMazeRenderer::init(btDynamicsWorld* world, Ogre::StaticGeometry* sg, Ogr
 	mSceneManager = smgr;
 
 	grid_width = grid_height = 50;
-	
+
 	x = 0;
 	y = 0;
 
@@ -503,7 +503,7 @@ void LDMMazeRenderer::createRoom(int x, int y, int xx, int yy, int numDoors){
 				maze[posx][y-1] |= DOOR_BOTTOM;
 
 			break;
-		case 1:		// DOWN			
+		case 1:		// DOWN
 			posx = x + (rand()%(xx-x));
 
 			if((maze[posx][yy-1] & DOOR_BOTTOM) != 0)

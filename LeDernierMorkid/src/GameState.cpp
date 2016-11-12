@@ -1,13 +1,13 @@
-#include "LDMGameState.h"
+#include "GameState.h"
 
-LDMGameState::LDMGameState(){
+GameState::GameState(){
 	mFrameEvent = Ogre::FrameEvent();
 	mFPSVisible = false;
 }
-LDMGameState::~LDMGameState(){
+GameState::~GameState(){
 }
 
-void LDMGameState::enter(){
+void GameState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager("OctreeSceneManager");
 	mSceneManager->setAmbientLight(Ogre::ColourValue(0.1f, 0.1f, 0.1f));
 
@@ -16,7 +16,7 @@ void LDMGameState::enter(){
 
 	Morkidios::GraphicOptions::getSingleton()->config();
 }
-void LDMGameState::createScene(){
+void GameState::createScene(){
 	mTerrain = new LDMMaze;
 	mTerrain->init("Maze", mSceneManager);
 	Morkidios::Terrain::setActiveTerrain(mTerrain);
@@ -30,37 +30,16 @@ void LDMGameState::createScene(){
 	c.agility = 1;
 	c.force = 1;
 	c.precision = 1;
-	c.speed = 15;
+	c.speed = 7.5;
 	c.range = 10;
-
-	Morkidios::Object* o = new Morkidios::Object();
-	o->load(mSceneManager, mTerrain->getWorld(), "Sword","Sword.mesh");
-	o->setType(Morkidios::Object::Weapon);
-	Morkidios::Hero::getSingleton()->addObject(o);
-
-	o = new Morkidios::Object();
-	o->load(mSceneManager, mTerrain->getWorld(), "Sinbad","Sinbad.mesh");
-	o->setType(Morkidios::Object::Weapon);
-	Morkidios::Hero::getSingleton()->addObject(o);
-
-	o = new Morkidios::Object();
-	o->load(mSceneManager, mTerrain->getWorld(), "Torch","Torch.mesh");
-	o->setType(Morkidios::Object::Weapon);
-	Morkidios::Hero::getSingleton()->addObject(o);
-	Ogre::Light* spotLight = mSceneManager->createLight("Spotlight");
-	spotLight->setType(Ogre::Light::LT_POINT);
-	spotLight->setDiffuseColour(Ogre::ColourValue(1, 0.7, 0.7));
-	spotLight->setSpecularColour(Ogre::ColourValue(1, 0.7, 0.7));
-	spotLight->setAttenuation(160, 1.0, 0.027, 0.0028);
-	spotLight->setVisible(false);
-	o->getEntity()->attachObjectToBone("Flame",spotLight);
-	Ogre::ParticleSystem* sunParticle = mSceneManager->createParticleSystem("Sun", "Fire");
-	o->getEntity()->attachObjectToBone("Flame",sunParticle);
-
 	Morkidios::Hero::getSingleton()->getTotal() = c;
 	Morkidios::Hero::getSingleton()->getActual() = c;
+
+	Morkidios::Hero::getSingleton()->addObject(Morkidios::Weapon::getLoadedWeaponsClass()[0].second(mSceneManager, mTerrain->getWorld()));
+	Morkidios::Hero::getSingleton()->addObject(Morkidios::Weapon::getLoadedWeaponsClass()[1].second(mSceneManager, mTerrain->getWorld()));
+	Morkidios::Hero::getSingleton()->addObject(Morkidios::Weapon::getLoadedWeaponsClass()[1].second(mSceneManager, mTerrain->getWorld()));
 }
-void LDMGameState::createGUI(){
+void GameState::createGUI(){
 	mMap = new Morkidios::Map;
 	mMap->init("Map.bmp", Ogre::Vector2(mTerrain->getSize().x, mTerrain->getSize().z));
 	mMap->addPoint(Ogre::Vector2::ZERO, "Hero", "HeroMap.png");
@@ -75,7 +54,7 @@ void LDMGameState::createGUI(){
 	mFPSWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("Generic/Label","FPSWindow");
 	mFPSWindow->setVisible(false);
 }
-void LDMGameState::exit(){
+void GameState::exit(){
 	Morkidios::Hero::destroySingleton();
 	delete mTerrain;
 	delete mMap;
@@ -83,7 +62,7 @@ void LDMGameState::exit(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild(mFPSWindow);
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 }
-void LDMGameState::resume(){
+void GameState::resume(){
 	Morkidios::Hero::getSingleton()->setCameraAsActual();
 	mMap->show(true);
 	mCrossHair->show(true);
@@ -91,7 +70,7 @@ void LDMGameState::resume(){
 
 	mFPSWindow->setVisible(mFPSVisible);
 }
-bool LDMGameState::pause(){
+bool GameState::pause(){
 	mMap->show(false);
 	mCrossHair->show(false);
 
@@ -100,10 +79,10 @@ bool LDMGameState::pause(){
 	return true;
 }
 
-bool LDMGameState::keyPressed(const OIS::KeyEvent &keyEventRef){
+bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef){
 	return true;
 }
-bool LDMGameState::keyReleased(const OIS::KeyEvent &keyEventRef){
+bool GameState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	if(keyEventRef.key == OIS::KC_ESCAPE)
 	        pushState(findByName("PauseMenuState"));
 	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Inventory"])
@@ -143,19 +122,18 @@ bool LDMGameState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	return true;
 }
 
-bool LDMGameState::mouseMoved(const OIS::MouseEvent &evt){
+bool GameState::mouseMoved(const OIS::MouseEvent &evt){
 	heroRotate(evt);
-	heroMove();
 	return true;
 }
-bool LDMGameState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool GameState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	return true;
 }
-bool LDMGameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	return true;
 }
 
-void LDMGameState::update(double timeSinceLastFrame){
+void GameState::update(double timeSinceLastFrame){
 	Morkidios::Hero::getSingleton()->update(timeSinceLastFrame);
 
 	mTerrain->update(timeSinceLastFrame);
@@ -168,7 +146,7 @@ void LDMGameState::update(double timeSinceLastFrame){
 		mFPSWindow->setText(std::string("FPS : ") + Morkidios::Utils::convertIntToString(Morkidios::Framework::getSingletonPtr()->mRenderWindow->getAverageFPS()));
 }
 
-void LDMGameState::heroMove(){
+void GameState::heroMove(){
 	int d = 0;
 	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Forward"]))
 		d |= FORWARD;
@@ -180,6 +158,8 @@ void LDMGameState::heroMove(){
 		d |= RIGHT;
 	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Jump"]))
 		d |= UP;
+	if(Morkidios::Framework::getSingletonPtr()->mInput->mKeyboard->isKeyDown(Morkidios::Input::getSingleton()->mKeyMap["Run"]))
+		d |= RUN;
 
 	if(d != 0){
 		Ogre::Vector3 pos = Morkidios::Hero::getSingleton()->getPosition();
@@ -188,6 +168,6 @@ void LDMGameState::heroMove(){
 
 	Morkidios::Hero::getSingleton()->move(d);
 }
-void LDMGameState::heroRotate(const OIS::MouseEvent &evt){
+void GameState::heroRotate(const OIS::MouseEvent &evt){
 	Morkidios::Hero::getSingleton()->rotate(evt);
 }

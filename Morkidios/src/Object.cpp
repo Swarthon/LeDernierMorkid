@@ -1,7 +1,7 @@
 #include "Object.h"
 
 namespace Morkidios {
-	
+
 	// Construction methodes
 	Object::Object(){
 		mName = std::string();
@@ -20,7 +20,7 @@ namespace Morkidios {
 			mEntity->_getManager()->destroyEntity(mEntity);
 		}
 		if(mSceneNode){
-			Utils::destroyAllAttachedMovableObjects(mSceneNode);			
+			Utils::destroyAllAttachedMovableObjects(mSceneNode);
 			mSceneNode->getParent()->removeChild(mSceneNode);
 		}
 	}
@@ -46,12 +46,11 @@ namespace Morkidios {
 		show(false);
 		mSceneNode = smgr->getRootSceneNode()->createChildSceneNode(name);
 		mSceneNode->attachObject(mEntity);
-		mName = name;
 		mWorld = world;
 		mSceneManager = smgr;
 
-		btCollisionShape* shape = OgreBulletCollisions::StaticMeshToShapeConverter(mEntity).createConvexDecomposition()->getBulletShape();	
-		
+		btCollisionShape* shape = OgreBulletCollisions::StaticMeshToShapeConverter(mEntity).createConvexDecomposition()->getBulletShape();
+
 		btVector3 localInertia(0,0,0);
 		btScalar mass = 1.f;
 		if(mass)
@@ -69,7 +68,7 @@ namespace Morkidios {
 		mType = t;
 	}
 
-	// Return value methodes	
+	// Return value methodes
 	std::string Object::getName(){
 		return mName;
 	}
@@ -99,23 +98,24 @@ namespace Morkidios {
 		}
 		mActiveCollision = b;
 	}
-	void Object::setPosition(Ogre::Vector3 pos){
-		if(mSceneNode && mBody && mActiveCollision){
-			mSceneNode->setPosition(pos);
-			mBody->getWorldTransform().setOrigin(OgreBulletCollisions::OgreBtConverter::to(pos));
-		}
-	}
-	void Object::attachEntityToSceneNode(){
-		mEntity->detachFromParent();
-		mSceneNode->attachObject(mEntity);
-	}
 	void Object::drop(Ogre::Vector3 pos){
 		addToWorld(true);
 		setPosition(pos);
 		show(true);
+
+		mState = Dropped;
 	}
 	void Object::get(){
 		addToWorld(false);
+		show(false);
+
+		mState = Hidden;
+	}
+	void Object::equipe(){
+		show(true);
+		mState = Held;
+	}
+	void Object::unequipe(){
 		show(false);
 	}
 	void Object::show(bool b){
@@ -125,5 +125,19 @@ namespace Morkidios {
 			Ogre::MovableObject* o = it.getNext();
 			o->setVisible(b);
 		}
+	}
+	void Object::update(double timeSinceLastFrame){
+	}
+
+	// Private methodes
+	void Object::setPosition(Ogre::Vector3 pos){
+		if(mSceneNode && mBody && mActiveCollision){
+			mSceneNode->setPosition(pos);
+			mBody->getWorldTransform().setOrigin(OgreBulletCollisions::OgreBtConverter::to(pos));
+		}
+	}
+	void Object::attachEntityToSceneNode(){
+		mEntity->detachFromParent();
+		mSceneNode->attachObject(mEntity);
 	}
 }

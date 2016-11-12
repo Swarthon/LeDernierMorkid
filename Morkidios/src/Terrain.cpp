@@ -28,7 +28,7 @@ namespace Morkidios {
 
 		delete mWorld;
 	}
-	void Terrain::init(Ogre::SceneManager* smgr, double worldSize, double height, std::string name){		
+	void Terrain::init(Ogre::SceneManager* smgr, double worldSize, double height, std::string name){
 		if(!smgr){
 			std::cerr << "Invalid SceneManager for initialization of Terrain in init()\n";
 			exit(1);
@@ -55,15 +55,15 @@ namespace Morkidios {
 		mWorld = new btDiscreteDynamicsWorld( mDispatcher, mBroadphase, mSolver, mCollisionConfiguration );
 		mWorld->setGravity( btVector3(0.0,-9.8,0.0));
 	}
-	
+
 	// Return value methodes
 	btDynamicsWorld* Terrain::getWorld() {
-		return mWorld; 	
+		return mWorld;
 	}
 	Ogre::Vector3 Terrain::getSize(){
 		return mSize;
 	}
-	
+
 	// Various methodes
 	void Terrain::update(double time){
 		// Bullet
@@ -72,6 +72,9 @@ namespace Morkidios {
 		// AI
 
 		// Objects
+		for (size_t i = 0; i < mDroppedObjects.size(); i++) {
+			mDroppedObjects[i]->update(time);
+		}
 	}
 	void Terrain::addDroppedObject(Object* obj){
 		if(obj)

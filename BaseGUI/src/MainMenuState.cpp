@@ -1,12 +1,12 @@
-#include "LDMMainMenuState.h"
+#include "MainMenuState.h"
 
-LDMMainMenuState::LDMMainMenuState(){
+MainMenuState::MainMenuState(){
 	mFrameEvent = Ogre::FrameEvent();
 }
-LDMMainMenuState::~LDMMainMenuState(){
+MainMenuState::~MainMenuState(){
 }
 
-void LDMMainMenuState::enter(){
+void MainMenuState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager("OctreeSceneManager");
 	mSceneManager->setAmbientLight(Ogre::ColourValue(1.f, 1.f, 1.f));
 	mHeroSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager("OctreeSceneManager");
@@ -15,20 +15,20 @@ void LDMMainMenuState::enter(){
 	createGUI();
 	createScene();
 
-	mRollingMenu = new LDMRollingMenu(5,100,50);
+	mRollingMenu = new RollingMenu(5,100,50);
 	mRollingMenu->getFaces()[0]->setText((CEGUI::utf8*)(_("Solo")));
-	mRollingMenu->getFaces()[0]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::playButtonPressed, this));
+	mRollingMenu->getFaces()[0]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&MainMenuState::playButtonPressed, this));
 	mRollingMenu->getFaces()[1]->setText((CEGUI::utf8*)(_("Options")));
-	mRollingMenu->getFaces()[1]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::optionsButtonPressed, this));
+	mRollingMenu->getFaces()[1]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&MainMenuState::optionsButtonPressed, this));
 	mRollingMenu->getFaces()[2]->setText((CEGUI::utf8*)(_("Multiplayer (Incoming)")));
 	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)(_("Encyclopedia")));
 	mRollingMenu->getFaces()[4]->setText((CEGUI::utf8*)(_("Exit")));
-	mRollingMenu->getFaces()[4]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&LDMMainMenuState::quitButtonPressed, this));
+	mRollingMenu->getFaces()[4]->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(&MainMenuState::quitButtonPressed, this));
 }
-void LDMMainMenuState::createScene(){
+void MainMenuState::createScene(){
 	mHeroTexture = Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->createManual("RTTMainMenu", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::TEX_TYPE_2D, 512, 512, 0, Ogre::PF_R8G8B8, Ogre::TU_RENDERTARGET);
 	Ogre::RenderTexture *rtex = mHeroTexture->getBuffer()->getRenderTarget();
-	
+
 	mHeroCamera = mHeroSceneManager->createCamera("MainMenuHeroBaseCamera");
 	mHeroCamera->setNearClipDistance(1);
 	mHeroViewport = rtex->addViewport(mHeroCamera);
@@ -60,7 +60,7 @@ void LDMMainMenuState::createScene(){
 
 	mHeroWindow->setProperty("Image", "MainMenuHeroImage");
 }
-void LDMMainMenuState::createGUI(){
+void MainMenuState::createGUI(){
 	mWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("DefaultWindow", "MainMenu");
 	mWindow->setSize(CEGUI::USize(CEGUI::UDim(1,0), CEGUI::UDim(1,0)));
 	mWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0,0), CEGUI::UDim(0,0)));
@@ -84,7 +84,7 @@ void LDMMainMenuState::createGUI(){
 
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 }
-void LDMMainMenuState::exit(){
+void MainMenuState::exit(){
 	delete mRollingMenu;
 
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
@@ -93,7 +93,7 @@ void LDMMainMenuState::exit(){
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("RTTMainMenu");
 	CEGUI::ImageManager::getSingleton().destroy("MainMenuHeroImage");
 }
-void LDMMainMenuState::resume(){
+void MainMenuState::resume(){
 	mWindow->setVisible(true);
 	mRollingMenu->show(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
@@ -103,27 +103,27 @@ void LDMMainMenuState::resume(){
 	mRollingMenu->getFaces()[3]->setText((CEGUI::utf8*)(_("Encyclopedia")));
 	mRollingMenu->getFaces()[4]->setText((CEGUI::utf8*)(_("Exit")));
 }
-bool LDMMainMenuState::pause(){
+bool MainMenuState::pause(){
 	mWindow->setVisible(false);
 	mRollingMenu->show(false);
 
 	return true;
 }
 
-bool LDMMainMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
+bool MainMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
 	CEGUI::GUIContext& context = CEGUI::System::getSingleton().getDefaultGUIContext();
 	context.injectKeyDown((CEGUI::Key::Scan)keyEventRef.key);
 	context.injectChar((CEGUI::Key::Scan)keyEventRef.text);
 	mRollingMenu->keyPressed(keyEventRef);
 	return true;
 }
-bool LDMMainMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
+bool MainMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp((CEGUI::Key::Scan)keyEventRef.key);
 	mRollingMenu->keyReleased(keyEventRef);
 	return true;
 }
 
-bool LDMMainMenuState::mouseMoved(const OIS::MouseEvent &evt){
+bool MainMenuState::mouseMoved(const OIS::MouseEvent &evt){
 	CEGUI::System &sys = CEGUI::System::getSingleton();
 	sys.getDefaultGUIContext().injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
 
@@ -133,18 +133,18 @@ bool LDMMainMenuState::mouseMoved(const OIS::MouseEvent &evt){
 	mRollingMenu->mouseMoved(evt);
 	return true;
 }
-bool LDMMainMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool MainMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(Morkidios::Utils::convertButton(id));
 	mRollingMenu->mousePressed(evt, id);
 	return true;
 }
-bool LDMMainMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool MainMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(Morkidios::Utils::convertButton(id));
 	mRollingMenu->mouseReleased(evt, id);
 	return true;
 }
 
-void LDMMainMenuState::update(double timeSinceLastFrame){
+void MainMenuState::update(double timeSinceLastFrame){
 	// Heros Rotate
 	double numRoundPerMinutes = 10;
 	double rotate = timeSinceLastFrame * (numRoundPerMinutes / 60.0) * 360;
@@ -156,17 +156,17 @@ void LDMMainMenuState::update(double timeSinceLastFrame){
 	//------------------------------------------------
 }
 
-bool LDMMainMenuState::playButtonPressed(const CEGUI::EventArgs& e){
+bool MainMenuState::playButtonPressed(const CEGUI::EventArgs& e){
 	changeState(findByName("GameState"));
 
 	return true;
 }
-bool LDMMainMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
+bool MainMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("OptionsMenuState"));
 
 	return true;
 }
-bool LDMMainMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
+bool MainMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
 	shutdown();
 
 	return true;

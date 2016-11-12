@@ -1,12 +1,12 @@
-#include "LDMGraphicMenuState.h"
+#include "GraphicMenuState.h"
 
-LDMGraphicMenuState::LDMGraphicMenuState(){
+GraphicMenuState::GraphicMenuState(){
 	mFrameEvent = Ogre::FrameEvent();
 }
-LDMGraphicMenuState::~LDMGraphicMenuState(){
+GraphicMenuState::~GraphicMenuState(){
 }
 
-void LDMGraphicMenuState::enter(){
+void GraphicMenuState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager(Ogre::ST_GENERIC);
 	mSceneManager->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
@@ -17,9 +17,9 @@ void LDMGraphicMenuState::enter(){
 	createScene();
 	createGUI();
 }
-void LDMGraphicMenuState::createScene(){
+void GraphicMenuState::createScene(){
 }
-void LDMGraphicMenuState::createGUI(){
+void GraphicMenuState::createGUI(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 
 	mWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("DefaultWindow", "GraphicMenu");
@@ -34,7 +34,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFOV->setWidth(CEGUI::UDim(0.8,0));
 	mFOV->setHeight(CEGUI::UDim(0.05,0));
 	mFOV->setYPosition(CEGUI::UDim(0.1,0));
-	mFOV->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMGraphicMenuState::FOVChanged, this));
+	mFOV->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&GraphicMenuState::FOVChanged, this));
 	mFOV->setUnitIntervalScrollPosition((Morkidios::GraphicOptions::getSingleton()->mFOV-Ogre::Degree(50).valueRadians())/Ogre::Degree(50).valueRadians());
 
 	mFOVLabel = mWindow->createChild("Generic/Label", "GraphicMenuFOVLabel");
@@ -54,7 +54,7 @@ void LDMGraphicMenuState::createGUI(){
 	mCrossHair->setWidth(CEGUI::UDim(0.8,0));
 	mCrossHair->setHeight(CEGUI::UDim(0.05,0));
 	mCrossHair->setYPosition(CEGUI::UDim(0.2,0));
-	mCrossHair->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&LDMGraphicMenuState::CrossHairChanged, this));
+	mCrossHair->subscribeEvent(CEGUI::Scrollbar::EventScrollPositionChanged, CEGUI::Event::Subscriber(&GraphicMenuState::CrossHairChanged, this));
 	mCrossHair->setUnitIntervalScrollPosition(Morkidios::GraphicOptions::getSingleton()->mCrossHairSize.d_scale);
 
 	mCrossHairLabel = mWindow->createChild("Generic/Label", "GraphicMenuCrossHairLabel");
@@ -80,7 +80,7 @@ void LDMGraphicMenuState::createGUI(){
 	mFullScreen->setHeight(CEGUI::UDim(0.1,0));
 	mFullScreen->setYPosition(CEGUI::UDim(0.3,0));
 	mFullScreen->setXPosition(CEGUI::UDim(0.05,0));
-	mFullScreen->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMGraphicMenuState::fullScreenChanged, this));
+	mFullScreen->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GraphicMenuState::fullScreenChanged, this));
 
 	mReturnButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "ReturnButton"));
 	mReturnButton->setProperty("Text", _("Return"));
@@ -89,15 +89,15 @@ void LDMGraphicMenuState::createGUI(){
 	mReturnButton->setHeight(CEGUI::UDim(0.1,0));
 	mReturnButton->setYPosition(CEGUI::UDim(0.8, 0));
 	mReturnButton->setXPosition(CEGUI::UDim(0.6,0));
-	mReturnButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMGraphicMenuState::returnButtonPressed, this));
+	mReturnButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GraphicMenuState::returnButtonPressed, this));
 }
-void LDMGraphicMenuState::exit(){
+void GraphicMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("GraphicMenu");
 
 	Morkidios::GraphicOptions::getSingleton()->save();
 }
-void LDMGraphicMenuState::resume(){
+void GraphicMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
@@ -110,27 +110,27 @@ void LDMGraphicMenuState::resume(){
 	else
 		mFullScreen->setText(mFullScreen->getText() + CEGUI::String(_(" : No")));
 }
-bool LDMGraphicMenuState::pause(){
+bool GraphicMenuState::pause(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 	mWindow->setVisible(false);
 
 	return true;
 }
 
-bool LDMGraphicMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
+bool GraphicMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
 	CEGUI::GUIContext& context = CEGUI::System::getSingleton().getDefaultGUIContext();
 	context.injectKeyDown((CEGUI::Key::Scan)keyEventRef.key);
 	context.injectChar((CEGUI::Key::Scan)keyEventRef.text);
 	return true;
 }
-bool LDMGraphicMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
+bool GraphicMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp((CEGUI::Key::Scan)keyEventRef.key);
 	if(keyEventRef.key == OIS::KC_ESCAPE)
 		popState();
 	return true;
 }
 
-bool LDMGraphicMenuState::mouseMoved(const OIS::MouseEvent &evt){
+bool GraphicMenuState::mouseMoved(const OIS::MouseEvent &evt){
 	CEGUI::System &sys = CEGUI::System::getSingleton();
 	sys.getDefaultGUIContext().injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
 
@@ -138,25 +138,25 @@ bool LDMGraphicMenuState::mouseMoved(const OIS::MouseEvent &evt){
 		sys.getDefaultGUIContext().injectMouseWheelChange(evt.state.Z.rel / 120.0f);
 	return true;
 }
-bool LDMGraphicMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool GraphicMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(Morkidios::Utils::convertButton(id));
 	return true;
 }
-bool LDMGraphicMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool GraphicMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(Morkidios::Utils::convertButton(id));
 	return true;
 }
 
-void LDMGraphicMenuState::update(double timeSinceLastFrame){
+void GraphicMenuState::update(double timeSinceLastFrame){
 }
 
 
-bool LDMGraphicMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
+bool GraphicMenuState::returnButtonPressed(const CEGUI::EventArgs& e){
 	popState();
 
 	return true;
 }
-bool LDMGraphicMenuState::FOVChanged(const CEGUI::EventArgs& e){
+bool GraphicMenuState::FOVChanged(const CEGUI::EventArgs& e){
 	double newVal = mFOV->getUnitIntervalScrollPosition() * Ogre::Degree(50).valueRadians() + Ogre::Degree(50).valueRadians();
 	Morkidios::GraphicOptions::getSingleton()->mFOV = newVal;
 
@@ -164,7 +164,7 @@ bool LDMGraphicMenuState::FOVChanged(const CEGUI::EventArgs& e){
 
 	return true;
 }
-bool LDMGraphicMenuState::CrossHairChanged(const CEGUI::EventArgs& e){
+bool GraphicMenuState::CrossHairChanged(const CEGUI::EventArgs& e){
 	double newVal = mCrossHair->getUnitIntervalScrollPosition();
 	Morkidios::GraphicOptions::getSingleton()->mCrossHairSize = CEGUI::UDim(newVal,0);
 
@@ -172,7 +172,7 @@ bool LDMGraphicMenuState::CrossHairChanged(const CEGUI::EventArgs& e){
 
 	return true;
 }
-bool LDMGraphicMenuState::fullScreenChanged(const CEGUI::EventArgs& e){
+bool GraphicMenuState::fullScreenChanged(const CEGUI::EventArgs& e){
 	Morkidios::GraphicOptions::getSingleton()->mFullScreen = !Morkidios::GraphicOptions::getSingleton()->mFullScreen;
 
 	std::string s, c = mFullScreen->getText().c_str();

@@ -61,6 +61,10 @@ namespace Morkidios {
 
 		if(mHand)
 			mHand->addTime(timeSinceLastFrame);
+		if(mRightHandObject)
+			mRightHandObject->update(timeSinceLastFrame);
+		if(mLeftHandObject)
+			mLeftHandObject->update(timeSinceLastFrame);
 	}
 	void Hero::move(int d){
 		if(!mCharacter) {
@@ -79,18 +83,18 @@ namespace Morkidios {
 		forward.normalize();
 
 		btVector3 direction = btVector3(0,0,0);
-		if((d & FORWARD) != 0)
+		if(d & FORWARD)
 			direction -= forward;
-		if((d & BACKWARD) != 0)
+		if(d & BACKWARD)
 			direction += forward;
-		if((d & LEFT) != 0){
+		if(d & LEFT){
 			btTransform moveTransform = ghostTransform;
 			moveTransform.setRotation(moveTransform.getRotation() * btQuaternion(btVector3(0,1,0), Ogre::Degree(90).valueRadians()));
 			btVector3 moveForward = moveTransform.getBasis()[2];
 			moveForward[0] *= -1;
 			direction -= moveForward;
 		}
-		if((d & RIGHT) != 0){
+		if(d & RIGHT){
 			btTransform moveTransform = ghostTransform;
 			moveTransform.setRotation(moveTransform.getRotation() * btQuaternion(btVector3(0,1,0), Ogre::Degree(90).valueRadians()));
 			btVector3 moveForward = moveTransform.getBasis()[2];
@@ -98,10 +102,15 @@ namespace Morkidios {
 			direction += moveForward;
 		}
 
-		if((d & UP) != 0)
+		if(d & UP)
 			mCharacter->jump();
 
-		mCharacter->setWalkDirection(direction*mActual.speed*SPEED);
+		if(d & RUN)
+			mRunning = true;
+		if(!(d & FORWARD))
+			mRunning = false;
+
+		mCharacter->setWalkDirection(direction * mActual.speed * SPEED * (mRunning+1));	// Using mRunning +1 because when Hero runs, just double speed
 		// ---------
 
 		if(direction == btVector3(0,0,0))
@@ -143,25 +152,29 @@ namespace Morkidios {
 	}
 	void Hero::unequipeRightHand(){
 		mHand->setRightHandObject(NULL);
+		if(mRightHandObject)
+			mRightHandObject->unequipe();
 		mRightHandObject = NULL;
 	}
 	void Hero::equipeRightHand(Object* obj){
 		if(mRightHandObject)
 			unequipeRightHand();
-		obj->show(true);
 		mHand->setRightHandObject(obj->getEntity());
 		mRightHandObject = obj;
+		mRightHandObject->equipe();
 	}
 	void Hero::unequipeLeftHand(){
 		mHand->setLeftHandObject(NULL);
+		if(mLeftHandObject)
+			mLeftHandObject->unequipe();
 		mLeftHandObject = NULL;
 	}
 	void Hero::equipeLeftHand(Object* obj){
 		if(mLeftHandObject)
 			unequipeLeftHand();
-		obj->show(true);
 		mHand->setLeftHandObject(obj->getEntity());
 		mLeftHandObject = obj;
+		mLeftHandObject->equipe();
 	}
 	void Hero::drop(Object* o){
 		o->drop(mSceneNode->getPosition() + Ogre::Vector3(0,0,5) * (mSceneNode->getOrientation()*Ogre::Vector3::NEGATIVE_UNIT_Z));
@@ -273,33 +286,5 @@ namespace Morkidios {
 		mHand = NULL;
 	}
 	Hero::~Hero(){
-	}
-
-	// Private methodes
-	void Hero::holdRightHand(Object* obj){
-		if(!mHand){
-			return;
-		}
-
-		std::vector<Object*>::iterator it = std::find(mObjects.begin(), mObjects.end(), obj);
-		if(it != mObjects.end()){
-			mHand->setRightHandObject(obj->getEntity());
-			mRightHandObject = obj;
-		}
-		else
-			std::cout << "WARNING : No object " << obj->getName() << " owned by Hero\n";
-	}
-	void Hero::holdLeftHand(Object* obj){
-		if(!mHand){
-			return;
-		}
-
-		std::vector<Object*>::iterator it = std::find(mObjects.begin(), mObjects.end(), obj);
-		if(it != mObjects.end()){
-			mHand->setLeftHandObject(obj->getEntity());
-			mLeftHandObject = obj;
-		}
-		else
-			std::cout << "WARNING : No object " << obj->getName() << " owned by Hero\n";
 	}
 }

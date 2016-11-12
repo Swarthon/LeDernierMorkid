@@ -4,18 +4,18 @@ namespace Morkidios {
 
 	// Construction methodes
 	Armour::Armour(){
-		mType = NONE;
+		mArmourType = NONE;
 		mFeatures = Features();
 	}
 	Armour::~Armour(){
 	}
-	void Armour::setType(Armour::Type t){
-		mType = t;
+	void Armour::setType(ArmourType t){
+		mArmourType = t;
 	}
 
 	// Return value methodes
-	Armour::Type Armour::getType(){
-		return mType;
+	Armour::ArmourType Armour::getArmourType(){
+		return mArmourType;
 	}
 	Armour::Features& Armour::getFeatures(){
 		return mFeatures;

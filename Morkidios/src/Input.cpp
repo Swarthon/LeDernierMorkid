@@ -37,8 +37,7 @@ namespace Morkidios {
 				mKeyMap[it->first] = (OIS::KeyCode)Ogre::StringConverter::parseInt(it->second);
 
 			return true;
-		}
-		catch (Ogre::Exception& e){
+		} catch (Ogre::Exception& e){
 			return false;
 		}
 	}
@@ -50,7 +49,7 @@ namespace Morkidios {
 		mMouse = 0;
 
 		mFileName = "input.cfg";
-
+		
 		mMouseSensibility = 0.33;
 		mKeyMap["Forward"]		= OIS::KC_Z;		_("Forward");
 		mKeyMap["Backward"]		= OIS::KC_S;		_("Backward");

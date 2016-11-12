@@ -1,12 +1,12 @@
-#include "LDMPauseMenuState.h"
+#include "PauseMenuState.h"
 
-LDMPauseMenuState::LDMPauseMenuState(){
+PauseMenuState::PauseMenuState(){
 	mFrameEvent = Ogre::FrameEvent();
 }
-LDMPauseMenuState::~LDMPauseMenuState(){
+PauseMenuState::~PauseMenuState(){
 }
 
-void LDMPauseMenuState::enter(){
+void PauseMenuState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager(Ogre::ST_GENERIC);
 	mSceneManager->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
@@ -17,9 +17,9 @@ void LDMPauseMenuState::enter(){
 	createScene();
 	createGUI();
 }
-void LDMPauseMenuState::createScene(){
+void PauseMenuState::createScene(){
 }
-void LDMPauseMenuState::createGUI(){
+void PauseMenuState::createGUI(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 
 	mWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("DefaultWindow", "PauseMenu");
@@ -35,7 +35,7 @@ void LDMPauseMenuState::createGUI(){
 	mContinueButton->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.1,0)));
 	mContinueButton->setHorizontalAlignment(CEGUI::HA_RIGHT);
 	mContinueButton->setPosition(CEGUI::UVector2(CEGUI::UDim(-0.16,0), CEGUI::UDim(0.1,0)));
-	mContinueButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::continueButtonPressed, this));
+	mContinueButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&PauseMenuState::continueButtonPressed, this));
 
 	mOptionsButton = mWindow->createChild("AlfiskoSkin/Button", "PauseMenuOptionsButton");
 	mOptionsButton->setProperty("Text", (CEGUI::utf8*)_("Options"));
@@ -44,7 +44,7 @@ void LDMPauseMenuState::createGUI(){
 	mOptionsButton->setVerticalAlignment(CEGUI::VA_CENTRE);
 	mOptionsButton->setHorizontalAlignment(CEGUI::HA_RIGHT);
 	mOptionsButton->setXPosition(CEGUI::UDim(-0.16,0));
-	mOptionsButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::optionsButtonPressed, this));
+	mOptionsButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&PauseMenuState::optionsButtonPressed, this));
 
 	mQuitButton = mWindow->createChild("AlfiskoSkin/Button", "PauseMenuQuitButton");
 	mQuitButton->setProperty("Text", (CEGUI::utf8*)_("Quit"));
@@ -52,19 +52,19 @@ void LDMPauseMenuState::createGUI(){
 	mQuitButton->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.1,0)));
 	mQuitButton->setHorizontalAlignment(CEGUI::HA_RIGHT);
 	mQuitButton->setPosition(CEGUI::UVector2(CEGUI::UDim(-0.16,0), CEGUI::UDim(0.8,0)));
-	mQuitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitButtonPressed, this));
+	mQuitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&PauseMenuState::quitButtonPressed, this));
 
 	mStatsWindow = mWindow->createChild("TaharezLook/Listbox", "PauseMenuStatsWindow");
 	mStatsWindow->setSize(CEGUI::USize(CEGUI::UDim(0.3,0), CEGUI::UDim(0.9,0)));
 	mStatsWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0.15,0), CEGUI::UDim(0.05,0)));
 
-	mQuitMenu = new LDMQuitMenu(mWindow);
+	mQuitMenu = new QuitMenu(mWindow);
 	mQuitMenu->show(false);
-	mQuitMenu->getCancel()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitCancelButtonPressed, this));
-	mQuitMenu->getMainMenu()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitMainMenuButtonPressed, this));
-	mQuitMenu->getDesktop()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&LDMPauseMenuState::quitDesktopButtonPressed, this));
+	mQuitMenu->getCancel()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&PauseMenuState::quitCancelButtonPressed, this));
+	mQuitMenu->getMainMenu()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&PauseMenuState::quitMainMenuButtonPressed, this));
+	mQuitMenu->getDesktop()->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&PauseMenuState::quitDesktopButtonPressed, this));
 }
-void LDMPauseMenuState::exit(){
+void PauseMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("PauseMenu");
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("PauseMenuGreyWindowTexture");
@@ -72,13 +72,13 @@ void LDMPauseMenuState::exit(){
 
 	delete mQuitMenu;
 }
-void LDMPauseMenuState::resume(){
+void PauseMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
 	mQuitMenu->show(false);
 }
-bool LDMPauseMenuState::pause(){
+bool PauseMenuState::pause(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 	mWindow->setVisible(false);
 	mQuitMenu->show(false);
@@ -86,13 +86,13 @@ bool LDMPauseMenuState::pause(){
 	return true;
 }
 
-bool LDMPauseMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
+bool PauseMenuState::keyPressed(const OIS::KeyEvent &keyEventRef){
 	CEGUI::GUIContext& context = CEGUI::System::getSingleton().getDefaultGUIContext();
 	context.injectKeyDown((CEGUI::Key::Scan)keyEventRef.key);
 	context.injectChar((CEGUI::Key::Scan)keyEventRef.text);
 	return true;
 }
-bool LDMPauseMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
+bool PauseMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp((CEGUI::Key::Scan)keyEventRef.key);
 
 	if(keyEventRef.key == OIS::KC_ESCAPE && !mQuitMenu->getWindow()->isVisible())
@@ -102,7 +102,7 @@ bool LDMPauseMenuState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	return true;
 }
 
-bool LDMPauseMenuState::mouseMoved(const OIS::MouseEvent &evt){
+bool PauseMenuState::mouseMoved(const OIS::MouseEvent &evt){
 	CEGUI::System &sys = CEGUI::System::getSingleton();
 	sys.getDefaultGUIContext().injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
 
@@ -110,44 +110,44 @@ bool LDMPauseMenuState::mouseMoved(const OIS::MouseEvent &evt){
 		sys.getDefaultGUIContext().injectMouseWheelChange(evt.state.Z.rel / 120.0f);
 	return true;
 }
-bool LDMPauseMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool PauseMenuState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(Morkidios::Utils::convertButton(id));
 	return true;
 }
-bool LDMPauseMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+bool PauseMenuState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
 	CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(Morkidios::Utils::convertButton(id));
 	return true;
 }
 
-void LDMPauseMenuState::update(double timeSinceLastFrame){
+void PauseMenuState::update(double timeSinceLastFrame){
 }
 
-bool LDMPauseMenuState::continueButtonPressed(const CEGUI::EventArgs& e){
+bool PauseMenuState::continueButtonPressed(const CEGUI::EventArgs& e){
 	popState();
 
 	return true;
 }
-bool LDMPauseMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
+bool PauseMenuState::optionsButtonPressed(const CEGUI::EventArgs& e){
 	pushState(findByName("OptionsMenuState"));
 
 	return true;
 }
-bool LDMPauseMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
+bool PauseMenuState::quitButtonPressed(const CEGUI::EventArgs& e){
 	mQuitMenu->show(true);
 
 	return true;
 }
-bool LDMPauseMenuState::quitCancelButtonPressed(const CEGUI::EventArgs& e){
+bool PauseMenuState::quitCancelButtonPressed(const CEGUI::EventArgs& e){
 	mQuitMenu->show(false);
 
 	return true;
 }
-bool LDMPauseMenuState::quitMainMenuButtonPressed(const CEGUI::EventArgs& e){
+bool PauseMenuState::quitMainMenuButtonPressed(const CEGUI::EventArgs& e){
 	popAllAndPushState(findByName("MainMenuState"));
 
 	return true;
 }
-bool LDMPauseMenuState::quitDesktopButtonPressed(const CEGUI::EventArgs& e){
+bool PauseMenuState::quitDesktopButtonPressed(const CEGUI::EventArgs& e){
 	shutdown();
 
 	return true;

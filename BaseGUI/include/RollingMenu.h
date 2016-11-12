@@ -1,5 +1,5 @@
-#ifndef LDMROLLINGMENU_H
-#define LDMROLLINGMENU_H
+#ifndef ROLLINGMENU_H
+#define ROLLINGMENU_H
 
 // Ogre includes
 #include <OGRE/Ogre.h>
@@ -17,10 +17,10 @@
 
 #define ROLLSPEED 0.33
 
-class LDMRollingMenu {
+class RollingMenu {
 public:
-	LDMRollingMenu(int numFaces, double faceWidth, double faceHeight);
-	~LDMRollingMenu();
+	RollingMenu(int numFaces, double faceWidth, double faceHeight);
+	~RollingMenu();
 	
 	// Input methodes
 	bool keyPressed(const OIS::KeyEvent &keyEventRef);
@@ -66,4 +66,4 @@ private:
 	bool activeClicked(const CEGUI::EventArgs& evt = CEGUI::EventArgs());
 };
 
-#endif // LDMROLLINGMENU_H
+#endif // ROLLINGMENU_H

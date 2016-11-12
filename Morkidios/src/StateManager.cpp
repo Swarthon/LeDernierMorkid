@@ -2,6 +2,8 @@
 
 #include <OgreWindowEventUtilities.h>
 
+std::vector<std::pair<std::string,void(*)(Morkidios::StateListener*,const Ogre::String)>> Morkidios::StateManager::mToLoadStates = std::vector<std::pair<std::string,void(*)(Morkidios::StateListener*,const Ogre::String)>>();
+
 namespace Morkidios {
 
 	StateManager::StateManager()
@@ -47,26 +49,26 @@ namespace Morkidios {
 	State* StateManager::findByName(Ogre::String stateName)
 	{
 		std::vector<state_info>::iterator itr;
-	
+
 		for(itr=mStates.begin();itr!=mStates.end();itr++)
 		{
 			if(itr->name==stateName)
 				return itr->state;
 		}
-	
+
 		return 0;
 	}
 
 	void StateManager::start(State* state)
 	{
 		changeState(state);
-	
+
 		while(!mbShutdown)
 		{
 			if(Framework::getSingletonPtr()->mRenderWindow->isClosed())mbShutdown = true;
-	
+
 			Ogre::WindowEventUtilities::messagePump();
-	
+
 			if(Framework::getSingletonPtr()->mRenderWindow->isActive())
 				Framework::getSingletonPtr()->mRoot->renderOneFrame();
 			else
@@ -88,7 +90,7 @@ namespace Morkidios {
 			mActiveStateStack.back()->exit();
 			mActiveStateStack.pop_back();
 		}
-	
+
 		mActiveStateStack.push_back(state);
 		init(state);
 		mActiveStateStack.back()->enter();
@@ -100,11 +102,11 @@ namespace Morkidios {
 			if(!mActiveStateStack.back()->pause())
 				return false;
 		}
-	
+
 		mActiveStateStack.push_back(state);
 		init(state);
 		mActiveStateStack.back()->enter();
-	
+
 		return true;
 	}
 	void StateManager::popState()
@@ -114,7 +116,7 @@ namespace Morkidios {
 			mActiveStateStack.back()->exit();
 			mActiveStateStack.pop_back();
 		}
-	
+
 		if(!mActiveStateStack.empty())
 		{
 			init(mActiveStateStack.back());
@@ -149,8 +151,16 @@ namespace Morkidios {
 	{
 		mbShutdown = true;
 	}
-	
-	
+
+	void StateManager::loadAllStates(StateManager* sm){
+		for (size_t i = 0; i < mToLoadStates.size(); i++)
+			mToLoadStates[i].second(sm, mToLoadStates[i].first);
+	}
+	void StateManager::addToLoadState(std::string name, void(*createMethod)(StateListener*,const Ogre::String)){
+		mToLoadStates.push_back(std::pair<std::string,void(*)(StateListener*,const Ogre::String)>(name,createMethod));
+	}
+
+
 	void StateManager::init(State* state)
 	{
 		Framework::getSingletonPtr()->mInput->mKeyboard->setEventCallback(state);
@@ -158,7 +168,6 @@ namespace Morkidios {
 
 		Framework::getSingletonPtr()->mRenderWindow->resetStatistics();
 	}
-
 	bool StateManager::frameRenderingQueued(const Ogre::FrameEvent& evt){
 		Framework::getSingletonPtr()->mInput->mKeyboard->capture();
 		Framework::getSingletonPtr()->mInput->mMouse->capture();

@@ -4,8 +4,6 @@
 #include "Weapon.h"
 #include "Armour.h"
 #include "Framework.h"
-#include "Global.h"
-#include "Inventory.h"
 #include "Object.h"
 #include "Character.h"
 #include "State.h"
