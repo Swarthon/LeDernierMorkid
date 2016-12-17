@@ -1,6 +1,6 @@
 #include "Hero.h"
 
-Morkidios::Hero* Morkidios::Hero::mSingleton = NULL;
+Morkidios::Hero* _MorkidiosExport Morkidios::Hero::mSingleton = NULL;
 
 namespace Morkidios {
 

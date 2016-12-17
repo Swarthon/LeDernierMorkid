@@ -8,7 +8,7 @@
 #include "Character/Hero.h"
 
 namespace Morkidios {
-	class GraphicOptions {
+	class _MorkidiosExport GraphicOptions {
 	public:
 		static GraphicOptions* getSingleton();
 		static void destroy();

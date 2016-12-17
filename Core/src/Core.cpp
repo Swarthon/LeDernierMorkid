@@ -26,9 +26,10 @@ namespace Core {
 
 	// Private methodes
 	Mod* Core::loadMod(std::string path){
-		typedef Mod* (mod_create)();
+		typedef boost::shared_ptr<Mod> (mod_create)();
 		boost::function<mod_create> creator = boost::dll::import_alias<mod_create>(path,"loadMod");
-		Mod* m = creator();
+		Mod* m = creator().get();
+		mLoadedCreators.push_back(creator);
 		return m;
 	}
 }

@@ -35,7 +35,7 @@ void MainMenuState::createScene(){
 	mHeroViewport->setClearEveryFrame(true);
 	mHeroViewport->setBackgroundColour(Ogre::ColourValue::Black);
 
-	// Get the last save and put the entity here
+	// TODO Get the last save and put the entity here
 	mHeroEntity = mHeroSceneManager->createEntity("MainMenuHeroEntity","Sinbad.mesh");
 
 	mCamera = mSceneManager->createCamera("MainMenuCamera");
@@ -92,6 +92,7 @@ void MainMenuState::exit(){
 	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("RTTMainMenu");
 	CEGUI::ImageManager::getSingleton().destroy("MainMenuHeroImage");
+	Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->remove("RTTMainMenu");
 }
 void MainMenuState::resume(){
 	mWindow->setVisible(true);

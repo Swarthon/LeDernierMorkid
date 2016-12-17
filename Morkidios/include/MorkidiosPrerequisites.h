@@ -26,6 +26,7 @@
 #include <vector>
 #include <cstdlib>
 #include <map>
+#include <fstream>
 
 // C includes
 #include <libintl.h>
@@ -55,3 +56,19 @@
 #define RUN		32
 
 #define _(STRING) gettext(STRING)
+
+// Windows
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+// Export only for Windows
+#ifdef _WIN32
+#ifdef MORKIDIOSDLL
+	#define _MorkidiosExport __declspec(dllexport)
+#else
+	#define _MorkidiosExport __declspec(dllimport)
+#endif
+#else
+	#define _MorkidiosExport
+#endif

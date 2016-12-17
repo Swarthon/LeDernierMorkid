@@ -13,7 +13,7 @@
 
 namespace Morkidios {
 
-	class Hero : public Character {
+	class _MorkidiosExport Hero : public Character {
 	public:
 		// Classe public
 		class Statistiques {

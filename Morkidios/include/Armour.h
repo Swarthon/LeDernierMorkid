@@ -8,7 +8,7 @@
 
 namespace Morkidios {
 
-	class Armour : public Object {
+	class _MorkidiosExport Armour : public Object {
 	public:
 		// Public enums, structs and classes
 		enum ArmourType {
@@ -18,7 +18,7 @@ namespace Morkidios {
 			SHOES,
 			NONE
 		};
-		class Features {
+		class _MorkidiosExport Features {
 		public:
 			Features() : life(0), intelligence(0), agility(0), force(0), precision(0), speed(0), range(0){}
 

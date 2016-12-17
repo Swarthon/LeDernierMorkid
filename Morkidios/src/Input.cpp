@@ -1,6 +1,6 @@
 #include "Input.h"
 
-Morkidios::Input* Morkidios::Input::mSingleton = NULL;
+Morkidios::Input* _MorkidiosExport Morkidios::Input::mSingleton = NULL;
 
 namespace Morkidios {
 	Input* Input::getSingleton(){

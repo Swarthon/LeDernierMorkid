@@ -198,19 +198,19 @@ void Inventory::createObjectButton(std::string name, Morkidios::Object* o, CEGUI
 	button->addChild(layout);
 
 	CEGUI::Window* equipe = layout->createChild("AlfiskoSkin/Button");
-	equipe->setText("Main Gauche");
+	equipe->setText(_("Left Hand"));
 	equipe->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::equipeButtonClicked, this));
 	equipe->setProperty("Font","InventoryEquiperButton");
 	equipe->setWidth(CEGUI::UDim(0.2,0));
 
 	equipe = layout->createChild("AlfiskoSkin/Button");
-	equipe->setText("Main Droite");
+	equipe->setText(_("Right Hand"));
 	equipe->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::equipeButtonClicked, this));
 	equipe->setProperty("Font","InventoryEquiperButton");
 	equipe->setWidth(CEGUI::UDim(0.2,0));
 
 	CEGUI::Window* drop = layout->createChild("AlfiskoSkin/Button");
-	drop->setText("Jeter");
+	drop->setText(_("Throw"));
 	drop->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::drop, this));
 	drop->setProperty("Font","InventoryEquiperButton");
 	drop->setWidth(CEGUI::UDim(0.2,0));
@@ -245,9 +245,9 @@ bool Inventory::equipeButtonClicked(const CEGUI::EventArgs& e){
 	const CEGUI::WindowEventArgs& we = static_cast<const CEGUI::WindowEventArgs&>(e);
 	CEGUI::Window* w = we.window->getParent()->getParent();
 
-	if(we.window->getText() == "Main Gauche")
+	if(we.window->getText() == _("Left Hand"))
 		Morkidios::Hero::getSingleton()->equipeLeftHand((Morkidios::Object*)w->getUserData());
-	if(we.window->getText() == "Main Droite")
+	if(we.window->getText() == _("Right Hand"))
 		Morkidios::Hero::getSingleton()->equipeRightHand((Morkidios::Object*)w->getUserData());
 
 	return true;

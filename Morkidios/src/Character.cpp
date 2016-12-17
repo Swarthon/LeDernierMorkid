@@ -97,7 +97,6 @@ namespace Morkidios {
 		}
 
 		world->addAction(mCharacter);
-
 		mWorld = world;
 	}
 	void Character::setBoneName(std::string part, std::string bone){

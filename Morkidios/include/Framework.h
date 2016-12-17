@@ -9,7 +9,7 @@
 
 namespace Morkidios {
 
-	class Framework : public Ogre::Singleton<Framework>, OIS::KeyListener, OIS::MouseListener
+	class _MorkidiosExport Framework : public Ogre::Singleton<Framework>, OIS::KeyListener, OIS::MouseListener
 	{
 	public:
 		Framework();

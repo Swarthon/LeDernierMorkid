@@ -74,6 +74,9 @@ void PauseMenuState::exit(){
 }
 void PauseMenuState::resume(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(true);
+	mQuitButton->setProperty("Text", (CEGUI::utf8*)_("Quit"));
+	mOptionsButton->setProperty("Text", (CEGUI::utf8*)_("Options"));
+	mContinueButton->setProperty("Text", (CEGUI::utf8*)_("Continue"));
 	mWindow->setVisible(true);
 	Morkidios::Framework::getSingletonPtr()->mViewport->setCamera(mCamera);
 	mQuitMenu->show(false);

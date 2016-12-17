@@ -1,22 +1,12 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-// C++ includes
-#include <map>
-#include <string>
-#include <iostream>
-#include <fstream>
-
-// C includes
-#include <libintl.h>
-#include <locale.h>
-
-// OGRE
-#include <Ogre.h>
+// Morkidios includes
+#include <MorkidiosPrerequisites.h>
 
 namespace Morkidios {
 
-	class Language {
+	class _MorkidiosExport Language {
 	public:
 		static Language* getSingleton();
 

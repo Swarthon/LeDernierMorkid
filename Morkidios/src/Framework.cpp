@@ -2,7 +2,7 @@
 
 using namespace Ogre;
 
-template<> Morkidios::Framework* Ogre::Singleton<Morkidios::Framework>::msSingleton = 0;
+template<> Morkidios::Framework* _MorkidiosExport Ogre::Singleton<Morkidios::Framework>::msSingleton = 0;
 
 namespace Morkidios {
 

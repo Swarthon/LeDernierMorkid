@@ -5,7 +5,7 @@
 
 namespace Morkidios {
 
-	class AI : public Character {
+	class _MorkidiosExport AI : public Character {
 	public:
 	private:
 	};

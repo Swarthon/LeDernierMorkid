@@ -8,7 +8,7 @@
 
 namespace Morkidios {
 
-	class Terrain {
+	class _MorkidiosExport Terrain {
 	public:
 		// Construction methodes
 		Terrain();

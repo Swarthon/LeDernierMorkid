@@ -9,6 +9,7 @@ LDMMaze::LDMMaze(){
 	mWorld = NULL;
 }
 LDMMaze::~LDMMaze(){
+	Ogre::MeshManager::getSingleton().remove("plane");
 }
 void LDMMaze::init(std::string name, Ogre::SceneManager* smgr){
 	Morkidios::Terrain::init(smgr, MAZE_SIZE, MAZE_HEIGHT, name);

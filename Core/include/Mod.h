@@ -5,6 +5,8 @@
 #include <string>
 #include <iostream>
 
+#include <boost/function.hpp>
+
 namespace Core {
 	class Mod {
 	public:
@@ -15,9 +17,9 @@ namespace Core {
 
 		// Return value methodes
 	private:
-
 		// Private members
 		std::string mPath;
+		boost::function<boost::shared_ptr<Mod>()> mCreator;
 	};
 }
 

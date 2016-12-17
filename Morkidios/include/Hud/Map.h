@@ -8,7 +8,7 @@
 
 namespace Morkidios {
 
-	class Map {
+	class _MorkidiosExport Map {
 	public:
 		// Construction methodes
 		Map();

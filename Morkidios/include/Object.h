@@ -8,7 +8,7 @@
 
 namespace Morkidios {
 
-	class Object {
+	class _MorkidiosExport Object {
 	public:
 		// Enums
 		enum Type {

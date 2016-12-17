@@ -32,6 +32,7 @@ namespace Core {
 		// Private members
 		std::string mConfigFileName;
 		std::vector<Mod*> mMods;
+		std::vector<boost::function<boost::shared_ptr<Mod>()>> mLoadedCreators;		// Used to keep all the loaded stuff, else our plugin just close itself
 	};
 }
 

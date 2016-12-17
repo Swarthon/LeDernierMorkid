@@ -7,14 +7,14 @@
 
 namespace Morkidios {
 
-	class StateManager : public StateListener, public Ogre::FrameListener
+	class _MorkidiosExport StateManager : public StateListener, public Ogre::FrameListener
 	{
 	public:
 		typedef struct
 		{
 			Ogre::String name;
 			State* state;
-		} state_info;
+		} _MorkidiosExport state_info;
 
 		StateManager();
 		~StateManager();

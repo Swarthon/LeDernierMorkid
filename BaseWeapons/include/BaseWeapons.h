@@ -8,6 +8,8 @@
 #include <Mod.h>
 
 // Boost include
+#define BOOST_DLL_FORCE_ALIAS_INSTANTIATION
+#include <boost/shared_ptr.hpp>
 #include <boost/dll/alias.hpp> // for BOOST_DLL_ALIAS
 
 // My includes

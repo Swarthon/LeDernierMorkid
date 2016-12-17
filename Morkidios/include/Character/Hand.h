@@ -7,7 +7,7 @@
 #include "Utils.h"
 
 namespace Morkidios {
-	class Hand {
+	class _MorkidiosExport Hand {
 	public:
 		static Hand* load(std::string XMLFileName, Ogre::SceneManager* smgr);
 		void setParent(Ogre::SceneNode* s);

@@ -1,6 +1,6 @@
 #include "Language.h"
 
-Morkidios::Language* Morkidios::Language::mSingleton = NULL;
+Morkidios::Language* _MorkidiosExport Morkidios::Language::mSingleton = NULL;
 
 namespace Morkidios {
 	Language* Language::getSingleton(){
@@ -13,7 +13,12 @@ namespace Morkidios {
 	void Language::setLanguage(std::string name){
 		if(mLanguages[name] != std::string()){
 			mActiveLanguage = std::pair<std::string,std::string>(name,mLanguages[name]);
-			setlocale (LC_MESSAGES, mActiveLanguage.second.c_str());
+#ifdef _WIN32
+			std::string lang = std::string("LC_MESSAGES=") + mActiveLanguage.second;
+			_putenv(lang.c_str());
+#else
+			setlocale(LC_MESSAGES, mActiveLanguage.second.c_str());
+#endif
 		}
 		else
 			std::cout << "Language " << name << " was not found\n";
@@ -53,7 +58,7 @@ namespace Morkidios {
 
 		mLanguages["English"] = "C";
 		mLanguages["Français"] = "fr_FR";
-		mLanguages["Bosanski jezik"] = "bs_BA";
+		mLanguages["Bosanski"] = "bs_BA";
 
 		bindtextdomain ("LeDernierMorkid", "./");
 		bind_textdomain_codeset("LeDernierMorkid", "utf-8");

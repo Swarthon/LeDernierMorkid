@@ -10,7 +10,7 @@ RollingMenu::RollingMenu(int numFaces, double faceWidth, double faceHeight){
 		w->setText(Morkidios::Utils::convertIntToString(i));
 		mFaces.push_back(w);
 	}
-	
+
 	CEGUI::System& ceguiSystem = CEGUI::System::getSingleton();
 	mRenderer = static_cast<CEGUI::OgreRenderer *>(ceguiSystem.getRenderer());
 	CEGUI::Sizef size(static_cast<float>(faceWidth*5), static_cast<float>(faceHeight*5*numFaces));
@@ -103,16 +103,17 @@ RollingMenu::RollingMenu(int numFaces, double faceWidth, double faceHeight){
 RollingMenu::~RollingMenu(){
 	CEGUI::System::getSingleton().destroyGUIContext(*mContext);
 	CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->destroyChild("RollingMenu");
-	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("RTTRollingMenu");
 	CEGUI::ImageManager::getSingleton().destroy("RollingMenuImage");
-	Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->remove("RTTRollingMenu");
-	Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->remove("RollingMenuTexture");
-	mRenderer->destroyTextureTarget(mTextureTarget);
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("DownArrowTexture");
 	CEGUI::System::getSingleton().getRenderer()->destroyTexture("UpArrowTexture");
 	CEGUI::ImageManager::getSingleton().destroy("DownArrow");
 	CEGUI::ImageManager::getSingleton().destroy("UpArrow");
+	Morkidios::Framework::getSingletonPtr()->mRoot->getTextureManager()->remove("RTTRollingMenu");
+	Morkidios::Framework::getSingletonPtr()->mRoot->destroySceneManager(mSceneManager);
+	mRenderer->destroyTextureTarget(mTextureTarget);
+	Ogre::MaterialManager::getSingletonPtr()->remove("RollingMenuTexture");
+	//Ogre::MeshManager::getSingletonPtr()->remove(mMeshPtr->getName());
 }
 
 // Input methodes

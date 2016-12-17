@@ -56,8 +56,7 @@ namespace VersionManager {
 		bool isInstalled();
 
 	protected:
-		void createShortcut(std::string strSrcFile, std::string strDstPath, std::string strName);
-
+		
 		std::vector<File> mFiles;
 		std::string mName;
 		std::string mURL;

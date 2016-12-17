@@ -17,7 +17,6 @@ LDMGame::LDMGame(){
 		Morkidios::GraphicOptions::getSingleton()->save();
 	Morkidios::GraphicOptions::getSingleton()->config();
 
-
 	Core::Core co;
 	co.load();
 

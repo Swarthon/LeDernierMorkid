@@ -5,7 +5,7 @@
 
 namespace Morkidios {
 
-	class Utils{
+	class _MorkidiosExport Utils{
 	public:
 		// C++
 		static std::string convertIntToString(int i);

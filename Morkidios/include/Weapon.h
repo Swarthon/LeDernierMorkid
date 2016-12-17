@@ -8,10 +8,10 @@
 
 namespace Morkidios {
 
-	class Weapon : public Object {
+	class _MorkidiosExport Weapon : public Object {
 	public:
 		// Public classes
-		class Features {
+		class _MorkidiosExport Features {
 		public:
 			Features() : life(0), intelligence(0), agility(0), force(0), precision(0), speed(0), range(0){}
 

@@ -153,8 +153,9 @@ namespace Morkidios {
 	}
 
 	void StateManager::loadAllStates(StateManager* sm){
-		for (size_t i = 0; i < mToLoadStates.size(); i++)
+		for (size_t i = 0; i < mToLoadStates.size(); i++){
 			mToLoadStates[i].second(sm, mToLoadStates[i].first);
+		}
 	}
 	void StateManager::addToLoadState(std::string name, void(*createMethod)(StateListener*,const Ogre::String)){
 		mToLoadStates.push_back(std::pair<std::string,void(*)(StateListener*,const Ogre::String)>(name,createMethod));

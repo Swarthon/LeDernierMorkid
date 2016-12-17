@@ -1,6 +1,6 @@
 #include "Terrain.h"
 
-Morkidios::Terrain* Morkidios::Terrain::mActiveTerrain = NULL;
+Morkidios::Terrain* _MorkidiosExport Morkidios::Terrain::mActiveTerrain = NULL;
 
 namespace Morkidios {
 

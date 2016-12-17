@@ -7,7 +7,7 @@ namespace Morkidios {
 
 	class State;
 
-	class StateListener
+	class _MorkidiosExport StateListener
 	{
 	public:
 		StateListener(){};
@@ -25,7 +25,7 @@ namespace Morkidios {
 	};
 
 
-	class State : public OIS::KeyListener, public OIS::MouseListener
+	class _MorkidiosExport State : public OIS::KeyListener, public OIS::MouseListener
 	{
 	public:
 		static void create(StateListener* parent, const Ogre::String name){};
@@ -41,7 +41,7 @@ namespace Morkidios {
 	protected:
 		State(){};
 
-		State*	findByName(Ogre::String stateName){return mParent->findByName(stateName);}
+		State* findByName(Ogre::String stateName){return mParent->findByName(stateName);}
 		void changeState(State* state){mParent->changeState(state);}
 		bool pushState(State* state){return mParent->pushState(state);}
 		void popState(){mParent->popState();}
@@ -59,12 +59,12 @@ namespace Morkidios {
 
 }
 
-#define DECLARE_APPSTATE_CLASS(T)										\
+#define DECLARE_APPSTATE_CLASS(T)						\
 static void create(Morkidios::StateListener* parent, const Ogre::String name)	\
-{																		\
-	T* myState = new T();											\
-	myState->mParent = parent;										\
-	parent->manageState(name, myState);							\
+{										\
+	T* myState = new T();							\
+	myState->mParent = parent;						\
+	parent->manageState(name, myState);					\
 }
 
 #endif

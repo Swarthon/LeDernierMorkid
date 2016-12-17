@@ -7,7 +7,7 @@
 #include <OGRE/Ogre.h>
 
 namespace Morkidios {
-	class Input {
+	class _MorkidiosExport Input {
 	public:
 		static Input* getSingleton();
 		static void destroy();

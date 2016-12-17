@@ -8,7 +8,7 @@
 
 namespace Morkidios {
 
-	class CrossHair {
+	class _MorkidiosExport CrossHair {
 	public:
 		// Construction methodes
 		CrossHair();

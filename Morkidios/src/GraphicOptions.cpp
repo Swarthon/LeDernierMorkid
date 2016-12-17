@@ -1,6 +1,6 @@
 #include "GraphicOptions.h"
 
-Morkidios::GraphicOptions* Morkidios::GraphicOptions::mSingleton = NULL;
+Morkidios::GraphicOptions* _MorkidiosExport Morkidios::GraphicOptions::mSingleton = NULL;
 
 namespace Morkidios {
 	GraphicOptions* GraphicOptions::getSingleton(){

@@ -205,3 +205,12 @@ msgstr "Objets divers"
 #: ../../Morkidios/src/Inventory.cpp:43
 msgid "Weapons"
 msgstr "Armes"
+
+msgid "Throw"
+msgstr "Jeter"
+
+msgid "Left Hand"
+msgstr "Main Gauche"
+
+msgid "Right Hand"
+msgstr "Main Droite"

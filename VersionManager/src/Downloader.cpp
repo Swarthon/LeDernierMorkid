@@ -7,13 +7,8 @@ namespace VersionManager {
 
 		char filename[128];
 
-#ifdef __linux__
 		snprintf(filename, 128, (dir.getPath() + dir.getName()).c_str());
 		file = fopen(filename, "wb");
-#elif defined(_WIN32)
-		_snprintf_s(filename, 128, (dir.getPath() + dir.getName()).c_str());
-		fopen_s(&file, filename, "wb");
-#endif
 		if(!file){
 			std::cout << "Impossible d'ouvrir le fichier " << dir.getPath() + dir.getName() << std::endl;
 			return false;

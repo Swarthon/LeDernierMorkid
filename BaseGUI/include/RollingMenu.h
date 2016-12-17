@@ -21,7 +21,7 @@ class RollingMenu {
 public:
 	RollingMenu(int numFaces, double faceWidth, double faceHeight);
 	~RollingMenu();
-	
+
 	// Input methodes
 	bool keyPressed(const OIS::KeyEvent &keyEventRef);
 	bool keyReleased(const OIS::KeyEvent &keyEventRef);
@@ -41,6 +41,8 @@ private:
 	CEGUI::TextureTarget* mTextureTarget;
 	CEGUI::OgreRenderer* mRenderer;
 	Ogre::Entity* mEntity;
+	Ogre::ManualObject* mManualObject;
+	Ogre::MeshPtr mMeshPtr;
 	Ogre::SceneNode* mSceneNode;
 	Ogre::SceneManager* mSceneManager;
 	Ogre::Camera* mCamera;

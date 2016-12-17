@@ -8,7 +8,7 @@
 
 namespace Morkidios {
 
-	class ObjectMotionState : public btMotionState {
+	class _MorkidiosExport ObjectMotionState : public btMotionState {
 	public:
 		ObjectMotionState(btTransform& i, Ogre::SceneNode* sn){
 			mSceneNode = sn;
