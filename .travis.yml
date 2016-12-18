@@ -1,6 +1,6 @@
 # Travis-CI build script
 
 before_install:
-	sudo apt-get -qq update
-	sudo apt-get install -y libogre-dev
-	sudo apt-get install -y libcegui-mk2-dev
+ - sudo apt-get -qq update
+ - sudo apt-get install -y libogre-dev
+ - sudo apt-get install -y libcegui-mk2-dev
