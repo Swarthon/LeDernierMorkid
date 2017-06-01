@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Falagard version="7">
+    <WidgetLook name="LeDernierMorkid/HealthBar">
+        <Property name="CurrentProgress" value=".01"/>
+        <Property name="Size" value="{{0, 256}, {0, 32}}" />
+        <NamedArea name="ProgressArea"/>
+        <ImagerySection name="progress_empty">
+            <FrameComponent>
+                <Image component="TopLeftCorner" name="LeDernierMorkid/BarVoidTL"/>
+                <Image component="TopRightCorner" name="LeDernierMorkid/BarVoidTR"/>
+                <Image component="BottomLeftCorner" name="LeDernierMorkid/BarVoidBL"/>
+                <Image component="BottomRightCorner" name="LeDernierMorkid/BarVoidBR"/>
+                <Image component="LeftEdge" name="LeDernierMorkid/BarVoidL"/>
+                <Image component="RightEdge" name="LeDernierMorkid/BarVoidR"/>
+                <Image component="TopEdge" name="LeDernierMorkid/BarVoidT"/>
+                <Image component="BottomEdge" name="LeDernierMorkid/BarVoidB"/>
+                <Image component="Background" name="LeDernierMorkid/BarVoidFill"/>
+            </FrameComponent>
+        </ImagerySection>
+        <ImagerySection name="progress_full">
+            <FrameComponent>
+                <Image component="TopLeftCorner" name="LeDernierMorkid/HealthBarFullTL"/>
+                <Image component="TopRightCorner" name="LeDernierMorkid/HealthBarFullTR"/>
+                <Image component="BottomLeftCorner" name="LeDernierMorkid/HealthBarFullBL"/>
+                <Image component="BottomRightCorner" name="LeDernierMorkid/HealthBarFullBR"/>
+                <Image component="LeftEdge" name="LeDernierMorkid/HealthBarFullL"/>
+                <Image component="RightEdge" name="LeDernierMorkid/HealthBarFullR"/>
+                <Image component="TopEdge" name="LeDernierMorkid/HealthBarFullT"/>
+                <Image component="BottomEdge" name="LeDernierMorkid/HealthBarFullB"/>
+                <Image component="Background" name="LeDernierMorkid/HealthBarFullFill"/>
+            </FrameComponent>
+        </ImagerySection>
+        <ImagerySection name="progress_shadow">
+            <ImageryComponent>
+                <Area>
+                    <Dim type="LeftEdge">
+                        <OperatorDim op="Multiply">
+                            <UnifiedDim scale="1" type="Width"/>
+                            <PropertyDim name="CurrentProgress"/>
+                        </OperatorDim>
+                    </Dim>
+                    <Dim type="RightEdge">
+                        <OperatorDim op="Subtract">
+                            <UnifiedDim scale="1" type="Width"/>
+                            <AbsoluteDim value="5"/>
+                        </OperatorDim>
+                    </Dim>
+                </Area>
+                <Image name="LeDernierMorkid/BarShadow"/>
+                <VertFormat type="Stretched"/>
+            </ImageryComponent>
+        </ImagerySection>
+        <StateImagery name="Enabled">
+            <Layer>
+                <Section section="progress_empty"/>
+                <Section section="progress_shadow"/>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="Disabled">
+            <Layer>
+                <Section section="progress_empty">
+                    <Colours topLeft="FF7F7F7F" bottomLeft="FF7F7F7F" topRight="FF7F7F7F" bottomRight="FF7F7F7F"/>
+                </Section>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="EnabledProgress">
+            <Layer>
+                <Section section="progress_full"/>
+            </Layer>
+        </StateImagery>
+        <StateImagery name="DisabledProgress">
+            <Layer>
+                <Section section="progress_full">
+                    <Colours topLeft="FF7F7F7F" bottomLeft="FF7F7F7F" topRight="FF7F7F7F" bottomRight="FF7F7F7F"/>
+                </Section>
+            </Layer>
+        </StateImagery>
+    </WidgetLook>
+</Falagard>

@@ -4,6 +4,9 @@
 #endif
 #include <tinyxml.h>
 
+// Boost includes
+#include <boost/timer.hpp>
+
 // Ogre includes
 #include <OGRE/Ogre.h>
 #include <OgrePixelFormat.h>

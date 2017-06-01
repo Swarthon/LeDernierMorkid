@@ -63,22 +63,32 @@ namespace Morkidios {
 	{
 		changeState(state);
 
-		while(!mbShutdown)
-		{
-			if(Framework::getSingletonPtr()->mRenderWindow->isClosed())mbShutdown = true;
+		double timeSinceLastFrame = 0;
+		float timeStep = 1 / 60.0f;
+		float timeStepAccumulator = 0.0f;
+		while(!mbShutdown) {
+			boost::timer frameTimer;
+			Ogre::WindowEventUtilities::messagePump();
+			timeStepAccumulator += timeStep;
+			if(Framework::getSingletonPtr()->mRenderWindow->isClosed())
+				mbShutdown = true;
 
 			Ogre::WindowEventUtilities::messagePump();
+			while(timeStepAccumulator >= timeStep) {
+				if(Framework::getSingletonPtr()->mRenderWindow->isActive())
+					Framework::getSingletonPtr()->mRoot->renderOneFrame();
 
-			if(Framework::getSingletonPtr()->mRenderWindow->isActive())
-				Framework::getSingletonPtr()->mRoot->renderOneFrame();
-			else
-			{
-		#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-				Sleep(1000);
-		#else
-				sleep(1);
-		#endif
-			}
+				else {
+				#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+					Sleep(1000);
+				#else
+					sleep(1);
+				#endif
+				}
+			         timeStepAccumulator -= timeStep;
+			 }
+
+			frameTimer.restart();
 		}
 
 		Framework::getSingletonPtr()->mLog->logMessage("Main loop quit");

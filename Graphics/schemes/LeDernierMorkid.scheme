@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<GUIScheme version="5" name="LeDernierMorkid">
+    <Font filename="DejaVuSans-12.font" />
+    <Imageset filename="LeDernierMorkid.imageset" />
+    <LookNFeel filename="LeDernierMorkid.looknfeel" />
+    <WindowRendererSet filename="CEGUICoreWindowRendererSet" />
+
+    <FalagardMapping windowType="LeDernierMorkid/HealthBar" targetType="CEGUI/ProgressBar" renderer="Core/ProgressBar" lookNFeel="LeDernierMorkid/HealthBar" />
+</GUIScheme>

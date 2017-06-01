@@ -69,11 +69,11 @@ msgstr "Curseur"
 
 #: ../../Morkidios/src/Input.cpp:59 ../../Morkidios/src/Input.cpp:58
 msgid "Drop Left Hand"
-msgstr "Jeter la Main Gauche"
+msgstr "Lâcher la Main Gauche"
 
 #: ../../Morkidios/src/Input.cpp:60 ../../Morkidios/src/Input.cpp:59
 msgid "Drop Right Hand"
-msgstr "Jeter la Main Droite"
+msgstr "Lâcher la Main Droite"
 
 #: ../../Morkidios/src/Inventory.cpp:47
 msgid "Eatable Objects"
@@ -136,7 +136,7 @@ msgstr "Options"
 
 #: ../src/LDMLanguageChange.cpp:38
 msgid "Please select your language"
-msgstr "Sélectionez votre langue"
+msgstr "Veuillez sélectionnez votre langue"
 
 #: ../../Morkidios/src/Inventory.cpp:45
 msgid "Quest Objects"
@@ -175,7 +175,7 @@ msgid "Sinbad"
 msgstr "Sinbad"
 
 #: ../../Morkidios/src/Input.cpp:62 ../../Morkidios/src/Input.cpp:61
-msgid "Sneek"
+msgid "Crouch"
 msgstr "S'Accroupir"
 
 #: ../src/LDMMainMenuState.cpp:19 ../src/LDMMainMenuState.cpp:100
@@ -195,7 +195,7 @@ msgid "Torch"
 msgstr "Torche"
 
 #: ../../Morkidios/src/Inventory.cpp:48
-msgid "Utils"
+msgid "Tools"
 msgstr "Outils"
 
 #: ../../Morkidios/src/Inventory.cpp:46
@@ -206,8 +206,8 @@ msgstr "Objets divers"
 msgid "Weapons"
 msgstr "Armes"
 
-msgid "Throw"
-msgstr "Jeter"
+msgid "Drop"
+msgstr "Lâcher"
 
 msgid "Left Hand"
 msgstr "Main Gauche"

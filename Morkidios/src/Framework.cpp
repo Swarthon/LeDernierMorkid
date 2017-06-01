@@ -33,7 +33,7 @@ namespace Morkidios {
 
 		int h, v;
 		if (!mRoot->restoreConfig()){
-			Ogre::RenderSystem *rs = mRoot->getRenderSystemByName("OpenGL Rendering Subsystem");
+			Ogre::RenderSystem *rs = mRoot->getRenderSystemByName("OpenGL3Plus Rendering Subsystem");
 			mRoot->setRenderSystem(rs);
 			rs->setConfigOption("Full Screen", "Yes");
 #ifdef _WIN32
@@ -53,8 +53,7 @@ namespace Morkidios {
 
 		// Viewport
 		mViewport = mRenderWindow->addViewport(0);
-		mViewport->setBackgroundColour(Ogre::ColourValue(0.6f,0.6f,0.6f,1.f));
-
+		mViewport->setBackgroundColour(Ogre::ColourValue(0.15625f, 0.171875f, 0.203125f));
 		mViewport->setCamera(0);
 		// -------------------------------
 

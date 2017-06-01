@@ -45,7 +45,7 @@ void Inventory::createGUI(){
 	createLeftBarButton("InventoryObjectsQuestButton", "Quest Objects", Morkidios::Object::Quest);
 	createLeftBarButton("InventoryObjectsVariousButton", "Various Objects", Morkidios::Object::Various);
 	createLeftBarButton("InventoryObjectsEatablesButton", "Eatable Objects", Morkidios::Object::Eatable);
-	createLeftBarButton("InventoryUtilsButton", "Utils", Morkidios::Object::Utils);
+	createLeftBarButton("InventoryToolsButton", "Tools", Morkidios::Object::Tools);
 
 	mObjectPane = static_cast<CEGUI::ScrollablePane*>(mWindow->createChild("TaharezLook/ScrollablePane", "InventoryWeaponWindow"));
 	mObjectPane->setWidth(CEGUI::UDim(0.5,0));
@@ -210,7 +210,7 @@ void Inventory::createObjectButton(std::string name, Morkidios::Object* o, CEGUI
 	equipe->setWidth(CEGUI::UDim(0.2,0));
 
 	CEGUI::Window* drop = layout->createChild("AlfiskoSkin/Button");
-	drop->setText(_("Throw"));
+	drop->setText(_("Drop"));
 	drop->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&Inventory::drop, this));
 	drop->setProperty("Font","InventoryEquiperButton");
 	drop->setWidth(CEGUI::UDim(0.2,0));

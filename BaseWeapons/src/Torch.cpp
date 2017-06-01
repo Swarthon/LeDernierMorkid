@@ -27,11 +27,12 @@ Torch::Torch(Ogre::SceneManager* smgr, btDynamicsWorld* world){
 
 	mLight = smgr->createLight(std::string("TorchLight") + Morkidios::Utils::convertIntToString(mNumber));
 	mLight->setType(Ogre::Light::LT_POINT);
-	mLight->setDiffuseColour(Ogre::ColourValue(1, 0.7, 0.7));
-	mLight->setSpecularColour(Ogre::ColourValue(1, 0.7, 0.7));
-	mLight->setAttenuation(160, 1.0, 0.027, 0.0028);
+	mLight->setDiffuseColour(Ogre::ColourValue(0.7, 0.7, 0.7));
+	mLight->setSpecularColour(Ogre::ColourValue(0.7, 0.7, 0.7));
+	mLight->setAttenuation(200, 1.0, 0.022, 0.0019);
 	mLight->setVisible(false);
 	mEntity->attachObjectToBone("Flame",mLight);
+	mEntity->setCastShadows(false);
 
 	mParticles = smgr->createParticleSystem(std::string("TorchFlame") + Morkidios::Utils::convertIntToString(mNumber), "Fire");
 	mEntity->attachObjectToBone("Flame",mParticles);

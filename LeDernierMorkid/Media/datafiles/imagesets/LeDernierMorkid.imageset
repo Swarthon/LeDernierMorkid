@@ -1,0 +1,30 @@
+<Imageset autoScaled="true" imagefile="HealthBar.png" name="Le Dernier Morkid" nativeHorzRes="600" nativeVertRes="200" version="2">
+    <Image height="24" name="HealthBarFullFill" width="492" xPos="54" yPos="88" />
+    <Image height="88" name="BarVoidBR" width="60" xPos="1140" yPos="112" />
+    <Image height="88" name="HealthBarFullTL" width="54" xPos="0" yPos="0" />
+    <Image height="88" name="HealthBarFullBL" width="54" xPos="0" yPos="112" />
+    <Image height="24" name="HealthBarFullL" width="54" xPos="0" yPos="88" />
+    <Image height="88" name="HealthBarFullTR" width="54" xPos="546" yPos="0" />
+    <Image height="88" name="HealthBarFullBR" width="54" xPos="546" yPos="112" />
+    <Image height="24" name="HealthBarFullR" width="54" xPos="546" yPos="88" />
+    <Image height="88" name="HealthBarFullT" width="492" xPos="54" yPos="0" />
+    <Image height="88" name="HealthBarB" width="492" xPos="54" yPos="112" />
+    <Image height="88" name="BarVoidTL" width="54" xPos="600" yPos="0" />
+    <Image height="88" name="BarVoidBL" width="54" xPos="600" yPos="112" />
+    <Image height="24" name="BarVoidL" width="54" xPos="600" yPos="88" />
+    <Image height="88" name="BarVoidTR" width="60" xPos="1140" yPos="0" />
+    <Image height="24" name="BarVoidR" width="60" xPos="1140" yPos="88" />
+    <Image height="88" name="BarVoidB" width="486" xPos="654" yPos="112" />
+    <Image height="88" name="BarVoidT" width="486" xPos="654" yPos="0" />
+    <Image height="24" name="BarVoidF" width="486" xPos="654" yPos="88" />
+    <Image height="88" name="ManaBarFullBR" width="54" xPos="546" yPos="312" />
+    <Image height="88" name="ManaBarB" width="492" xPos="54" yPos="312" />
+    <Image height="88" name="ManaBarFullTL" width="54" xPos="0" yPos="200" />
+    <Image height="88" name="ManaBarFullBL" width="54" xPos="0" yPos="312" />
+    <Image height="88" name="ManaBarFullTR" width="54" xPos="546" yPos="200" />
+    <Image height="24" name="HealthBarFullFill_copy" width="492" xPos="54" yPos="288" />
+    <Image height="24" name="ManaBarFullR" width="54" xPos="546" yPos="288" />
+    <Image height="24" name="ManaBarFullL" width="54" xPos="0" yPos="288" />
+    <Image height="88" name="ManaBarFullT" width="492" xPos="54" yPos="200" />
+    <Image height="50" name="BarShadow" width="50" xPos="600" yPos="200" />
+</Imageset>

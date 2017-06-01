@@ -6,6 +6,7 @@
 
 // LeDernierMorkid includes
 #include "LDMMaze.h"
+#include "Orc.h"
 
 class GameState : public Morkidios::State {
 public:

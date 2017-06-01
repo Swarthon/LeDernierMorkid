@@ -10,6 +10,21 @@
 #define MAZE_SIZE 350
 #define MAZE_HEIGHT 10
 
+class LDMMaze;
+
+class MazeNavigationAlgorithm : public Morkidios::NavigationAlgorithm {
+public:
+	MazeNavigationAlgorithm();
+	MazeNavigationAlgorithm(LDMMaze* m){
+		mMaze = m;
+	}
+
+	void navigate(Morkidios::AI*);
+	void searchForEnnemy(Morkidios::AI*);
+private:
+	LDMMaze* mMaze;
+};
+
 class LDMMaze : public Morkidios::Terrain {
 public:
 	// Construction methodes
@@ -19,8 +34,9 @@ public:
 
 	// Return value methodes
 	Ogre::Image getImage();
+	LDMMazeRenderer* getMazeRenderer();
 private:
-	LDMMazeRenderer mMaze;
+	LDMMazeRenderer* mMaze;
 
 	Ogre::Entity* mRoof;
 	Ogre::Entity* mGround;

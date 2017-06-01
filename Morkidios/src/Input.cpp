@@ -58,7 +58,7 @@ namespace Morkidios {
 		mKeyMap["Drop Left Hand"]	= OIS::KC_U;		_("Drop Left Hand");
 		mKeyMap["Drop Right Hand"]	= OIS::KC_I;		_("Drop Right Hand");
 		mKeyMap["Run"]			= OIS::KC_LMENU;	_("Run");
-		mKeyMap["Sneek"]		= OIS::KC_LSHIFT;	_("Sneek");
+		mKeyMap["Crouch"]		= OIS::KC_LSHIFT;	_("Crouch");
 		mKeyMap["Take"]			= OIS::KC_F;		_("Take");
 		mKeyMap["Inventory"]		= OIS::KC_E;		_("Inventory");
 		mKeyMap["Screenshot"]		= OIS::KC_SYSRQ;	_("Screenshot");

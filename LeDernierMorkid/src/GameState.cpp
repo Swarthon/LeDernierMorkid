@@ -9,12 +9,13 @@ GameState::~GameState(){
 
 void GameState::enter(){
 	mSceneManager = Morkidios::Framework::getSingletonPtr()->mRoot->createSceneManager("OctreeSceneManager");
-	mSceneManager->setAmbientLight(Ogre::ColourValue(0.1f, 0.1f, 0.1f));
+	mSceneManager->setAmbientLight(Ogre::ColourValue(0.f, 0.f, 0.f));
 
 	createScene();
 	createGUI();
 
 	Morkidios::GraphicOptions::getSingleton()->config();
+	Morkidios::GraphicOptions::getSingleton()->setSceneManager(mSceneManager);
 }
 void GameState::createScene(){
 	mTerrain = new LDMMaze;
@@ -24,20 +25,16 @@ void GameState::createScene(){
 	Morkidios::Hero::getSingleton()->initGraphics("Hero", mSceneManager);
 	Morkidios::Hero::getSingleton()->initCamera();
 	Morkidios::Hero::getSingleton()->initCollisions(mTerrain->getWorld());
-	Morkidios::Character::Features c;
-	c.life = 10;
-	c.intelligence = 1;
-	c.agility = 1;
-	c.force = 1;
-	c.precision = 1;
-	c.speed = 7.5;
-	c.range = 10;
-	Morkidios::Hero::getSingleton()->getTotal() = c;
-	Morkidios::Hero::getSingleton()->getActual() = c;
 
 	Morkidios::Hero::getSingleton()->addObject(Morkidios::Weapon::getLoadedWeaponsClass()[0].second(mSceneManager, mTerrain->getWorld()));
 	Morkidios::Hero::getSingleton()->addObject(Morkidios::Weapon::getLoadedWeaponsClass()[1].second(mSceneManager, mTerrain->getWorld()));
 	Morkidios::Hero::getSingleton()->addObject(Morkidios::Weapon::getLoadedWeaponsClass()[1].second(mSceneManager, mTerrain->getWorld()));
+
+	Orc* orc = new Orc();
+	orc->init(mSceneManager, mTerrain->getWorld());
+	orc->setPosition(Ogre::Vector3(5,2,5));
+	orc->addEnemy(Morkidios::Hero::getSingleton());
+	mTerrain->addAI(orc);
 }
 void GameState::createGUI(){
 	mMap = new Morkidios::Map;
@@ -51,8 +48,15 @@ void GameState::createGUI(){
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setVisible(false);
 
 	// Debug
-	mFPSWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("Generic/Label","FPSWindow");
+	mFPSWindow = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("TaharezLook/StaticText","FPSWindow");
+	mFPSWindow->setProperty("FrameEnabled","false");
+	mFPSWindow->setProperty("BackgroundEnabled","false");
+	mFPSWindow->setSize(CEGUI::USize(CEGUI::UDim(0.05,0), CEGUI::UDim(0.05,0)));
 	mFPSWindow->setVisible(false);
+
+	CEGUI::Window* w = CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->createChild("LeDernierMorkid/HealthBar","Heltzef");
+	w->setVisible(true);
+	w->setSize(CEGUI::USize(CEGUI::UDim(1,0), CEGUI::UDim(1,0)));
 }
 void GameState::exit(){
 	Morkidios::Hero::destroySingleton();
@@ -109,7 +113,7 @@ bool GameState::keyReleased(const OIS::KeyEvent &keyEventRef){
 	}
 
 	if(keyEventRef.key == Morkidios::Input::getSingleton()->mKeyMap["Screenshot"]){
-		Morkidios::Framework::getSingletonPtr()->mRenderWindow->writeContentsToTimestampedFile("Screenshot_", ".jpg");
+		Morkidios::Framework::getSingletonPtr()->mRenderWindow->writeContentsToTimestampedFile("Screenshot_", ".png");
 		return true;
 	}
 
@@ -127,6 +131,8 @@ bool GameState::mouseMoved(const OIS::MouseEvent &evt){
 	return true;
 }
 bool GameState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
+	if(id == OIS::MB_Left)
+		mTerrain->heroAskForAttack(Morkidios::Character::Left);
 	return true;
 }
 bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id){
@@ -143,7 +149,7 @@ void GameState::update(double timeSinceLastFrame){
 
 	// Debug
 	if(mFPSVisible)
-		mFPSWindow->setText(std::string("FPS : ") + Morkidios::Utils::convertIntToString(Morkidios::Framework::getSingletonPtr()->mRenderWindow->getAverageFPS()));
+		mFPSWindow->setText(std::string("[colour='FFFFFFF0']FPS : ") + Morkidios::Utils::convertIntToString(Morkidios::Framework::getSingletonPtr()->mRenderWindow->getAverageFPS()));
 }
 
 void GameState::heroMove(){

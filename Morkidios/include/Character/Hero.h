@@ -55,7 +55,7 @@ namespace Morkidios {
 		void rotate(const OIS::MouseEvent &evt);
 		void update(double timeSinceLastFrame);
 		void synchronize();
-		void subir(double coup);
+		void suffer(double coup);
 		void unequipeRightHand();
 		void equipeRightHand(Object* obj);
 		void unequipeLeftHand();
@@ -63,6 +63,7 @@ namespace Morkidios {
 		void drop(Object* o);
 		void dropLeftHandObject();
 		void dropRightHandObject();
+		void setDead();
 		Object* get();
 
 		// Return value methodes

@@ -17,7 +17,7 @@ namespace Morkidios {
 			Quest,
 			Various,
 			Eatable,
-			Utils,
+			Tools,
 			Default,
 		};
 		enum State {

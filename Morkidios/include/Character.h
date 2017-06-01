@@ -26,10 +26,14 @@ namespace Morkidios {
 			double speed;
 			double range;
 		};
+		enum Side {
+			Left,
+			Right,
+		};
 
 		// Construction methodes
 		Character();
-		virtual ~Character();
+		virtual ~Character() = 0;
 		virtual void initGraphics(std::string name, Ogre::SceneManager* smgr);
 		virtual void initGraphics(std::string name, std::string path, Ogre::SceneManager* smgr);
 		virtual void initCollisions(btDynamicsWorld* world);
@@ -42,18 +46,20 @@ namespace Morkidios {
 		std::vector<Object*> getObjects();
 		Ogre::Vector3 getPosition();
 		Ogre::SceneNode* getSceneNode();
+		Ogre::Entity* getEntity();
+		btPairCachingGhostObject* getGhostObject();
+		virtual bool isDead();
 
 		// Various methodes
-		virtual void setDead(){};
-		double attack();
-		virtual void subir(double coup);
-		void addObject(Object* obj);
+		virtual void setDead() = 0;
+		virtual double getLeftHandDammage();
+		virtual double getRightHandDammage();
+		virtual void suffer(double coup);
+		virtual void addObject(Object* obj);
+		virtual void synchronize();
 
 		// Transformation methodes
 		void setPosition(Ogre::Vector3 newPos);
-
-		// Static methodes
-		static void combat(Character* attaquant, Character* victime);
 	protected:
 		Object* mLeftHandObject;
 		Object* mRightHandObject;
@@ -66,7 +72,9 @@ namespace Morkidios {
 
 		Features mActual;
 		Features mTotal;
+
 		bool mRunning;
+		bool mDead;
 
 		// Ogre
 		Ogre::Entity* mEntity;
@@ -77,6 +85,7 @@ namespace Morkidios {
 		btPairCachingGhostObject* mGhostObject;
 		btKinematicCharacterController* mCharacter;
 		btDynamicsWorld* mWorld;
+		double mStepHeight;
 
 		// Mesh variables
 		std::map<std::string, std::string> mBoneName;

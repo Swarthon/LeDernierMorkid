@@ -19,6 +19,7 @@ namespace Morkidios {
 		mCharacter = NULL;
 
 		mRunning = false;
+		mDead = false;
 	}
 	Character::~Character(){
 		for(int i = 0; i < mObjects.size(); i++)
@@ -78,23 +79,21 @@ namespace Morkidios {
 
 		mGhostObject = new btPairCachingGhostObject();
 		world->getBroadphase()->getOverlappingPairCache()->setInternalGhostPairCallback(new btGhostPairCallback());
+		btConvexShape* shape;
 		if(mEntity){
 			OgreBulletCollisions::StaticMeshToShapeConverter* smtc = new OgreBulletCollisions::StaticMeshToShapeConverter(mEntity);
-			btConvexShape* shape = (btConvexShape*)smtc->createConvex()->getBulletShape();
+			shape = (btConvexShape*)smtc->createConvex()->getBulletShape();
 			mGhostObject->setCollisionShape(shape);
 			mGhostObject->setCollisionFlags (btCollisionObject::CF_CHARACTER_OBJECT);
-
-			world->addCollisionObject(mGhostObject);
-			mCharacter = new btKinematicCharacterController(mGhostObject, shape, 0.75);
 		}
 		else {
-			btCapsuleShape* shape = new btCapsuleShape(0.75,1.80);
+			shape = new btCapsuleShape(1,1.80);
 			mGhostObject->setCollisionShape(shape);
 			mGhostObject->setCollisionFlags (btCollisionObject::CF_CHARACTER_OBJECT);
-
-			world->addCollisionObject(mGhostObject);
-			mCharacter = new btKinematicCharacterController(mGhostObject, shape, 0.75);
 		}
+		world->addCollisionObject(mGhostObject);
+		mStepHeight = 0.75;
+		mCharacter = new btKinematicCharacterController(mGhostObject, shape, mStepHeight);
 
 		world->addAction(mCharacter);
 		mWorld = world;
@@ -154,30 +153,71 @@ namespace Morkidios {
 	Ogre::SceneNode* Character::getSceneNode(){
 		return mSceneNode;
 	}
+	Ogre::Entity* Character::getEntity(){
+		return mEntity;
+	}
+	btPairCachingGhostObject* Character::getGhostObject(){
+		return mGhostObject;
+	}
+	bool Character::isDead(){
+		return mDead;
+	}
 
 	// Various methodes
-	double Character::attack(){/*
+	double Character::getLeftHandDammage(){
 		std::srand(std::time(NULL));
 		double r = (static_cast <double> (rand()) / static_cast <double> (RAND_MAX)) + 0.5;
 
-		if(mWeapon)
-			return (mActual.force + mWeapon->getFeatures().force) * (r + mActual.precision) / 2;
+		double weaponForce = 0;
+		if(mLeftHandObject){
+			if(mLeftHandObject->getType() == Object::Type::Weapon){
+				weaponForce = ((Weapon*)mLeftHandObject)->getFeatures().force;
+			}
+			else
+				weaponForce = 1;
+		}
 		else
-			return mActual.force * (r + mActual.precision) / 2;*/
+			weaponForce = 0;
+
+		return (mActual.force + weaponForce) * (r + mActual.precision) / 2;
 	}
-	void Character::subir(double coup){
+	double Character::getRightHandDammage(){
+		std::srand(std::time(NULL));
+		double r = (static_cast <double> (rand()) / static_cast <double> (RAND_MAX)) + 0.5;
+
+		double weaponForce = 0;
+		if(mRightHandObject){
+			if(mRightHandObject->getType() == Object::Type::Weapon){
+				weaponForce = ((Weapon*)mRightHandObject)->getFeatures().force;
+			}
+			else
+				weaponForce = 1;
+		}
+		else
+			weaponForce = 0;
+
+		return (mActual.force + weaponForce) * (r + mActual.precision) / 2;
+	}
+	void Character::suffer(double coup){
 		// TODO use algorithm
 		if(coup < 0)
 			coup = 0;
 		mActual.life -= coup;
 
-		if(mActual.life <= 0)
+		if(mActual.life <= 0 && !mDead)
 			setDead();
 	}
 	void Character::addObject(Object* obj){
 		std::vector<Object*>::iterator it = std::find(mObjects.begin(), mObjects.end(), obj);
 		if(it == mObjects.end())
 			mObjects.push_back(obj);
+	}
+	void Character::synchronize(){
+		if(mSceneNode && mGhostObject && !mDead){
+			Ogre::Quaternion oq = OgreBulletCollisions::BtOgreConverter::to(mGhostObject->getWorldTransform().getRotation());
+			mSceneNode->setOrientation(oq);
+			mSceneNode->setPosition(OgreBulletCollisions::BtOgreConverter::to(mGhostObject->getWorldTransform().getOrigin() + btVector3(0,Utils::getBoundingBox(mGhostObject->getCollisionShape()).y()/2,0)));
+		}
 	}
 
 	// Transformation methodes
@@ -201,10 +241,4 @@ namespace Morkidios {
 
 		mSceneNode->setPosition(newPos);
 	}
-
-	// Static methodes
-	void combat(Character* attaquant, Character* victime){
-		victime->subir(attaquant->attack());
-	}
-
 }

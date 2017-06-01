@@ -17,6 +17,7 @@ namespace Morkidios {
 		void setFileName(std::string fileName);
 		void setRenderWindow(Ogre::RenderWindow* wnd);
 		void setCrossHair(CrossHair* ch);
+		void setSceneManager(Ogre::SceneManager* sm);
 
 		// Various methodes
 		void save();
@@ -26,6 +27,7 @@ namespace Morkidios {
 		// Options
 		bool mFullScreen;
 		double mFOV;
+		bool mShadows;
 		CEGUI::UDim mCrossHairSize;
 	private:
 		// Construction methodes
@@ -35,6 +37,7 @@ namespace Morkidios {
 
 		std::string mFileName;
 		Ogre::RenderWindow* mRenderWindow;
+		Ogre::SceneManager* mSceneManager;
 		CrossHair* mCrossHair;
 	};
 }

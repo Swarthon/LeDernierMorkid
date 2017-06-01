@@ -7,28 +7,28 @@ void LDMMazeRenderer::build_wall(int i, int j, int dir){
 	switch(dir) {
 	case 0:
 		if(maze[i][j] & DOOR_TOP)
-			return;				// So not draw wall and don't build it
+			return;				// So don't draw wall and don't build it
 		maze[i][j] |= WALL_TOP;
 		if(j>0)
 			maze[i][j-1] |= WALL_BOTTOM;
 		break;
 	case 1:
 		if(maze[i][j] & DOOR_RIGHT)
-			return;				// So not draw wall and don't build it
+			return;				// So don't draw wall and don't build it
 		maze[i][j] |= WALL_RIGHT;
 		if(i<maze_size_x-1)
 			maze[i+1][j] |= WALL_LEFT;
 		break;
 	case 2:
 		if(maze[i][j] & DOOR_BOTTOM)
-			return;				// So not draw wall and don't build it
+			return;				// So don't draw wall and don't build it
 		maze[i][j] |= WALL_BOTTOM;
 		if(j<maze_size_y-1)
 			maze[i][j+1] |= WALL_TOP;
 		break;
 	case 3:
 		if(maze[i][j] & DOOR_LEFT)
-			return;				// So not draw wall and don't build it
+			return;				// So don't draw wall and don't build it
 		maze[i][j] |= WALL_LEFT;
 		if(i>0)
 			maze[i-1][j] |= WALL_RIGHT;
@@ -243,16 +243,36 @@ void LDMMazeRenderer::build_3D(){
 	Ogre::Vector3 scale = mSize / Ogre::Vector3(maze_size_x, mSize.y, maze_size_y);
 	int numWall = 0;
 
-	Ogre::Entity* corner = mSceneManager->createEntity("CornerWall", "Corner.mesh");
-	corner->setMaterialName("WallMaterial");
-	Ogre::Entity* wall = mSceneManager->createEntity("Wall", "Wall.mesh");
-	wall->setMaterialName("WallMaterial");
-	Ogre::Entity* cross = mSceneManager->createEntity("CrossWall", "Cross.mesh");
-	cross->setMaterialName("WallMaterial");
-	Ogre::Entity* halfWall = mSceneManager->createEntity("HalfWall", "HalfWall.mesh");
-	halfWall->setMaterialName("WallMaterial");
-	Ogre::Entity* t = mSceneManager->createEntity("TWall", "T.mesh");
-	t->setMaterialName("WallMaterial");
+	Ogre::MeshPtr mesh = Ogre::MeshManager::getSingleton().load("Wall.mesh", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
+	unsigned short src, dest;
+	if (!mesh->suggestTangentVectorBuildParams(Ogre::VES_TANGENT, src, dest))
+                mesh->buildTangentVectors(Ogre::VES_TANGENT, src, dest);
+	Ogre::Entity* wall = mSceneManager->createEntity(mesh->getName(), mesh->getName());
+	wall->setMaterialName("WallMaterialNormalMappedSpecular");
+
+	mesh = Ogre::MeshManager::getSingleton().load("Corner.mesh", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
+	if (!mesh->suggestTangentVectorBuildParams(Ogre::VES_TANGENT, src, dest))
+                mesh->buildTangentVectors(Ogre::VES_TANGENT, src, dest);
+	Ogre::Entity* corner = mSceneManager->createEntity(mesh->getName(), mesh->getName());
+	corner->setMaterialName("WallMaterialNormalMappedSpecular");
+
+	mesh = Ogre::MeshManager::getSingleton().load("Cross.mesh", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
+	if (!mesh->suggestTangentVectorBuildParams(Ogre::VES_TANGENT, src, dest))
+                mesh->buildTangentVectors(Ogre::VES_TANGENT, src, dest);
+	Ogre::Entity* cross = mSceneManager->createEntity(mesh->getName(), mesh->getName());
+	cross->setMaterialName("WallMaterialNormalMappedSpecular");
+
+	mesh = Ogre::MeshManager::getSingleton().load("HalfWall.mesh", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
+	if (!mesh->suggestTangentVectorBuildParams(Ogre::VES_TANGENT, src, dest))
+                mesh->buildTangentVectors(Ogre::VES_TANGENT, src, dest);
+	Ogre::Entity* halfWall = mSceneManager->createEntity(mesh->getName(), mesh->getName());
+	halfWall->setMaterialName("WallMaterialNormalMappedSpecular");
+
+	mesh = Ogre::MeshManager::getSingleton().load("T.mesh", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY);
+	if (!mesh->suggestTangentVectorBuildParams(Ogre::VES_TANGENT, src, dest))
+                mesh->buildTangentVectors(Ogre::VES_TANGENT, src, dest);
+	Ogre::Entity* t = mSceneManager->createEntity(mesh->getName(), mesh->getName());
+	t->setMaterialName("WallMaterialNormalMappedSpecular");
 
 	for(int x = 0; x <= maze_size_x; x++){
 		for(int y = 0; y <= maze_size_y; y++){
@@ -467,8 +487,43 @@ Ogre::Image LDMMazeRenderer::getImage(){
 Ogre::Vector2 LDMMazeRenderer::getMazeSize(){
 	return Ogre::Vector2(maze_size_x, maze_size_y);
 }
+std::vector<LDMMazeRenderer::Room> LDMMazeRenderer::getRooms(){
+	return mRooms;
+}
+bool LDMMazeRenderer::isInRoom(Ogre::Vector2 pos, Room* r){
+	Ogre::Vector2 pt = getIn2D(pos);
 
-// Variouse methodes
+	bool b = false;
+	for(int i = 0; i < mRooms.size(); i++){
+		if(pt.x >= mRooms[i].x && pt.x < mRooms[i].xx && pt.y >= mRooms[i].y && pt.y < mRooms[i].yy){
+			b = true;
+			*r = mRooms[i];
+			return b;
+		}
+	}
+	return b;
+}
+Ogre::Vector2 LDMMazeRenderer::getIn3D(Ogre::Vector2 pt){
+	Ogre::Vector3 halfSize = Ogre::Vector3(mSize.x / 2, 0, mSize.z / 2);
+	Ogre::Vector3 scale = mSize / Ogre::Vector3(maze_size_x, mSize.y, maze_size_y);
+	int xpos = pt.x * scale.x - halfSize.x;
+	int ypos = pt.y * scale.z - halfSize.z;
+
+	return Ogre::Vector2(xpos, ypos);
+}
+Ogre::Vector2 LDMMazeRenderer::getIn2D(Ogre::Vector2 pt){
+	Ogre::Vector3 halfSize = Ogre::Vector3(mSize.x / 2, 0, mSize.z / 2);
+	Ogre::Vector3 scale = mSize / Ogre::Vector3(maze_size_x, mSize.y, maze_size_y);
+	int xpos = (pt.x + halfSize.x) / scale.x;
+	int ypos = (pt.y + halfSize.z) / scale.z;
+
+	return Ogre::Vector2(xpos, ypos);
+}
+unsigned short** LDMMazeRenderer::getMazeArray(){
+	return maze;
+}
+
+// Various methodes
 void LDMMazeRenderer::createRoom(int x, int y, int xx, int yy, int numDoors){
 	if(mIsInitialized){
 		std::cout << "Warning : You create a room but maze is initialized\n";
@@ -497,10 +552,13 @@ void LDMMazeRenderer::createRoom(int x, int y, int xx, int yy, int numDoors){
 
 			if((maze[posx][y] & DOOR_TOP) != 0)
 				i--;				// If there is arlready a door, do it again
+			else {
+				r.doors.push_back(std::pair<double,double>(posx+0.5,y-0.2));
 
-			maze[posx][y] |= DOOR_TOP;
-			if(y - 1 != 0)
-				maze[posx][y-1] |= DOOR_BOTTOM;
+				maze[posx][y] |= DOOR_TOP;
+				if(y - 1 != 0)
+					maze[posx][y-1] |= DOOR_BOTTOM;
+			}
 
 			break;
 		case 1:		// DOWN
@@ -508,9 +566,12 @@ void LDMMazeRenderer::createRoom(int x, int y, int xx, int yy, int numDoors){
 
 			if((maze[posx][yy-1] & DOOR_BOTTOM) != 0)
 				i--;				// If there is arlready a door, do it again
+			else {
+				r.doors.push_back(std::pair<double,double>(posx+0.5,yy+0.2));
 
-			maze[posx][yy-1] |= DOOR_BOTTOM;
-			maze[posx][yy] |= DOOR_TOP;
+				maze[posx][yy-1] |= DOOR_BOTTOM;
+				maze[posx][yy] |= DOOR_TOP;
+			}
 
 			break;
 		case 2:		// LEFT
@@ -518,10 +579,13 @@ void LDMMazeRenderer::createRoom(int x, int y, int xx, int yy, int numDoors){
 
 			if((maze[x][posy] & DOOR_LEFT) != 0)
 				i--;				// If there is arlready a door, do it again
+			else {
+				r.doors.push_back(std::pair<double,double>(x-0.2,posy+0.5));
 
-			maze[x][posy] |= DOOR_LEFT;
-			if(x - 1 != 0)
-				maze[x-1][posy] |= DOOR_RIGHT;
+				maze[x][posy] |= DOOR_LEFT;
+				if(x - 1 != 0)
+					maze[x-1][posy] |= DOOR_RIGHT;
+			}
 
 			break;
 		case 3:		// RIGHT
@@ -529,9 +593,12 @@ void LDMMazeRenderer::createRoom(int x, int y, int xx, int yy, int numDoors){
 
 			if((maze[xx-1][posy] & DOOR_RIGHT) != 0)
 				i--;				// If there is arlready a door, do it again
+			else {
+				r.doors.push_back(std::pair<double,double>(xx+0.2,posy+0.5));
 
-			maze[xx-1][posy] |= DOOR_RIGHT;
-			maze[xx][posy] |= DOOR_LEFT;
+				maze[xx-1][posy] |= DOOR_RIGHT;
+				maze[xx][posy] |= DOOR_LEFT;
+			}
 
 			break;
 		}

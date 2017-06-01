@@ -131,8 +131,8 @@ namespace Morkidios {
 		if(mTotalRotationX < -Ogre::Degree(90))
 			mTotalRotationX = -Ogre::Degree(90);
 	}
-	void Hero::subir(double coup){
-		Character::subir(coup);
+	void Hero::suffer(double coup){
+		Character::suffer(coup);
 	}
 	void Hero::synchronize(){
 		if(mSceneNode && mGhostObject){
@@ -147,7 +147,7 @@ namespace Morkidios {
 			transform.setRotation(bq);
 			mGhostObject->setWorldTransform(transform);
 
-			mSceneNode->setPosition(OgreBulletCollisions::BtOgreConverter::to(mGhostObject->getWorldTransform().getOrigin() + btVector3(0,Utils::getBoundingBox(mGhostObject->getCollisionShape()).y()/2,0)));
+			mSceneNode->setPosition(OgreBulletCollisions::BtOgreConverter::to(mGhostObject->getWorldTransform().getOrigin() + btVector3(0,Utils::getBoundingBox(mGhostObject->getCollisionShape()).y(),0)));
 		}
 	}
 	void Hero::unequipeRightHand(){
@@ -192,17 +192,16 @@ namespace Morkidios {
 		unequipeRightHand();
 		drop(o);
 	}
+	void Hero::setDead(){
+		
+	}
 	Object* Hero::get(){
 		btVector3 start = OgreBulletCollisions::OgreBtConverter::to(mSceneNode->getPosition());
 		btVector3 end = OgreBulletCollisions::OgreBtConverter::to(mSceneNode->getPosition() + (mSceneNode->getOrientation()*Ogre::Vector3::NEGATIVE_UNIT_Z).normalisedCopy() * mActual.range);
-		btCollisionWorld::AllHitsRayResultCallback rayTest = btCollisionWorld::AllHitsRayResultCallback(start, end);
-		mWorld->rayTest(start, end, rayTest);
-		if(rayTest.hasHit()){
-			const btCollisionObject* obj;
-			if(rayTest.m_collisionObjects[0] == mGhostObject && rayTest.m_collisionObjects.size() > 1)
-				obj = rayTest.m_collisionObjects[1];
-			else
-				obj = rayTest.m_collisionObjects[0];
+		Utils::ClosestNotMeRayResultCallback rayCallback(mGhostObject);
+		mWorld->rayTest(start, end, rayCallback);
+		if(rayCallback.hasHit()){
+			const btCollisionObject* obj = rayCallback.m_collisionObject;
 			if(obj->getUserPointer()){
 				Object* o = (Object*)obj->getUserPointer();
 				o->get();
@@ -284,6 +283,16 @@ namespace Morkidios {
 		mCamera = NULL;
 
 		mHand = NULL;
+
+		mActual.life = 10;
+		mActual.intelligence = 1;
+		mActual.agility = 1;
+		mActual.force = 1;
+		mActual.precision = 1;
+		mActual.speed = 7.5;
+		mActual.range = 8;
+
+		mTotal = mActual;
 	}
 	Hero::~Hero(){
 	}

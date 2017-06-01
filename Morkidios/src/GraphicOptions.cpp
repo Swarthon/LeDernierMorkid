@@ -18,10 +18,18 @@ namespace Morkidios {
 	}
 	void GraphicOptions::setRenderWindow(Ogre::RenderWindow* wnd){
 		mRenderWindow = wnd;
+		mRenderWindow->setFullscreen(mFullScreen, mRenderWindow->getWidth(), mRenderWindow->getHeight());
 	}
 	void GraphicOptions::setCrossHair(CrossHair* ch){
 		mCrossHair = ch;
 		mCrossHair->setSize(mCrossHairSize);
+	}
+	void GraphicOptions::setSceneManager(Ogre::SceneManager* sm){
+		mSceneManager = sm;
+		/*if(mShadows)
+			mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+		else
+			mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_NONE);*/
 	}
 
 	// Various methodes
@@ -30,6 +38,7 @@ namespace Morkidios {
 		cfg << "[Graphics]" << std::endl;
 		cfg << "FOV=" << mFOV << std::endl;
 		cfg << "FullScreen=" << mFullScreen << std::endl;
+		//cfg << "Shadows=" << mShadows << std::endl;
 		cfg << "[GUI]" << std::endl;
 		cfg << "CrossHair=" << mCrossHairSize.d_scale << std::endl;
 	}
@@ -40,6 +49,7 @@ namespace Morkidios {
 
 			mFOV = Ogre::StringConverter::parseReal(cfg.getSetting("FOV", "Graphics"));
 			mFullScreen = Ogre::StringConverter::parseReal(cfg.getSetting("FullScreen", "Graphics"));
+			//mShadows = Ogre::StringConverter::parseReal(cfg.getSetting("Shadows", "Graphics"));
 			mCrossHairSize = CEGUI::UDim(Ogre::StringConverter::parseReal(cfg.getSetting("CrossHair", "GUI")),0);
 
 			return true;
@@ -55,13 +65,21 @@ namespace Morkidios {
 			mRenderWindow->setFullscreen(mFullScreen, mRenderWindow->getWidth(), mRenderWindow->getHeight());
 		if(mCrossHair)
 			mCrossHair->setSize(mCrossHairSize);
+		if(mSceneManager){
+		/*	if(mShadows)
+				mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+			else
+				mSceneManager->setShadowTechnique(Ogre::SHADOWTYPE_NONE);*/
+		}
 	}
 
 	// Construction methodes
 	GraphicOptions::GraphicOptions(){
 		mFileName = "graphics.cfg";
 		mRenderWindow = NULL;
+		mSceneManager = NULL;
 		mFullScreen = true;
+		//mShadows = false;
 		mFOV = Ogre::Degree(30).valueRadians();
 		mCrossHair = NULL;
 		mCrossHairSize = CEGUI::UDim(0.1,0);

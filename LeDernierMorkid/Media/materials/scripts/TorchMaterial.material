@@ -2,7 +2,7 @@
 
 material TorchMaterial 
 {
-    receive_shadows on 
+    receive_shadows off
 
     technique
     {

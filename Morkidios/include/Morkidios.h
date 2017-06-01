@@ -15,9 +15,9 @@
 #include "GraphicOptions.h"
 #include "Character/Hand.h"
 #include "Character/Hero.h"
-#include "Character/AI.h"
 #include "Hud/CrossHair.h"
 #include "Hud/Map.h"
+#include "AI/AI.h"
 #include "MorkidiosPrerequisites.h"
 
 #endif // MORKIDIOS_H

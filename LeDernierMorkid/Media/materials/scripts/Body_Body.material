@@ -2,7 +2,7 @@
 
 material Body_Body_Old_caucasian_male_detailed
 {
-    receive_shadows on 
+    receive_shadows off
 
     technique
     {

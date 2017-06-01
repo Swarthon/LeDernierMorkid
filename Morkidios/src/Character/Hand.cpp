@@ -166,6 +166,7 @@ namespace Morkidios {
 					mEntity = mSceneManager->createEntity(os.str().c_str(),meshName.c_str());
 					num++;
 				}
+				mEntity->setCastShadows(false);
 			}
 		}
 	}

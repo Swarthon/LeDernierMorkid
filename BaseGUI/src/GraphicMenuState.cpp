@@ -82,6 +82,19 @@ void GraphicMenuState::createGUI(){
 	mFullScreen->setXPosition(CEGUI::UDim(0.05,0));
 	mFullScreen->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GraphicMenuState::fullScreenChanged, this));
 
+	/*mShadows = static_cast<CEGUI::PushButton*>(mWindow->createChild("TaharezLook/Button", "GraphicMenuShadows"));
+	mShadows->setProperty("Text",(CEGUI::utf8*)_("Shadows"));
+	mShadows->setProperty("Font", "GraphicMenuFont");
+	if(Morkidios::GraphicOptions::getSingleton()->mShadows)
+		mShadows->setText(mShadows->getText() + CEGUI::String(_(" : Yes")));
+	else
+		mShadows->setText(mShadows->getText() + CEGUI::String(_(" : No")));
+	mShadows->setWidth(CEGUI::UDim(0.25,0));
+	mShadows->setHeight(CEGUI::UDim(0.1,0));
+	mShadows->setYPosition(CEGUI::UDim(0.3,0));
+	mShadows->setXPosition(CEGUI::UDim(0.35,0));
+	mShadows->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GraphicMenuState::shadowsChanged, this));*/
+
 	mReturnButton = static_cast<CEGUI::PushButton*>(mWindow->createChild("AlfiskoSkin/Button", "ReturnButton"));
 	mReturnButton->setProperty("Text", _("Return"));
 	mReturnButton->setProperty("Font", "GraphicMenuFont");
@@ -187,6 +200,26 @@ bool GraphicMenuState::fullScreenChanged(const CEGUI::EventArgs& e){
 		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(_(": Yes")));
 	else
 		mFullScreen->setText(CEGUI::String(s) + CEGUI::String(_(": No")));
+
+	Morkidios::GraphicOptions::getSingleton()->config();
+
+	return true;
+}
+bool GraphicMenuState::shadowsChanged(const CEGUI::EventArgs& e){
+	Morkidios::GraphicOptions::getSingleton()->mShadows = !Morkidios::GraphicOptions::getSingleton()->mShadows;
+
+	std::string s, c = mShadows->getText().c_str();
+	bool b = false;
+	for(int i = 0; i < c.size(); i++){
+		if(c[i] == ':')
+			b = true;
+		if(!b)
+			s += c[i];
+	}
+	if(Morkidios::GraphicOptions::getSingleton()->mShadows)
+		mShadows->setText(CEGUI::String(s) + CEGUI::String(_(": Yes")));
+	else
+		mShadows->setText(CEGUI::String(s) + CEGUI::String(_(": No")));
 
 	Morkidios::GraphicOptions::getSingleton()->config();
 

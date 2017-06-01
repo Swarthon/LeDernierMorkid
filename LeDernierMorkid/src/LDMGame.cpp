@@ -34,6 +34,7 @@ void LDMGame::initGui(){
 	CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
 	CEGUI::SchemeManager::getSingleton().createFromFile("AlfiskoSkin.scheme");
 	CEGUI::SchemeManager::getSingleton().createFromFile("Generic.scheme");
+	CEGUI::SchemeManager::getSingleton().createFromFile("LeDernierMorkid.scheme");
 
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("OgreTrayImages/MouseArrow");
 }

@@ -37,12 +37,12 @@
 #define BRUSH_SIZE 10
 
 class LDMMazeRenderer {
-private:
+public:
 	struct Room {
 		int x, y, xx, yy;
-		int doorX, doorY;
+		std::vector<std::pair<double,double>> doors;
 	};
-
+private:
 	unsigned short** maze;
 
 	int maze_size_x, maze_size_y;
@@ -70,7 +70,7 @@ private:
 	bool mIsInitialized;
 	std::vector<Room> mRooms;
 
-	// Fonctions privates
+	// Private methodes
 	void draw_wall (int, int, int);
 	void draw_solid_square (int, int, int);
 	void build_wall (int, int, int);
@@ -95,6 +95,11 @@ public:
 	// Return value methodes
 	Ogre::Image getImage();
 	Ogre::Vector2 getMazeSize();
+	std::vector<Room> getRooms();
+	bool isInRoom(Ogre::Vector2, Room* r);
+	Ogre::Vector2 getIn3D(Ogre::Vector2);
+	Ogre::Vector2 getIn2D(Ogre::Vector2);
+	unsigned short** getMazeArray();
 
 	// Various methodes
 	void createRoom(int x, int y, int xx, int yy, int numDoors = 1);
