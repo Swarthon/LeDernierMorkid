@@ -1,26 +1,32 @@
-# LeDernierMorkid
-Open source RPG
+# Le Dernier Morkid
 
-Lancement
---------------
-Pour lancer Le Dernier Morkid, vous devez le télécharger (cf Téléchargement), et l'extraire.
-Ensuite, aller dans bin et lancer Le Dernier Morkid.exe
+This is the official repository of Le Dernier Morkid, an open source role play game written in C++.
+It aims to provide a full open source game which would be free.
 
+Yet is this project under development, I only work on it on my spare time, therefore its evolution is a bit slow.
 
-Téléchargement
---------------
-Le Dernier Morkid peut être obtenu en téléchargeant le fichier .zip à ce lien : http://sourceforge.net/p/lederniermorkid
-Vous aurez peut-être des problèmes de dll. Pour les résoudre, téléchargez le fichier dll.zip et extrayez le dans le dossier bin.
+## Requirements
 
+You will need a C++ compiler, see [Compiling](Compiling) section for more informations.  The project need the [OGRE library](http://ogre3d.org), which itself needs the [SDL2 library](http://libsdl.org/). To compile them search on their website or use prebuilt files.
 
-Documentation
--------------
-Le Dernier Morkid est entièrement documenté à http://sourceforge.net/p/lederniermorkid/wiki/
-Si vous avez besoin d'aide, créez un sujet ici : https://sourceforge.net/p/lederniermorkid/discussion/help/
-Nous essaierons de vous aider.
+It has already been tested on Linux and Windows. I highly recommend to use the GNU Compiler (MinGW on Windows), with wich it has already been compiled.
 
+## Compiling
 
-Développement
--------------
-Le Dernier Morkid est un logiciel open-source, vous pouvez donc le réutiliser et le modifier à vos souhaits.
-Pour le compiler, téléchargez src.zip situé ici : https://github.com/Swarthon/LeDernierMorkid
+To compile this code, you will need to run cmake. Use either `cmake-gui` or `cmake` to configure the project and then compile it. If you have trouble in doing it, just contact me, I will try to answer you as fast as possible, for more information see [Contacting](Contacting).
+
+## Running
+
+Once you compiled this program, move to the directory where you built it. Then run `LeDernierMorkid`.
+
+## Bugs
+
+Remember that this project is under development and bugs may be frequent. If you discover one, post an issue. You can also try to repair it yourself. You can contact me too, see [Contacting](Contacting)
+
+## Contacting
+
+In order to contact me, you can send me an email at swarthon.gokan@gmail.com.
+
+## License
+
+This program is released under the GPL v3 license. See LICENSE file.

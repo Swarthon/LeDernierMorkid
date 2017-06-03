@@ -1,20 +1,5 @@
-#		Compile tools		#
-#########################################
-*.o
-Makefile
-Morkidios/bin/libMorkidios.a
-LeDernierMorkid/bin/LeDernierMorkid
-Updater/bin/Updater
-
-#		Run Files		#
-#########################################
-bin/
-*.log
-LeDernierMorkid/bin/Map.bmp
-LeDernierMorkid/bin/ogre.cfg
-
-#	Development tools		#
-#########################################
-TODO
-*.xmi
-LeDernierMorkid/package
+# CMake configuration
+build/
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
