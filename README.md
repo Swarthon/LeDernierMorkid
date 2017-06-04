@@ -19,9 +19,15 @@ You will need a C++ compiler, see [Compiling](#compiling) section for more infor
 
 It has already been tested on Linux and Windows. I highly recommend to use the GNU Compiler (MinGW on Windows), with wich it has already been compiled.
 
+## Dependencies
+
+As written below in [Requirements](#requirement), this project has a few dependencies :
+ - **Ogre3D**, version 2.1, the components you need are HlmsPbs and HlmsUnlit. The version 2.1 is not released yet but you can download it by doing `hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1`, assuming you have Mercurial.
+ - **SDL2**, the library used by Ogre to get the input. This library is very common and you can download it either from you package manager either from [the official site](http://libsdl.org/)
+
 ## Compiling
 
-To compile this code, you will need to run cmake. Use either `cmake-gui` or `cmake` to configure the project and then compile it. If you have trouble in doing it, just contact me, I will try to answer you as fast as possible, for more information see [Contacting](#contacting).
+Before trying to compile the project itself, check if you have all the dependencies, see [Dependencies](#dependencies). To compile this code, you will need to run cmake. Use either `cmake-gui` or `cmake` to configure the project and then compile it. If you have trouble in doing it, just contact me, I will try to answer you as fast as possible, for more information see [Contacting](#contacting).
 
 ## Running
 
