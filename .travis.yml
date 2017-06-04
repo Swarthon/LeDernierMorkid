@@ -4,9 +4,7 @@ dist: trusty
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libsdl2-dev
-  - hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1
-  - cd ogre/ && cmake . && make -j8 && sudo make install
+  - hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1 && cmake . && make -j8 && sudo make install
 
 script:
-  - cmake .
-  - make -j8
+  - cmake . && make -j8
