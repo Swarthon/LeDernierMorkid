@@ -5,29 +5,29 @@
 #include "OgreTimer.h"
 
 namespace Common {
-    class YieldTimer {
-        Ogre::Timer *mExternalTimer;
+	class YieldTimer {
+		Ogre::Timer *mExternalTimer;
 
-    public:
-        YieldTimer( Ogre::Timer *externalTimer ) :
-            mExternalTimer( externalTimer ) {}
+	public:
+		YieldTimer( Ogre::Timer *externalTimer ) :
+			mExternalTimer( externalTimer ) {}
 
-        unsigned long yield( double frameTime, unsigned long startTime ) {
-            unsigned long endTime = mExternalTimer->getMicroseconds();
+		unsigned long yield( double frameTime, unsigned long startTime ) {
+			unsigned long endTime = mExternalTimer->getMicroseconds();
 
-            while( frameTime * 1000000.0 > (endTime - startTime) ) {
-                endTime = mExternalTimer->getMicroseconds();
+			while( frameTime * 1000000.0 > (endTime - startTime) ) {
+				endTime = mExternalTimer->getMicroseconds();
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-                SwitchToThread();
+				SwitchToThread();
 #elif OGRE_PLATFORM == OGRE_PLATFORM_LINUX || OGRE_PLATFORM == OGRE_PLATFORM_ANDROID
-                sched_yield();
+				sched_yield();
 #endif
-            }
+			}
 
-            return endTime;
-        }
-    };
+			return endTime;
+		}
+	};
 }
 
 #endif // YieldTimer

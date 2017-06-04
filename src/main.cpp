@@ -32,9 +32,9 @@ THREAD_DECLARE( logicThread );
 
 struct ThreadData
 {
-    GraphicsSystem  *graphicsSystem;
-    LogicSystem     *logicSystem;
-    Ogre::Barrier   *barrier;
+	GraphicsSystem  *graphicsSystem;
+	LogicSystem     *logicSystem;
+	Ogre::Barrier   *barrier;
 };
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
@@ -43,171 +43,171 @@ INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 int main()
 #endif
 {
-    GraphicsGameState graphicsGameState;
-    GraphicsSystem graphicsSystem( &graphicsGameState );
-    LogicGameState logicGameState;
-    LogicSystem logicSystem( &logicGameState );
-    Ogre::Barrier barrier( 2 );
+	GraphicsGameState graphicsGameState;
+	GraphicsSystem graphicsSystem( &graphicsGameState );
+	LogicGameState logicGameState;
+	LogicSystem logicSystem( &logicGameState );
+	Ogre::Barrier barrier( 2 );
 
-    graphicsGameState._notifyGraphicsSystem( &graphicsSystem );
-    logicGameState._notifyLogicSystem( &logicSystem );
+	graphicsGameState._notifyGraphicsSystem( &graphicsSystem );
+	logicGameState._notifyLogicSystem( &logicSystem );
 
-    graphicsSystem._notifyLogicSystem( &logicSystem );
-    logicSystem._notifyGraphicsSystem( &graphicsSystem );
+	graphicsSystem._notifyLogicSystem( &logicSystem );
+	logicSystem._notifyGraphicsSystem( &graphicsSystem );
 
-    GameEntityManager gameEntityManager( &graphicsSystem, &logicSystem );
+	GameEntityManager gameEntityManager( &graphicsSystem, &logicSystem );
 
-    ThreadData threadData;
-    threadData.graphicsSystem   = &graphicsSystem;
-    threadData.logicSystem      = &logicSystem;
-    threadData.barrier          = &barrier;
+	ThreadData threadData;
+	threadData.graphicsSystem   = &graphicsSystem;
+	threadData.logicSystem      = &logicSystem;
+	threadData.barrier          = &barrier;
 
-    Ogre::ThreadHandlePtr threadHandles[2];
-    threadHandles[0] = Ogre::Threads::CreateThread( THREAD_GET( renderThread ), 0, &threadData );
-    threadHandles[1] = Ogre::Threads::CreateThread( THREAD_GET( logicThread ), 1, &threadData );
+	Ogre::ThreadHandlePtr threadHandles[2];
+	threadHandles[0] = Ogre::Threads::CreateThread( THREAD_GET( renderThread ), 0, &threadData );
+	threadHandles[1] = Ogre::Threads::CreateThread( THREAD_GET( logicThread ), 1, &threadData );
 
-    Ogre::Threads::WaitForThreads( 2, threadHandles );
+	Ogre::Threads::WaitForThreads( 2, threadHandles );
 
-    return 0;
+	return 0;
 }
 
 
 //---------------------------------------------------------------------
 unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 {
-    ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
-    GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
-    Ogre::Barrier *barrier          = threadData->barrier;
+	ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
+	GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
+	Ogre::Barrier *barrier          = threadData->barrier;
 
-    graphicsSystem->initialize( "Le Dernier Morkid" );
-    barrier->sync();
+	graphicsSystem->initialize( "Le Dernier Morkid" );
+	barrier->sync();
 
-    if( graphicsSystem->getQuit() )
-    {
-        graphicsSystem->deinitialize();
-        return 0; //User cancelled config
-    }
+	if( graphicsSystem->getQuit() )
+	{
+		graphicsSystem->deinitialize();
+		return 0; //User cancelled config
+	}
 
-    graphicsSystem->createScene();
-    barrier->sync();
+	graphicsSystem->createScene();
+	barrier->sync();
 
-    Ogre::RenderWindow *renderWindow = graphicsSystem->getRenderWindow();
+	Ogre::RenderWindow *renderWindow = graphicsSystem->getRenderWindow();
 
-    Ogre::Timer timer;
+	Ogre::Timer timer;
 
-    unsigned long startTime = timer.getMicroseconds();
+	unsigned long startTime = timer.getMicroseconds();
 
-    double timeSinceLast = 1.0 / 60.0;
+	double timeSinceLast = 1.0 / 60.0;
 
-    while( !graphicsSystem->getQuit() )
-    {
-        graphicsSystem->beginFrameParallel();
-        graphicsSystem->update( timeSinceLast );
-        graphicsSystem->finishFrameParallel();
+	while( !graphicsSystem->getQuit() )
+	{
+		graphicsSystem->beginFrameParallel();
+		graphicsSystem->update( timeSinceLast );
+		graphicsSystem->finishFrameParallel();
 
-        if( !renderWindow->isVisible() )
-        {
-            //Don't burn CPU cycles unnecessary when we're minimized.
-            Ogre::Threads::Sleep( 500 );
-        }
+		if( !renderWindow->isVisible() )
+		{
+			//Don't burn CPU cycles unnecessary when we're minimized.
+			Ogre::Threads::Sleep( 500 );
+		}
 
-        if( gFakeFrameskip )
-            Ogre::Threads::Sleep( 120 );
+		if( gFakeFrameskip )
+			Ogre::Threads::Sleep( 120 );
 
-        unsigned long endTime = timer.getMicroseconds();
-        timeSinceLast = (endTime - startTime) / 1000000.0;
-        timeSinceLast = std::min( 1.0, timeSinceLast ); //Prevent from going haywire.
-        startTime = endTime;
-    }
+		unsigned long endTime = timer.getMicroseconds();
+		timeSinceLast = (endTime - startTime) / 1000000.0;
+		timeSinceLast = std::min( 1.0, timeSinceLast ); //Prevent from going haywire.
+		startTime = endTime;
+	}
 
-    barrier->sync();
+	barrier->sync();
 
-    graphicsSystem->destroyScene();
-    barrier->sync();
+	graphicsSystem->destroyScene();
+	barrier->sync();
 
-    graphicsSystem->deinitialize();
-    barrier->sync();
+	graphicsSystem->deinitialize();
+	barrier->sync();
 
-    return 0;
+	return 0;
 }
 unsigned long renderThread( Ogre::ThreadHandle *threadHandle )
 {
-    unsigned long retVal = -1;
+	unsigned long retVal = -1;
 
-    try
-    {
-        retVal = renderThreadApp( threadHandle );
-    }
-    catch( Ogre::Exception& e )
-    {
+	try
+	{
+		retVal = renderThreadApp( threadHandle );
+	}
+	catch( Ogre::Exception& e )
+	{
    #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-        MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
-                     MB_OK | MB_ICONERROR | MB_TASKMODAL );
+		MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
+					 MB_OK | MB_ICONERROR | MB_TASKMODAL );
    #else
-        std::cerr << "An exception has occured: " <<
-                     e.getFullDescription().c_str() << std::endl;
+		std::cerr << "An exception has occured: " <<
+					 e.getFullDescription().c_str() << std::endl;
    #endif
 
-        abort();
-    }
+		abort();
+	}
 
-    return retVal;
+	return retVal;
 }
 //---------------------------------------------------------------------
 unsigned long logicThread( Ogre::ThreadHandle *threadHandle )
 {
-    ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
-    GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
-    LogicSystem *logicSystem        = threadData->logicSystem;
-    Ogre::Barrier *barrier          = threadData->barrier;
+	ThreadData *threadData = reinterpret_cast<ThreadData*>( threadHandle->getUserParam() );
+	GraphicsSystem *graphicsSystem  = threadData->graphicsSystem;
+	LogicSystem *logicSystem        = threadData->logicSystem;
+	Ogre::Barrier *barrier          = threadData->barrier;
 
-    logicSystem->initialize();
-    barrier->sync();
+	logicSystem->initialize();
+	barrier->sync();
 
-    if( graphicsSystem->getQuit() )
-    {
-        logicSystem->deinitialize();
-        return 0; //Render thread cancelled early
-    }
+	if( graphicsSystem->getQuit() )
+	{
+		logicSystem->deinitialize();
+		return 0; //Render thread cancelled early
+	}
 
-    logicSystem->createScene();
-    barrier->sync();
+	logicSystem->createScene();
+	barrier->sync();
 
-    Ogre::RenderWindow *renderWindow = graphicsSystem->getRenderWindow();
+	Ogre::RenderWindow *renderWindow = graphicsSystem->getRenderWindow();
 
-    Ogre::Timer timer;
-    YieldTimer yieldTimer( &timer );
+	Ogre::Timer timer;
+	YieldTimer yieldTimer( &timer );
 
-    unsigned long startTime = timer.getMicroseconds();
+	unsigned long startTime = timer.getMicroseconds();
 
-    while( !graphicsSystem->getQuit() )
-    {
-        logicSystem->beginFrameParallel();
-        logicSystem->update( static_cast<float>( cFrametime ) );
-        logicSystem->finishFrameParallel();
+	while( !graphicsSystem->getQuit() )
+	{
+		logicSystem->beginFrameParallel();
+		logicSystem->update( static_cast<float>( cFrametime ) );
+		logicSystem->finishFrameParallel();
 
-        logicSystem->finishFrame();
+		logicSystem->finishFrame();
 
-        if( gFakeSlowmo )
-            Ogre::Threads::Sleep( 120 );
+		if( gFakeSlowmo )
+			Ogre::Threads::Sleep( 120 );
 
-        if( !renderWindow->isVisible() )
-        {
-            //Don't burn CPU cycles unnecessary when we're minimized.
-            Ogre::Threads::Sleep( 500 );
-        }
+		if( !renderWindow->isVisible() )
+		{
+			//Don't burn CPU cycles unnecessary when we're minimized.
+			Ogre::Threads::Sleep( 500 );
+		}
 
-        //YieldTimer will wait until the current time is greater than startTime + cFrametime
-        startTime = yieldTimer.yield( cFrametime, startTime );
-    }
+		//YieldTimer will wait until the current time is greater than startTime + cFrametime
+		startTime = yieldTimer.yield( cFrametime, startTime );
+	}
 
-    barrier->sync();
+	barrier->sync();
 
-    logicSystem->destroyScene();
-    barrier->sync();
+	logicSystem->destroyScene();
+	barrier->sync();
 
-    logicSystem->deinitialize();
-    barrier->sync();
+	logicSystem->deinitialize();
+	barrier->sync();
 
-    return 0;
+	return 0;
 }
