@@ -7,4 +7,4 @@ before_install:
   - hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1 && cmake . && make -j8 && sudo make install
 
 script:
-  - cmake . && make -j8
+  - cd .. && cmake . && make -j8
