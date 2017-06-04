@@ -5,6 +5,14 @@ It aims to provide a full open source game which would be free.
 
 Yet is this project under development, I only work on it on my spare time, therefore is its evolution a bit slow.
 
+## Branches
+
+Branches | Information | Build Status
+---------|-------------|-------------
+**master** | the actual release version | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=master)](https://travis-ci.org/Swarthon/LeDernierMorkid)
+**OldVersion** | the old version, yet abandonned | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=OldVersion)](https://travis-ci.org/Swarthon/LeDernierMorkid)
+**v0-0** | the new version, in development | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=v0-0)](https://travis-ci.org/Swarthon/LeDernierMorkid)
+
 ## Requirements
 
 You will need a C++ compiler, see [Compiling](#compiling) section for more informations.  The project need the [OGRE library](http://ogre3d.org), which itself needs the [SDL2 library](http://libsdl.org/). To compile them, search on their website or use prebuilt files.
