@@ -4,7 +4,8 @@ project(LeDernierMorkid)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp")
-add_executable(LeDernierMorkid src/main.cpp ${COMMONSRC})
+file(GLOB SRC "src/*.cpp")
+add_executable(LeDernierMorkid ${SRC} ${COMMONSRC})
 
 include_directories (include Common/include)
 
