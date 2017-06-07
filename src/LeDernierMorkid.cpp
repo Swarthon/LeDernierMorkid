@@ -58,6 +58,8 @@ unsigned long LeDernierMorkid::renderThreadApp(Ogre::ThreadHandle *threadHandle)
 	Ogre::Barrier	*barrier	= threadData->barrier;
 
 	graphicsSystem->initialize("Le Dernier Morkid");
+	graphicsSystem->getInputHandler()->setGrabMousePointer(true);
+	graphicsSystem->getInputHandler()->setMouseVisible(false);
 	barrier->sync();
 
 	if(graphicsSystem->getQuit()){

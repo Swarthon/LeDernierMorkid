@@ -159,8 +159,7 @@ namespace Common {
 		createCamera();
 		mWorkspace = setupCompositor();
 
-		mInputHandler = new SdlInputHandler( mSdlWindow, mCurrentGameState,
-											 mCurrentGameState, mCurrentGameState );
+		mInputHandler = new SdlInputHandler( mSdlWindow, mCurrentGameState, mCurrentGameState, mCurrentGameState );
 
 		BaseSystem::initialize();
 	}

@@ -6,6 +6,8 @@
 #include "GameEntityManager.h"
 #include "GraphicsGameState.h"
 #include "LogicGameState.h"
+#include "CameraController.h"
+#include "SdlInputHandler.h"
 
 #include "Threading/YieldTimer.h"
 
@@ -44,6 +46,7 @@ protected:
 	GraphicsSystem		*mGraphicsSystem;
 	LogicSystem		*mLogicSystem;
 	GameEntityManager	*mGameEntityManager;
+	CameraController	*mCameraController;
 };
 
 #endif // _LEDERNIERMORKID_H_
