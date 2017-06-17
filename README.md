@@ -1,3 +1,4 @@
+![Our logo](Media/Logo/logo.png)
 # Le Dernier Morkid
 
 This is the official repository of Le Dernier Morkid, an open source role play game written in C++.
@@ -43,4 +44,8 @@ In order to contact me, you can send me an email at swarthon.gokan@gmail.com.
 
 ## License
 
-This program is released under the GPL v3 license. See LICENSE file.
+This program and the [logo](#logo) are released under the GPL v3 license. See LICENSE file.
+
+## Logo
+
+The logo has been designed and created by [24PaH](http://github.com/24PaH). Thanks to him !
