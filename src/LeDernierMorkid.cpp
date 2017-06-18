@@ -1,13 +1,57 @@
 #include "LeDernierMorkid.h"
 
+#include <OgreArchive.h>
+#include <OgreArchiveManager.h>
+#include <OgreHlms.h>
+#include <OgreHlmsManager.h>
+#include <OgreRoot.h>
+#include <OgreConfigFile.h>
+#include <Compositor/OgreCompositorManager2.h>
+
+#include "HlmsTerrain.h"
+
 const double cFrametime = 1.0 / 25.0;
 
+void LeDernierMorkidGraphicsSystem::registerHlms(void){
+       GraphicsSystem::registerHlms();
+
+       Ogre::ConfigFile cf;
+       cf.load(mResourcePath + "resources.cfg");
+
+       Ogre::String dataFolder = cf.getSetting( "DoNotUseAsResource", "Hlms", "" );
+
+       if( dataFolder.empty() )
+	       dataFolder = "./";
+       else if( *(dataFolder.end() - 1) != '/' )
+	       dataFolder += "/";
+
+       Ogre::RenderSystem *renderSystem = mRoot->getRenderSystem();
+       Ogre::String shaderSyntax = "GLSL";
+       if(renderSystem->getName() == "Direct3D11 Rendering Subsystem")
+	       shaderSyntax = "HLSL";
+
+       Ogre::Archive *archiveLibrary = Ogre::ArchiveManager::getSingletonPtr()->load(dataFolder + "Hlms/Common/" + shaderSyntax, "FileSystem", true);
+       Ogre::Archive *archiveLibraryAny = Ogre::ArchiveManager::getSingletonPtr()->load(dataFolder + "Hlms/Common/Any", "FileSystem", true);
+       Ogre::Archive *archivePbsLibraryAny = Ogre::ArchiveManager::getSingletonPtr()->load(dataFolder + "Hlms/Pbs/Any", "FileSystem", true );
+       Ogre::Archive *pbsLibrary = Ogre::ArchiveManager::getSingletonPtr()->load(dataFolder + "Hlms/Pbs/" + shaderSyntax, "FileSystem", true );
+
+       Ogre::ArchiveVec library;
+       library.push_back( archiveLibrary );
+       library.push_back( archiveLibraryAny );
+       library.push_back( archivePbsLibraryAny );
+       library.push_back( pbsLibrary );
+
+       Ogre::Archive *archiveTerra = Ogre::ArchiveManager::getSingletonPtr()->load(dataFolder + "Hlms/Terra/" + shaderSyntax, "FileSystem", true );
+       HlmsTerrain *hlmsTerra = OGRE_NEW HlmsTerrain(archiveTerra, &library);
+       Ogre::HlmsManager *hlmsManager = mRoot->getHlmsManager();
+       hlmsManager->registerHlms( hlmsTerra );
+}
 //---------------------------------------------------------------------
 LeDernierMorkid::LeDernierMorkid() {
 	mGraphicsGameState = new GraphicsGameState();
 	mLogicGameState = new LogicGameState();
 
- 	mGraphicsSystem = new GraphicsSystem(mGraphicsGameState);
+        mGraphicsSystem = new LeDernierMorkidGraphicsSystem(mGraphicsGameState, Ogre::ColourValue(0.41,0.62,1));
 	mLogicSystem = new LogicSystem(mLogicGameState);
 
 	mGraphicsGameState->_notifyGraphicsSystem(mGraphicsSystem);

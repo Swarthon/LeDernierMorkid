@@ -2,7 +2,8 @@
 #define _LOGICGAMESTATE_H_
 
 #include <OgrePrerequisites.h>
-#include <GameState.h>
+
+#include "GameState.h"
 
 namespace Common {
 	class LogicSystem;

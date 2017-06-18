@@ -2,7 +2,9 @@
 #define _GRAPHICSGAMESTATE_H_
 
 #include <OgrePrerequisites.h>
+
 #include "GameState.h"
+#include "Terrain.h"
 
 namespace Common {
 	class GraphicsSystem;
@@ -14,6 +16,8 @@ protected:
 	bool				mEnableInterpolation;
 	Common::GraphicsSystem		*mGraphicsSystem;
         Common::CameraController	*mCameraController;
+	Terrain				*mTerrain;
+	Ogre::Light			*mSunLight;
 
 public:
 	GraphicsGameState();

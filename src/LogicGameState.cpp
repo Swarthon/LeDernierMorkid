@@ -17,18 +17,6 @@ LogicGameState::~LogicGameState() {
 }
 //-----------------------------------------------------------------------------------
 void LogicGameState::createScene(void) {
-	const Ogre::Vector3 origin( -5.0f, 0.0f, 0.0f );
-
-	Common::GameEntityManager *geMgr = mLogicSystem->getGameEntityManager();
-
-	mCubeMoDef = new Common::MovableObjectDefinition();
-	mCubeMoDef->meshName        = "athene.mesh";
-	mCubeMoDef->resourceGroup   = Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
-	mCubeMoDef->moType          = Common::MoTypeItem;
-
-	mCubeEntity = geMgr->addGameEntity(Ogre::SCENE_DYNAMIC, mCubeMoDef, origin,
-										Ogre::Quaternion::IDENTITY,
-										Ogre::Vector3::UNIT_SCALE);
 }
 //-----------------------------------------------------------------------------------
 void LogicGameState::update(float timeSinceLast) {
@@ -38,8 +26,6 @@ void LogicGameState::update(float timeSinceLast) {
 	mDisplacement = fmodf(mDisplacement, 10.0f);
 
 	const size_t currIdx = mLogicSystem->getCurrentTransformIdx();
-	mCubeEntity->mTransform[currIdx]->vPos = origin + Ogre::Vector3::UNIT_X * mDisplacement;
-	mCubeEntity->mTransform[currIdx]->vScale = mDisplacement;
 
 	GameState::update(timeSinceLast);
 }

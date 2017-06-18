@@ -23,6 +23,12 @@ using namespace Common;
 
 extern const double cFrametime;
 
+class LeDernierMorkidGraphicsSystem : public GraphicsSystem {
+	virtual void registerHlms(void);
+public:
+	LeDernierMorkidGraphicsSystem(GraphicsGameState* gameState, Ogre::ColourValue colourValue) : GraphicsSystem(gameState, colourValue){};
+};
+
 class LeDernierMorkid {
 public:
 	LeDernierMorkid();
