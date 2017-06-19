@@ -1,5 +1,5 @@
-#include "TerrainCell.h"
-#include "Terrain.h"
+#include "Terrain/TerrainCell.h"
+#include "Terrain/Terrain.h"
 
 #include <Vao/OgreVaoManager.h>
 #include <Vao/OgreVertexArrayObject.h>
@@ -16,13 +16,13 @@ TerrainCell::TerrainCell( Terrain *parentTerrain ) :
 		mParentTerrain(parentTerrain) {}
 //-------------------------------------------------------------------------------------------------
 void TerrainCell::initialize( Ogre::VaoManager *vaoManager) {
-		assert( mVaoPerLod[Ogre::VpNormal].empty() && "Already initialized!" );
-		mVaoManager = vaoManager;
+	assert( mVaoPerLod[Ogre::VpNormal].empty() && "Already initialized!" );
+	mVaoManager = vaoManager;
 
-		//Setup bufferless vao
-		Ogre::VertexBufferPackedVec vertexBuffers;
-		Ogre::VertexArrayObject *vao = vaoManager->createVertexArrayObject(
-					vertexBuffers, 0, Ogre::OT_TRIANGLE_STRIP );
+	//Setup bufferless vao
+	Ogre::VertexBufferPackedVec vertexBuffers;
+	Ogre::VertexArrayObject *vao = vaoManager->createVertexArrayObject(
+		vertexBuffers, 0, Ogre::OT_TRIANGLE_STRIP );
 	mVaoPerLod[Ogre::VpNormal].push_back(vao);
 	mVaoPerLod[Ogre::VpShadow].push_back(vao);
 }

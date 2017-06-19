@@ -8,7 +8,7 @@
 #include <OgreConfigFile.h>
 #include <Compositor/OgreCompositorManager2.h>
 
-#include "HlmsTerrain.h"
+#include "Terrain/HlmsTerrain.h"
 
 const double cFrametime = 1.0 / 25.0;
 

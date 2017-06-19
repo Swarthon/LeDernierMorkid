@@ -1,10 +1,11 @@
-#include "HlmsTerrainDatablock.h"
-#include "HlmsTerrain.h"
-#include "OgreHlmsManager.h"
-#include "OgreHlmsTextureManager.h"
-#include "OgreTexture.h"
-#include "OgreTextureManager.h"
-#include "OgreLogManager.h"
+#include "Terrain/HlmsTerrain.h"
+#include "Terrain/HlmsTerrainDatablock.h"
+
+#include <OgreHlmsManager.h>
+#include <OgreHlmsTextureManager.h>
+#include <OgreTexture.h>
+#include <OgreTextureManager.h>
+#include <OgreLogManager.h>
 
 using namespace Ogre;
 

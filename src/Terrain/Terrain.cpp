@@ -1,4 +1,4 @@
-#include "Terrain.h"
+#include "Terrain/Terrain.h"
 
 #include <OgrePixelFormat.h>
 #include <OgreHardwarePixelBuffer.h>

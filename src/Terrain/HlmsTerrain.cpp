@@ -1,26 +1,26 @@
-#include "HlmsTerrain.h"
-#include "HlmsTerrainDatablock.h"
-#include "OgreHlmsManager.h"
-#include "OgreHlmsListener.h"
-#include "OgreLwString.h"
+#include "Terrain/HlmsTerrain.h"
+#include "Terrain/HlmsTerrainDatablock.h"
+#include "Terrain/Terrain.h"
 
-#include "OgreViewport.h"
-#include "OgreRenderTarget.h"
-#include "OgreHighLevelGpuProgramManager.h"
-#include "OgreHighLevelGpuProgram.h"
-#include "OgreForward3D.h"
-#include "OgreCamera.h"
+#include <OgreHlmsManager.h>
+#include <OgreHlmsListener.h>
+#include <OgreLwString.h>
 
-#include "OgreSceneManager.h"
-#include "Compositor/OgreCompositorShadowNode.h"
-#include "Vao/OgreVaoManager.h"
-#include "Vao/OgreConstBufferPacked.h"
+#include <OgreViewport.h>
+#include <OgreRenderTarget.h>
+#include <OgreHighLevelGpuProgramManager.h>
+#include <OgreHighLevelGpuProgram.h>
+#include <OgreForward3D.h>
+#include <OgreCamera.h>
 
-#include "CommandBuffer/OgreCommandBuffer.h"
-#include "CommandBuffer/OgreCbTexture.h"
-#include "CommandBuffer/OgreCbShaderBuffer.h"
+#include <OgreSceneManager.h>
+#include <Compositor/OgreCompositorShadowNode.h>
+#include <Vao/OgreVaoManager.h>
+#include <Vao/OgreConstBufferPacked.h>
 
-#include "Terrain.h"
+#include <CommandBuffer/OgreCommandBuffer.h>
+#include <CommandBuffer/OgreCbTexture.h>
+#include <CommandBuffer/OgreCbShaderBuffer.h>
 
 using namespace Ogre;
 
