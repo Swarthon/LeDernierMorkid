@@ -1,8 +1,8 @@
 #include "GraphicsGameState.h"
 #include "GraphicsSystem.h"
 #include "CameraController.h"
-#include "HlmsTerrain.h"
-#include "HlmsTerrainDatablock.h"
+#include "Terrain/HlmsTerrain.h"
+#include "Terrain/HlmsTerrainDatablock.h"
 
 #include <OgreSceneManager.h>
 

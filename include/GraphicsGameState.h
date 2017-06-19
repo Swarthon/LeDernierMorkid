@@ -4,7 +4,7 @@
 #include <OgrePrerequisites.h>
 
 #include "GameState.h"
-#include "Terrain.h"
+#include "Terrain/Terrain.h"
 
 namespace Common {
 	class GraphicsSystem;
