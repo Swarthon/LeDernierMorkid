@@ -12,7 +12,7 @@ Branches | Information | Build Status
 ---------|-------------|-------------
 **master** | the actual release version | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=master)](https://travis-ci.org/Swarthon/LeDernierMorkid)
 **OldVersion** | the old version, yet abandonned | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=OldVersion)](https://travis-ci.org/Swarthon/LeDernierMorkid)
-**v0-0** | the new version, in development | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=v0-0)](https://travis-ci.org/Swarthon/LeDernierMorkid)
+**v0-0** | version 0.0 | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=v0-0)](https://travis-ci.org/Swarthon/LeDernierMorkid)
 
 ## Requirements
 
