@@ -378,7 +378,7 @@ namespace Common {
 		mSceneManager = mRoot->createSceneManager( Ogre::ST_GENERIC,
 												   numThreads,
 												   threadedCullingMethod,
-												   "ExampleSMInstance" );
+												   "SceneManager" );
 
 		mSceneManager->setShadowDirectionalLightExtrusionDistance( 500.0f );
 		mSceneManager->setShadowFarDistance( 500.0f );

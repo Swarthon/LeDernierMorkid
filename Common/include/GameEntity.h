@@ -5,6 +5,8 @@
 #include <OgreQuaternion.h>
 #include <OgreStringVector.h>
 
+#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
+
 namespace Common {
 	#define NUM_GAME_ENTITY_BUFFERS 4
 
@@ -13,12 +15,22 @@ namespace Common {
 		MoTypeEntity,
 		NumMovableObjectType
 	};
+	enum CollisionObjectType {
+		CoRigidBody,
+		CoGhostObject,
+		CoSoftBody,
+		NumCollisionObjectType
+	};
 
 	struct MovableObjectDefinition {
 		Ogre::String        meshName;
 		Ogre::String        resourceGroup;
 		Ogre::StringVector  submeshMaterials;
 		MovableObjectType   moType;
+	};
+	struct CollisionObjectDefinition {
+		unsigned int mass;
+		CollisionObjectType coType;
 	};
 
 	struct GameEntityTransform {
@@ -38,19 +50,23 @@ namespace Common {
 		Ogre::SceneNode         *mSceneNode;
 		Ogre::MovableObject     *mMovableObject; //Could be Entity, InstancedEntity, Item.
 
-		//Your custom pointers go here, i.e. physics representation.
-		//used only by Logic thread (hkpEntity, btRigidBody, etc)
+		//----------------------------------------
+		// Used by Logic thread
+		//----------------------------------------
+		btCollisionShape *mShape;
+		btCollisionObject *mCollisionObject;
 
 		//----------------------------------------
 		// Used by both Logic and Graphics threads
 		//----------------------------------------
-		GameEntityTransform     *mTransform[NUM_GAME_ENTITY_BUFFERS];
-		Ogre::SceneMemoryMgrTypes       mType;
+		GameEntityTransform *mTransform[NUM_GAME_ENTITY_BUFFERS];
+		Ogre::SceneMemoryMgrTypes mType;
 
 		//----------------------------------------
 		// Read-only
 		//----------------------------------------
-		MovableObjectDefinition const   *mMoDefinition;
+		MovableObjectDefinition const *mMoDefinition;
+		CollisionObjectDefinition const	*mCoDefinition;
 		size_t                   mTransformBufferIdx;
 
 		GameEntity( Ogre::uint32 id, const MovableObjectDefinition *moDefinition,

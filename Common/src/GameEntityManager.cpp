@@ -65,6 +65,7 @@ namespace Common {
 
 		mGameEntities[type].push_back( gameEntity );
 
+		mLogicSystem->addGameEntity( cge );
 		mLogicSystem->queueSendMessage( mGraphicsSystem, Mq::GAME_ENTITY_ADDED, cge );
 
 		return gameEntity;

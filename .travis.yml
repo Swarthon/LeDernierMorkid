@@ -3,7 +3,7 @@ sudo: enabled
 dist: trusty
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y libsdl2-dev
+  - sudo apt-get install -y libsdl2-dev libbullet-dev
   - hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1 && cmake . && make -j8 && sudo make install && cd ..
 
 script:

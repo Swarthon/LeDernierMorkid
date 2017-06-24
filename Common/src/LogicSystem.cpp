@@ -30,9 +30,18 @@ namespace Common {
 		for( Ogre::uint32 i=2; i<NUM_GAME_ENTITY_BUFFERS-1; ++i )
 			mAvailableTransformIdx.push_back( i );
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	LogicSystem::~LogicSystem() {}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	void LogicSystem::initialize(){
+		mCollisionConfiguration = new btDefaultCollisionConfiguration();
+		mDispatcher = new btCollisionDispatcher( mCollisionConfiguration );
+		mBroadphase = new btDbvtBroadphase();
+		mSolver = new btSequentialImpulseConstraintSolver();
+		mWorld = new btDiscreteDynamicsWorld( mDispatcher, mBroadphase, mSolver, mCollisionConfiguration );
+		mWorld->setGravity( btVector3(0.0,-9.8,0.0));
+	}
+	//------------------------------------------------------------------------------------------------
 	void LogicSystem::finishFrameParallel(void) {
 		if( mGameEntityManager )
 			mGameEntityManager->finishFrameParallel();
@@ -59,7 +68,7 @@ namespace Common {
 
 		BaseSystem::finishFrameParallel();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void LogicSystem::processIncomingMessage( Mq::MessageId messageId, const void *data ) {
 		switch( messageId ) {
 		case Mq::LOGICFRAME_FINISHED:
@@ -80,6 +89,22 @@ namespace Common {
 			break;
 		default:
 			break;
+		}
+	}
+	//------------------------------------------------------------------------------------------------
+	void LogicSystem::addGameEntity(const GameEntityManager::CreatedGameEntity cge) {
+		if(cge.gameEntity->mCoDefinition->coType == CoRigidBody){
+			cge.gameEntity->mCollisionObject = new btRigidBody(cge.gameEntity->mCoDefinition->mass, new btDefaultMotionState(), cge.gameEntity->mShape);
+			btTransform transform = btTransform::getIdentity();
+			transform.setOrigin(btVector3(cge.initialTransform.vPos.x,cge.initialTransform.vPos.y,cge.initialTransform.vPos.z));
+			transform.setRotation(btQuaternion(cge.initialTransform.qRot.x,cge.initialTransform.qRot.y,cge.initialTransform.qRot.z,cge.initialTransform.qRot.w));
+			cge.gameEntity->mCollisionObject->setWorldTransform(transform);
+			mWorld->addRigidBody(static_cast<btRigidBody*>(cge.gameEntity->mCollisionObject));
+		}
+		else {
+			OGRE_EXCEPT( Ogre::Exception::ERR_NOT_IMPLEMENTED,
+				"This functionality has to be implemented",
+				"LogicSystem::addGameEntity");
 		}
 	}
 }

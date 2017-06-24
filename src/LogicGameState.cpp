@@ -20,12 +20,5 @@ void LogicGameState::createScene(void) {
 }
 //-----------------------------------------------------------------------------------
 void LogicGameState::update(float timeSinceLast) {
-	const Ogre::Vector3 origin(-5.0f, 0.0f, 0.0f);
-
-	mDisplacement += timeSinceLast * 4.0f;
-	mDisplacement = fmodf(mDisplacement, 10.0f);
-
-	const size_t currIdx = mLogicSystem->getCurrentTransformIdx();
-
 	GameState::update(timeSinceLast);
 }
