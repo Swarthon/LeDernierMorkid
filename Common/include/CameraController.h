@@ -6,42 +6,46 @@
 #include "GameState.h"
 #include "GraphicsSystem.h"
 
-
 namespace Common {
 	class CameraController {
 		enum Action {
-			Forward , Backward,
-			Leftward, Rightward,
-			Up	, Down,
+			Forward,
+			Backward,
+			Leftward,
+			Rightward,
+			Up,
+			Down,
 			Run
 		};
-		typedef std::pair <SDL_Keycode,bool> KeyState;
-		typedef std::map  <Action, KeyState> KeymapState;
-	protected:
-		bool		mUseSceneNode;
+		typedef std::pair<SDL_Keycode, bool> KeyState;
+		typedef std::map<Action, KeyState>   KeymapState;
 
-		bool		mSpeedModifier;
-		KeymapState	mKeymapState;
-		float		mCameraYaw;
-		float		mCameraPitch;
+	protected:
+		bool mUseSceneNode;
+
+		bool        mSpeedModifier;
+		KeymapState mKeymapState;
+		float       mCameraYaw;
+		float       mCameraPitch;
+
 	public:
-		float		mCameraBaseSpeed;
-		float		mCameraSpeedBoost;
+		float mCameraBaseSpeed;
+		float mCameraSpeedBoost;
 
 	private:
-		GraphicsSystem      *mGraphicsSystem;
+		GraphicsSystem* mGraphicsSystem;
 
 	public:
-		CameraController( GraphicsSystem *graphicsSystem, bool useSceneNode=false );
+		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false);
 
-		virtual void update( float timeSinceLast );
+		virtual void update(float timeSinceLast);
 
 		/// Returns true if we've handled the event
-		virtual bool keyPressed( const SDL_KeyboardEvent &arg );
+		virtual bool keyPressed(const SDL_KeyboardEvent& arg);
 		/// Returns true if we've handled the event
-		virtual bool keyReleased( const SDL_KeyboardEvent &arg );
+		virtual bool keyReleased(const SDL_KeyboardEvent& arg);
 
-		virtual void mouseMoved( const SDL_Event &arg );
+		virtual void mouseMoved(const SDL_Event& arg);
 	};
 }
 

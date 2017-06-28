@@ -2,34 +2,22 @@
 #include "GameState.h"
 
 namespace Common {
-	BaseSystem::BaseSystem( GameState *gameState ) :
-		mCurrentGameState( gameState ) {}
+	BaseSystem::BaseSystem(GameState* gameState)
+	                : mCurrentGameState(gameState) {}
 	//-----------------------------------------------------------------------------------
 	BaseSystem::~BaseSystem() {}
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::initialize(void) {
-		mCurrentGameState->initialize();
-	}
+	void BaseSystem::initialize(void) { mCurrentGameState->initialize(); }
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::deinitialize(void) {
-		mCurrentGameState->deinitialize();
-	}
+	void BaseSystem::deinitialize(void) { mCurrentGameState->deinitialize(); }
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::createScene(void) {
-		mCurrentGameState->createScene();
-	}
+	void BaseSystem::createScene(void) { mCurrentGameState->createScene(); }
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::destroyScene(void) {
-		mCurrentGameState->destroyScene();
-	}
+	void BaseSystem::destroyScene(void) { mCurrentGameState->destroyScene(); }
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::beginFrameParallel(void) {
-		this->processIncomingMessages();
-	}
+	void BaseSystem::beginFrameParallel(void) { this->processIncomingMessages(); }
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::update( float timeSinceLast ) {
-		mCurrentGameState->update( timeSinceLast );
-	}
+	void BaseSystem::update(float timeSinceLast) { mCurrentGameState->update(timeSinceLast); }
 	//-----------------------------------------------------------------------------------
 	void BaseSystem::finishFrameParallel(void) {
 		mCurrentGameState->finishFrameParallel();
@@ -37,7 +25,5 @@ namespace Common {
 		this->flushQueuedMessages();
 	}
 	//-----------------------------------------------------------------------------------
-	void BaseSystem::finishFrame(void) {
-		mCurrentGameState->finishFrame();
-	}
+	void BaseSystem::finishFrame(void) { mCurrentGameState->finishFrame(); }
 }

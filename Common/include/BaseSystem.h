@@ -8,10 +8,10 @@ namespace Common {
 
 	class BaseSystem : public Mq::MessageQueueSystem {
 	protected:
-		GameState   *mCurrentGameState;
+		GameState* mCurrentGameState;
 
 	public:
-		BaseSystem( GameState *gameState );
+		BaseSystem(GameState* gameState);
 		virtual ~BaseSystem();
 
 		virtual void initialize(void);
@@ -22,7 +22,7 @@ namespace Common {
 		virtual void destroyScene(void);
 
 		void beginFrameParallel(void);
-		void update( float timeSinceLast );
+		void update(float timeSinceLast);
 		void finishFrameParallel(void);
 		void finishFrame(void);
 	};
