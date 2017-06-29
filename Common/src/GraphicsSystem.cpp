@@ -345,7 +345,7 @@ namespace Common {
 	void GraphicsSystem::loadResources(void) {
 		registerHlms();
 
-		Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+		Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups(true);
 	}
 	//-----------------------------------------------------------------------------------
 	void GraphicsSystem::chooseSceneManager(void) {
