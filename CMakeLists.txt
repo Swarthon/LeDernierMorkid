@@ -3,11 +3,12 @@ cmake_minimum_required(VERSION 2.8)
 project(LeDernierMorkid)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
-file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp")
 file(GLOB SRC "src/*.cpp" "src/Terrain/*.cpp")
-add_executable(LeDernierMorkid ${SRC} ${COMMONSRC})
+file(GLOB COLLISIONSRC "Collision/src/*.cpp")
+file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp")
+add_executable(LeDernierMorkid ${SRC} ${COLLISIONSRC} ${COMMONSRC})
 
-include_directories (include Common/include)
+include_directories (include Common/include Collision/include)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/cmake/Modules/")
 

@@ -31,9 +31,9 @@ namespace Common {
 	                  mWarpX(0),
 	                  mWarpY(0),
 	                  mWarpCompensate(false) {}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	SdlInputHandler::~SdlInputHandler() {}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::handleWindowEvent(const SDL_Event& evt) {
 		switch (evt.window.event) {
 		case SDL_WINDOWEVENT_ENTER:
@@ -54,7 +54,7 @@ namespace Common {
 			break;
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::_handleSdlEvents(const SDL_Event& evt) {
 		switch (evt.type) {
 		case SDL_MOUSEMOTION:
@@ -143,22 +143,22 @@ namespace Common {
 		case SDL_WINDOWEVENT: handleWindowEvent(evt); break;
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::setGrabMousePointer(bool grab) {
 		mWantMouseGrab = grab;
 		updateMouseSettings();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::setMouseRelative(bool relative) {
 		mWantRelative = relative;
 		updateMouseSettings();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::setMouseVisible(bool visible) {
 		mWantMouseVisible = visible;
 		updateMouseSettings();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::updateMouseSettings(void) {
 		mGrabPointer = mWantMouseGrab && mMouseInWindow && mWindowHasFocus;
 		SDL_SetWindowGrab(mSdlWindow, mGrabPointer ? SDL_TRUE : SDL_FALSE);
@@ -180,14 +180,14 @@ namespace Common {
 		SDL_PumpEvents();
 		SDL_FlushEvent(SDL_MOUSEMOTION);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::warpMouse(int x, int y) {
 		SDL_WarpMouseInWindow(mSdlWindow, x, y);
 		mWarpCompensate = true;
 		mWarpX          = x;
 		mWarpY          = y;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void SdlInputHandler::wrapMousePointer(const SDL_MouseMotionEvent& evt) {
 		if (mIsMouseRelative || !mWrapPointerManually || !mGrabPointer)
 			return;
@@ -204,7 +204,7 @@ namespace Common {
 			warpMouse(width / 2, height / 2);
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	bool SdlInputHandler::handleWarpMotion(const SDL_MouseMotionEvent& evt) {
 		if (!mWarpCompensate)
 			return false;

@@ -29,16 +29,16 @@ extern const double cFrametime;
 GraphicsGameState::GraphicsGameState()
                 : mGraphicsSystem(0), mEnableInterpolation(true), mCameraController(0) {
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 GraphicsGameState::~GraphicsGameState() {
 	delete mCameraController;
 	mCameraController = 0;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::_notifyGraphicsSystem(Common::GraphicsSystem* graphicsSystem) {
 	mGraphicsSystem = graphicsSystem;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::createScene(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
@@ -107,7 +107,7 @@ void GraphicsGameState::createScene(void) {
 	mSunLight->setDirection(
 	        Ogre::Quaternion(Ogre::Radian(0), Ogre::Vector3::UNIT_Y) * Ogre::Vector3(cosf(Ogre::Math::PI * 0.1f), -sinf(Ogre::Math::PI * 0.1f), 0.0).normalisedCopy());
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::update(float timeSinceLast) {
 	float weight = mGraphicsSystem->getAccumTimeSinceLastLogicFrame() / cFrametime;
 	weight       = std::min(1.0f, weight);
@@ -127,19 +127,19 @@ void GraphicsGameState::update(float timeSinceLast) {
 	//	if( mTerrain->getHeightAt( camPos ) )
 	//		camera->setPosition( camPos + Ogre::Vector3::UNIT_Y * 10.0f );
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::keyPressed(const SDL_KeyboardEvent& arg) {
 	if (mCameraController)
 		mCameraController->keyPressed(arg);
 	GameState::keyPressed(arg);
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::keyReleased(const SDL_KeyboardEvent& arg) {
 	if (mCameraController)
 		mCameraController->keyReleased(arg);
 	GameState::keyReleased(arg);
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::mouseMoved(const SDL_Event& arg) {
 	if (mCameraController)
 		mCameraController->mouseMoved(arg);

@@ -24,7 +24,7 @@ namespace Common {
 		mKeymapState[Down].first      = SDLK_LSHIFT;
 		mKeymapState[Run].first       = SDLK_LALT;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void CameraController::update(float timeSinceLast) {
 		Ogre::Camera* camera = mGraphicsSystem->getCamera();
 
@@ -63,7 +63,7 @@ namespace Common {
 				camera->moveRelative(camMovementDir);
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	bool CameraController::keyPressed(const SDL_KeyboardEvent& arg) {
 		if (arg.keysym.sym == mKeymapState[Run].first)
 			mSpeedModifier = true;
@@ -85,7 +85,7 @@ namespace Common {
 
 		return true;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	bool CameraController::keyReleased(const SDL_KeyboardEvent& arg) {
 		if (arg.keysym.sym == mKeymapState[Run].first)
 			mSpeedModifier = false;
@@ -107,7 +107,7 @@ namespace Common {
 
 		return true;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void CameraController::mouseMoved(const SDL_Event& arg) {
 		float width  = static_cast<float>(mGraphicsSystem->getRenderWindow()->getWidth());
 		float height = static_cast<float>(mGraphicsSystem->getRenderWindow()->getHeight());

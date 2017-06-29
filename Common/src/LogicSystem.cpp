@@ -3,6 +3,10 @@
 #include "GameState.h"
 #include "SdlInputHandler.h"
 
+#include "Converter.h"
+
+#include <BulletCollision/CollisionShapes/btCollisionShape.h>
+
 #include <OgreConfigFile.h>
 #include <OgreException.h>
 #include <OgreRoot.h>
@@ -42,6 +46,12 @@ namespace Common {
 		mWorld                  = new btDiscreteDynamicsWorld(
 		        mDispatcher, mBroadphase, mSolver, mCollisionConfiguration);
 		mWorld->setGravity(btVector3(0.0, -9.8, 0.0));
+	}
+	//------------------------------------------------------------------------------------------------
+	void LogicSystem::update(float timeSinceLast) {
+		if (mWorld)
+			mWorld->stepSimulation(timeSinceLast, 1, 1.0/60.0);
+		BaseSystem::update(timeSinceLast);
 	}
 	//------------------------------------------------------------------------------------------------
 	void LogicSystem::finishFrameParallel(void) {
@@ -90,22 +100,21 @@ namespace Common {
 		}
 	}
 	//------------------------------------------------------------------------------------------------
-	void LogicSystem::addGameEntity(const GameEntityManager::CreatedGameEntity cge) {
-		if (cge.gameEntity->mCoDefinition->coType == CoRigidBody) {
-			cge.gameEntity->mCollisionObject = new btRigidBody(cge.gameEntity->mCoDefinition->mass,
-			                                                   new btDefaultMotionState(),
-			                                                   cge.gameEntity->mShape);
-			btTransform transform = btTransform::getIdentity();
-			transform.setOrigin(btVector3(cge.initialTransform.vPos.x,
-			                              cge.initialTransform.vPos.y,
-			                              cge.initialTransform.vPos.z));
-			transform.setRotation(btQuaternion(cge.initialTransform.qRot.x,
-			                                   cge.initialTransform.qRot.y,
-			                                   cge.initialTransform.qRot.z,
-			                                   cge.initialTransform.qRot.w));
-			cge.gameEntity->mCollisionObject->setWorldTransform(transform);
+	void LogicSystem::addGameEntity(const GameEntityManager::CreatedGameEntity* cge) {
+		if (cge->gameEntity->mCoDefinition->coType == CoRigidBody) {
+			btVector3 localInertia(0,0,0);
+			if(cge->gameEntity->mCoDefinition->mass)
+				cge->gameEntity->mCoDefinition->shape->calculateLocalInertia(cge->gameEntity->mCoDefinition->mass,
+										             localInertia);
+			cge->gameEntity->mCollisionObject = new btRigidBody(cge->gameEntity->mCoDefinition->mass,
+			                                                    new btDefaultMotionState(),
+			                                                    cge->gameEntity->mCoDefinition->shape,
+								    	    localInertia);
+			cge->gameEntity->mCollisionObject->setWorldTransform(Collision::Converter::to(cge->initialTransform));
+			cge->gameEntity->mCollisionObject->setRestitution(cge->gameEntity->mCoDefinition->restitution);
+			cge->gameEntity->mCollisionObject->setFriction(cge->gameEntity->mCoDefinition->friction);
 			mWorld->addRigidBody(
-			        static_cast<btRigidBody*>(cge.gameEntity->mCollisionObject));
+			        static_cast<btRigidBody*>(cge->gameEntity->mCollisionObject));
 		}
 		else {
 			OGRE_EXCEPT(Ogre::Exception::ERR_NOT_IMPLEMENTED,

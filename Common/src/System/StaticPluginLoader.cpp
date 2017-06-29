@@ -48,7 +48,7 @@ namespace Common {
 #endif
 	{
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	StaticPluginLoader::~StaticPluginLoader() {
 #ifdef OGRE_STATIC_LIB
 #ifdef OGRE_BUILD_RENDERSYSTEM_METAL
@@ -57,7 +57,7 @@ namespace Common {
 #endif
 #endif
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void StaticPluginLoader::install(Ogre::Root* root) {
 #ifdef OGRE_STATIC_LIB
 #ifdef OGRE_BUILD_RENDERSYSTEM_METAL

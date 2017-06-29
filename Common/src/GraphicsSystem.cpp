@@ -3,6 +3,11 @@
 #include "GameState.h"
 #include "SdlInputHandler.h"
 
+#include "Converter.h"
+#include "ObjectState.h"
+
+#include <BulletDynamics/Dynamics/btRigidBody.h>
+
 #include <OgreConfigFile.h>
 #include <OgreException.h>
 #include <OgreRoot.h>
@@ -39,9 +44,9 @@ namespace Common {
 	                  mThreadWeight(0),
 	                  mQuit(false),
 	                  mBackgroundColour(backgroundColour) {}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	GraphicsSystem::~GraphicsSystem() { assert(!mRoot && "deinitialize() not called!!!"); }
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::initialize(const Ogre::String& windowTitle) {
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 			OGRE_EXCEPT(Ogre::Exception::ERR_INTERNAL_ERROR,
@@ -161,7 +166,7 @@ namespace Common {
 
 		BaseSystem::initialize();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::deinitialize(void) {
 		BaseSystem::deinitialize();
 
@@ -180,7 +185,7 @@ namespace Common {
 
 		SDL_Quit();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::update(float timeSinceLast) {
 		Ogre::WindowEventUtilities::messagePump();
 
@@ -202,7 +207,7 @@ namespace Common {
 
 		mAccumTimeSinceLastLogicFrame += timeSinceLast;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::handleWindowEvent(const SDL_Event& evt) {
 		switch (evt.window.event) {
 		case SDL_WINDOWEVENT_SIZE_CHANGED: int w, h; SDL_GetWindowSize(mSdlWindow, &w, &h);
@@ -224,7 +229,7 @@ namespace Common {
 		case SDL_WINDOWEVENT_HIDDEN: mRenderWindow->setVisible(false); break;
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::processIncomingMessage(Mq::MessageId messageId, const void* data) {
 		switch (messageId) {
 		case Mq::LOGICFRAME_FINISHED: {
@@ -257,14 +262,14 @@ namespace Common {
 		default: break;
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::addResourceLocation(const Ogre::String& archName,
 	                                         const Ogre::String& typeName,
 	                                         const Ogre::String& secName) {
 		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
 		        archName, typeName, secName);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::setupResources(void) {
 		Ogre::ConfigFile cf;
 		cf.load(mResourcePath + "resources.cfg");
@@ -286,7 +291,7 @@ namespace Common {
 			}
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::registerHlms(void) {
 		Ogre::ConfigFile cf;
 		cf.load(mResourcePath + "resources.cfg");
@@ -341,13 +346,13 @@ namespace Common {
 			}
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::loadResources(void) {
 		registerHlms();
 
 		Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups(true);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::chooseSceneManager(void) {
 		Ogre::InstancingThreadedCullingMethod threadedCullingMethod = Ogre::INSTANCING_CULLING_SINGLETHREAD;
 #if OGRE_DEBUG_MODE
@@ -364,7 +369,7 @@ namespace Common {
 		                               Ogre::ColourValue(0.f, 0.f, 0.f),
 		                               Ogre::Vector3(0, 1, 0));
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::createCamera(void) {
 		mCamera = mSceneManager->createCamera("Main Camera");
 
@@ -374,7 +379,7 @@ namespace Common {
 		mCamera->setFarClipDistance(1000.0f);
 		mCamera->setAutoAspectRatio(true);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	Ogre::CompositorWorkspace* GraphicsSystem::setupCompositor(void) {
 		Ogre::CompositorManager2* compositorManager = mRoot->getCompositorManager2();
 
@@ -387,7 +392,7 @@ namespace Common {
 		return compositorManager->addWorkspace(
 		        mSceneManager, mRenderWindow, mCamera, workspaceName, true);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::stopCompositor(void) {
 		if (mWorkspace) {
 			Ogre::CompositorManager2* compositorManager = mRoot->getCompositorManager2();
@@ -395,13 +400,13 @@ namespace Common {
 			mWorkspace = 0;
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::restartCompositor(void) {
 		stopCompositor();
 		mWorkspace = setupCompositor();
 	}
-	//-----------------------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	struct GameEntityCmp {
 		bool operator()(const GameEntity*    _l,
 		                const Ogre::Matrix4* RESTRICT_ALIAS _r) const {
@@ -421,15 +426,13 @@ namespace Common {
 			return &lTransform.mDerivedTransform[lTransform.mIndex] < &rTransform.mDerivedTransform[rTransform.mIndex];
 		}
 	};
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::gameEntityAdded(const GameEntityManager::CreatedGameEntity* cge) {
 		Ogre::SceneNode* sceneNode = mSceneManager->getRootSceneNode(cge->gameEntity->mType)
 		                                     ->createChildSceneNode(cge->gameEntity->mType,
 		                                                            cge->initialTransform.vPos,
 		                                                            cge->initialTransform.qRot);
-
 		sceneNode->setScale(cge->initialTransform.vScale);
-
 		cge->gameEntity->mSceneNode = sceneNode;
 
 		if (cge->gameEntity->mMoDefinition->moType == MoTypeItem) {
@@ -452,6 +455,13 @@ namespace Common {
 
 		sceneNode->attachObject(cge->gameEntity->mMovableObject);
 
+		// Linking Graphics and Physics
+		if(dynamic_cast<btRigidBody*>(cge->gameEntity->mCollisionObject)) {
+			btTransform transform = Collision::Converter::to(cge->initialTransform);
+			static_cast<btRigidBody*>(cge->gameEntity->mCollisionObject)->setMotionState(
+				new Collision::ObjectState(transform,cge->gameEntity,(LogicSystem*)mLogicSystem));
+		}
+
 		const Ogre::Transform&  transform    = sceneNode->_getTransform();
 		GameEntityVec::iterator itGameEntity = std::lower_bound(mGameEntities[cge->gameEntity->mType].begin(),
 		                                                        mGameEntities[cge->gameEntity->mType].end(),
@@ -459,7 +469,7 @@ namespace Common {
 		                                                        GameEntityCmp());
 		mGameEntities[cge->gameEntity->mType].insert(itGameEntity, cge->gameEntity);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::gameEntityRemoved(GameEntity* toRemove) {
 		const Ogre::Transform&  transform    = toRemove->mSceneNode->_getTransform();
 		GameEntityVec::iterator itGameEntity = std::lower_bound(mGameEntities[toRemove->mType].begin(),
@@ -479,14 +489,14 @@ namespace Common {
 		mSceneManager->destroyItem(static_cast<Ogre::Item*>(toRemove->mMovableObject));
 		toRemove->mMovableObject = 0;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::updateGameEntities(const GameEntityVec& gameEntities, float weight) {
 		mThreadGameEntityToUpdate = &gameEntities;
 		mThreadWeight             = weight;
 
 		mSceneManager->executeUserScalableTask(this, true);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::execute(size_t threadId, size_t numThreads) {
 		size_t currIdx = mCurrentTransformIdx;
 		size_t prevIdx = (mCurrentTransformIdx + NUM_GAME_ENTITY_BUFFERS - 1) % NUM_GAME_ENTITY_BUFFERS;

@@ -90,7 +90,7 @@ void Terrain::destroyHeightmapTexture(void) {
 		mHeightMapTex.setNull();
 	}
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void Terrain::createHeightmapTexture(const Ogre::String& imageName, const Ogre::Image& image) {
 	destroyHeightmapTexture();
 

@@ -14,7 +14,7 @@ namespace Common {
 	                  mLogicSystem(logicSystem) {
 		mLogicSystem->_notifyGameEntityManager(this);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	GameEntityManager::~GameEntityManager() {
 		mLogicSystem->_notifyGameEntityManager(0);
 		{
@@ -40,13 +40,14 @@ namespace Common {
 		mTransformBuffers.clear();
 		mAvailableTransforms.clear();
 	}
-	//-----------------------------------------------------------------------------------
-	GameEntity* GameEntityManager::addGameEntity(Ogre::SceneMemoryMgrTypes      type,
-	                                             const MovableObjectDefinition* moDefinition,
-	                                             const Ogre::Vector3&           initialPos,
-	                                             const Ogre::Quaternion&        initialRot,
-	                                             const Ogre::Vector3&           initialScale) {
-		GameEntity* gameEntity = new GameEntity(mCurrentId++, moDefinition, type);
+	//------------------------------------------------------------------------------------------------
+	GameEntity* GameEntityManager::addGameEntity(Ogre::SceneMemoryMgrTypes        type,
+	                                             const MovableObjectDefinition*   moDefinition,
+						     const CollisionObjectDefinition* coDefinition,
+	                                             const Ogre::Vector3&             initialPos,
+	                                             const Ogre::Quaternion&          initialRot,
+	                                             const Ogre::Vector3&             initialScale) {
+		GameEntity* gameEntity = new GameEntity(mCurrentId++, moDefinition, coDefinition, type);
 
 		CreatedGameEntity cge;
 		cge.gameEntity              = gameEntity;
@@ -67,12 +68,12 @@ namespace Common {
 
 		mGameEntities[type].push_back(gameEntity);
 
-		mLogicSystem->addGameEntity(cge);
+		mLogicSystem->addGameEntity(&cge);
 		mLogicSystem->queueSendMessage(mGraphicsSystem, Mq::GAME_ENTITY_ADDED, cge);
 
 		return gameEntity;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GameEntityManager::removeGameEntity(GameEntity* toRemove) {
 		Ogre::uint32 slot = getScheduledForRemovalAvailableSlot();
 		mScheduledForRemoval[slot].push_back(toRemove);
@@ -83,14 +84,14 @@ namespace Common {
 		mGameEntities[toRemove->mType].erase(itor);
 		mLogicSystem->queueSendMessage(mGraphicsSystem, Mq::GAME_ENTITY_REMOVED, toRemove);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GameEntityManager::_notifyGameEntitiesRemoved(size_t slot) {
 		destroyAllGameEntitiesIn(mScheduledForRemoval[slot]);
 
 		mScheduledForRemoval[slot].clear();
 		mScheduledForRemovalAvailableSlots.push_back(slot);
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GameEntityManager::destroyAllGameEntitiesIn(GameEntityVec& container) {
 		GameEntityVec::const_iterator itor = container.begin();
 		GameEntityVec::const_iterator end  = container.end();
@@ -101,7 +102,7 @@ namespace Common {
 			++itor;
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GameEntityManager::aquireTransformSlot(size_t& outSlot, size_t& outBufferIdx) {
 		if (mAvailableTransforms.empty()) {
 			GameEntityTransform* buffer = reinterpret_cast<GameEntityTransform*>(
@@ -120,7 +121,7 @@ namespace Common {
 		if (region.count == 0)
 			mAvailableTransforms.pop_back();
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GameEntityManager::releaseTransformSlot(size_t               bufferIdx,
 	                                             GameEntityTransform* transform) {
 		const size_t slot = transform - mTransformBuffers[bufferIdx];
@@ -146,7 +147,7 @@ namespace Common {
 			mAvailableTransforms.push_back(Region(slot, 1, bufferIdx));
 		}
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	Ogre::uint32 GameEntityManager::getScheduledForRemovalAvailableSlot(void) {
 		if (mScheduledForRemovalCurrentSlot >= mScheduledForRemoval.size()) {
 			if (mScheduledForRemovalAvailableSlots.empty()) {
@@ -161,7 +162,7 @@ namespace Common {
 
 		return mScheduledForRemovalCurrentSlot;
 	}
-	//-----------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
 	void GameEntityManager::finishFrameParallel(void) {
 		if (mScheduledForRemovalCurrentSlot < mScheduledForRemoval.size()) {
 			mLogicSystem->queueSendMessage(mGraphicsSystem,

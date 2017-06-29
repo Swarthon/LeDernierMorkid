@@ -89,11 +89,11 @@ HlmsTerrain::HlmsTerrain(Archive* dataFolder, ArchiveVec* libraryFolders)
 	// Override defaults
 	mLightGatheringMode = LightGatherForwardPlus;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 HlmsTerrain::~HlmsTerrain() {
 	destroyAllBuffers();
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::_changeRenderSystem(RenderSystem* newRs) {
 	ConstBufferPool::_changeRenderSystem(newRs);
 
@@ -145,7 +145,7 @@ void HlmsTerrain::_changeRenderSystem(RenderSystem* newRs) {
 			mTerrainSamplerblock = mHlmsManager->getSamplerblock(HlmsSamplerblock());
 	}
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 const HlmsCache* HlmsTerrain::createShaderCacheEntry(uint32                  renderableHash,
                                                      const HlmsCache&        passCache,
                                                      uint32                  finalHash,
@@ -223,7 +223,7 @@ const HlmsCache* HlmsTerrain::createShaderCacheEntry(uint32                  ren
 
 	return retVal;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::setDetailMapProperties(HlmsTerrainDatablock* datablock, PiecesMap* inOutPieces) {
 	uint32 minNormalMap   = 4;
 	bool   hasDiffuseMaps = false;
@@ -258,7 +258,7 @@ void HlmsTerrain::setDetailMapProperties(HlmsTerrainDatablock* datablock, Pieces
 
 	setProperty(TerrainProperty::FirstValidDetailMapNm, minNormalMap);
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::setTextureProperty(const char*           propertyName,
                                      HlmsTerrainDatablock* datablock,
                                      TerrainTextureTypes   texType) {
@@ -281,7 +281,7 @@ void HlmsTerrain::setTextureProperty(const char*           propertyName,
 		setProperty(propName.c_str(), datablock->_getTextureSliceArrayIndex(texType));
 	}
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::setDetailTextureProperty(const char*           propertyName,
                                            HlmsTerrainDatablock* datablock,
                                            TerrainTextureTypes   baseTexType,
@@ -306,7 +306,7 @@ void HlmsTerrain::setDetailTextureProperty(const char*           propertyName,
 		setProperty(propName.c_str(), datablock->_getTextureSliceArrayIndex(texType));
 	}
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::calculateHashForPreCreate(Renderable* renderable, PiecesMap* inOutPieces) {
 	assert(dynamic_cast<TerrainCell*>(renderable) && "This Hlms can only be used on a Terrain object!");
 
@@ -350,7 +350,7 @@ void HlmsTerrain::calculateHashForPreCreate(Renderable* renderable, PiecesMap* i
 	inOutPieces[VertexShader][TerrainProperty::MaterialsPerBuffer] = slotsPerPoolStr;
 	inOutPieces[PixelShader][TerrainProperty::MaterialsPerBuffer]  = slotsPerPoolStr;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 HlmsCache HlmsTerrain::preparePassHash(const CompositorShadowNode* shadowNode,
                                        bool                        casterPass,
                                        bool                        dualParaboloid,
@@ -774,7 +774,7 @@ HlmsCache HlmsTerrain::preparePassHash(const CompositorShadowNode* shadowNode,
 
 	return retVal;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 uint32 HlmsTerrain::fillBuffersFor(const HlmsCache*        cache,
                                    const QueuedRenderable& queuedRenderable,
                                    bool                    casterPass,
@@ -785,7 +785,7 @@ uint32 HlmsTerrain::fillBuffersFor(const HlmsCache*        cache,
 	            "Change the RenderQueue settings.",
 	            "HlmsTerrain::fillBuffersFor");
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 uint32 HlmsTerrain::fillBuffersForV1(const HlmsCache*        cache,
                                      const QueuedRenderable& queuedRenderable,
                                      bool                    casterPass,
@@ -794,7 +794,7 @@ uint32 HlmsTerrain::fillBuffersForV1(const HlmsCache*        cache,
 	return fillBuffersFor(
 	        cache, queuedRenderable, casterPass, lastCacheHash, commandBuffer, true);
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 uint32 HlmsTerrain::fillBuffersForV2(const HlmsCache*        cache,
                                      const QueuedRenderable& queuedRenderable,
                                      bool                    casterPass,
@@ -803,7 +803,7 @@ uint32 HlmsTerrain::fillBuffersForV2(const HlmsCache*        cache,
 	return fillBuffersFor(
 	        cache, queuedRenderable, casterPass, lastCacheHash, commandBuffer, false);
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 uint32 HlmsTerrain::fillBuffersFor(const HlmsCache*        cache,
                                    const QueuedRenderable& queuedRenderable,
                                    bool                    casterPass,
@@ -936,7 +936,7 @@ uint32 HlmsTerrain::fillBuffersFor(const HlmsCache*        cache,
 
 	return ((mCurrentMappedConstBuffer - mStartMappedConstBuffer) >> 4) - 1;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::destroyAllBuffers(void) {
 	HlmsBufferManager::destroyAllBuffers();
 
@@ -955,24 +955,24 @@ void HlmsTerrain::destroyAllBuffers(void) {
 		mPassBuffers.clear();
 	}
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::frameEnded(void) {
 	HlmsBufferManager::frameEnded();
 	mCurrentPassBuffer = 0;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::setDebugPssmSplits(bool bDebug) {
 	mDebugPssmSplits = bDebug;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::setShadowSettings(ShadowFilter filter) {
 	mShadowFilter = filter;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void HlmsTerrain::setAmbientLightMode(AmbientLightMode mode) {
 	mAmbientLightMode = mode;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 HlmsDatablock* HlmsTerrain::createDatablockImpl(IdString              datablockName,
                                                 const HlmsMacroblock* macroblock,
                                                 const HlmsBlendblock* blendblock,

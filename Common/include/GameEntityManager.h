@@ -50,11 +50,12 @@ namespace Common {
 		GameEntityManager(Mq::MessageQueueSystem* graphicsSystem, LogicSystem* logicSystem);
 		~GameEntityManager();
 
-		GameEntity* addGameEntity(Ogre::SceneMemoryMgrTypes      type,
-		                          const MovableObjectDefinition* moDefinition,
-		                          const Ogre::Vector3&           initialPos,
-		                          const Ogre::Quaternion&        initialRot,
-		                          const Ogre::Vector3&           initialScale);
+		GameEntity* addGameEntity(Ogre::SceneMemoryMgrTypes        type,
+		                          const MovableObjectDefinition*   moDefinition,
+					  const CollisionObjectDefinition* coDefinition,
+		                          const Ogre::Vector3&             initialPos,
+		                          const Ogre::Quaternion&          initialRot,
+		                          const Ogre::Vector3&             initialScale);
 
 		void removeGameEntity(GameEntity* toRemove);
 		void _notifyGameEntitiesRemoved(size_t slot);

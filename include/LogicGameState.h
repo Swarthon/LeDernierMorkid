@@ -9,11 +9,13 @@ namespace Common {
 	class LogicSystem;
 	struct GameEntity;
 	struct MovableObjectDefinition;
+	struct CollisionObjectDefinition;
 } // namespace Common
 
 class LogicGameState : public Common::GameState {
 	float                            mDisplacement;
 	Common::GameEntity*              mCubeEntity;
+	Common::CollisionObjectDefinition* mCubeCoDef;
 	Common::MovableObjectDefinition* mCubeMoDef;
 
 	Common::LogicSystem* mLogicSystem;

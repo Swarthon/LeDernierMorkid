@@ -41,11 +41,14 @@ namespace Common {
 			mGraphicsSystem = graphicsSystem;
 		}
 		void _notifyGameEntityManager(GameEntityManager* mgr) { mGameEntityManager = mgr; }
-		void                                             finishFrameParallel(void);
+
+		void update(float timeSinceLast);
+		void finishFrameParallel(void);
 
 		GameEntityManager* getGameEntityManager(void) { return mGameEntityManager; }
 		Ogre::uint32       getCurrentTransformIdx(void) const { return mCurrentTransformIdx; }
-		void addGameEntity(GameEntityManager::CreatedGameEntity cge);
+		btDynamicsWorld*   getWorld(void) const { return mWorld; }
+		void addGameEntity(const GameEntityManager::CreatedGameEntity* cge);
 	};
 }
 
