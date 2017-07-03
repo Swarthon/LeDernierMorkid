@@ -1,4 +1,4 @@
-<p align="center">![Our logo](Media/Logo/logo.png)</p>
+<p align="center"><img src="https://github.com/Swarthon/LeDernierMorkid/blob/master/Media/Logo/logo.png?raw=true"></p>
 
 <p align="center">**An open source and free role-playing game**</p>
 
