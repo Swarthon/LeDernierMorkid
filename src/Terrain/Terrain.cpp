@@ -53,8 +53,8 @@ void Terrain::createHeightmapTexture(const Ogre::String& imageName, const Ogre::
 	        "HeightMapTex" + Ogre::Id::generateNewId<Ogre::Texture>(),
 	        Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 	        Ogre::TEX_TYPE_2D,
-	        (uint) image.getWidth(),
-	        (uint) image.getHeight(),
+	        (Ogre::uint) image.getWidth(),
+	        (Ogre::uint) image.getHeight(),
 	        numMipmaps,
 	        image.getFormat(),
 	        Ogre::TU_STATIC_WRITE_ONLY);
