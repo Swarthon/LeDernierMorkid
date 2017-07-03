@@ -28,7 +28,8 @@ namespace Common {
 	                : BaseSystem(gameState),
 	                  mGraphicsSystem(0),
 	                  mGameEntityManager(0),
-	                  mCurrentTransformIdx(1) {
+	                  mCurrentTransformIdx(1),
+			  mWorld(NULL) {
 		// mCurrentTransformIdx is 1, 0 and NUM_GAME_ENTITY_BUFFERS - 1 are taken by
 		// GraphicsSytem at startup
 		// The range to fill is then [2; NUM_GAME_ENTITY_BUFFERS-1]
@@ -50,7 +51,7 @@ namespace Common {
 	//------------------------------------------------------------------------------------------------
 	void LogicSystem::update(float timeSinceLast) {
 		if (mWorld)
-			mWorld->stepSimulation(timeSinceLast, 1, 1.0/60.0);
+			mWorld->stepSimulation(timeSinceLast, 1, 1.0 / 60.0);
 		BaseSystem::update(timeSinceLast);
 	}
 	//------------------------------------------------------------------------------------------------
@@ -102,14 +103,14 @@ namespace Common {
 	//------------------------------------------------------------------------------------------------
 	void LogicSystem::addGameEntity(const GameEntityManager::CreatedGameEntity* cge) {
 		if (cge->gameEntity->mCoDefinition->coType == CoRigidBody) {
-			btVector3 localInertia(0,0,0);
-			if(cge->gameEntity->mCoDefinition->mass)
+			btVector3 localInertia(0, 0, 0);
+			if (cge->gameEntity->mCoDefinition->mass)
 				cge->gameEntity->mCoDefinition->shape->calculateLocalInertia(cge->gameEntity->mCoDefinition->mass,
-										             localInertia);
+				                                                             localInertia);
 			cge->gameEntity->mCollisionObject = new btRigidBody(cge->gameEntity->mCoDefinition->mass,
 			                                                    new btDefaultMotionState(),
 			                                                    cge->gameEntity->mCoDefinition->shape,
-								    	    localInertia);
+			                                                    localInertia);
 			cge->gameEntity->mCollisionObject->setWorldTransform(Collision::Converter::to(cge->initialTransform));
 			cge->gameEntity->mCollisionObject->setRestitution(cge->gameEntity->mCoDefinition->restitution);
 			cge->gameEntity->mCollisionObject->setFriction(cge->gameEntity->mCoDefinition->friction);

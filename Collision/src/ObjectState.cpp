@@ -8,7 +8,7 @@ namespace Collision {
 	ObjectState::ObjectState(btTransform& i, Common::GameEntity* ge, const Common::LogicSystem* ls) {
 		mInitialPosition = i;
 		mGameEntity      = ge;
-		mLogicSystem	 = ls;
+		mLogicSystem     = ls;
 	}
 	ObjectState::~ObjectState() {
 	}
@@ -20,7 +20,7 @@ namespace Collision {
 		if (mGameEntity == NULL)
 			return;
 
-		size_t currIdx = mLogicSystem->getCurrentTransformIdx();
+		size_t currIdx                         = mLogicSystem->getCurrentTransformIdx();
 		mGameEntity->mTransform[currIdx]->vPos = Converter::to(worldTrans.getOrigin());
 		mGameEntity->mTransform[currIdx]->qRot = Converter::to(worldTrans.getRotation());
 	}

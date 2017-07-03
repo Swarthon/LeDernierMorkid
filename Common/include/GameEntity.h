@@ -30,8 +30,8 @@ namespace Common {
 	};
 	struct CollisionObjectDefinition {
 		unsigned int        mass;
-		unsigned int	    restitution;
-		unsigned int	    friction;
+		unsigned int        restitution;
+		unsigned int        friction;
 		CollisionObjectType coType;
 		btCollisionShape*   shape;
 	};
@@ -73,14 +73,14 @@ namespace Common {
 
 		GameEntity(Ogre::uint32                     id,
 		           const MovableObjectDefinition*   moDefinition,
-			   const CollisionObjectDefinition* coDefinition,
+		           const CollisionObjectDefinition* coDefinition,
 		           Ogre::SceneMemoryMgrTypes        type)
 		                : mId(id),
 		                  mSceneNode(0),
 		                  mMovableObject(0),
 		                  mType(type),
 		                  mMoDefinition(moDefinition),
-				  mCoDefinition(coDefinition),
+		                  mCoDefinition(coDefinition),
 		                  mTransformBufferIdx(0) {
 			for (int i            = 0; i < NUM_GAME_ENTITY_BUFFERS; ++i)
 				mTransform[i] = 0;

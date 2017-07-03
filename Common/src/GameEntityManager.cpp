@@ -43,7 +43,7 @@ namespace Common {
 	//------------------------------------------------------------------------------------------------
 	GameEntity* GameEntityManager::addGameEntity(Ogre::SceneMemoryMgrTypes        type,
 	                                             const MovableObjectDefinition*   moDefinition,
-						     const CollisionObjectDefinition* coDefinition,
+	                                             const CollisionObjectDefinition* coDefinition,
 	                                             const Ogre::Vector3&             initialPos,
 	                                             const Ogre::Quaternion&          initialRot,
 	                                             const Ogre::Vector3&             initialScale) {

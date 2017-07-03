@@ -456,10 +456,9 @@ namespace Common {
 		sceneNode->attachObject(cge->gameEntity->mMovableObject);
 
 		// Linking Graphics and Physics
-		if(dynamic_cast<btRigidBody*>(cge->gameEntity->mCollisionObject)) {
+		if (dynamic_cast<btRigidBody*>(cge->gameEntity->mCollisionObject)) {
 			btTransform transform = Collision::Converter::to(cge->initialTransform);
-			static_cast<btRigidBody*>(cge->gameEntity->mCollisionObject)->setMotionState(
-				new Collision::ObjectState(transform,cge->gameEntity,(LogicSystem*)mLogicSystem));
+			static_cast<btRigidBody*>(cge->gameEntity->mCollisionObject)->setMotionState(new Collision::ObjectState(transform, cge->gameEntity, (LogicSystem*) mLogicSystem));
 		}
 
 		const Ogre::Transform&  transform    = sceneNode->_getTransform();

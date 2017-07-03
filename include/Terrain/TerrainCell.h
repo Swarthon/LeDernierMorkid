@@ -4,12 +4,12 @@
 #include <OgrePrerequisites.h>
 #include <OgreRenderable.h>
 
-class Terrain;
+class TerrainGraphics;
 struct GridPoint;
 
 class TerrainCell : public Ogre::Renderable {
 private:
-	Terrain*          mParentTerrain;
+	TerrainGraphics*  mParentTerrain;
 	Ogre::VaoManager* mVaoManager;
 
 	Ogre::int32  mGridX;
@@ -21,7 +21,7 @@ private:
 	Ogre::uint32 mSizeZ;
 
 public:
-	TerrainCell(Terrain*);
+	TerrainCell(TerrainGraphics*);
 	void initialize(Ogre::VaoManager* vaoManager);
 	void setOrigin(const GridPoint& gridPos,
 	               Ogre::uint32     horizontalPixelDim,

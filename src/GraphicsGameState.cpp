@@ -24,6 +24,8 @@
 #include <OgreMeshManager.h>
 #include <OgreMeshManager2.h>
 
+#include "LogicSystem.h"
+
 extern const double cFrametime;
 
 GraphicsGameState::GraphicsGameState()
@@ -43,18 +45,19 @@ void GraphicsGameState::createScene(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
 	mCameraController                = new Common::CameraController(mGraphicsSystem);
+
 	mGraphicsSystem->getCamera()->setPosition(-10.0f, 80.0f, 10.0f);
 
-	mTerrain = new Terrain(Ogre::Id::generateNewId<Ogre::MovableObject>(),
-	                       &sceneManager->_getEntityMemoryManager(Ogre::SCENE_STATIC),
-	                       sceneManager,
-	                       0,
-	                       root->getCompositorManager2(),
-	                       mGraphicsSystem->getCamera());
+	mTerrain = new TerrainGraphics(Ogre::Id::generateNewId<Ogre::MovableObject>(),
+	                               &sceneManager->_getEntityMemoryManager(Ogre::SCENE_STATIC),
+	                               sceneManager,
+	                               0,
+	                               root->getCompositorManager2(),
+	                               mGraphicsSystem->getCamera());
 	mTerrain->setCastShadows(false);
-	mTerrain->build("terrain.png",
-	                Ogre::Vector3(64.0f, 4096.0f * 0.0f, 64.0f),
-	                Ogre::Vector3(1024.0f, 100.0f, 1024.0f));
+	mTerrain->buildGraphics("terrain.png",
+	                        Ogre::Vector3(64.0f, 4096.0f * 0.0f, 64.0f),
+	                        Ogre::Vector3(1024.0f, 100.0f, 1024.0f));
 
 	Ogre::SceneNode* rootNode  = sceneManager->getRootSceneNode(Ogre::SCENE_STATIC);
 	Ogre::SceneNode* sceneNode = rootNode->createChildSceneNode(Ogre::SCENE_STATIC);
@@ -124,8 +127,6 @@ void GraphicsGameState::update(float timeSinceLast) {
 
 	Ogre::Camera* camera = mGraphicsSystem->getCamera();
 	Ogre::Vector3 camPos = camera->getPosition();
-	//	if( mTerrain->getHeightAt( camPos ) )
-	//		camera->setPosition( camPos + Ogre::Vector3::UNIT_Y * 10.0f );
 }
 //------------------------------------------------------------------------------------------------
 void GraphicsGameState::keyPressed(const SDL_KeyboardEvent& arg) {

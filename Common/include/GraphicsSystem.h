@@ -16,8 +16,8 @@ namespace Common {
 	class SdlInputHandler;
 
 	class GraphicsSystem : public BaseSystem, public Ogre::UniformScalableTask {
+	public:	BaseSystem* mLogicSystem;
 	protected:
-		BaseSystem* mLogicSystem;
 
 		SDL_Window*      mSdlWindow;
 		SdlInputHandler* mInputHandler;

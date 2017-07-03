@@ -16,7 +16,7 @@ protected:
 	bool                      mEnableInterpolation;
 	Common::GraphicsSystem*   mGraphicsSystem;
 	Common::CameraController* mCameraController;
-	Terrain*                  mTerrain;
+	TerrainGraphics*          mTerrain;
 	Ogre::Light*              mSunLight;
 
 public:

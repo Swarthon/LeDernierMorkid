@@ -4,7 +4,7 @@
 #include <Vao/OgreVaoManager.h>
 #include <Vao/OgreVertexArrayObject.h>
 
-TerrainCell::TerrainCell(Terrain* parentTerrain)
+TerrainCell::TerrainCell(TerrainGraphics* parentTerrain)
                 : mGridX(0),
                   mGridZ(0),
                   mLodLevel(0),

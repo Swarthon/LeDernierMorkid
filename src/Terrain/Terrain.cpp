@@ -1,5 +1,12 @@
 #include "Terrain/Terrain.h"
 
+#include "Converter.h"
+
+#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
+#include <BulletDynamics/Dynamics/btDynamicsWorld.h>
+#include <BulletDynamics/Dynamics/btRigidBody.h>
+#include <LinearMath/btDefaultMotionState.h>
+
 #include <OgreCamera.h>
 #include <OgreFrustum.h>
 #include <OgreHardwarePixelBuffer.h>
@@ -9,41 +16,188 @@
 #include <OgreSceneManager.h>
 #include <OgreTextureManager.h>
 
-Terrain::Terrain(Ogre::IdType               id,
-                 Ogre::ObjectMemoryManager* objectMemoryManager,
-                 Ogre::SceneManager*        sceneManager,
-                 Ogre::uint8                renderQueueId,
-                 Ogre::CompositorManager2*  compositorManager,
-                 Ogre::Camera*              camera)
-                : Ogre::MovableObject(id, objectMemoryManager, sceneManager, renderQueueId),
-                  mWidth(0u),
+#include <iostream>
+
+Terrain::Terrain()
+                : mWidth(0u),
                   mDepth(0u),
-                  mDepthWidthRatio(1.0f),
-                  mInvWidth(1.0f),
-                  mInvDepth(1.0f),
-                  mXZDimensions(Ogre::Vector2::UNIT_SCALE),
-                  mXZInvDimensions(Ogre::Vector2::UNIT_SCALE),
-                  mXZRelativeSize(Ogre::Vector2::UNIT_SCALE),
                   mHeight(1.0f),
                   mTerrainOrigin(Ogre::Vector3::ZERO),
+                  mXZDimensions(Ogre::Vector2::UNIT_SCALE),
+                  mXZInvDimensions(Ogre::Vector2::UNIT_SCALE),
+                  mDepthWidthRatio(1.0f),
+                  mInvWidth(1.0f),
+                  mInvDepth(1.0f) {}
+//-------------------------------------------------------------------------------------------------
+void Terrain::destroyHeightmapTexture(void) {
+	if (!mHeightMapTex.isNull()) {
+		Ogre::ResourcePtr resPtr = mHeightMapTex;
+		Ogre::TextureManager::getSingleton().remove(resPtr);
+		mHeightMapTex.setNull();
+	}
+}
+//------------------------------------------------------------------------------------------------
+void Terrain::createHeightmapTexture(const Ogre::String& imageName, const Ogre::Image& image) {
+	destroyHeightmapTexture();
+
+	if (image.getBPP() != 8 && image.getBPP() != 16 && image.getFormat() != Ogre::PF_FLOAT32_R) {
+		OGRE_EXCEPT(Ogre::Exception::ERR_INVALIDPARAMS,
+		            "Texture " + imageName + "must be 8 bpp, 16 bpp, or 32-bit Float",
+		            "Terrain::createHeightmapTexture");
+	}
+
+        const Ogre::uint8 numMipmaps = image.getNumMipmaps();
+//	const Ogre::uint8 numMipmaps = 0u;
+
+	mHeightMapTex = Ogre::TextureManager::getSingleton().createManual(
+	        "HeightMapTex" + Ogre::Id::generateNewId<Ogre::Texture>(),
+	        Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+	        Ogre::TEX_TYPE_2D,
+	        (uint) image.getWidth(),
+	        (uint) image.getHeight(),
+	        numMipmaps,
+	        image.getFormat(),
+	        Ogre::TU_STATIC_WRITE_ONLY);
+
+	for (Ogre::uint8 mip = 0; mip <= numMipmaps; ++mip) {
+		Ogre::v1::HardwarePixelBufferSharedPtr pixelBufferBuf = mHeightMapTex->getBuffer(0, mip);
+		const Ogre::PixelBox&                  currImage      = pixelBufferBuf->lock(
+		        Ogre::Box(0, 0, pixelBufferBuf->getWidth(), pixelBufferBuf->getHeight()),
+		        Ogre::v1::HardwareBuffer::HBL_DISCARD);
+		Ogre::PixelUtil::bulkPixelConversion(image.getPixelBox(0, mip), currImage);
+		pixelBufferBuf->unlock();
+	}
+}
+//-------------------------------------------------------------------------------------------------
+void Terrain::createHeightmap(const Ogre::String& imageName, bool useHeightmapTexture) {
+	Ogre::Image image;
+	image.load(imageName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+
+	mWidth           = image.getWidth();
+	mDepth           = image.getHeight();
+	mDepthWidthRatio = mDepth / (float) (mWidth);
+	mInvWidth        = 1.0f / mWidth;
+	mInvDepth        = 1.0f / mDepth;
+
+	if (Ogre::PixelUtil::getComponentCount(image.getFormat()) != 1) {
+		OGRE_EXCEPT(Ogre::Exception::ERR_INVALIDPARAMS,
+		            "Only grayscale images supported! " + imageName,
+		            "Terrain::createHeightmap");
+	}
+
+        if (useHeightmapTexture)
+	       createHeightmapTexture(imageName, image);
+	mHeightMap.resize(mWidth * mDepth);
+
+	const float maxValue    = powf(2.0f, (float) image.getBPP()) - 1.0f;
+	const float invMaxValue = 1.0f / maxValue;
+
+	if (image.getBPP() == 8) {
+		const Ogre::uint8* RESTRICT_ALIAS data = reinterpret_cast<Ogre::uint8 * RESTRICT_ALIAS>(image.getData());
+		for (Ogre::uint32 y = 0; y < mDepth; ++y)
+			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
+				mHeightMap[y * mWidth + x] = (data[y * mWidth + x] * invMaxValue) * mHeight;
+	}
+	else if (image.getBPP() == 16) {
+		const Ogre::uint16* RESTRICT_ALIAS data = reinterpret_cast<Ogre::uint16 * RESTRICT_ALIAS>(image.getData());
+		for (Ogre::uint32 y = 0; y < mDepth; ++y)
+			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
+				mHeightMap[y * mWidth + x] = (data[y * mWidth + x] * invMaxValue) * mHeight;
+	}
+	else if (image.getFormat() == Ogre::PF_FLOAT32_R) {
+		const float* RESTRICT_ALIAS data = reinterpret_cast<float * RESTRICT_ALIAS>(image.getData());
+		for (Ogre::uint32 y = 0; y < mDepth; ++y)
+			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
+				mHeightMap[y * mWidth + x] = data[y * mWidth + x] * mHeight;
+	}
+	//	calculateOptimumSkirtSize();
+}
+//-------------------------------------------------------------------------------------------------
+bool Terrain::getHeightAt(Ogre::Vector3& vPos) const {
+	bool      retVal = false;
+	GridPoint pos2D  = worldToGrid(vPos);
+
+	if (pos2D.x < mWidth - 1 && pos2D.z < mDepth - 1) {
+		const Ogre::Vector2 vPos2D = gridToWorld(pos2D);
+
+		const float dx = (vPos.x - vPos2D.x) * mWidth * mXZInvDimensions.x;
+		const float dz = (vPos.z - vPos2D.y) * mDepth * mXZInvDimensions.y;
+
+		float       a, b, c;
+		const float h00 = mHeightMap[pos2D.z * mWidth + pos2D.x];
+		const float h11 = mHeightMap[(pos2D.z + 1) * mWidth + pos2D.x + 1];
+
+		c = h00;
+		if (dx < dz) {
+			const float h01 = mHeightMap[(pos2D.z + 1) * mWidth + pos2D.x];
+			b               = h01 - c;
+			a               = h11 - b - c;
+		}
+		else {
+			const float h10 = mHeightMap[pos2D.z * mWidth + pos2D.x + 1];
+
+			a = h10 - c;
+			b = h11 - a - c;
+		}
+
+		vPos.y = a * dx + b * dz + c + mTerrainOrigin.y;
+		retVal = true;
+	}
+
+	return retVal;
+}
+//-------------------------------------------------------------------------------------------------
+inline Ogre::Vector2 Terrain::gridToWorld(const GridPoint& gPos) const {
+	Ogre::Vector2 retVal;
+
+	const float fWidth = static_cast<float>(mWidth);
+	const float fDepth = static_cast<float>(mDepth);
+
+	retVal.x = (gPos.x / fWidth) * mXZDimensions.x + mTerrainOrigin.x;
+	retVal.y = (gPos.z / fDepth) * mXZDimensions.y + mTerrainOrigin.z;
+
+	return retVal;
+}
+//-------------------------------------------------------------------------------------------------
+inline GridPoint Terrain::worldToGrid(const Ogre::Vector3& vPos) const {
+	GridPoint   retVal;
+	const float fWidth = static_cast<float>(mWidth);
+	const float fDepth = static_cast<float>(mDepth);
+
+	retVal.x = (Ogre::uint32) floorf(((vPos.x - mTerrainOrigin.x) * mXZInvDimensions.x) * fWidth);
+	retVal.z = (Ogre::uint32) floorf(((vPos.z - mTerrainOrigin.z) * mXZInvDimensions.y) * fDepth);
+
+	return retVal;
+}
+//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+TerrainGraphics::TerrainGraphics(Ogre::IdType               id,
+                                 Ogre::ObjectMemoryManager* objectMemoryManager,
+                                 Ogre::SceneManager*        sceneManager,
+                                 Ogre::uint8                renderQueueId,
+                                 Ogre::CompositorManager2*  compositorManager,
+                                 Ogre::Camera*              camera)
+                : Ogre::MovableObject(id, objectMemoryManager, sceneManager, renderQueueId),
+                  mXZRelativeSize(Ogre::Vector2::UNIT_SCALE),
                   mBasePixelDimension(256u),
                   mCurrentCell(0u),
                   mCamera(camera) {
 }
 //-------------------------------------------------------------------------------------------------
-Terrain::~Terrain() {
+TerrainGraphics::~TerrainGraphics() {
 	mTerrainCells.clear();
 }
 //-------------------------------------------------------------------------------------------------
-void Terrain::build(const Ogre::String&  texName,
-                    const Ogre::Vector3  center,
-                    const Ogre::Vector3& dimensions) {
+void TerrainGraphics::buildGraphics(const Ogre::String&  texName,
+                                    const Ogre::Vector3  center,
+                                    const Ogre::Vector3& dimensions,
+                                    bool useHeightmapTexture) {
 	mTerrainOrigin      = center - dimensions * 0.5f;
 	mXZDimensions       = Ogre::Vector2(dimensions.x, dimensions.z);
 	mXZInvDimensions    = 1.0f / mXZDimensions;
 	mHeight             = dimensions.y;
 	mBasePixelDimension = 64u;
-	createHeightmap(texName);
+	createHeightmap(texName, useHeightmapTexture);
 
 	mXZRelativeSize = mXZDimensions / Ogre::Vector2(static_cast<Ogre::Real>(mWidth),
 	                                                static_cast<Ogre::Real>(mDepth));
@@ -83,103 +237,20 @@ void Terrain::build(const Ogre::String&  texName,
 	}
 }
 //-------------------------------------------------------------------------------------------------
-void Terrain::destroyHeightmapTexture(void) {
-	if (!mHeightMapTex.isNull()) {
-		Ogre::ResourcePtr resPtr = mHeightMapTex;
-		Ogre::TextureManager::getSingleton().remove(resPtr);
-		mHeightMapTex.setNull();
-	}
-}
-//------------------------------------------------------------------------------------------------
-void Terrain::createHeightmapTexture(const Ogre::String& imageName, const Ogre::Image& image) {
-	destroyHeightmapTexture();
-
-	if (image.getBPP() != 8 && image.getBPP() != 16 && image.getFormat() != Ogre::PF_FLOAT32_R) {
-		OGRE_EXCEPT(Ogre::Exception::ERR_INVALIDPARAMS,
-		            "Texture " + imageName + "must be 8 bpp, 16 bpp, or 32-bit Float",
-		            "Terrain::createHeightmapTexture");
-	}
-
-	// const uint8 numMipmaps = image.getNumMipmaps();
-	const Ogre::uint8 numMipmaps = 0u;
-
-	mHeightMapTex = Ogre::TextureManager::getSingleton().createManual(
-	        "HeightMapTex" + Ogre::StringConverter::toString(getId()),
-	        Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-	        Ogre::TEX_TYPE_2D,
-	        (uint) image.getWidth(),
-	        (uint) image.getHeight(),
-	        numMipmaps,
-	        image.getFormat(),
-	        Ogre::TU_STATIC_WRITE_ONLY);
-
-	for (Ogre::uint8 mip = 0; mip <= numMipmaps; ++mip) {
-		Ogre::v1::HardwarePixelBufferSharedPtr pixelBufferBuf = mHeightMapTex->getBuffer(0, mip);
-		const Ogre::PixelBox&                  currImage      = pixelBufferBuf->lock(
-		        Ogre::Box(0, 0, pixelBufferBuf->getWidth(), pixelBufferBuf->getHeight()),
-		        Ogre::v1::HardwareBuffer::HBL_DISCARD);
-		Ogre::PixelUtil::bulkPixelConversion(image.getPixelBox(0, mip), currImage);
-		pixelBufferBuf->unlock();
-	}
-}
-//-------------------------------------------------------------------------------------------------
-void Terrain::createHeightmap(const Ogre::String& imageName) {
-	Ogre::Image image;
-	image.load(imageName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-
-	mWidth           = image.getWidth();
-	mDepth           = image.getHeight();
-	mDepthWidthRatio = mDepth / (float) (mWidth);
-	mInvWidth        = 1.0f / mWidth;
-	mInvDepth        = 1.0f / mDepth;
-
-	if (Ogre::PixelUtil::getComponentCount(image.getFormat()) != 1) {
-		OGRE_EXCEPT(Ogre::Exception::ERR_INVALIDPARAMS,
-		            "Only grayscale images supported! " + imageName,
-		            "Terrain::createHeightmap");
-	}
-
-	createHeightmapTexture(imageName, image);
-	mHeightMap.resize(mWidth * mDepth);
-
-	const float maxValue    = powf(2.0f, (float) image.getBPP()) - 1.0f;
-	const float invMaxValue = 1.0f / maxValue;
-
-	if (image.getBPP() == 8) {
-		const Ogre::uint8* RESTRICT_ALIAS data = reinterpret_cast<Ogre::uint8 * RESTRICT_ALIAS>(image.getData());
-		for (Ogre::uint32 y = 0; y < mDepth; ++y)
-			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
-				mHeightMap[y * mWidth + x] = (data[y * mWidth + x] * invMaxValue) * mHeight;
-	}
-	else if (image.getBPP() == 16) {
-		const Ogre::uint16* RESTRICT_ALIAS data = reinterpret_cast<Ogre::uint16 * RESTRICT_ALIAS>(image.getData());
-		for (Ogre::uint32 y = 0; y < mDepth; ++y)
-			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
-				mHeightMap[y * mWidth + x] = (data[y * mWidth + x] * invMaxValue) * mHeight;
-	}
-	else if (image.getFormat() == Ogre::PF_FLOAT32_R) {
-		const float* RESTRICT_ALIAS data = reinterpret_cast<float * RESTRICT_ALIAS>(image.getData());
-		for (Ogre::uint32 y = 0; y < mDepth; ++y)
-			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
-				mHeightMap[y * mWidth + x] = data[y * mWidth + x] * mHeight;
-	}
-	//	calculateOptimumSkirtSize();
-}
-//-------------------------------------------------------------------------------------------------
-const Ogre::String& Terrain::getMovableType(void) const {
+const Ogre::String& TerrainGraphics::getMovableType(void) const {
 	static const Ogre::String movType = "Terrain";
 	return movType;
 }
 //-------------------------------------------------------------------------------------------------
-void Terrain::addRenderable(const GridPoint& gridPos,
-                            const GridPoint& cellSize,
-                            Ogre::uint32     lodLevel) {
+void TerrainGraphics::addRenderable(const GridPoint& gridPos,
+                                    const GridPoint& cellSize,
+                                    Ogre::uint32     lodLevel) {
 	TerrainCell* cell = &mTerrainCells[mCurrentCell++];
 	cell->setOrigin(gridPos, cellSize.x, cellSize.z, lodLevel);
 	mCollectedCells[0].push_back(cell);
 }
 //-------------------------------------------------------------------------------------------------
-void Terrain::update(const Ogre::Vector3& lightDir, float lightEpsilon) {
+void TerrainGraphics::update(const Ogre::Vector3& lightDir, float lightEpsilon) {
 	mRenderables.clear();
 	mCurrentCell = 0;
 
@@ -276,7 +347,8 @@ void Terrain::update(const Ogre::Vector3& lightDir, float lightEpsilon) {
 		optimizeCellsAndAdd();
 	}
 }
-void Terrain::optimizeCellsAndAdd(void) {
+//-------------------------------------------------------------------------------------------------
+void TerrainGraphics::optimizeCellsAndAdd(void) {
 	// Keep iterating until mCollectedCells[0] stops shrinking
 	size_t numCollectedCells = std::numeric_limits<size_t>::max();
 	while (numCollectedCells != mCollectedCells[0].size()) {
@@ -314,7 +386,7 @@ void Terrain::optimizeCellsAndAdd(void) {
 	mCollectedCells[0].clear();
 }
 //-------------------------------------------------------------------------------------------------
-bool Terrain::isVisible(const GridPoint& gPos, const GridPoint& gSize) const {
+bool TerrainGraphics::isVisible(const GridPoint& gPos, const GridPoint& gSize) const {
 	if (gPos.x >= static_cast<Ogre::int32>(mWidth) || gPos.z >= static_cast<Ogre::int32>(mDepth) || gPos.x + gSize.x <= 0 || gPos.z + gSize.z <= 0)
 		return false; // Outside terrain bounds
 
@@ -337,30 +409,7 @@ bool Terrain::isVisible(const GridPoint& gPos, const GridPoint& gSize) const {
 	return true;
 }
 //-------------------------------------------------------------------------------------------------
-inline Ogre::Vector2 Terrain::gridToWorld(const GridPoint& gPos) const {
-	Ogre::Vector2 retVal;
-
-	const float fWidth = static_cast<float>(mWidth);
-	const float fDepth = static_cast<float>(mDepth);
-
-	retVal.x = (gPos.x / fWidth) * mXZDimensions.x + mTerrainOrigin.x;
-	retVal.y = (gPos.z / fDepth) * mXZDimensions.y + mTerrainOrigin.z;
-
-	return retVal;
-}
-//-------------------------------------------------------------------------------------------------
-inline GridPoint Terrain::worldToGrid(const Ogre::Vector3& vPos) const {
-	GridPoint   retVal;
-	const float fWidth = static_cast<float>(mWidth);
-	const float fDepth = static_cast<float>(mDepth);
-
-	retVal.x = (Ogre::uint32) floorf(((vPos.x - mTerrainOrigin.x) * mXZInvDimensions.x) * fWidth);
-	retVal.z = (Ogre::uint32) floorf(((vPos.z - mTerrainOrigin.z) * mXZInvDimensions.y) * fDepth);
-
-	return retVal;
-}
-//-------------------------------------------------------------------------------------------------
-void Terrain::setDatablock(Ogre::HlmsDatablock* datablock) {
+void TerrainGraphics::setDatablock(Ogre::HlmsDatablock* datablock) {
 	std::vector<TerrainCell>::iterator itor = mTerrainCells.begin();
 	std::vector<TerrainCell>::iterator end  = mTerrainCells.end();
 
@@ -370,36 +419,40 @@ void Terrain::setDatablock(Ogre::HlmsDatablock* datablock) {
 	}
 }
 //-------------------------------------------------------------------------------------------------
-bool Terrain::getHeightAt(Ogre::Vector3& vPos) const {
-	bool      retVal = false;
-	GridPoint pos2D  = worldToGrid(vPos);
+//-------------------------------------------------------------------------------------------------
+TerrainCollisions::TerrainCollisions(btDynamicsWorld* world)
+                : mWorld(world) {
+}
+//-------------------------------------------------------------------------------------------------
+void TerrainCollisions::buildCollisions(const Ogre::String&  texName,
+                                        const Ogre::Vector3  center,
+                                        const Ogre::Vector3& dimensions,
+                                        bool useHeightmapTexture) {
+	mTerrainOrigin   = center - dimensions * 0.5f;
+	mXZDimensions    = Ogre::Vector2(dimensions.x, dimensions.z);
+	mXZInvDimensions = 1.0f / mXZDimensions;
+	mHeight          = dimensions.y;
 
-	if (pos2D.x < mWidth - 1 && pos2D.z < mDepth - 1) {
-		const Ogre::Vector2 vPos2D = gridToWorld(pos2D);
+	createHeightmap(texName, useHeightmapTexture);
+        createShape();
+}
+//-------------------------------------------------------------------------------------------------
+void TerrainCollisions::createShape() {
+	btScalar  heightScale = 1.f;
+	btVector3 localScaling(1, heightScale, 1);
 
-		const float dx = (vPos.x - vPos2D.x) * mWidth * mXZInvDimensions.x;
-		const float dz = (vPos.z - vPos2D.y) * mDepth * mXZInvDimensions.y;
+	btHeightfieldTerrainShape* terrainShape = new btHeightfieldTerrainShape(mWidth, mDepth, mHeightMap.data(), 1, 0, mHeight, 1, PHY_FLOAT, true);
+	double scale = mXZDimensions.x / (mWidth - 1);
+        terrainShape->setLocalScaling(btVector3(scale, 1, scale));
 
-		float       a, b, c;
-		const float h00 = mHeightMap[pos2D.z * mWidth + pos2D.x];
-		const float h11 = mHeightMap[(pos2D.z + 1) * mWidth + pos2D.x + 1];
+	btRigidBody* body = new btRigidBody(0, new btDefaultMotionState(), terrainShape);
+	body->setFriction(0.8f);
+	body->setHitFraction(0.8f);
+	body->setRestitution(0.6f);
+	body->getWorldTransform().setOrigin(btVector3(0, mHeight / 2, 0));
+	body->getWorldTransform().setRotation(Collision::Converter::to(Ogre::Quaternion::IDENTITY));
+	body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
 
-		c = h00;
-		if (dx < dz) {
-			const float h01 = mHeightMap[(pos2D.z + 1) * mWidth + pos2D.x];
-			b               = h01 - c;
-			a               = h11 - b - c;
-		}
-		else {
-			const float h10 = mHeightMap[pos2D.z * mWidth + pos2D.x + 1];
+	mWorld->addRigidBody(body);
 
-			a = h10 - c;
-			b = h11 - a - c;
-		}
-
-		vPos.y = a * dx + b * dz + c + mTerrainOrigin.y;
-		retVal = true;
-	}
-
-	return retVal;
 }
