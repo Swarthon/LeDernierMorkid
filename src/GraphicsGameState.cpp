@@ -1,8 +1,9 @@
 #include "GraphicsGameState.h"
-#include "CameraController.h"
 #include "GraphicsSystem.h"
 #include "Terrain/HlmsTerrain.h"
 #include "Terrain/HlmsTerrainDatablock.h"
+
+#include "CollisionCameraController.h"
 
 #include <OgreSceneManager.h>
 
@@ -44,7 +45,7 @@ void GraphicsGameState::_notifyGraphicsSystem(Common::GraphicsSystem* graphicsSy
 void GraphicsGameState::createScene(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
-	mCameraController                = new Common::CameraController(mGraphicsSystem, true, ((Common::LogicSystem*)mGraphicsSystem->mLogicSystem)->getWorld());
+	mCameraController                = new Collision::CollisionCameraController(mGraphicsSystem, ((Common::LogicSystem*)mGraphicsSystem->mLogicSystem)->getWorld());
 
 	mGraphicsSystem->getCamera()->setPosition(-10.0f, 80.0f, 10.0f);
 

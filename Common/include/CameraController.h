@@ -12,6 +12,7 @@ class btKinematicCharacterController;
 
 namespace Common {
 	class CameraController {
+	protected:
 		enum Action {
 			Forward,
 			Backward,
@@ -24,7 +25,6 @@ namespace Common {
 		typedef std::pair<SDL_Keycode, bool> KeyState;
 		typedef std::map<Action, KeyState>   KeymapState;
 
-	protected:
 		bool mUseSceneNode;
 		bool mUseCollision;
 
@@ -33,19 +33,14 @@ namespace Common {
 		float       mCameraYaw;
 		float       mCameraPitch;
 
-		btDynamicsWorld*                mWorld;
-		btPairCachingGhostObject*       mGhostObject;
-		btKinematicCharacterController* mCharacter;
-
+		GraphicsSystem* mGraphicsSystem;
 	public:
 		float mCameraBaseSpeed;
 		float mCameraSpeedBoost;
 
-	private:
-		GraphicsSystem* mGraphicsSystem;
 
 	public:
-		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false, btDynamicsWorld* world = NULL);
+		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false);
 
 		virtual void update(float timeSinceLast);
 
@@ -55,8 +50,6 @@ namespace Common {
 		virtual bool keyReleased(const SDL_KeyboardEvent& arg);
 
 		virtual void mouseMoved(const SDL_Event& arg);
-
-		virtual void initCollisions();
 	};
 }
 
