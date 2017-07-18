@@ -46,8 +46,8 @@ void Terrain::createHeightmapTexture(const Ogre::String& imageName, const Ogre::
 		            "Terrain::createHeightmapTexture");
 	}
 
-        const Ogre::uint8 numMipmaps = image.getNumMipmaps();
-//	const Ogre::uint8 numMipmaps = 0u;
+	const Ogre::uint8 numMipmaps = image.getNumMipmaps();
+	//	const Ogre::uint8 numMipmaps = 0u;
 
 	mHeightMapTex = Ogre::TextureManager::getSingleton().createManual(
 	        "HeightMapTex" + Ogre::Id::generateNewId<Ogre::Texture>(),
@@ -85,8 +85,8 @@ void Terrain::createHeightmap(const Ogre::String& imageName, bool useHeightmapTe
 		            "Terrain::createHeightmap");
 	}
 
-        if (useHeightmapTexture)
-	       createHeightmapTexture(imageName, image);
+	if (useHeightmapTexture)
+		createHeightmapTexture(imageName, image);
 	mHeightMap.resize(mWidth * mDepth);
 
 	const float maxValue    = powf(2.0f, (float) image.getBPP()) - 1.0f;
@@ -191,7 +191,7 @@ TerrainGraphics::~TerrainGraphics() {
 void TerrainGraphics::buildGraphics(const Ogre::String&  texName,
                                     const Ogre::Vector3  center,
                                     const Ogre::Vector3& dimensions,
-                                    bool useHeightmapTexture) {
+                                    bool                 useHeightmapTexture) {
 	mTerrainOrigin      = center - dimensions * 0.5f;
 	mXZDimensions       = Ogre::Vector2(dimensions.x, dimensions.z);
 	mXZInvDimensions    = 1.0f / mXZDimensions;
@@ -427,14 +427,14 @@ TerrainCollisions::TerrainCollisions(btDynamicsWorld* world)
 void TerrainCollisions::buildCollisions(const Ogre::String&  texName,
                                         const Ogre::Vector3  center,
                                         const Ogre::Vector3& dimensions,
-                                        bool useHeightmapTexture) {
+                                        bool                 useHeightmapTexture) {
 	mTerrainOrigin   = center - dimensions * 0.5f;
 	mXZDimensions    = Ogre::Vector2(dimensions.x, dimensions.z);
 	mXZInvDimensions = 1.0f / mXZDimensions;
 	mHeight          = dimensions.y;
 
 	createHeightmap(texName, useHeightmapTexture);
-        createShape();
+	createShape();
 }
 //-------------------------------------------------------------------------------------------------
 void TerrainCollisions::createShape() {
@@ -442,17 +442,16 @@ void TerrainCollisions::createShape() {
 	btVector3 localScaling(1, heightScale, 1);
 
 	btHeightfieldTerrainShape* terrainShape = new btHeightfieldTerrainShape(mWidth, mDepth, mHeightMap.data(), 1, 0, mHeight, 1, PHY_FLOAT, true);
-	double scale = mXZDimensions.x / (mWidth - 1);
-        terrainShape->setLocalScaling(btVector3(scale, 1, scale));
+	double                     scale        = mXZDimensions.x / (mWidth - 1);
+	terrainShape->setLocalScaling(btVector3(scale, 1, scale));
 
 	btRigidBody* body = new btRigidBody(0, new btDefaultMotionState(), terrainShape);
 	body->setFriction(0.8f);
 	body->setHitFraction(0.8f);
 	body->setRestitution(0.6f);
-	body->getWorldTransform().setOrigin(btVector3(0,mTerrainOrigin.y,0));
-//	body->getWorldTransform().setRotation(btQuaternion(btVector3(0,1,0),Ogre::Degree(90).valueRadians()));
+	body->getWorldTransform().setOrigin(btVector3(0, mTerrainOrigin.y, 0));
+	//	body->getWorldTransform().setRotation(btQuaternion(btVector3(0,1,0),Ogre::Degree(90).valueRadians()));
 	body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
 
 	mWorld->addRigidBody(body);
-
 }

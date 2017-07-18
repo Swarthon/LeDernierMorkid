@@ -22,6 +22,7 @@ class LogicGameState : public Common::GameState {
 	Common::LogicSystem* mLogicSystem;
 
 	TerrainCollisions* mTerrain;
+
 public:
 	LogicGameState();
 	~LogicGameState();

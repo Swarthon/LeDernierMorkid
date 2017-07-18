@@ -45,7 +45,7 @@ void GraphicsGameState::_notifyGraphicsSystem(Common::GraphicsSystem* graphicsSy
 void GraphicsGameState::createScene(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
-	mCameraController                = new Collision::CollisionCameraController(mGraphicsSystem, ((Common::LogicSystem*)mGraphicsSystem->mLogicSystem)->getWorld());
+	mCameraController                = new Collision::CollisionCameraController(mGraphicsSystem, ((Common::LogicSystem*) mGraphicsSystem->mLogicSystem)->getWorld());
 
 	mGraphicsSystem->getCamera()->setPosition(-10.0f, 80.0f, 10.0f);
 
@@ -58,7 +58,7 @@ void GraphicsGameState::createScene(void) {
 	mTerrain->setCastShadows(false);
 	mTerrain->buildGraphics("terrain.png",
 	                        Ogre::Vector3::ZERO,
-                                Ogre::Vector3(2048.0f, 100.0f, 2048.0f));
+	                        Ogre::Vector3(2048.0f, 100.0f, 2048.0f));
 
 	Ogre::SceneNode* rootNode  = sceneManager->getRootSceneNode(Ogre::SCENE_STATIC);
 	Ogre::SceneNode* sceneNode = rootNode->createChildSceneNode(Ogre::SCENE_STATIC);
@@ -104,7 +104,7 @@ void GraphicsGameState::createScene(void) {
 
 	mTerrain->setDatablock(static_cast<Ogre::HlmsDatablock*>(datablock));
 
-/*	mSunLight                  = sceneManager->createLight();
+	/*	mSunLight                  = sceneManager->createLight();
 	Ogre::SceneNode* lightNode = rootNode->createChildSceneNode();
 	lightNode->attachObject(mSunLight);
 	mSunLight->setPowerScale(Ogre::Math::PI);
@@ -121,7 +121,7 @@ void GraphicsGameState::update(float timeSinceLast) {
 	if (!mEnableInterpolation)
 		weight = 0;
 
-	mTerrain->update(Ogre::Vector3::ZERO);         // Now lightDir isn't used
+	mTerrain->update(Ogre::Vector3::ZERO); // Now lightDir isn't used
 
 	mGraphicsSystem->updateGameEntities(mGraphicsSystem->getGameEntities(Ogre::SCENE_DYNAMIC),
 	                                    weight);

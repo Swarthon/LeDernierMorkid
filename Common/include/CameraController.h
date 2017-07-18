@@ -34,10 +34,10 @@ namespace Common {
 		float       mCameraPitch;
 
 		GraphicsSystem* mGraphicsSystem;
+
 	public:
 		float mCameraBaseSpeed;
 		float mCameraSpeedBoost;
-
 
 	public:
 		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false);

@@ -5,18 +5,17 @@
 
 namespace Collision {
 
-        class CollisionCameraController : public Common::CameraController {
-        private:
-                btDynamicsWorld*                mWorld;
-                btPairCachingGhostObject*       mGhostObject;
-                btKinematicCharacterController* mCharacter;
+	class CollisionCameraController : public Common::CameraController {
+	private:
+		btDynamicsWorld*                mWorld;
+		btPairCachingGhostObject*       mGhostObject;
+		btKinematicCharacterController* mCharacter;
 
-        public:
-                CollisionCameraController(Common::GraphicsSystem* graphicsSystem, btDynamicsWorld* world);
+	public:
+		CollisionCameraController(Common::GraphicsSystem* graphicsSystem, btDynamicsWorld* world);
 
-                virtual void update(float timeSinceLast);
-        };
-
+		virtual void update(float timeSinceLast);
+	};
 }
 
 #endif // _CAMERACONTROLLER_H_

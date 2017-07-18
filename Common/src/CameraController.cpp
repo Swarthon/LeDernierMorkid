@@ -54,7 +54,6 @@ namespace Common {
 		camMovementDir.normalise();
 		camMovementDir *= timeSinceLast * mCameraBaseSpeed * (1 + mSpeedModifier * mCameraSpeedBoost);
 		if (camMovementZ || camMovementX || slideUpDown) {
-
 			if (mUseSceneNode) {
 				Ogre::Node* cameraNode = camera->getParentNode();
 				cameraNode->translate(camMovementDir, Ogre::Node::TS_LOCAL);

@@ -29,7 +29,7 @@ namespace Common {
 	                  mGraphicsSystem(0),
 	                  mGameEntityManager(0),
 	                  mCurrentTransformIdx(1),
-			  mWorld(NULL) {
+	                  mWorld(NULL) {
 		// mCurrentTransformIdx is 1, 0 and NUM_GAME_ENTITY_BUFFERS - 1 are taken by
 		// GraphicsSytem at startup
 		// The range to fill is then [2; NUM_GAME_ENTITY_BUFFERS-1]

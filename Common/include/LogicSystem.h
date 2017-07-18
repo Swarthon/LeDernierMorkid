@@ -15,7 +15,9 @@
 
 namespace Common {
 	class LogicSystem : public BaseSystem {
-	public:	BaseSystem*        mGraphicsSystem;
+	public:
+		BaseSystem* mGraphicsSystem;
+
 	protected:
 		GameEntityManager* mGameEntityManager;
 

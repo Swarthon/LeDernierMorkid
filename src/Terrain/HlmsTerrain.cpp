@@ -868,7 +868,7 @@ uint32 HlmsTerrain::fillBuffersFor(const HlmsCache*        cache,
 
 	if (mLastMovableObject != queuedRenderable.movableObject) {
 		// Different Terra? Must change textures then.
-		const TerrainGraphics* terraObj                 = static_cast<const TerrainGraphics*>(queuedRenderable.movableObject);
+		const TerrainGraphics* terraObj         = static_cast<const TerrainGraphics*>(queuedRenderable.movableObject);
 		*commandBuffer->addCommand<CbTexture>() = CbTexture(0, true, terraObj->getHeightMapTex().get());
 		*commandBuffer->addCommand<CbTexture>() = CbTexture(1, true, terraObj->getNormalMapTex().get(), mTerrainSamplerblock);
 

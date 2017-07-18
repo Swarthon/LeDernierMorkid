@@ -20,6 +20,7 @@ struct GridDirection {
 class Terrain {
 public:
 	Terrain();
+
 protected:
 	Ogre::uint32 mWidth;
 	Ogre::uint32 mDepth;
@@ -30,11 +31,11 @@ protected:
 	Ogre::Vector3 mTerrainOrigin;
 
 	std::vector<float> mHeightMap;
-	Ogre::TexturePtr mHeightMapTex;
+	Ogre::TexturePtr   mHeightMapTex;
 
-	Ogre::Real   mInvWidth;
-	Ogre::Real   mInvDepth;
-	Ogre::Real   mDepthWidthRatio;
+	Ogre::Real mInvWidth;
+	Ogre::Real mInvDepth;
+	Ogre::Real mDepthWidthRatio;
 
 	bool getHeightAt(Ogre::Vector3& vPos) const;
 
@@ -48,17 +49,17 @@ protected:
 
 class TerrainGraphics : public Terrain, public Ogre::MovableObject {
 public:
-	TerrainGraphics(Ogre::IdType		   id,
-	       		Ogre::ObjectMemoryManager* objectMemoryManager,
-	        	Ogre::SceneManager*        sceneManager,
-	        	Ogre::uint8                renderQueueId,
-	        	Ogre::CompositorManager2*  compositorManager,
-	        	Ogre::Camera*              camera);
+	TerrainGraphics(Ogre::IdType               id,
+	                Ogre::ObjectMemoryManager* objectMemoryManager,
+	                Ogre::SceneManager*        sceneManager,
+	                Ogre::uint8                renderQueueId,
+	                Ogre::CompositorManager2*  compositorManager,
+	                Ogre::Camera*              camera);
 	~TerrainGraphics();
 	void buildGraphics(const Ogre::String&  texName,
 	                   const Ogre::Vector3  center,
 	                   const Ogre::Vector3& dimensions,
-			   bool useHeightmapTexture = true);
+	                   bool                 useHeightmapTexture = true);
 	void update(const Ogre::Vector3& lightDir, float lightEpsilon = 1e-6f);
 
 	void
@@ -87,7 +88,7 @@ protected:
 
 	Ogre::TexturePtr mNormalMapTex;
 
-	void                 optimizeCellsAndAdd(void);
+	void optimizeCellsAndAdd(void);
 };
 
 class TerrainCollisions : public Terrain {
@@ -96,8 +97,9 @@ public:
 	void buildCollisions(const Ogre::String&  texName,
 	                     const Ogre::Vector3  center,
 	                     const Ogre::Vector3& dimensions,
-		     	     bool useHeightmapTexture = true);
+	                     bool                 useHeightmapTexture = true);
 	void createShape();
+
 private:
 	btDynamicsWorld* mWorld;
 };

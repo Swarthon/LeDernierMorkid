@@ -26,30 +26,30 @@ LogicGameState::~LogicGameState() {
 }
 //------------------------------------------------------------------------------------------------
 void LogicGameState::createScene(void) {
-        mTerrain = new TerrainCollisions(mLogicSystem->getWorld());
-        mTerrain->buildCollisions("terrain.png",
-                Ogre::Vector3(64.0f, 4096.0f * 0.0f, 64.0f),
-                Ogre::Vector3(1024.0f, 100.0f, 1024.0f),
-                false);
+	mTerrain = new TerrainCollisions(mLogicSystem->getWorld());
+	mTerrain->buildCollisions("terrain.png",
+	                          Ogre::Vector3(64.0f, 4096.0f * 0.0f, 64.0f),
+	                          Ogre::Vector3(1024.0f, 100.0f, 1024.0f),
+	                          false);
 
-        Common::GameEntityManager* geMgr = mLogicSystem->getGameEntityManager();
+	Common::GameEntityManager* geMgr = mLogicSystem->getGameEntityManager();
 
-        mCubeMoDef = new Common::MovableObjectDefinition();
-        mCubeMoDef->meshName        = "Cube.mesh";
-        mCubeMoDef->resourceGroup   = Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
-        mCubeMoDef->moType          = Common::MoTypeItem;
+	mCubeMoDef                = new Common::MovableObjectDefinition();
+	mCubeMoDef->meshName      = "Cube.mesh";
+	mCubeMoDef->resourceGroup = Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
+	mCubeMoDef->moType        = Common::MoTypeItem;
 
-        mCubeCoDef = new Common::CollisionObjectDefinition();
-        mCubeCoDef->shape  = new btBoxShape(btVector3(1,1,1));
-        mCubeCoDef->coType = Common::CoRigidBody;
-        mCubeCoDef->mass   = 1;
+	mCubeCoDef         = new Common::CollisionObjectDefinition();
+	mCubeCoDef->shape  = new btBoxShape(btVector3(1, 1, 1));
+	mCubeCoDef->coType = Common::CoRigidBody;
+	mCubeCoDef->mass   = 1;
 
-        mCubeEntity = geMgr->addGameEntity(Ogre::SCENE_DYNAMIC,
-                                           mCubeMoDef,
-                                           mCubeCoDef,
-                                           Ogre::Vector3(100,30,0),
-                                           Ogre::Quaternion::IDENTITY,
-                                           Ogre::Vector3::UNIT_SCALE * 0.5);
+	mCubeEntity = geMgr->addGameEntity(Ogre::SCENE_DYNAMIC,
+	                                   mCubeMoDef,
+	                                   mCubeCoDef,
+	                                   Ogre::Vector3(100, 30, 0),
+	                                   Ogre::Quaternion::IDENTITY,
+	                                   Ogre::Vector3::UNIT_SCALE * 0.5);
 }
 //------------------------------------------------------------------------------------------------
 void LogicGameState::update(float timeSinceLast) {
