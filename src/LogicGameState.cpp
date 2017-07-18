@@ -33,6 +33,23 @@ void LogicGameState::createScene(void) {
                 false);
 
         Common::GameEntityManager* geMgr = mLogicSystem->getGameEntityManager();
+
+        mCubeMoDef = new Common::MovableObjectDefinition();
+        mCubeMoDef->meshName        = "Cube.mesh";
+        mCubeMoDef->resourceGroup   = Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
+        mCubeMoDef->moType          = Common::MoTypeItem;
+
+        mCubeCoDef = new Common::CollisionObjectDefinition();
+        mCubeCoDef->shape  = new btBoxShape(btVector3(1,1,1));
+        mCubeCoDef->coType = Common::CoRigidBody;
+        mCubeCoDef->mass   = 1;
+
+        mCubeEntity = geMgr->addGameEntity(Ogre::SCENE_DYNAMIC,
+                                           mCubeMoDef,
+                                           mCubeCoDef,
+                                           Ogre::Vector3(100,30,0),
+                                           Ogre::Quaternion::IDENTITY,
+                                           Ogre::Vector3::UNIT_SCALE * 0.5);
 }
 //------------------------------------------------------------------------------------------------
 void LogicGameState::update(float timeSinceLast) {

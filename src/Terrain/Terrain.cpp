@@ -449,8 +449,8 @@ void TerrainCollisions::createShape() {
 	body->setFriction(0.8f);
 	body->setHitFraction(0.8f);
 	body->setRestitution(0.6f);
-	body->getWorldTransform().setOrigin(btVector3(0, mHeight / 2, 0));
-	body->getWorldTransform().setRotation(Collision::Converter::to(Ogre::Quaternion::IDENTITY));
+	body->getWorldTransform().setOrigin(btVector3(0,mTerrainOrigin.y,0));
+//	body->getWorldTransform().setRotation(btQuaternion(btVector3(0,1,0),Ogre::Degree(90).valueRadians()));
 	body->setCollisionFlags(body->getCollisionFlags() | btCollisionObject::CF_STATIC_OBJECT);
 
 	mWorld->addRigidBody(body);

@@ -6,6 +6,10 @@
 #include "GameState.h"
 #include "GraphicsSystem.h"
 
+class btDynamicsWorld;
+class btPairCachingGhostObject;
+class btKinematicCharacterController;
+
 namespace Common {
 	class CameraController {
 		enum Action {
@@ -22,11 +26,16 @@ namespace Common {
 
 	protected:
 		bool mUseSceneNode;
+		bool mUseCollision;
 
 		bool        mSpeedModifier;
 		KeymapState mKeymapState;
 		float       mCameraYaw;
 		float       mCameraPitch;
+
+		btDynamicsWorld*                mWorld;
+		btPairCachingGhostObject*       mGhostObject;
+		btKinematicCharacterController* mCharacter;
 
 	public:
 		float mCameraBaseSpeed;
@@ -36,7 +45,7 @@ namespace Common {
 		GraphicsSystem* mGraphicsSystem;
 
 	public:
-		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false);
+		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false, btDynamicsWorld* world = NULL);
 
 		virtual void update(float timeSinceLast);
 
@@ -46,6 +55,8 @@ namespace Common {
 		virtual bool keyReleased(const SDL_KeyboardEvent& arg);
 
 		virtual void mouseMoved(const SDL_Event& arg);
+
+		virtual void initCollisions();
 	};
 }
 

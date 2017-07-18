@@ -368,6 +368,9 @@ namespace Common {
 		mSceneManager->setAmbientLight(Ogre::ColourValue(1.f, 1.f, 1.f),
 		                               Ogre::ColourValue(0.f, 0.f, 0.f),
 		                               Ogre::Vector3(0, 1, 0));
+		/*mSceneManager->setAmbientLight( Ogre::ColourValue( 0.3f, 0.5f, 0.7f ) * 0.1f * 0.75f,
+                                               Ogre::ColourValue( 0.6f, 0.45f, 0.3f ) * 0.065f * 0.75f,
+                                               Ogre::Vector3(-1,-1,-1) + Ogre::Vector3::UNIT_Y * 0.2f );*/
 	}
 	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::createCamera(void) {

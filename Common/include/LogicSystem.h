@@ -15,8 +15,8 @@
 
 namespace Common {
 	class LogicSystem : public BaseSystem {
+	public:	BaseSystem*        mGraphicsSystem;
 	protected:
-		BaseSystem*        mGraphicsSystem;
 		GameEntityManager* mGameEntityManager;
 
 		// Collsion
