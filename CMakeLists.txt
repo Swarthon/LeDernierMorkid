@@ -8,6 +8,8 @@ file(GLOB COLLISIONSRC "Collision/src/*.cpp")
 file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp")
 add_executable(LeDernierMorkid ${SRC} ${COLLISIONSRC} ${COMMONSRC})
 
+add_custom_target(run COMMAND LeDernierMorkid DEPENDS LeDernierMorkid WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+
 include_directories (include Common/include Collision/include)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/cmake/Modules/")
