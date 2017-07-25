@@ -1,7 +1,10 @@
 #include "GraphicsGameState.h"
 #include "GraphicsSystem.h"
-#include "Terrain/HlmsTerrain.h"
-#include "Terrain/HlmsTerrainDatablock.h"
+#include "LogicSystem.h"
+#include "Terrain/Hlms/HlmsTerrain.h"
+#include "Terrain/Hlms/HlmsTerrainDatablock.h"
+#include "Terrain/Hlms/PbsListener/HlmsPbsTerrainShadows.h"
+#include "Terrain/TerrainShadowMapper.h"
 
 #include "CollisionCameraController.h"
 
@@ -9,6 +12,7 @@
 
 #include <OgreCamera.h>
 #include <OgreFrameStats.h>
+#include <OgreRenderWindow.h>
 #include <OgreRoot.h>
 
 #include <OgreArchiveManager.h>
@@ -25,12 +29,17 @@
 #include <OgreMeshManager.h>
 #include <OgreMeshManager2.h>
 
-#include "LogicSystem.h"
+#include <OgreHardwarePixelBuffer.h>
+#include <OgreRenderTexture.h>
+#include <OgreTextureManager.h>
+
+#include <Compositor/OgreCompositorManager2.h>
+#include <Compositor/OgreCompositorWorkspace.h>
 
 extern const double cFrametime;
 
 GraphicsGameState::GraphicsGameState()
-                : mGraphicsSystem(0), mEnableInterpolation(true), mCameraController(0) {
+                : mGraphicsSystem(0), mEnableInterpolation(true), mCameraController(0), mTerrain(0) {
 }
 //------------------------------------------------------------------------------------------------
 GraphicsGameState::~GraphicsGameState() {
@@ -42,6 +51,30 @@ void GraphicsGameState::_notifyGraphicsSystem(Common::GraphicsSystem* graphicsSy
 	mGraphicsSystem = graphicsSystem;
 }
 //------------------------------------------------------------------------------------------------
+Ogre::CompositorWorkspace* GraphicsGameState::setupCompositor() {
+	Ogre::Root*               root              = mGraphicsSystem->getRoot();
+	Ogre::SceneManager*       sceneManager      = mGraphicsSystem->getSceneManager();
+	Ogre::RenderWindow*       renderWindow      = mGraphicsSystem->getRenderWindow();
+	Ogre::Camera*             camera            = mGraphicsSystem->getCamera();
+	Ogre::CompositorManager2* compositorManager = root->getCompositorManager2();
+
+	Ogre::CompositorChannelVec externalChannels(2);
+	//Render window
+	externalChannels[0].target = renderWindow;
+
+	//Terrain's Shadow texture
+	Ogre::ResourceLayoutMap initialLayouts;
+	Ogre::ResourceAccessMap initialUavAccess;
+
+	assert(mTerrain);
+
+	//Terrain is initialized
+	const ShadowMapper* shadowMapper = mTerrain->getShadowMapper();
+	shadowMapper->fillUavDataForCompositorChannel(externalChannels[1], initialLayouts, initialUavAccess);
+
+	return compositorManager->addWorkspace(sceneManager, externalChannels, camera, "TerrainWorkspace", true, -1, (Ogre::UavBufferPackedVec*) 0, &initialLayouts, &initialUavAccess);
+}
+//------------------------------------------------------------------------------------------------
 void GraphicsGameState::createScene(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
@@ -49,16 +82,14 @@ void GraphicsGameState::createScene(void) {
 
 	mGraphicsSystem->getCamera()->setPosition(-10.0f, 80.0f, 10.0f);
 
-	mTerrain = new TerrainGraphics(Ogre::Id::generateNewId<Ogre::MovableObject>(),
+	mTerrain = new GraphicsTerrain(Ogre::Id::generateNewId<Ogre::MovableObject>(),
 	                               &sceneManager->_getEntityMemoryManager(Ogre::SCENE_STATIC),
 	                               sceneManager,
 	                               0,
 	                               root->getCompositorManager2(),
 	                               mGraphicsSystem->getCamera());
 	mTerrain->setCastShadows(false);
-	mTerrain->buildGraphics("terrain.png",
-	                        Ogre::Vector3::ZERO,
-	                        Ogre::Vector3(2048.0f, 100.0f, 2048.0f));
+	mTerrain->load("terrain.png", Ogre::Vector3(0.0f, 4096.0f * 0.0f, 0.0f), Ogre::Vector3(1024.0f, 100.0f, 1024.0f));
 
 	Ogre::SceneNode* rootNode  = sceneManager->getRootSceneNode(Ogre::SCENE_STATIC);
 	Ogre::SceneNode* sceneNode = rootNode->createChildSceneNode(Ogre::SCENE_STATIC);
@@ -74,44 +105,23 @@ void GraphicsGameState::createScene(void) {
 	Ogre::HlmsTextureManager::TextureLocation texLocation;
 	texLocation = hlmsTextureManager->createOrRetrieveTexture(
 	        "terrain_texture.png", Ogre::HlmsTextureManager::TEXTURE_TYPE_ENV_MAP);
-	datablock->setRoughness(0, 0.1);
 	datablock->setTexture(TERRAIN_DETAIL0, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_ROUGHNESS0, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_METALNESS0, texLocation.xIdx, texLocation.texture);
-	datablock->setDetailMapOffsetScale(0, Ogre::Vector4(0, 0, 1, 1));
-	texLocation = hlmsTextureManager->createOrRetrieveTexture(
-	        "terrain_texture.png", Ogre::HlmsTextureManager::TEXTURE_TYPE_ENV_MAP);
-	datablock->setRoughness(1, 0.1);
-	datablock->setTexture(TERRAIN_DETAIL1, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_ROUGHNESS1, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_METALNESS1, texLocation.xIdx, texLocation.texture);
-	datablock->setDetailMapOffsetScale(1, Ogre::Vector4(0, 0, 1, 1));
-	texLocation = hlmsTextureManager->createOrRetrieveTexture(
-	        "terrain_texture.png", Ogre::HlmsTextureManager::TEXTURE_TYPE_ENV_MAP);
-	datablock->setRoughness(2, 0.1);
-	datablock->setTexture(TERRAIN_DETAIL2, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_ROUGHNESS2, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_METALNESS2, texLocation.xIdx, texLocation.texture);
-	datablock->setDetailMapOffsetScale(2, Ogre::Vector4(0, 0, 1, 1));
-	texLocation = hlmsTextureManager->createOrRetrieveTexture(
-	        "terrain_texture.png", Ogre::HlmsTextureManager::TEXTURE_TYPE_ENV_MAP);
-	datablock->setRoughness(3, 0.1);
-	datablock->setTexture(TERRAIN_DETAIL3, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_ROUGHNESS3, texLocation.xIdx, texLocation.texture);
-	datablock->setTexture(TERRAIN_DETAIL_METALNESS3, texLocation.xIdx, texLocation.texture);
-	datablock->setDetailMapOffsetScale(3, Ogre::Vector4(0, 0, 1, 1));
-	datablock->setDiffuse(Ogre::Vector3(1, 1, 1));
-
 	mTerrain->setDatablock(static_cast<Ogre::HlmsDatablock*>(datablock));
 
-	/*	mSunLight                  = sceneManager->createLight();
+	mSunLight                  = sceneManager->createLight();
 	Ogre::SceneNode* lightNode = rootNode->createChildSceneNode();
 	lightNode->attachObject(mSunLight);
 	mSunLight->setPowerScale(Ogre::Math::PI);
 	mSunLight->setType(Ogre::Light::LT_DIRECTIONAL);
-	mSunLight->setDirection(Ogre::Vector3(-1, -1, -1).normalisedCopy());
-	mSunLight->setDirection(
-	        Ogre::Quaternion(Ogre::Radian(0), Ogre::Vector3::UNIT_Y) * Ogre::Vector3(cosf(Ogre::Math::PI * 0.1f), -sinf(Ogre::Math::PI * 0.1f), 0.0).normalisedCopy());*/
+	mSunLight->setDirection(Ogre::Quaternion(Ogre::Radian(126.862 / 180.0f * Ogre::Math::PI), Ogre::Vector3::UNIT_Y) *
+	                        Ogre::Vector3(cosf(291.245), -sinf(291.245), 0.0).normalisedCopy());
+
+	HlmsPbsTerrainShadows* mHlmsPbsTerrainShadows = new HlmsPbsTerrainShadows();
+	mHlmsPbsTerrainShadows->setTerrain(mTerrain);
+	Ogre::Hlms* hlmsPbs = root->getHlmsManager()->getHlms(Ogre::HLMS_PBS);
+	hlmsPbs->setListener(mHlmsPbsTerrainShadows);
+
+	setupCompositor();
 }
 //------------------------------------------------------------------------------------------------
 void GraphicsGameState::update(float timeSinceLast) {
@@ -121,7 +131,8 @@ void GraphicsGameState::update(float timeSinceLast) {
 	if (!mEnableInterpolation)
 		weight = 0;
 
-	mTerrain->update(Ogre::Vector3::ZERO); // Now lightDir isn't used
+	const float lightEpsilon = 0.0f;
+	mTerrain->update(mSunLight->getDerivedDirectionUpdated(), lightEpsilon);
 
 	mGraphicsSystem->updateGameEntities(mGraphicsSystem->getGameEntities(Ogre::SCENE_DYNAMIC),
 	                                    weight);

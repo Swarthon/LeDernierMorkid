@@ -4,7 +4,7 @@
 #include <OgrePrerequisites.h>
 
 #include "GameState.h"
-#include "Terrain/Terrain.h"
+#include "Terrain/CollisionTerrain.h"
 
 namespace Common {
 	class LogicSystem;
@@ -14,14 +14,8 @@ namespace Common {
 } // namespace Common
 
 class LogicGameState : public Common::GameState {
-	float                              mDisplacement;
-	Common::GameEntity*                mCubeEntity;
-	Common::CollisionObjectDefinition* mCubeCoDef;
-	Common::MovableObjectDefinition*   mCubeMoDef;
-
 	Common::LogicSystem* mLogicSystem;
-
-	TerrainCollisions* mTerrain;
+	CollisionTerrain* mTerrain;
 
 public:
 	LogicGameState();

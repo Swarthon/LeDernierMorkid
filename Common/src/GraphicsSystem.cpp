@@ -361,20 +361,15 @@ namespace Common {
 		const size_t numThreads = std::max<size_t>(1, Ogre::PlatformInformation::getNumLogicalCores());
 #endif
 		mSceneManager = mRoot->createSceneManager(
-		        Ogre::ST_GENERIC, numThreads, threadedCullingMethod, "SceneManager");
+		        Ogre::ST_GENERIC, numThreads, threadedCullingMethod, "Ogre::SceneManager");
 
 		mSceneManager->setShadowDirectionalLightExtrusionDistance(500.0f);
 		mSceneManager->setShadowFarDistance(500.0f);
-		mSceneManager->setAmbientLight(Ogre::ColourValue(1.f, 1.f, 1.f),
-		                               Ogre::ColourValue(0.f, 0.f, 0.f),
-		                               Ogre::Vector3(0, 1, 0));
-		/*mSceneManager->setAmbientLight( Ogre::ColourValue( 0.3f, 0.5f, 0.7f ) * 0.1f * 0.75f,
-                                               Ogre::ColourValue( 0.6f, 0.45f, 0.3f ) * 0.065f * 0.75f,
-                                               Ogre::Vector3(-1,-1,-1) + Ogre::Vector3::UNIT_Y * 0.2f );*/
+		mSceneManager->setAmbientLight(Ogre::ColourValue(1.f, 1.f, 1.f), Ogre::ColourValue(1.f, 1.f, 1.f), Ogre::Vector3::UNIT_Y);
 	}
 	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::createCamera(void) {
-		mCamera = mSceneManager->createCamera("Main Camera");
+		mCamera = mSceneManager->createCamera("Main Ogre::Camera");
 
 		mCamera->setPosition(Ogre::Vector3(0, 5, 15));
 		mCamera->lookAt(Ogre::Vector3(0, 0, 0));

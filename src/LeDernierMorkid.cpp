@@ -8,7 +8,9 @@
 #include <OgreHlmsManager.h>
 #include <OgreRoot.h>
 
-#include "Terrain/HlmsTerrain.h"
+#include "Terrain/Hlms/HlmsTerrain.h"
+
+#include <iostream>
 
 const double cFrametime = 1.0 / 25.0;
 
@@ -45,11 +47,11 @@ void LeDernierMorkidGraphicsSystem::registerHlms(void) {
 	library.push_back(archivePbsLibraryAny);
 	library.push_back(pbsLibrary);
 
-	Ogre::Archive* archiveTerra = Ogre::ArchiveManager::getSingletonPtr()->load(
-	        dataFolder + "Hlms/Terra/" + shaderSyntax, "FileSystem", true);
-	HlmsTerrain* hlmsTerra                        = OGRE_NEW HlmsTerrain(archiveTerra, &library);
-	Ogre::HlmsManager*                hlmsManager = mRoot->getHlmsManager();
-	hlmsManager->registerHlms(hlmsTerra);
+	Ogre::Archive* archiveTerrain = Ogre::ArchiveManager::getSingletonPtr()->load(
+	        dataFolder + "Hlms/Terrain/" + shaderSyntax, "FileSystem", true);
+	HlmsTerrain* hlmsTerrain                        = OGRE_NEW HlmsTerrain(archiveTerrain, &library);
+	Ogre::HlmsManager*                  hlmsManager = mRoot->getHlmsManager();
+	hlmsManager->registerHlms(hlmsTerrain);
 }
 //---------------------------------------------------------------------
 LeDernierMorkid::LeDernierMorkid() {

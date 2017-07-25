@@ -4,7 +4,7 @@
 #include <OgrePrerequisites.h>
 
 #include "GameState.h"
-#include "Terrain/Terrain.h"
+#include "Terrain/GraphicsTerrain.h"
 
 namespace Common {
 	class GraphicsSystem;
@@ -16,8 +16,10 @@ protected:
 	bool                      mEnableInterpolation;
 	Common::GraphicsSystem*   mGraphicsSystem;
 	Common::CameraController* mCameraController;
-	TerrainGraphics*          mTerrain;
+	GraphicsTerrain*          mTerrain;
 	Ogre::Light*              mSunLight;
+
+	Ogre::CompositorWorkspace* setupCompositor();
 
 public:
 	GraphicsGameState();

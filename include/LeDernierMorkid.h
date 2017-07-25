@@ -17,8 +17,6 @@
 #include <Threading/OgreBarrier.h>
 #include <Threading/OgreThreads.h>
 
-#include <iostream>
-
 using namespace Common;
 
 extern const double cFrametime;

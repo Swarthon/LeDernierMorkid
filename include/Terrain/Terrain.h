@@ -3,105 +3,67 @@
 
 #include <OgreMovableObject.h>
 #include <OgrePrerequisites.h>
+#include <OgreShaderParams.h>
 
-class btDynamicsWorld;
-
-#include "TerrainCell.h"
+#include "Terrain/TerrainCell.h"
 
 struct GridPoint {
 	Ogre::int32 x;
 	Ogre::int32 z;
 };
+
 struct GridDirection {
 	int x;
 	int z;
 };
 
-class Terrain {
-public:
-	Terrain();
+class ShadowMapper;
 
+class Terrain {
 protected:
-	Ogre::uint32 mWidth;
-	Ogre::uint32 mDepth;
-	Ogre::Real   mHeight;
+	friend class TerrainCell;
+
+	std::vector<float> mHeightMap;
+	Ogre::uint32       mWidth;
+	Ogre::uint32       mDepth; //PNG's Height
+	float              mDepthWidthRatio;
+	float              mSkirtSize;
+	float              mInvWidth;
+	float              mInvDepth;
+
+	Ogre::uint32 mBasePixelDimension;
 
 	Ogre::Vector2 mXZDimensions;
 	Ogre::Vector2 mXZInvDimensions;
+	Ogre::Vector2 mXZRelativeSize; // mXZDimensions / [mWidth, mHeight]
+	float         mHeight;
 	Ogre::Vector3 mTerrainOrigin;
 
-	std::vector<float> mHeightMap;
-	Ogre::TexturePtr   mHeightMapTex;
+	Ogre::TexturePtr mHeightMapTex;
 
-	Ogre::Real mInvWidth;
-	Ogre::Real mInvDepth;
-	Ogre::Real mDepthWidthRatio;
+	virtual Ogre::Image loadImage(const Ogre::String& imageName);
+	virtual void createHeightmap(Ogre::Image& image);
 
-	bool getHeightAt(Ogre::Vector3& vPos) const;
-
-	void createHeightmap(const Ogre::String& imageName, bool useHeightmapTexture = true);
 	void createHeightmapTexture(const Ogre::String& imageName, const Ogre::Image& image);
-	void destroyHeightmapTexture();
+	void destroyHeightmapTexture(void);
 
-	inline Ogre::Vector2 gridToWorld(const GridPoint& gPos) const;
-	inline GridPoint worldToGrid(const Ogre::Vector3& vPos) const;
-};
+	inline virtual GridPoint worldToGrid(const Ogre::Vector3& vPos) const;
+	inline virtual Ogre::Vector2 gridToWorld(const GridPoint& gPos) const;
 
-class TerrainGraphics : public Terrain, public Ogre::MovableObject {
+	virtual void calculateOptimumSkirtSize(void);
+
 public:
-	TerrainGraphics(Ogre::IdType               id,
-	                Ogre::ObjectMemoryManager* objectMemoryManager,
-	                Ogre::SceneManager*        sceneManager,
-	                Ogre::uint8                renderQueueId,
-	                Ogre::CompositorManager2*  compositorManager,
-	                Ogre::Camera*              camera);
-	~TerrainGraphics();
-	void buildGraphics(const Ogre::String&  texName,
-	                   const Ogre::Vector3  center,
-	                   const Ogre::Vector3& dimensions,
-	                   bool                 useHeightmapTexture = true);
-	void update(const Ogre::Vector3& lightDir, float lightEpsilon = 1e-6f);
+	Terrain();
+	~Terrain();
 
-	void
-	addRenderable(const GridPoint& gridPos, const GridPoint& cellSize, Ogre::uint32 lodLevel);
+	virtual void load(Ogre::Image& image, const Ogre::Vector3 center, const Ogre::Vector3& dimensions);
 
-	bool isVisible(const GridPoint& gPos, const GridPoint& gSize) const;
-	void setDatablock(Ogre::HlmsDatablock* datablock);
+	virtual bool getHeightAt(Ogre::Vector3& vPos) const;
 
-	const Ogre::String& getMovableType() const;
-
-	Ogre::TexturePtr getHeightMapTex(void) const { return mHeightMapTex; }
-	Ogre::TexturePtr getNormalMapTex(void) const { return mNormalMapTex; }
-
-protected:
-	friend class TerrainCell;
-	Ogre::Vector2 mXZRelativeSize;
-
-	Ogre::uint32 mBasePixelDimension;
-	size_t       mCurrentCell;
-	float        mSkirtSize;
-
-	std::vector<TerrainCell>  mTerrainCells;
-	std::vector<TerrainCell*> mCollectedCells[2];
-
-	Ogre::Camera* mCamera;
-
-	Ogre::TexturePtr mNormalMapTex;
-
-	void optimizeCellsAndAdd(void);
+	virtual const Ogre::Vector2& getXZDimensions(void) const { return mXZDimensions; }
+	virtual const Ogre::Vector2& getXZInvDimensions(void) const { return mXZInvDimensions; }
+	virtual float                getHeight(void) const { return mHeight; }
+	virtual const Ogre::Vector3& getTerrainOrigin(void) const { return mTerrainOrigin; }
 };
 
-class TerrainCollisions : public Terrain {
-public:
-	TerrainCollisions(btDynamicsWorld* world);
-	void buildCollisions(const Ogre::String&  texName,
-	                     const Ogre::Vector3  center,
-	                     const Ogre::Vector3& dimensions,
-	                     bool                 useHeightmapTexture = true);
-	void createShape();
-
-private:
-	btDynamicsWorld* mWorld;
-};
-
-#endif // _TERRAIN_H_
+#endif
