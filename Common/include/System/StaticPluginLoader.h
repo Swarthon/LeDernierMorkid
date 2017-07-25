@@ -36,9 +36,9 @@ This file has been modified to fit with Swarthon's syntax rules
 
 namespace Ogre {
 #ifdef OGRE_STATIC_LIB
-	#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
-		class MetalPlugin;
-	#endif
+#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
+	class MetalPlugin;
+#endif
 #endif
 	class Root;
 }
@@ -46,15 +46,15 @@ namespace Ogre {
 namespace Common {
 	class StaticPluginLoader {
 #ifdef OGRE_STATIC_LIB
-	#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
-		Ogre::MetalPlugin           *mMetalPlugin;
-	#endif
+#ifdef OGRE_BUILD_RENDERSYSTEM_METAL
+		Ogre::MetalPlugin* mMetalPlugin;
+#endif
 #endif
 	public:
 		StaticPluginLoader();
 		~StaticPluginLoader();
 
-		void install( Ogre::Root *root );
+		void install(Ogre::Root* root);
 	};
 }
 

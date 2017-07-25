@@ -1,31 +1,28 @@
 #include "LogicGameState.h"
-#include "LogicSystem.h"
 #include "GameEntityManager.h"
+#include "LogicSystem.h"
 
-#include <OgreVector3.h>
+#include "Converter.h"
+
+#include <BulletCollision/CollisionShapes/btBoxShape.h>
+#include <BulletCollision/CollisionShapes/btStaticPlaneShape.h>
+
 #include <OgreResourceGroupManager.h>
+#include <OgreVector3.h>
 
-LogicGameState::LogicGameState() :
-	mDisplacement( 0 ),
-	mCubeEntity( 0 ),
-	mCubeMoDef( 0 ),
-	mLogicSystem( 0 ) {}
-//-----------------------------------------------------------------------------------
+LogicGameState::LogicGameState()
+                : mTerrain(0),
+                  mLogicSystem(0) {
+}
+//------------------------------------------------------------------------------------------------
 LogicGameState::~LogicGameState() {
-	delete mCubeMoDef;
-	mCubeMoDef = 0;
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void LogicGameState::createScene(void) {
+	mTerrain = new CollisionTerrain(mLogicSystem->getWorld());
+        mTerrain->load("terrain.png", Ogre::Vector3(0.0f, 4096.0f * 0.0f, 0.0f), Ogre::Vector3(1024.0f, 100.0f, 1024.0f));
 }
-//-----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 void LogicGameState::update(float timeSinceLast) {
-	const Ogre::Vector3 origin(-5.0f, 0.0f, 0.0f);
-
-	mDisplacement += timeSinceLast * 4.0f;
-	mDisplacement = fmodf(mDisplacement, 10.0f);
-
-	const size_t currIdx = mLogicSystem->getCurrentTransformIdx();
-
 	GameState::update(timeSinceLast);
 }

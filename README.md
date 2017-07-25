@@ -1,7 +1,12 @@
-![Our logo](Media/Logo/logo.png)
-# Le Dernier Morkid
+<p align="center"><img src="https://github.com/Swarthon/LeDernierMorkid/blob/master/Media/Logo/logo.png?raw=true"></p>
 
-This is the official repository of Le Dernier Morkid, an open source role play game written in C++.
+<p align="center">An open source and free role-playing game</p>
+
+---
+
+## Introduction
+
+This is the official repository of Le Dernier Morkid, an open source role-playing game written in C++.
 It aims to provide a full open source game which would be free.
 
 Yet is this project under development, I only work on it on my spare time, therefore is its evolution a bit slow.

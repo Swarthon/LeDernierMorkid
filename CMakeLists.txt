@@ -3,11 +3,15 @@ cmake_minimum_required(VERSION 2.8)
 project(LeDernierMorkid)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
+file(GLOB SRC "src/*.cpp")
+file(GLOB TERRAINSRC "src/Terrain/*.cpp" "src/Terrain/Hlms/*.cpp" "src/Terrain/Hlms/PbsListener/*.cpp")
+file(GLOB COLLISIONSRC "Collision/src/*.cpp")
 file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp")
-file(GLOB SRC "src/*.cpp" "src/Terrain/*.cpp")
-add_executable(LeDernierMorkid ${SRC} ${COMMONSRC})
+add_executable(LeDernierMorkid ${SRC} ${TERRAINSRC} ${COLLISIONSRC} ${COMMONSRC})
 
-include_directories (include Common/include)
+add_custom_target(run COMMAND LeDernierMorkid DEPENDS LeDernierMorkid WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+
+include_directories (include Common/include Collision/include)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
@@ -15,6 +19,10 @@ set(LEDERNIERMORKID_DEPENDENCIES_DIR "" CACHE PATH "Path to used dependencies")
 set(CMAKE_FIND_ROOT_PATH ${LEDERNIERMORKID_DEPENDENCIES_DIR} "${CMAKE_FIND_ROOT_PATH}")
 set(OGRE_HOME ${LEDERNIERMORKID_DEPENDENCIES_DIR})
 set(ENV${SDL2DIR} ${LEDERNIERMORKID_DEPENDENCIES_DIR})
+
+find_package(Bullet REQUIRED)
+include_directories(${BULLET_INCLUDE_DIRS})
+target_link_libraries(LeDernierMorkid ${BULLET_LIBRARIES})
 
 find_package(OGRE REQUIRED)
 unset(OGRE_FRAMEWORK_PATH CACHE)

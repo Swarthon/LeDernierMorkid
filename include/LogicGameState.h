@@ -4,27 +4,25 @@
 #include <OgrePrerequisites.h>
 
 #include "GameState.h"
+#include "Terrain/CollisionTerrain.h"
 
 namespace Common {
 	class LogicSystem;
 	struct GameEntity;
 	struct MovableObjectDefinition;
-}
+	struct CollisionObjectDefinition;
+} // namespace Common
 
 class LogicGameState : public Common::GameState {
-	float				mDisplacement;
-	Common::GameEntity		*mCubeEntity;
-	Common::MovableObjectDefinition	*mCubeMoDef;
-
-	Common::LogicSystem		*mLogicSystem;
+	Common::LogicSystem* mLogicSystem;
+	CollisionTerrain* mTerrain;
 
 public:
 	LogicGameState();
 	~LogicGameState();
 
-	void _notifyLogicSystem(Common::LogicSystem *logicSystem)     {mLogicSystem = logicSystem;}
-
-	virtual void createScene(void);
+	void _notifyLogicSystem(Common::LogicSystem* logicSystem) { mLogicSystem = logicSystem; }
+	virtual void                                 createScene(void);
 	virtual void update(float timeSinceLast);
 };
 

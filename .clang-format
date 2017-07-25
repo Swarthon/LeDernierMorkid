@@ -1,0 +1,57 @@
+Language : Cpp
+AccessModifierOffset : -8
+AlignAfterOpenBracket : Align
+AlignConsecutiveAssignments : true
+AlignConsecutiveDeclarations : true
+AlignOperands : true
+AlignTrailingComments : true
+AllowAllParametersOfDeclarationOnNextLine : true
+AllowShortBlocksOnASingleLine : false
+AllowShortCaseLabelsOnASingleLine : true
+AllowShortFunctionsOnASingleLine : Inline
+AllowShortIfStatementsOnASingleLine : false
+AllowShortLoopsOnASingleLine : false
+AlwaysBreakAfterReturnType : None
+AlwaysBreakBeforeMultilineStrings : false
+AlwaysBreakTemplateDeclarations : true
+BinPackArguments : false
+BinPackParameters : false
+BraceWrapping :
+        AfterClass : false
+        AfterControlStatement : false
+        AfterEnum : false
+        AfterFunction : false
+        AfterNamespace : false
+        AfterStruct : false
+        BeforeCatch : true
+        BeforeElse : true
+        IndentBraces : false
+BreakBeforeBinaryOperators : None
+BreakBeforeBraces : Custom
+BreakBeforeTernaryOperators : true
+ColumnLimit : 0
+ConstructorInitializerAllOnOneLineOrOnePerLine : true
+ConstructorInitializerIndentWidth : 16
+ContinuationIndentWidth : 8
+Cpp11BracedListStyle : true
+DerivePointerAlignment : false
+IndentCaseLabels : false
+IndentWidth : 8
+IndentWrappedFunctionNames : false
+KeepEmptyLinesAtTheStartOfBlocks : false
+MaxEmptyLinesToKeep : 1
+NamespaceIndentation : All
+PointerAlignment : Left
+ReflowComments : true
+SortIncludes : true
+SpaceAfterCStyleCast : true
+SpaceBeforeAssignmentOperators : true
+SpaceBeforeParens : ControlStatements
+SpaceInEmptyParentheses : false
+SpacesInAngles : false
+SpacesInCStyleCastParentheses : false
+SpacesInParentheses : false
+SpacesInSquareBrackets : false
+Standard : Cpp11
+TabWidth : 8
+UseTab : ForIndentation

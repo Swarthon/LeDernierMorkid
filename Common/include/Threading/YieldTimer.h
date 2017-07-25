@@ -6,16 +6,15 @@
 
 namespace Common {
 	class YieldTimer {
-		Ogre::Timer *mExternalTimer;
+		Ogre::Timer* mExternalTimer;
 
 	public:
-		YieldTimer( Ogre::Timer *externalTimer ) :
-			mExternalTimer( externalTimer ) {}
-
-		unsigned long yield( double frameTime, unsigned long startTime ) {
+		YieldTimer(Ogre::Timer* externalTimer)
+		                : mExternalTimer(externalTimer) {}
+		unsigned long yield(double frameTime, unsigned long startTime) {
 			unsigned long endTime = mExternalTimer->getMicroseconds();
 
-			while( frameTime * 1000000.0 > (endTime - startTime) ) {
+			while (frameTime * 1000000.0 > (endTime - startTime)) {
 				endTime = mExternalTimer->getMicroseconds();
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
