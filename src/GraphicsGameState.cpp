@@ -78,6 +78,7 @@ Ogre::CompositorWorkspace* GraphicsGameState::setupCompositor() {
 void GraphicsGameState::createScene(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
+        sceneManager->setAmbientLight(Ogre::ColourValue(0.5f, 0.5f, 0.5f), Ogre::ColourValue(0.5f, 0.5f, 0.5f), Ogre::Vector3::UNIT_Y);
 	mCameraController                = new Collision::CollisionCameraController(mGraphicsSystem, ((Common::LogicSystem*) mGraphicsSystem->mLogicSystem)->getWorld());
 
 	mGraphicsSystem->getCamera()->setPosition(-10.0f, 80.0f, 10.0f);
@@ -102,10 +103,15 @@ void GraphicsGameState::createScene(void) {
 
 	assert(dynamic_cast<HlmsTerrainDatablock*>(datablock));
 
-	Ogre::HlmsTextureManager::TextureLocation texLocation;
-	texLocation = hlmsTextureManager->createOrRetrieveTexture(
+	Ogre::HlmsTextureManager::TextureLocation texLocation = hlmsTextureManager->createOrRetrieveTexture(
 	        "terrain_texture.png", Ogre::HlmsTextureManager::TEXTURE_TYPE_ENV_MAP);
+        datablock->setTexture(TERRAIN_REFLECTION, texLocation.xIdx, texLocation.texture);
 	datablock->setTexture(TERRAIN_DETAIL0, texLocation.xIdx, texLocation.texture);
+        datablock->setTexture(TERRAIN_DETAIL1, texLocation.xIdx, texLocation.texture);
+        datablock->setTexture(TERRAIN_DETAIL2, texLocation.xIdx, texLocation.texture);
+        datablock->setTexture(TERRAIN_DETAIL3, texLocation.xIdx, texLocation.texture);
+        datablock->setDiffuse(Ogre::Vector3(1,1,1));
+
 	mTerrain->setDatablock(static_cast<Ogre::HlmsDatablock*>(datablock));
 
 	mSunLight                  = sceneManager->createLight();
@@ -115,6 +121,7 @@ void GraphicsGameState::createScene(void) {
 	mSunLight->setType(Ogre::Light::LT_DIRECTIONAL);
 	mSunLight->setDirection(Ogre::Quaternion(Ogre::Radian(126.862 / 180.0f * Ogre::Math::PI), Ogre::Vector3::UNIT_Y) *
 	                        Ogre::Vector3(cosf(291.245), -sinf(291.245), 0.0).normalisedCopy());
+        mSunLight->setSpecularColour(Ogre::ColourValue(0,0,0));
 
 	HlmsPbsTerrainShadows* mHlmsPbsTerrainShadows = new HlmsPbsTerrainShadows();
 	mHlmsPbsTerrainShadows->setTerrain(mTerrain);
