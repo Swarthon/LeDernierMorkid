@@ -15,8 +15,6 @@
 const double cFrametime = 1.0 / 25.0;
 
 void LeDernierMorkidGraphicsSystem::registerHlms(void) {
-	GraphicsSystem::registerHlms();
-
 	Ogre::ConfigFile cf;
 	cf.load(mResourcePath + "resources.cfg");
 
@@ -27,25 +25,27 @@ void LeDernierMorkidGraphicsSystem::registerHlms(void) {
 	else if (*(dataFolder.end() - 1) != '/')
 		dataFolder += "/";
 
-	Ogre::RenderSystem* renderSystem = mRoot->getRenderSystem();
 	Ogre::String        shaderSyntax = "GLSL";
-	if (renderSystem->getName() == "Direct3D11 Rendering Subsystem")
-		shaderSyntax = "HLSL";
 
 	Ogre::Archive* archiveLibrary = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Common/" + shaderSyntax, "FileSystem", true);
-	Ogre::Archive* archiveLibraryAny = Ogre::ArchiveManager::getSingletonPtr()->load(
-	        dataFolder + "Hlms/Common/Any", "FileSystem", true);
 	Ogre::Archive* archivePbsLibraryAny = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Pbs/Any", "FileSystem", true);
-	Ogre::Archive* pbsLibrary = Ogre::ArchiveManager::getSingletonPtr()->load(
+	Ogre::Archive* archivePbs = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Pbs/" + shaderSyntax, "FileSystem", true);
+	Ogre::Archive* archiveUnlit = Ogre::ArchiveManager::getSingletonPtr()->load(
+		dataFolder + "Hlms/Unlit/" + shaderSyntax, "FileSystem", true);
 
 	Ogre::ArchiveVec library;
 	library.push_back(archiveLibrary);
-	library.push_back(archiveLibraryAny);
 	library.push_back(archivePbsLibraryAny);
-	library.push_back(pbsLibrary);
+	library.push_back(archivePbs);
+
+	Ogre::HlmsPbs* hlmsPbs = OGRE_NEW Ogre::HlmsPbs(archivePbs, &library);
+	Ogre::Root::getSingleton().getHlmsManager()->registerHlms(hlmsPbs);
+
+	Ogre::HlmsUnlit* hlmsUnlit = OGRE_NEW Ogre::HlmsUnlit(archiveUnlit, &library);
+	Ogre::Root::getSingleton().getHlmsManager()->registerHlms(hlmsUnlit);
 
 	Ogre::Archive* archiveTerrain = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Terrain/" + shaderSyntax, "FileSystem", true);
