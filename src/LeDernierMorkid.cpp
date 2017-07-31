@@ -5,6 +5,8 @@
 #include <OgreArchiveManager.h>
 #include <OgreConfigFile.h>
 #include <OgreHlms.h>
+#include <OgreHlmsPbs.h>
+#include <OgreHlmsUnlit.h>
 #include <OgreHlmsManager.h>
 #include <OgreRoot.h>
 
