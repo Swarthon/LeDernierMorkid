@@ -71,22 +71,15 @@ LeDernierMorkid::LeDernierMorkid() {
 	mLogicSystem->_notifyGraphicsSystem(mGraphicsSystem);
 
 	mGameEntityManager = new GameEntityManager(mGraphicsSystem, mLogicSystem);
+
+	registerThread(logicThread, THREAD_GET(logicThread));
+	registerThread(renderThread, THREAD_GET(renderThread));
+
+	mThreadData = new LeDernierMorkidThreadData;
+	((LeDernierMorkidThreadData*)mThreadData)->graphicsSystem = mGraphicsSystem;
+	((LeDernierMorkidThreadData*)mThreadData)->logicSystem    = mLogicSystem;
 }
 //---------------------------------------------------------------------
-void LeDernierMorkid::run() {
-	Ogre::Barrier barrier(2);
-	ThreadData    threadData;
-	threadData.graphicsSystem = mGraphicsSystem;
-	threadData.logicSystem    = mLogicSystem;
-	threadData.barrier        = &barrier;
-
-	Ogre::ThreadHandlePtr threadHandles[2];
-	threadHandles[0] = Ogre::Threads::CreateThread(THREAD_GET(renderThread), 0, &threadData);
-	threadHandles[1] = Ogre::Threads::CreateThread(THREAD_GET(logicThread), 1, &threadData);
-
-	Ogre::Threads::WaitForThreads(2, threadHandles);
-}
-
 //---------------------------------------------------------------------
 unsigned long LeDernierMorkid::renderThread(Ogre::ThreadHandle* threadHandle) {
 	unsigned long retVal = -1;
@@ -110,7 +103,7 @@ unsigned long LeDernierMorkid::renderThread(Ogre::ThreadHandle* threadHandle) {
 }
 //---------------------------------------------------------------------
 unsigned long LeDernierMorkid::renderThreadApp(Ogre::ThreadHandle* threadHandle) {
-	ThreadData*     threadData     = reinterpret_cast<ThreadData*>(threadHandle->getUserParam());
+	LeDernierMorkidThreadData*     threadData     = reinterpret_cast<LeDernierMorkidThreadData*>(threadHandle->getUserParam());
 	GraphicsSystem* graphicsSystem = threadData->graphicsSystem;
 	Ogre::Barrier*  barrier        = threadData->barrier;
 
@@ -161,7 +154,7 @@ unsigned long LeDernierMorkid::renderThreadApp(Ogre::ThreadHandle* threadHandle)
 }
 //---------------------------------------------------------------------
 unsigned long LeDernierMorkid::logicThread(Ogre::ThreadHandle* threadHandle) {
-	ThreadData*     threadData     = reinterpret_cast<ThreadData*>(threadHandle->getUserParam());
+	LeDernierMorkidThreadData*     threadData     = reinterpret_cast<LeDernierMorkidThreadData*>(threadHandle->getUserParam());
 	GraphicsSystem* graphicsSystem = threadData->graphicsSystem;
 	LogicSystem*    logicSystem    = threadData->logicSystem;
 	Ogre::Barrier*  barrier        = threadData->barrier;

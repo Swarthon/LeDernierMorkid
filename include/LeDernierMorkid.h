@@ -10,35 +10,33 @@
 #include "SdlInputHandler.h"
 
 #include "Threading/YieldTimer.h"
+#include "Threading/ThreadManager.h"
 
 #include <OgreRenderWindow.h>
 #include <OgreTimer.h>
-
-#include <Threading/OgreBarrier.h>
-#include <Threading/OgreThreads.h>
 
 using namespace Common;
 
 extern const double cFrametime;
 
 class LeDernierMorkidGraphicsSystem : public GraphicsSystem {
-	virtual void registerHlms(void);
-
 public:
 	LeDernierMorkidGraphicsSystem(GraphicsGameState* gameState, Ogre::ColourValue colourValue)
-	                : GraphicsSystem(gameState, colourValue){};
-};
-
-class LeDernierMorkid {
-public:
-	LeDernierMorkid();
-	void run();
+	: GraphicsSystem(gameState, colourValue){};
 
 protected:
-	struct ThreadData {
+	virtual void registerHlms(void);
+
+};
+
+class LeDernierMorkid : public ThreadManager {
+public:
+	LeDernierMorkid();
+
+protected:
+	struct LeDernierMorkidThreadData : ThreadData {
 		GraphicsSystem* graphicsSystem;
 		LogicSystem*    logicSystem;
-		Ogre::Barrier*  barrier;
 	};
 
 	static unsigned long renderThread(Ogre::ThreadHandle* threadHandle);
