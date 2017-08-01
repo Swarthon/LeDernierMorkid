@@ -5,7 +5,6 @@
 #include <Threading/OgreThreads.h>
 
 typedef unsigned long                     (*ThreadFunc)         (Ogre::ThreadHandle*);
-typedef void* OGRE_THREAD_CALL_CONVENTION (*InternalThreadFunc) (void *);
 
 struct ThreadData {
         Ogre::Barrier*  barrier;
@@ -15,14 +14,14 @@ class ThreadManager {
 public:
         ThreadManager();
 
-        virtual void registerThread(ThreadFunc thread, InternalThreadFunc internalThread);
+        virtual void registerThread(ThreadFunc thread, Ogre::THREAD_ENTRY_POINT internalThread);
         virtual void run();
 
         virtual void        setThreadData(ThreadData* threadData) { mThreadData = threadData; }
         virtual ThreadData* getThreadData()                       { return mThreadData; }
 
 protected:
-        std::vector<std::pair<ThreadFunc, InternalThreadFunc>> mRegisteredThreads;
+        std::vector<std::pair<ThreadFunc, Ogre::THREAD_ENTRY_POINT> > mRegisteredThreads;
 
         ThreadData* mThreadData;
 };

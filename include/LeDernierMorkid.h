@@ -3,11 +3,12 @@
 
 #include "CameraController.h"
 #include "GameEntityManager.h"
-#include "GraphicsGameState.h"
 #include "GraphicsSystem.h"
 #include "LogicGameState.h"
 #include "LogicSystem.h"
 #include "SdlInputHandler.h"
+#include "Graphics/GraphicsThread.h"
+#include "Graphics/GraphicsGameState.h"
 
 #include "Threading/YieldTimer.h"
 #include "Threading/ThreadManager.h"
@@ -33,17 +34,13 @@ class LeDernierMorkid : public ThreadManager {
 public:
 	LeDernierMorkid();
 
-protected:
 	struct LeDernierMorkidThreadData : ThreadData {
 		GraphicsSystem* graphicsSystem;
 		LogicSystem*    logicSystem;
 	};
 
-	static unsigned long renderThread(Ogre::ThreadHandle* threadHandle);
-	static unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle);
+protected:	
 	static unsigned long logicThread(Ogre::ThreadHandle* threadHandle);
-
-	static THREAD_DECLARE(renderThread);
 	static THREAD_DECLARE(logicThread);
 
 	GraphicsGameState* mGraphicsGameState;
@@ -51,7 +48,6 @@ protected:
 	GraphicsSystem*    mGraphicsSystem;
 	LogicSystem*       mLogicSystem;
 	GameEntityManager* mGameEntityManager;
-	CameraController*  mCameraController;
 };
 
 #endif // _LEDERNIERMORKID_H_

@@ -5,7 +5,7 @@ ThreadManager::ThreadManager() {
         mThreadData = NULL;
 }
 //-----------------------------------------------------------------------------
-void ThreadManager::registerThread(ThreadFunc thread, InternalThreadFunc internalThread) {
+void ThreadManager::registerThread(ThreadFunc thread, Ogre::THREAD_ENTRY_POINT internalThread) {
         mRegisteredThreads.push_back(std::make_pair(thread, internalThread));
 }
 //-----------------------------------------------------------------------------

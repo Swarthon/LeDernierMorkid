@@ -1,4 +1,5 @@
-#include "GraphicsGameState.h"
+#include "Graphics/GraphicsGameState.h"
+
 #include "GraphicsSystem.h"
 #include "LogicSystem.h"
 #include "Terrain/Hlms/HlmsTerrain.h"
