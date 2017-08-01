@@ -56,7 +56,9 @@ namespace Common {
 		SdlInputHandler(SDL_Window*       sdlWindow,
 		                MouseListener*    mouseListener,
 		                KeyboardListener* keyboardListener,
-		                JoystickListener* joystickListener);
+		                JoystickListener* joystickListener,
+				BaseSystem*	  graphicsSystem,
+				BaseSystem*	  logicSystem);
 		virtual ~SdlInputHandler();
 
 		void _handleSdlEvents(const SDL_Event& evt);

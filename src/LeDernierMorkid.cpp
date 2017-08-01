@@ -5,9 +5,9 @@
 #include <OgreArchiveManager.h>
 #include <OgreConfigFile.h>
 #include <OgreHlms.h>
+#include <OgreHlmsManager.h>
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsUnlit.h>
-#include <OgreHlmsManager.h>
 #include <OgreRoot.h>
 
 #include "Terrain/Hlms/HlmsTerrain.h"
@@ -27,7 +27,7 @@ void LeDernierMorkidGraphicsSystem::registerHlms(void) {
 	else if (*(dataFolder.end() - 1) != '/')
 		dataFolder += "/";
 
-	Ogre::String        shaderSyntax = "GLSL";
+	Ogre::String shaderSyntax = "GLSL";
 
 	Ogre::Archive* archiveLibrary = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Common/" + shaderSyntax, "FileSystem", true);
@@ -36,7 +36,7 @@ void LeDernierMorkidGraphicsSystem::registerHlms(void) {
 	Ogre::Archive* archivePbs = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Pbs/" + shaderSyntax, "FileSystem", true);
 	Ogre::Archive* archiveUnlit = Ogre::ArchiveManager::getSingletonPtr()->load(
-		dataFolder + "Hlms/Unlit/" + shaderSyntax, "FileSystem", true);
+	        dataFolder + "Hlms/Unlit/" + shaderSyntax, "FileSystem", true);
 
 	Ogre::ArchiveVec library;
 	library.push_back(archiveLibrary);
@@ -75,8 +75,8 @@ LeDernierMorkid::LeDernierMorkid() {
 	registerThread(logicThread, THREAD_GET(logicThread));
 	registerThread(renderThread, THREAD_GET(renderThread));
 
-	mThreadData = new LeDernierMorkidThreadData;
-	((LeDernierMorkidThreadData*)mThreadData)->graphicsSystem = mGraphicsSystem;
-	((LeDernierMorkidThreadData*)mThreadData)->logicSystem    = mLogicSystem;
+	mThreadData                                                = new LeDernierMorkidThreadData;
+	((LeDernierMorkidThreadData*) mThreadData)->graphicsSystem = mGraphicsSystem;
+	((LeDernierMorkidThreadData*) mThreadData)->logicSystem    = mLogicSystem;
 }
 //---------------------------------------------------------------------

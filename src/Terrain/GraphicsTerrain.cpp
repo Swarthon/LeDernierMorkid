@@ -166,8 +166,8 @@ bool GraphicsTerrain::isVisible(const GridPoint& gPos, const GridPoint& gSize) c
 }
 //-----------------------------------------------------------------------------------
 void GraphicsTerrain::load(const Ogre::String& texName, const Ogre::Vector3 center, const Ogre::Vector3& dimensions) {
-        Ogre::Image image = loadImage(texName);
-        createHeightmapTexture(texName, image);
+	Ogre::Image image = loadImage(texName);
+	createHeightmapTexture(texName, image);
 	Terrain::load(image, center, dimensions);
 
 	createNormalTexture();

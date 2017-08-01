@@ -14,9 +14,12 @@ namespace Common {
 	SdlInputHandler::SdlInputHandler(SDL_Window*       sdlWindow,
 	                                 MouseListener*    mouseListener,
 	                                 KeyboardListener* keyboardListener,
-	                                 JoystickListener* joystickListener)
+	                                 JoystickListener* joystickListener,
+					 BaseSystem*       graphicsSystem,
+				 	 BaseSystem*	   logicSystem)
 	                : mSdlWindow(sdlWindow),
-	                  mLogicSystem(0),
+			  mGraphicsSystem(graphicsSystem),
+	                  mLogicSystem(logicSystem),
 	                  mMouseListener(mouseListener),
 	                  mKeyboardListener(keyboardListener),
 	                  mJoystickListener(joystickListener),

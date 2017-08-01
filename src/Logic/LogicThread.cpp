@@ -3,10 +3,10 @@
 #include "LeDernierMorkid.h"
 
 unsigned long logicThread(Ogre::ThreadHandle* threadHandle) {
-	LeDernierMorkid::LeDernierMorkidThreadData*     threadData     = reinterpret_cast<LeDernierMorkid::LeDernierMorkidThreadData*>(threadHandle->getUserParam());
-	GraphicsSystem* graphicsSystem = threadData->graphicsSystem;
-	LogicSystem*    logicSystem    = threadData->logicSystem;
-	Ogre::Barrier*  barrier        = threadData->barrier;
+	LeDernierMorkid::LeDernierMorkidThreadData* threadData     = reinterpret_cast<LeDernierMorkid::LeDernierMorkidThreadData*>(threadHandle->getUserParam());
+	GraphicsSystem*                             graphicsSystem = threadData->graphicsSystem;
+	LogicSystem*                                logicSystem    = threadData->logicSystem;
+	Ogre::Barrier*                              barrier        = threadData->barrier;
 
 	logicSystem->initialize();
 	barrier->sync();

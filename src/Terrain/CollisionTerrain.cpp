@@ -17,8 +17,8 @@ CollisionTerrain::CollisionTerrain(btDynamicsWorld* world)
 void CollisionTerrain::load(const Ogre::String&  texName,
                             const Ogre::Vector3  center,
                             const Ogre::Vector3& dimensions) {
-        Ogre::Image image = loadImage(texName);
-        Terrain::load(image, center, dimensions);
+	Ogre::Image image = loadImage(texName);
+	Terrain::load(image, center, dimensions);
 	createShape();
 }
 //-------------------------------------------------------------------------------------------------

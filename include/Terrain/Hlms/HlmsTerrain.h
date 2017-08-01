@@ -29,11 +29,11 @@ THE SOFTWARE.
 #define _HLMSTERRAIN_H_
 
 #include <OgreConstBufferPool.h>
+#include <OgreConstBufferPool.h>
 #include <OgreHeaderPrefix.h>
 #include <OgreHlmsBufferManager.h>
 #include <OgreHlmsDatablock.h>
 #include <OgreMatrix4.h>
-#include <OgreConstBufferPool.h>
 #include <Vao/OgreConstBufferPacked.h>
 
 #include "Terrain/Hlms/HlmsTerrainPrerequisites.h"

@@ -21,7 +21,7 @@ LogicGameState::~LogicGameState() {
 //------------------------------------------------------------------------------------------------
 void LogicGameState::createScene(void) {
 	mTerrain = new CollisionTerrain(mLogicSystem->getWorld());
-        mTerrain->load("terrain.png", Ogre::Vector3(0.0f, 4096.0f * 0.0f, 0.0f), Ogre::Vector3(1024.0f, 100.0f, 1024.0f));
+	mTerrain->load("terrain.png", Ogre::Vector3(0.0f, 4096.0f * 0.0f, 0.0f), Ogre::Vector3(1024.0f, 100.0f, 1024.0f));
 }
 //------------------------------------------------------------------------------------------------
 void LogicGameState::update(float timeSinceLast) {

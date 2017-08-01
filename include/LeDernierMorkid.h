@@ -5,16 +5,16 @@
 #include "GameEntityManager.h"
 #include "SdlInputHandler.h"
 
-#include "GraphicsSystem.h"
-#include "Graphics/GraphicsThread.h"
 #include "Graphics/GraphicsGameState.h"
+#include "Graphics/GraphicsThread.h"
+#include "GraphicsSystem.h"
 
-#include "LogicSystem.h"
 #include "Logic/LogicGameState.h"
 #include "Logic/LogicThread.h"
+#include "LogicSystem.h"
 
-#include "Threading/YieldTimer.h"
 #include "Threading/ThreadManager.h"
+#include "Threading/YieldTimer.h"
 
 #include <OgreRenderWindow.h>
 #include <OgreTimer.h>
@@ -26,11 +26,10 @@ extern const double cFrametime;
 class LeDernierMorkidGraphicsSystem : public GraphicsSystem {
 public:
 	LeDernierMorkidGraphicsSystem(GraphicsGameState* gameState, Ogre::ColourValue colourValue)
-	: GraphicsSystem(gameState, colourValue){};
+	                : GraphicsSystem(gameState, colourValue){};
 
 protected:
 	virtual void registerHlms(void);
-
 };
 
 class LeDernierMorkid : public ThreadManager {
@@ -43,7 +42,6 @@ public:
 	};
 
 protected:
-
 	GraphicsGameState* mGraphicsGameState;
 	LogicGameState*    mLogicGameState;
 	GraphicsSystem*    mGraphicsSystem;

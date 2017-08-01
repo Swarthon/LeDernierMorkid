@@ -26,9 +26,9 @@ unsigned long renderThread(Ogre::ThreadHandle* threadHandle) {
 }
 //---------------------------------------------------------------------
 unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle) {
-	LeDernierMorkid::LeDernierMorkidThreadData*     threadData     = reinterpret_cast<LeDernierMorkid::LeDernierMorkidThreadData*>(threadHandle->getUserParam());
-	GraphicsSystem* graphicsSystem = threadData->graphicsSystem;
-	Ogre::Barrier*  barrier        = threadData->barrier;
+	LeDernierMorkid::LeDernierMorkidThreadData* threadData     = reinterpret_cast<LeDernierMorkid::LeDernierMorkidThreadData*>(threadHandle->getUserParam());
+	GraphicsSystem*                             graphicsSystem = threadData->graphicsSystem;
+	Ogre::Barrier*                              barrier        = threadData->barrier;
 
 	graphicsSystem->initialize("Le Dernier Morkid");
 	graphicsSystem->getInputHandler()->setGrabMousePointer(true);

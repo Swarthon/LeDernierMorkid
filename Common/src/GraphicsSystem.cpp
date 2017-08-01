@@ -162,7 +162,7 @@ namespace Common {
 		mWorkspace = setupCompositor();
 
 		mInputHandler = new SdlInputHandler(
-		        mSdlWindow, mCurrentGameState, mCurrentGameState, mCurrentGameState);
+		        mSdlWindow, mCurrentGameState, mCurrentGameState, mCurrentGameState, this, mLogicSystem);
 
 		BaseSystem::initialize();
 	}

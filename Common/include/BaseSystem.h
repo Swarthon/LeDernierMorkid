@@ -25,6 +25,7 @@ namespace Common {
 		void update(float timeSinceLast);
 		void finishFrameParallel(void);
 		void finishFrame(void);
+		void processIncomingMessage(Mq::MessageId messageId, const void* data);
 	};
 }
 
