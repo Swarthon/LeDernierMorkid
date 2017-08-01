@@ -1,4 +1,5 @@
-#include "LogicGameState.h"
+#include "Logic/LogicGameState.h"
+
 #include "GameEntityManager.h"
 #include "LogicSystem.h"
 

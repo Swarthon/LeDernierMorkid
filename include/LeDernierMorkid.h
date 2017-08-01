@@ -3,12 +3,15 @@
 
 #include "CameraController.h"
 #include "GameEntityManager.h"
-#include "GraphicsSystem.h"
-#include "LogicGameState.h"
-#include "LogicSystem.h"
 #include "SdlInputHandler.h"
+
+#include "GraphicsSystem.h"
 #include "Graphics/GraphicsThread.h"
 #include "Graphics/GraphicsGameState.h"
+
+#include "LogicSystem.h"
+#include "Logic/LogicGameState.h"
+#include "Logic/LogicThread.h"
 
 #include "Threading/YieldTimer.h"
 #include "Threading/ThreadManager.h"
@@ -39,9 +42,7 @@ public:
 		LogicSystem*    logicSystem;
 	};
 
-protected:	
-	static unsigned long logicThread(Ogre::ThreadHandle* threadHandle);
-	static THREAD_DECLARE(logicThread);
+protected:
 
 	GraphicsGameState* mGraphicsGameState;
 	LogicGameState*    mLogicGameState;
