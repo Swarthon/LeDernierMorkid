@@ -21,7 +21,7 @@ public:
 	virtual ThreadData*                    getThreadData() { return mThreadData; }
 
 protected:
-	std::vector<std::pair<ThreadFunc, Ogre::THREAD_ENTRY_POINT>> mRegisteredThreads;
+	std::vector<std::pair<ThreadFunc, Ogre::THREAD_ENTRY_POINT> > mRegisteredThreads;
 
 	ThreadData* mThreadData;
 };
