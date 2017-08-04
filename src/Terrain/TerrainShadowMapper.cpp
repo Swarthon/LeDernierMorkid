@@ -43,20 +43,20 @@ void ShadowMapper::createShadowMap(Ogre::IdType id, Ogre::TexturePtr& heightMapT
 
 	if (!mShadowStarts) {
 		mShadowStarts = vaoManager->createConstBuffer(4096u * 16u,
-		                                               Ogre::BT_DYNAMIC_PERSISTENT,
-		                                               0,
-		                                               false);
+		                                              Ogre::BT_DYNAMIC_PERSISTENT,
+		                                              0,
+		                                              false);
 	}
 	if (!mShadowPerGroupData) {
 		mShadowPerGroupData = vaoManager->createConstBuffer(4096u * 16u,
-		                                                     Ogre::BT_DYNAMIC_PERSISTENT,
-		                                                     0,
-		                                                     false);
+		                                                    Ogre::BT_DYNAMIC_PERSISTENT,
+		                                                    0,
+		                                                    false);
 	}
 
 	Ogre::HlmsManager* hlmsManager = Ogre::Root::getSingleton().getHlmsManager();
 	Ogre::HlmsCompute* hlmsCompute = hlmsManager->getComputeHlms();
-	mShadowJob                    = hlmsCompute->findComputeJob("Terra/ShadowGenerator");
+	mShadowJob                     = hlmsCompute->findComputeJob("Terra/ShadowGenerator");
 
 	//TODO: Mipmaps
 	mShadowMapTex = Ogre::TextureManager::getSingleton().createManual(
@@ -75,10 +75,10 @@ void ShadowMapper::createShadowMap(Ogre::IdType id, Ogre::TexturePtr& heightMapT
 	mShadowWorkspace = mCompositorManager->addWorkspace(mSceneManager, finalTarget, 0, "Terra/ShadowGeneratorWorkspace", false);
 
 	Ogre::ShaderParams& shaderParams = mShadowJob->getShaderParams("default");
-	mJobParamDelta                  = shaderParams.findParameter("delta");
-	mJobParamXYStep                 = shaderParams.findParameter("xyStep");
-	mJobParamIsStep                 = shaderParams.findParameter("isSteep");
-	mJobParamHeightDelta            = shaderParams.findParameter("heightDelta");
+	mJobParamDelta                   = shaderParams.findParameter("delta");
+	mJobParamXYStep                  = shaderParams.findParameter("xyStep");
+	mJobParamIsStep                  = shaderParams.findParameter("isSteep");
+	mJobParamHeightDelta             = shaderParams.findParameter("heightDelta");
 
 	setGaussianFilterParams(8, 0.5f);
 }

@@ -85,6 +85,7 @@ namespace Common {
 	}
 	//------------------------------------------------------------------------------------------------
 	void LogicSystem::processIncomingMessage(Mq::MessageId messageId, const void* data) {
+		BaseSystem::processIncomingMessage(messageId, data);
 		switch (messageId) {
 		case Mq::LOGICFRAME_FINISHED: {
 			Ogre::uint32 newIdx = *reinterpret_cast<const Ogre::uint32*>(data);

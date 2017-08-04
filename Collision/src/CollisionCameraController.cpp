@@ -19,7 +19,7 @@ namespace Collision {
 		shape = new btCapsuleShape(1, 1.80);
 		mGhostObject->setCollisionShape(shape);
 		mGhostObject->setCollisionFlags(btCollisionObject::CF_CHARACTER_OBJECT);
-		mGhostObject->getWorldTransform().setOrigin(btVector3(0, 100, 0));
+		mGhostObject->getWorldTransform().setOrigin(Converter::to(mGraphicsSystem->getCamera()->getPosition()));
 
 		mWorld->addCollisionObject(mGhostObject);
 		mCharacter = new btKinematicCharacterController(mGhostObject, shape, 0.75);

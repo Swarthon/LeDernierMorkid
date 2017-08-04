@@ -28,12 +28,12 @@ THE SOFTWARE.
 #ifndef _HLMSTERRAINDATABLOCK_H_
 #define _HlmsTerrainDatablock_H_
 
+#include "Terrain/Hlms/HlmsTerrainPrerequisites.h"
 #include <OgreConstBufferPool.h>
 #include <OgreHeaderPrefix.h>
 #include <OgreHlmsDatablock.h>
 #include <OgreHlmsTextureManager.h>
 #include <OgreVector4.h>
-#include "Terrain/Hlms/HlmsTerrainPrerequisites.h"
 
 /** \addtogroup Core
     *  @{

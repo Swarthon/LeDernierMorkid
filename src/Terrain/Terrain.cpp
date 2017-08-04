@@ -33,7 +33,7 @@ Terrain::~Terrain() {
 }
 //-----------------------------------------------------------------------------------
 Ogre::Image Terrain::loadImage(const Ogre::String& imageName) {
-        Ogre::Image image;
+	Ogre::Image image;
 
 	image.load(imageName, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
 
@@ -49,7 +49,7 @@ Ogre::Image Terrain::loadImage(const Ogre::String& imageName) {
 		            "Terrain::createHeightmap");
 	}
 
-        return image;
+	return image;
 }
 //-----------------------------------------------------------------------------------
 void Terrain::createHeightmap(Ogre::Image& image) {
@@ -61,7 +61,7 @@ void Terrain::createHeightmap(Ogre::Image& image) {
 	if (image.getBPP() == 8) {
 		const Ogre::uint8* RESTRICT_ALIAS data = reinterpret_cast<Ogre::uint8 * RESTRICT_ALIAS>(image.getData());
 		for (Ogre::uint32 y = 0; y < mDepth; ++y) {
-			for (Ogre::uint32 x                  = 0; x < mWidth; ++x)
+			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
 				mHeightMap[y * mWidth + x] = (data[y * mWidth + x] * invMaxValue) * mHeight;
 		}
 	}
@@ -69,14 +69,14 @@ void Terrain::createHeightmap(Ogre::Image& image) {
 		const Ogre::uint16* RESTRICT_ALIAS data = reinterpret_cast<Ogre::uint16 * RESTRICT_ALIAS>(
 		        image.getData());
 		for (Ogre::uint32 y = 0; y < mDepth; ++y) {
-			for (Ogre::uint32 x                  = 0; x < mWidth; ++x)
+			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
 				mHeightMap[y * mWidth + x] = (data[y * mWidth + x] * invMaxValue) * mHeight;
 		}
 	}
 	else if (image.getFormat() == Ogre::PF_FLOAT32_R) {
 		const float* RESTRICT_ALIAS data = reinterpret_cast<float * RESTRICT_ALIAS>(image.getData());
 		for (Ogre::uint32 y = 0; y < mDepth; ++y) {
-			for (Ogre::uint32 x                  = 0; x < mWidth; ++x)
+			for (Ogre::uint32 x                = 0; x < mWidth; ++x)
 				mHeightMap[y * mWidth + x] = data[y * mWidth + x] * mHeight;
 		}
 	}
@@ -193,11 +193,11 @@ void Terrain::load(Ogre::Image& image, const Ogre::Vector3 center, const Ogre::V
 	mXZDimensions       = Ogre::Vector2(dimensions.x, dimensions.z);
 	mXZInvDimensions    = 1.0f / mXZDimensions;
 	mHeight             = dimensions.y;
-        mBasePixelDimension = 64u;
+	mBasePixelDimension = 64u;
 	createHeightmap(image);
 
 	mXZRelativeSize = mXZDimensions / Ogre::Vector2(static_cast<Ogre::Real>(mWidth),
-	                                                  static_cast<Ogre::Real>(mDepth));
+	                                                static_cast<Ogre::Real>(mDepth));
 }
 //-----------------------------------------------------------------------------------
 bool Terrain::getHeightAt(Ogre::Vector3& vPos) const {

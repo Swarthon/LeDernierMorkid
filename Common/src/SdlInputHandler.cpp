@@ -11,15 +11,10 @@ This file has been modified to fit with Swarthon's syntax rules
 #include <SDL_syswm.h>
 
 namespace Common {
-	SdlInputHandler::SdlInputHandler(SDL_Window*       sdlWindow,
-	                                 MouseListener*    mouseListener,
-	                                 KeyboardListener* keyboardListener,
-	                                 JoystickListener* joystickListener)
+	SdlInputHandler::SdlInputHandler(SDL_Window* sdlWindow,
+	                                 BaseSystem* emitter)
 	                : mSdlWindow(sdlWindow),
-	                  mLogicSystem(0),
-	                  mMouseListener(mouseListener),
-	                  mKeyboardListener(keyboardListener),
-	                  mJoystickListener(joystickListener),
+	                  mEmitter(emitter),
 	                  mWantRelative(false),
 	                  mWantMouseGrab(false),
 	                  mWantMouseVisible(true),
@@ -60,84 +55,24 @@ namespace Common {
 		case SDL_MOUSEMOTION:
 			// Ignore this if it happened due to a warp
 			if (!handleWarpMotion(evt.motion)) {
-				// If in relative mode, don't trigger events unless window has focus
-				if ((!mWantRelative || mWindowHasFocus) && mMouseListener)
-					mMouseListener->mouseMoved(evt);
-
 				// Try to keep the mouse inside the window
 				if (mWindowHasFocus)
 					wrapMousePointer(evt.motion);
 
-				if (mLogicSystem)
-					mGraphicsSystem->queueSendMessage(
-					        mLogicSystem, Mq::SDL_EVENT, evt);
+				emit(evt);
 			}
 			break;
-		case SDL_MOUSEWHEEL: {
-			if (mMouseListener)
-				mMouseListener->mouseMoved(evt);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_MOUSEBUTTONDOWN: {
-			if (mMouseListener)
-				mMouseListener->mousePressed(evt.button, evt.button.button);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_MOUSEBUTTONUP: {
-			if (mMouseListener)
-				mMouseListener->mouseReleased(evt.button, evt.button.button);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_KEYDOWN: {
-			if (!evt.key.repeat && mKeyboardListener)
-				mKeyboardListener->keyPressed(evt.key);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_KEYUP: {
-			if (!evt.key.repeat && mKeyboardListener)
-				mKeyboardListener->keyReleased(evt.key);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_TEXTINPUT: {
-			if (mKeyboardListener)
-				mKeyboardListener->textInput(evt.text);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_JOYAXISMOTION: {
-			if (mJoystickListener)
-				mJoystickListener->joyAxisMoved(evt.jaxis, evt.jaxis.axis);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_JOYBUTTONDOWN: {
-			if (mJoystickListener)
-				mJoystickListener->joyButtonPressed(evt.jbutton,
-				                                    evt.jbutton.button);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
-		case SDL_JOYBUTTONUP: {
-			if (mJoystickListener)
-				mJoystickListener->joyButtonReleased(evt.jbutton,
-				                                     evt.jbutton.button);
-
-			if (mLogicSystem)
-				mGraphicsSystem->queueSendMessage(mLogicSystem, Mq::SDL_EVENT, evt);
-		} break;
+		case SDL_MOUSEWHEEL:
+		case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
+		case SDL_KEYDOWN:
+		case SDL_KEYUP:
+		case SDL_TEXTINPUT:
+		case SDL_JOYAXISMOTION:
+		case SDL_JOYBUTTONDOWN:
+		case SDL_JOYBUTTONUP:
+			emit(evt);
+			break;
 		case SDL_JOYDEVICEADDED: break;
 		case SDL_JOYDEVICEREMOVED: break;
 		case SDL_WINDOWEVENT: handleWindowEvent(evt); break;
@@ -215,5 +150,14 @@ namespace Common {
 		}
 
 		return false;
+	}
+	//------------------------------------------------------------------------------------------------
+	void SdlInputHandler::addReceiver(BaseSystem* receiver) {
+		mReceivers.push_back(receiver);
+	}
+	//------------------------------------------------------------------------------------------------
+	void SdlInputHandler::emit(const SDL_Event& evt) {
+		for (size_t i = 0; i < mReceivers.size(); i++)
+			mEmitter->queueSendMessage(mReceivers[i], Mq::SDL_EVENT, evt);
 	}
 }

@@ -15,18 +15,11 @@ This file has been modified to fit with Swarthon's syntax rules
 #include <SDL.h>
 
 namespace Common {
-	class MouseListener;
-	class KeyboardListener;
-	class JoystickListener;
-
 	class SdlInputHandler {
 		SDL_Window* mSdlWindow;
 
-		BaseSystem*       mGraphicsSystem;
-		BaseSystem*       mLogicSystem;
-		MouseListener*    mMouseListener;
-		KeyboardListener* mKeyboardListener;
-		JoystickListener* mJoystickListener;
+		BaseSystem*              mEmitter;
+		std::vector<BaseSystem*> mReceivers;
 
 		bool mWantRelative;
 		bool mWantMouseGrab;
@@ -53,19 +46,18 @@ namespace Common {
 		bool handleWarpMotion(const SDL_MouseMotionEvent& evt);
 
 	public:
-		SdlInputHandler(SDL_Window*       sdlWindow,
-		                MouseListener*    mouseListener,
-		                KeyboardListener* keyboardListener,
-		                JoystickListener* joystickListener);
+		SdlInputHandler(SDL_Window* sdlWindow,
+		                BaseSystem* emitter);
 		virtual ~SdlInputHandler();
 
 		void _handleSdlEvents(const SDL_Event& evt);
 
 		void setGrabMousePointer(bool grab);
-
 		void setMouseRelative(bool relative);
-
 		void setMouseVisible(bool visible);
+
+		void addReceiver(BaseSystem* receiver);
+		void emit(const SDL_Event& evt);
 	};
 }
 
