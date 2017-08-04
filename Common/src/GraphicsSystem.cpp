@@ -162,7 +162,9 @@ namespace Common {
 		mWorkspace = setupCompositor();
 
 		mInputHandler = new SdlInputHandler(
-		        mSdlWindow, mCurrentGameState, mCurrentGameState, mCurrentGameState, this, mLogicSystem);
+		        mSdlWindow, this);
+		mInputHandler->addReceiver(this);
+		//		mInputHandler->addReceiver(mLogicSystem);
 
 		BaseSystem::initialize();
 	}
@@ -231,6 +233,7 @@ namespace Common {
 	}
 	//------------------------------------------------------------------------------------------------
 	void GraphicsSystem::processIncomingMessage(Mq::MessageId messageId, const void* data) {
+		BaseSystem::processIncomingMessage(messageId, data);
 		switch (messageId) {
 		case Mq::LOGICFRAME_FINISHED: {
 			Ogre::uint32 newIdx = *reinterpret_cast<const Ogre::uint32*>(data);

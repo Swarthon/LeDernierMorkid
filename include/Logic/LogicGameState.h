@@ -16,6 +16,7 @@ namespace Common {
 class LogicGameState : public Common::GameState {
 	Common::LogicSystem* mLogicSystem;
 	CollisionTerrain*    mTerrain;
+
 public:
 	LogicGameState();
 	~LogicGameState();

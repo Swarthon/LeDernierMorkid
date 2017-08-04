@@ -30,7 +30,7 @@ namespace Common {
 	void BaseSystem::finishFrame(void) { mCurrentGameState->finishFrame(); }
 	//------------------------------------------------------------------------------------------------
 	void BaseSystem::processIncomingMessage(Mq::MessageId messageId, const void* data) {
-		const SDL_Event& evt = *(SDL_Event*)data;
+		const SDL_Event& evt = *(SDL_Event*) data;
 		switch (messageId) {
 		case Mq::SDL_EVENT:
 			switch (evt.type) {
