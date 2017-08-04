@@ -37,6 +37,10 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 target_link_libraries(LeDernierMorkid ${SDL2_LIBRARY})
 
+find_package(CEGUI REQUIRED)
+include_directories(${CEGUI_INCLUDE_DIR} ${CEGUI_OgreRenderer_INCLUDE_DIRS})
+target_link_libraries(LeDernierMorkid ${CEGUI_LIBRARIES} ${CEGUI_OgreRenderer_LIBRARIES})
+
 file(GLOB CONFIGFILES "config/*.cfg" )
 file(COPY ${CONFIGFILES} DESTINATION ${EXECUTABLE_OUTPUT_PATH})
 file(COPY Media DESTINATION ${PROJECT_BINARY_DIR})
