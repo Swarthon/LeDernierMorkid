@@ -5,6 +5,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libsdl2-dev libbullet-dev
   - hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1 && cmake -DOGRE_BUILD_SAMPLES2=0 -DOGRE_BUILD_TOOLS=0 -DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=0 -DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=0 . && make -j8 && sudo make install && cd ..
+  - hg clone https://bitbucket.org/cegui/cegui && cd cegui/ && hg pull && hg update v0-8 && wget https://pastebin.com/raw/BB7CmUtw -O cegui.patch && patch -p1 < cegui.patch && cmake -DCEGUI_SAMPLES_ENABLED=0 -DCEGUI_BUILD_PYTHON_MODULES=0 -DCEGUI_USE_OGRE_HLMS=1 . && make -j8 && sudo make install && cd ..
 
 script:
   - cmake . && make -j8

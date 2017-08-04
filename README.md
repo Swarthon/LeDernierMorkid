@@ -19,6 +19,7 @@ Branches | Information | Build Status
 **OldVersion** | the old version, yet abandonned | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=OldVersion)](https://travis-ci.org/Swarthon/LeDernierMorkid)
 **v0-0** | version 0.0 | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=v0-0)](https://travis-ci.org/Swarthon/LeDernierMorkid)
 **v0-1** | version 0.1 | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=v0-1)](https://travis-ci.org/Swarthon/LeDernierMorkid)
+**v0-2** | version 0.2 | [![Build Status](https://travis-ci.org/Swarthon/LeDernierMorkid.svg?branch=v0-2)](https://travis-ci.org/Swarthon/LeDernierMorkid)
 
 ## Requirements
 
@@ -31,6 +32,7 @@ It has already been tested on Linux and Windows. I highly recommend to use the G
 As written below in [Requirements](#requirement), this project has a few dependencies :
  - **Ogre3D**, version 2.1, the components you need are HlmsPbs and HlmsUnlit. The version 2.1 is not released yet but you can download it by doing `hg clone https://bitbucket.org/sinbad/ogre && cd ogre/ && hg pull && hg update v2-1`, assuming you have Mercurial.
  - **SDL2**, the library used by Ogre to get the input. This library is very common and you can download it either from you package manager either from [the official site](http://libsdl.org/)
+ - **CEGUI**, version 0.8, a library which provide Ogre3D support for GUI. The version 0.8, which is yet only doesn't compile for Ogre 2.1, so I use a patch found [here](http://www.ogre3d.org/forums/viewtopic.php?f=25&t=82911&start=25), which gives [this link](https://pastebin.com/BB7CmUtw). To download the sources, the patch and apply it. `hg clone https://bitbucket.org/cegui/cegui && cd cegui/ && hg pull && hg update v0-8 && wget https://pastebin.com/raw/BB7CmUtw -O cegui.patch && patch -p1 < cegui.patch`, assuming you have Mercurial, wget and patch.
 
 ## Compiling
 
