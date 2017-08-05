@@ -1,0 +1,220 @@
+\hypertarget{class_hlms_terrain}{}\section{Hlms\+Terrain Class Reference}
+\label{class_hlms_terrain}\index{Hlms\+Terrain@{Hlms\+Terrain}}
+
+
+{\ttfamily \#include $<$Hlms\+Terrain.\+h$>$}
+
+
+
+Inheritance diagram for Hlms\+Terrain\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{class_hlms_terrain__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Hlms\+Terrain\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_hlms_terrain__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_hlms_terrain_1_1_pass_data}{Pass\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}{Shadow\+Filter} \{ \hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a53da265e876792e21375c4329c2c9278}{P\+C\+F\+\_\+2x2}, 
+\hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a310366fdb0c573ae8e6e7f4692262d8f}{P\+C\+F\+\_\+3x3}, 
+\hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a6806779daa76d206a6804c29261226a6}{P\+C\+F\+\_\+4x4}, 
+{\bfseries Num\+Shadow\+Filter}
+ \}
+\item 
+enum \hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}{Ambient\+Light\+Mode} \{ \hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49ad9a05ccea7d12c88743f2f8ab51ef8f8}{Ambient\+Auto}, 
+\hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49aaec6899680132f036c6488f85ee24c3f}{Ambient\+Fixed}, 
+\hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49ac01b26f1199927c3e8cf94529d5ff132}{Ambient\+Hemisphere}, 
+\hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49a38a630a926e8bae2fd0f278f02433d10}{Ambient\+None}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ab39e90b1829b06e962e852991554768f}\label{class_hlms_terrain_ab39e90b1829b06e962e852991554768f}} 
+{\bfseries Hlms\+Terrain} (Ogre\+::\+Archive $\ast$data\+Folder, Ogre\+::\+Archive\+Vec $\ast$library\+Folders)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a5ee80708dd984edecb9dcefa8d64ce7f}\label{class_hlms_terrain_a5ee80708dd984edecb9dcefa8d64ce7f}} 
+virtual void {\bfseries \+\_\+change\+Render\+System} (Ogre\+::\+Render\+System $\ast$new\+Rs)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ac533a5af538cbb484ece7942634a2e1d}\label{class_hlms_terrain_ac533a5af538cbb484ece7942634a2e1d}} 
+virtual void \hyperlink{class_hlms_terrain_ac533a5af538cbb484ece7942634a2e1d}{set\+Optimization\+Strategy} (Ogre\+::\+Const\+Buffer\+Pool\+::\+Optimization\+Strategy optimization\+Strategy)
+\begin{DoxyCompactList}\small\item\em Not supported. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hlms_terrain_a028d73bf95de789a269643c7dbb131d6}\label{class_hlms_terrain_a028d73bf95de789a269643c7dbb131d6}} 
+virtual Ogre\+::\+Hlms\+Cache {\bfseries prepare\+Pass\+Hash} (const Ogre\+::\+Compositor\+Shadow\+Node $\ast$shadow\+Node, bool caster\+Pass, bool dual\+Paraboloid, Ogre\+::\+Scene\+Manager $\ast$scene\+Manager)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_aee7595282d4810e43f1fba0b588107f7}\label{class_hlms_terrain_aee7595282d4810e43f1fba0b588107f7}} 
+virtual Ogre\+::uint32 {\bfseries fill\+Buffers\+For} (const Ogre\+::\+Hlms\+Cache $\ast$cache, const Ogre\+::\+Queued\+Renderable \&queued\+Renderable, bool caster\+Pass, Ogre\+::uint32 last\+Cache\+Hash, Ogre\+::uint32 last\+Texture\+Hash)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_aed0aae1ffae857ec9a0bc126c707c635}\label{class_hlms_terrain_aed0aae1ffae857ec9a0bc126c707c635}} 
+virtual Ogre\+::uint32 {\bfseries fill\+Buffers\+For\+V1} (const Ogre\+::\+Hlms\+Cache $\ast$cache, const Ogre\+::\+Queued\+Renderable \&queued\+Renderable, bool caster\+Pass, Ogre\+::uint32 last\+Cache\+Hash, Ogre\+::\+Command\+Buffer $\ast$command\+Buffer)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a7d27ef9505eff026ef868e6891ca7b8f}\label{class_hlms_terrain_a7d27ef9505eff026ef868e6891ca7b8f}} 
+virtual Ogre\+::uint32 {\bfseries fill\+Buffers\+For\+V2} (const Ogre\+::\+Hlms\+Cache $\ast$cache, const Ogre\+::\+Queued\+Renderable \&queued\+Renderable, bool caster\+Pass, Ogre\+::uint32 last\+Cache\+Hash, Ogre\+::\+Command\+Buffer $\ast$command\+Buffer)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a7881dc3fd7d2834d6d16dbc8c308977a}\label{class_hlms_terrain_a7881dc3fd7d2834d6d16dbc8c308977a}} 
+virtual void {\bfseries frame\+Ended} (void)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_aaff666af525179d6f5a801ce8954f943}\label{class_hlms_terrain_aaff666af525179d6f5a801ce8954f943}} 
+void {\bfseries set\+Debug\+Pssm\+Splits} (bool b\+Debug)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a75deb2f268e6dd0fd44e1341d5e5cf2b}\label{class_hlms_terrain_a75deb2f268e6dd0fd44e1341d5e5cf2b}} 
+bool {\bfseries get\+Debug\+Pssm\+Splits} (void) const
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a5875cf6ae08dd761a9d905d19c08673a}\label{class_hlms_terrain_a5875cf6ae08dd761a9d905d19c08673a}} 
+void {\bfseries set\+Shadow\+Settings} (\hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}{Shadow\+Filter} filter)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_aae33eff84badc7f7d6e0c4f532aa227d}\label{class_hlms_terrain_aae33eff84badc7f7d6e0c4f532aa227d}} 
+\hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}{Shadow\+Filter} {\bfseries get\+Shadow\+Filter} (void) const
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a0370831def02917269cc815bcfc974c6}\label{class_hlms_terrain_a0370831def02917269cc815bcfc974c6}} 
+void {\bfseries set\+Ambient\+Light\+Mode} (\hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}{Ambient\+Light\+Mode} mode)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a8d7e6ab8279b7eae6d7d44179ba8bbab}\label{class_hlms_terrain_a8d7e6ab8279b7eae6d7d44179ba8bbab}} 
+\hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}{Ambient\+Light\+Mode} {\bfseries get\+Ambient\+Light\+Mode} (void) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_af453118217d4139de33cabdee9fca719}\label{class_hlms_terrain_af453118217d4139de33cabdee9fca719}} 
+virtual const Ogre\+::\+Hlms\+Cache $\ast$ {\bfseries create\+Shader\+Cache\+Entry} (Ogre\+::uint32 renderable\+Hash, const Ogre\+::\+Hlms\+Cache \&pass\+Cache, Ogre\+::uint32 final\+Hash, const Ogre\+::\+Queued\+Renderable \&queued\+Renderable)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ab42a5fdf5b3705b4b2f81da90ff1d8d5}\label{class_hlms_terrain_ab42a5fdf5b3705b4b2f81da90ff1d8d5}} 
+virtual Ogre\+::\+Hlms\+Datablock $\ast$ {\bfseries create\+Datablock\+Impl} (Ogre\+::\+Id\+String datablock\+Name, const Ogre\+::\+Hlms\+Macroblock $\ast$macroblock, const Ogre\+::\+Hlms\+Blendblock $\ast$blendblock, const Ogre\+::\+Hlms\+Param\+Vec \&param\+Vec)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_aca2bde1f888fc0e2f383714c015cf677}\label{class_hlms_terrain_aca2bde1f888fc0e2f383714c015cf677}} 
+void {\bfseries set\+Detail\+Map\+Properties} (\hyperlink{class_hlms_terrain_datablock}{Hlms\+Terrain\+Datablock} $\ast$datablock, Ogre\+::\+Pieces\+Map $\ast$in\+Out\+Pieces)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a2f485c0bf2015e6c5773e0bb57b7c809}\label{class_hlms_terrain_a2f485c0bf2015e6c5773e0bb57b7c809}} 
+void {\bfseries set\+Texture\+Property} (const char $\ast$property\+Name, \hyperlink{class_hlms_terrain_datablock}{Hlms\+Terrain\+Datablock} $\ast$datablock, Terrain\+Texture\+Types tex\+Type)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ae148c9e6e4eede07e460560153058e26}\label{class_hlms_terrain_ae148c9e6e4eede07e460560153058e26}} 
+void {\bfseries set\+Detail\+Texture\+Property} (const char $\ast$property\+Name, \hyperlink{class_hlms_terrain_datablock}{Hlms\+Terrain\+Datablock} $\ast$datablock, Terrain\+Texture\+Types base\+Tex\+Type, Ogre\+::uint8 detail\+Idx)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ad5b8458a8de30b6910612e746825234e}\label{class_hlms_terrain_ad5b8458a8de30b6910612e746825234e}} 
+virtual void {\bfseries calculate\+Hash\+For\+Pre\+Create} (Ogre\+::\+Renderable $\ast$renderable, Ogre\+::\+Pieces\+Map $\ast$in\+Out\+Pieces)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_adedc4dbb3be85f823b0dbab3ae5fcf72}\label{class_hlms_terrain_adedc4dbb3be85f823b0dbab3ae5fcf72}} 
+virtual void {\bfseries destroy\+All\+Buffers} (void)
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a7657417eacda62e4d6462243aca0364a}\label{class_hlms_terrain_a7657417eacda62e4d6462243aca0364a}} 
+F\+O\+R\+C\+E\+I\+N\+L\+I\+NE Ogre\+::uint32 {\bfseries fill\+Buffers\+For} (const Ogre\+::\+Hlms\+Cache $\ast$cache, const Ogre\+::\+Queued\+Renderable \&queued\+Renderable, bool caster\+Pass, Ogre\+::uint32 last\+Cache\+Hash, Ogre\+::\+Command\+Buffer $\ast$command\+Buffer, bool is\+V1)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a6cb8159a37119644ab8b11e0325a70a3}\label{class_hlms_terrain_a6cb8159a37119644ab8b11e0325a70a3}} 
+\hyperlink{struct_hlms_terrain_1_1_pass_data}{Pass\+Data} {\bfseries m\+Prepared\+Pass}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a86d07dba3252314bf9447522b64ee864}\label{class_hlms_terrain_a86d07dba3252314bf9447522b64ee864}} 
+Ogre\+::\+Const\+Buffer\+Packed\+Vec {\bfseries m\+Pass\+Buffers}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a9d3ea0ee48cfa834a62afc10a0921f8a}\label{class_hlms_terrain_a9d3ea0ee48cfa834a62afc10a0921f8a}} 
+Ogre\+::\+Hlms\+Samplerblock const  $\ast$ {\bfseries m\+Shadowmap\+Samplerblock}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_aade513593295248c1255de720a4d3fb4}\label{class_hlms_terrain_aade513593295248c1255de720a4d3fb4}} 
+Ogre\+::\+Hlms\+Samplerblock const  $\ast$ \hyperlink{class_hlms_terrain_aade513593295248c1255de720a4d3fb4}{m\+Shadowmap\+Cmp\+Samplerblock}
+\begin{DoxyCompactList}\small\item\em G\+L3+ only when not using depth textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hlms_terrain_ab779c42bd6b216935b9f85a522f88bd5}\label{class_hlms_terrain_ab779c42bd6b216935b9f85a522f88bd5}} 
+Ogre\+::\+Hlms\+Samplerblock const  $\ast$ \hyperlink{class_hlms_terrain_ab779c42bd6b216935b9f85a522f88bd5}{m\+Current\+Shadowmap\+Samplerblock}
+\begin{DoxyCompactList}\small\item\em For depth textures \& D3\+D11. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hlms_terrain_a598b57fadeacacbe48c4e13d1afa6c54}\label{class_hlms_terrain_a598b57fadeacacbe48c4e13d1afa6c54}} 
+Ogre\+::\+Hlms\+Samplerblock const  $\ast$ {\bfseries m\+Terrain\+Samplerblock}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a7eb38166903355fc79351b1be8145e49}\label{class_hlms_terrain_a7eb38166903355fc79351b1be8145e49}} 
+Ogre\+::uint32 {\bfseries m\+Current\+Pass\+Buffer}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a99e9414fb8809dc568a90eacd1262332}\label{class_hlms_terrain_a99e9414fb8809dc568a90eacd1262332}} 
+Ogre\+::\+Tex\+Buffer\+Packed $\ast$ \hyperlink{class_hlms_terrain_a99e9414fb8809dc568a90eacd1262332}{m\+Grid\+Buffer}
+\begin{DoxyCompactList}\small\item\em Resets every to zero every new frame. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_hlms_terrain_a454c753af398352343f63fbc9c8d0edb}\label{class_hlms_terrain_a454c753af398352343f63fbc9c8d0edb}} 
+Ogre\+::\+Tex\+Buffer\+Packed $\ast$ {\bfseries m\+Global\+Light\+List\+Buffer}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a55e9e2a3ce773b5f0a3e1b13855ab23a}\label{class_hlms_terrain_a55e9e2a3ce773b5f0a3e1b13855ab23a}} 
+Ogre\+::\+Const\+Buffer\+Pool\+::\+Buffer\+Pool const  $\ast$ {\bfseries m\+Last\+Bound\+Pool}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ac48005c0566ad16977dee2ef9195aae1}\label{class_hlms_terrain_ac48005c0566ad16977dee2ef9195aae1}} 
+Ogre\+::uint32 {\bfseries m\+Last\+Texture\+Hash}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_adcae094fdd108f51f740ac91b374dd73}\label{class_hlms_terrain_adcae094fdd108f51f740ac91b374dd73}} 
+Ogre\+::\+Movable\+Object const  $\ast$ {\bfseries m\+Last\+Movable\+Object}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_ab7f5c27dc4285848129c777c2a496962}\label{class_hlms_terrain_ab7f5c27dc4285848129c777c2a496962}} 
+bool {\bfseries m\+Debug\+Pssm\+Splits}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_a5bc1f985080e7da2e202239955783a46}\label{class_hlms_terrain_a5bc1f985080e7da2e202239955783a46}} 
+\hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}{Shadow\+Filter} {\bfseries m\+Shadow\+Filter}
+\item 
+\mbox{\Hypertarget{class_hlms_terrain_af5d508a0171c743fb005db1b76b565ec}\label{class_hlms_terrain_af5d508a0171c743fb005db1b76b565ec}} 
+\hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}{Ambient\+Light\+Mode} {\bfseries m\+Ambient\+Light\+Mode}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Physically based shading implementation specfically designed for Open\+GL 3+, D3\+D11 and other Render\+Systems which support uniform buffers. 
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}\label{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}} 
+\index{Hlms\+Terrain@{Hlms\+Terrain}!Ambient\+Light\+Mode@{Ambient\+Light\+Mode}}
+\index{Ambient\+Light\+Mode@{Ambient\+Light\+Mode}!Hlms\+Terrain@{Hlms\+Terrain}}
+\subsubsection{\texorpdfstring{Ambient\+Light\+Mode}{AmbientLightMode}}
+{\footnotesize\ttfamily enum \hyperlink{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49}{Hlms\+Terrain\+::\+Ambient\+Light\+Mode}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ambient\+Auto@{Ambient\+Auto}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!Ambient\+Auto@{Ambient\+Auto}}}\mbox{\Hypertarget{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49ad9a05ccea7d12c88743f2f8ab51ef8f8}\label{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49ad9a05ccea7d12c88743f2f8ab51ef8f8}} 
+Ambient\+Auto&Use fixed-\/colour ambient lighting when upper hemisphere = lower hemisphere, use hemisphere lighting when they don\textquotesingle{}t match. Disables ambient lighting if the colours are black. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ambient\+Fixed@{Ambient\+Fixed}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!Ambient\+Fixed@{Ambient\+Fixed}}}\mbox{\Hypertarget{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49aaec6899680132f036c6488f85ee24c3f}\label{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49aaec6899680132f036c6488f85ee24c3f}} 
+Ambient\+Fixed&Force fixed-\/colour ambient light. Only uses the upper hemisphere paramter. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ambient\+Hemisphere@{Ambient\+Hemisphere}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!Ambient\+Hemisphere@{Ambient\+Hemisphere}}}\mbox{\Hypertarget{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49ac01b26f1199927c3e8cf94529d5ff132}\label{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49ac01b26f1199927c3e8cf94529d5ff132}} 
+Ambient\+Hemisphere&Force hemisphere ambient light. Useful if you plan on adjusting the colours dynamically very often and this might cause swapping shaders. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ambient\+None@{Ambient\+None}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!Ambient\+None@{Ambient\+None}}}\mbox{\Hypertarget{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49a38a630a926e8bae2fd0f278f02433d10}\label{class_hlms_terrain_a49e72052d5ccdc3b34459069c4496a49a38a630a926e8bae2fd0f278f02433d10}} 
+Ambient\+None&Disable ambient lighting. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}\label{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}} 
+\index{Hlms\+Terrain@{Hlms\+Terrain}!Shadow\+Filter@{Shadow\+Filter}}
+\index{Shadow\+Filter@{Shadow\+Filter}!Hlms\+Terrain@{Hlms\+Terrain}}
+\subsubsection{\texorpdfstring{Shadow\+Filter}{ShadowFilter}}
+{\footnotesize\ttfamily enum \hyperlink{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715}{Hlms\+Terrain\+::\+Shadow\+Filter}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+C\+F\+\_\+2x2@{P\+C\+F\+\_\+2x2}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!P\+C\+F\+\_\+2x2@{P\+C\+F\+\_\+2x2}}}\mbox{\Hypertarget{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a53da265e876792e21375c4329c2c9278}\label{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a53da265e876792e21375c4329c2c9278}} 
+P\+C\+F\+\_\+2x2&Standard quality. Very fast. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+C\+F\+\_\+3x3@{P\+C\+F\+\_\+3x3}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!P\+C\+F\+\_\+3x3@{P\+C\+F\+\_\+3x3}}}\mbox{\Hypertarget{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a310366fdb0c573ae8e6e7f4692262d8f}\label{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a310366fdb0c573ae8e6e7f4692262d8f}} 
+P\+C\+F\+\_\+3x3&Good quality. Still quite fast on most modern hardware. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+C\+F\+\_\+4x4@{P\+C\+F\+\_\+4x4}!Hlms\+Terrain@{Hlms\+Terrain}}\index{Hlms\+Terrain@{Hlms\+Terrain}!P\+C\+F\+\_\+4x4@{P\+C\+F\+\_\+4x4}}}\mbox{\Hypertarget{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a6806779daa76d206a6804c29261226a6}\label{class_hlms_terrain_a241597775a6a483a2ba6cd02721d3715a6806779daa76d206a6804c29261226a6}} 
+P\+C\+F\+\_\+4x4&High quality. Very slow in old hardware (i.\+e. D\+X10 level hw and below) Use R\+S\+C\+\_\+\+T\+E\+X\+T\+U\+R\+E\+\_\+\+G\+A\+T\+H\+ER to check whether it will be slow or not. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/include/\+Terrain/\+Hlms/Hlms\+Terrain.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/src/\+Terrain/\+Hlms/Hlms\+Terrain.\+cpp\end{DoxyCompactItemize}

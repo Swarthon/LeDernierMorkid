@@ -5,23 +5,24 @@
 #include "LogicSystem.h"
 
 namespace Collision {
-	ObjectState::ObjectState(btTransform& i, Common::GameEntity* ge, const Common::LogicSystem* ls) {
-		mInitialPosition = i;
-		mGameEntity      = ge;
-		mLogicSystem     = ls;
+	ObjectState::ObjectState(btTransform& initial, Common::GameEntity* gameEntity, const Common::LogicSystem* logicSystem) {
+		mWorldTransform = initial;
+		mGameEntity      = gameEntity;
+		mLogicSystem     = logicSystem;
 	}
 	ObjectState::~ObjectState() {
 	}
 
 	void ObjectState::getWorldTransform(btTransform& worldTrans) const {
-		worldTrans = mInitialPosition;
+		worldTrans = mWorldTransform;
 	}
 	void ObjectState::setWorldTransform(const btTransform& worldTrans) {
-		if (mGameEntity == NULL)
-			return;
+		assert(mGameEntity);
 
 		size_t currIdx                         = mLogicSystem->getCurrentTransformIdx();
 		mGameEntity->mTransform[currIdx]->vPos = Converter::to(worldTrans.getOrigin());
 		mGameEntity->mTransform[currIdx]->qRot = Converter::to(worldTrans.getRotation());
+
+		mWorldTransform == worldTrans;
 	}
 }

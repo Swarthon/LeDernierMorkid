@@ -1,0 +1,191 @@
+\hypertarget{class_common_1_1_graphics_system}{}\section{Common\+:\+:Graphics\+System Class Reference}
+\label{class_common_1_1_graphics_system}\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+
+
+Inheritance diagram for Common\+:\+:Graphics\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_common_1_1_graphics_system__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Common\+:\+:Graphics\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_common_1_1_graphics_system__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}\label{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}} 
+{\bfseries Graphics\+System} (\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$game\+State, Ogre\+::\+Colour\+Value background\+Colour=Ogre\+::\+Colour\+Value(0.f, 0.f, 0.f))
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}\label{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}} 
+void {\bfseries \+\_\+notify\+Logic\+System} (\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$logic\+System)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}\label{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}} 
+void {\bfseries initialize} (const Ogre\+::\+String \&window\+Title)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}\label{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}} 
+void {\bfseries deinitialize} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}\label{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}} 
+void {\bfseries update} (float time\+Since\+Last)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}\label{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}} 
+void {\bfseries update\+Game\+Entities} (const Game\+Entity\+Vec \&game\+Entities, float weight)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}\label{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}} 
+virtual void {\bfseries execute} (size\+\_\+t thread\+Id, size\+\_\+t num\+Threads)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_af658d1a3d1037affc4bce8a63ea33514}\label{class_common_1_1_graphics_system_af658d1a3d1037affc4bce8a63ea33514}} 
+const Game\+Entity\+Vec \& {\bfseries get\+Game\+Entities} (Ogre\+::\+Scene\+Memory\+Mgr\+Types type) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a3996ebbb7e250c04cbf107efafd34984}\label{class_common_1_1_graphics_system_a3996ebbb7e250c04cbf107efafd34984}} 
+\hyperlink{class_common_1_1_sdl_input_handler}{Sdl\+Input\+Handler} $\ast$ {\bfseries get\+Input\+Handler} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_acdbed0670eef23789a3c68e00d88ac4c}\label{class_common_1_1_graphics_system_acdbed0670eef23789a3c68e00d88ac4c}} 
+void {\bfseries set\+Quit} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a216f755133f87e2074a36a556d303e41}\label{class_common_1_1_graphics_system_a216f755133f87e2074a36a556d303e41}} 
+bool {\bfseries get\+Quit} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a4a9abd5c431c9e61b48d4d167f775935}\label{class_common_1_1_graphics_system_a4a9abd5c431c9e61b48d4d167f775935}} 
+float {\bfseries get\+Accum\+Time\+Since\+Last\+Logic\+Frame} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a0890b804419adb1857d359810dec34ff}\label{class_common_1_1_graphics_system_a0890b804419adb1857d359810dec34ff}} 
+Ogre\+::\+Root $\ast$ {\bfseries get\+Root} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a7b330688e6c66c74e23ec57eab54f341}\label{class_common_1_1_graphics_system_a7b330688e6c66c74e23ec57eab54f341}} 
+Ogre\+::\+Render\+Window $\ast$ {\bfseries get\+Render\+Window} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_aef392cd73eb9571778a0910e9b991cac}\label{class_common_1_1_graphics_system_aef392cd73eb9571778a0910e9b991cac}} 
+Ogre\+::\+Scene\+Manager $\ast$ {\bfseries get\+Scene\+Manager} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a7497c78b142d7dd1461418a75804bc58}\label{class_common_1_1_graphics_system_a7497c78b142d7dd1461418a75804bc58}} 
+Ogre\+::\+Camera $\ast$ {\bfseries get\+Camera} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a24280225a9fd08efd4ac9100c7de07c0}\label{class_common_1_1_graphics_system_a24280225a9fd08efd4ac9100c7de07c0}} 
+Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries get\+Compositor\+Workspace} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_aab69bdc895c97c506caab1fa828b575a}\label{class_common_1_1_graphics_system_aab69bdc895c97c506caab1fa828b575a}} 
+virtual void {\bfseries stop\+Compositor} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_aa7a5a6ce9e1da97940f5af5785bb4a8a}\label{class_common_1_1_graphics_system_aa7a5a6ce9e1da97940f5af5785bb4a8a}} 
+virtual void {\bfseries restart\+Compositor} (void)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a0fd3f9ba43027f8dcebeda885302e564}\label{class_common_1_1_graphics_system_a0fd3f9ba43027f8dcebeda885302e564}} 
+\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$ {\bfseries m\+Logic\+System}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}\label{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}} 
+void {\bfseries handle\+Window\+Event} (const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&evt)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}\label{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}} 
+virtual void {\bfseries process\+Incoming\+Message} (Mq\+::\+Message\+Id message\+Id, const void $\ast$data)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a6ca699c2cd358f6101d7c00f605a515a}\label{class_common_1_1_graphics_system_a6ca699c2cd358f6101d7c00f605a515a}} 
+virtual void {\bfseries setup\+Resources} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a17ad5ae3ca1efd63f7436d977e7f2657}\label{class_common_1_1_graphics_system_a17ad5ae3ca1efd63f7436d977e7f2657}} 
+virtual void {\bfseries register\+Hlms} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ab91bf390248b3098db3b739e066092b1}\label{class_common_1_1_graphics_system_ab91bf390248b3098db3b739e066092b1}} 
+virtual void {\bfseries load\+Resources} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a6fc846f42d2011cfdeb465aa9ef44b20}\label{class_common_1_1_graphics_system_a6fc846f42d2011cfdeb465aa9ef44b20}} 
+virtual void {\bfseries choose\+Scene\+Manager} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a84373ea7cef6f794831d98ef60227abb}\label{class_common_1_1_graphics_system_a84373ea7cef6f794831d98ef60227abb}} 
+virtual void {\bfseries create\+Camera} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a36c3548e669676eb5ad328d947454e81}\label{class_common_1_1_graphics_system_a36c3548e669676eb5ad328d947454e81}} 
+virtual Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries setup\+Compositor} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a0c9ba8a9470920fe8dd3d19ad85698e0}\label{class_common_1_1_graphics_system_a0c9ba8a9470920fe8dd3d19ad85698e0}} 
+virtual void {\bfseries create\+Resource\+Listener} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}\label{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}} 
+void {\bfseries game\+Entity\+Added} (const \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Game\+Entity\+Manager\+::\+Created\+Game\+Entity} $\ast$created\+Game\+Entity)
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}\label{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}} 
+void {\bfseries game\+Entity\+Removed} (\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$to\+Remove)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}\label{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}} 
+static void {\bfseries add\+Resource\+Location} (const Ogre\+::\+String \&arch\+Name, const Ogre\+::\+String \&type\+Name, const Ogre\+::\+String \&sec\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a92bb62174a5eb357a6765c31891649b5}\label{class_common_1_1_graphics_system_a92bb62174a5eb357a6765c31891649b5}} 
+S\+D\+L\+\_\+\+Window $\ast$ {\bfseries m\+Sdl\+Window}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a9ddbb67b87143d1c124e55a96d875150}\label{class_common_1_1_graphics_system_a9ddbb67b87143d1c124e55a96d875150}} 
+\hyperlink{class_common_1_1_sdl_input_handler}{Sdl\+Input\+Handler} $\ast$ {\bfseries m\+Input\+Handler}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_adf9abc6e0d78256c7b8d2b16c01a6b98}\label{class_common_1_1_graphics_system_adf9abc6e0d78256c7b8d2b16c01a6b98}} 
+Ogre\+::\+Root $\ast$ {\bfseries m\+Root}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a14a142b2ccd792b6b50b9240b8b03bcd}\label{class_common_1_1_graphics_system_a14a142b2ccd792b6b50b9240b8b03bcd}} 
+Ogre\+::\+Render\+Window $\ast$ {\bfseries m\+Render\+Window}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a6510b0288e263ca79514eccbc80e52d2}\label{class_common_1_1_graphics_system_a6510b0288e263ca79514eccbc80e52d2}} 
+Ogre\+::\+Scene\+Manager $\ast$ {\bfseries m\+Scene\+Manager}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ac8f3870f3218f13e7883262d9db2ba0d}\label{class_common_1_1_graphics_system_ac8f3870f3218f13e7883262d9db2ba0d}} 
+Ogre\+::\+Camera $\ast$ {\bfseries m\+Camera}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a5a80c19583bedfc79a0366d0d94be657}\label{class_common_1_1_graphics_system_a5a80c19583bedfc79a0366d0d94be657}} 
+Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries m\+Workspace}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad9d14ea53f9f8ddfd3025c58665c469c}\label{class_common_1_1_graphics_system_ad9d14ea53f9f8ddfd3025c58665c469c}} 
+Ogre\+::\+String {\bfseries m\+Plugins\+Path}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_acf0f1cb58173eca575b63dbea1010415}\label{class_common_1_1_graphics_system_acf0f1cb58173eca575b63dbea1010415}} 
+Ogre\+::\+String {\bfseries m\+Write\+Access\+Folder}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad6c40d2244340da36c0a7853dc891196}\label{class_common_1_1_graphics_system_ad6c40d2244340da36c0a7853dc891196}} 
+Ogre\+::\+String {\bfseries m\+Resource\+Path}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a94edce8cb6c70b67a66ea65a4c989fce}\label{class_common_1_1_graphics_system_a94edce8cb6c70b67a66ea65a4c989fce}} 
+\hyperlink{class_common_1_1_static_plugin_loader}{Static\+Plugin\+Loader} {\bfseries m\+Static\+Plugin\+Loader}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad8f0298ee17a2331e0e6406e16e6cd23}\label{class_common_1_1_graphics_system_ad8f0298ee17a2331e0e6406e16e6cd23}} 
+float {\bfseries m\+Accum\+Time\+Since\+Last\+Logic\+Frame}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a2a3acd30c5c38530b9b07f0b3a2dbce5}\label{class_common_1_1_graphics_system_a2a3acd30c5c38530b9b07f0b3a2dbce5}} 
+Ogre\+::uint32 {\bfseries m\+Current\+Transform\+Idx}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a39c347647fabbfb8d86a8e7fc55825bd}\label{class_common_1_1_graphics_system_a39c347647fabbfb8d86a8e7fc55825bd}} 
+Game\+Entity\+Vec {\bfseries m\+Game\+Entities} \mbox{[}Ogre\+::\+N\+U\+M\+\_\+\+S\+C\+E\+N\+E\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+T\+Y\+P\+ES\mbox{]}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_adaf0d898cd16130084bdf36220f6111b}\label{class_common_1_1_graphics_system_adaf0d898cd16130084bdf36220f6111b}} 
+Game\+Entity\+Vec const  $\ast$ {\bfseries m\+Thread\+Game\+Entity\+To\+Update}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a41e916be28a4d889337a4c8c0868b3ed}\label{class_common_1_1_graphics_system_a41e916be28a4d889337a4c8c0868b3ed}} 
+float {\bfseries m\+Thread\+Weight}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a141239a20891b1a980e319a89420f2b0}\label{class_common_1_1_graphics_system_a141239a20891b1a980e319a89420f2b0}} 
+bool {\bfseries m\+Quit}
+\item 
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a64e431c0b8b4a8913e488a845afdc48d}\label{class_common_1_1_graphics_system_a64e431c0b8b4a8913e488a845afdc48d}} 
+Ogre\+::\+Colour\+Value {\bfseries m\+Background\+Colour}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/include/Graphics\+System.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/src/Graphics\+System.\+cpp\end{DoxyCompactItemize}

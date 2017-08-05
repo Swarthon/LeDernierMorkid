@@ -1,0 +1,4 @@
+<map id="Common::LogicSystem" name="Common::LogicSystem">
+<area shape="rect" id="node2" href="$class_common_1_1_base_system.html" title="Common::BaseSystem" alt="" coords="26,95,185,121"/>
+<area shape="rect" id="node3" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="5,5,205,47"/>
+</map>

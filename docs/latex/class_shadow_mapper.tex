@@ -1,0 +1,47 @@
+\hypertarget{class_shadow_mapper}{}\section{Shadow\+Mapper Class Reference}
+\label{class_shadow_mapper}\index{Shadow\+Mapper@{Shadow\+Mapper}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a83504b2db6dc914c993011d388d3c139}\label{class_shadow_mapper_a83504b2db6dc914c993011d388d3c139}} 
+{\bfseries Shadow\+Mapper} (Ogre\+::\+Scene\+Manager $\ast$scene\+Manager, Ogre\+::\+Compositor\+Manager2 $\ast$compositor\+Manager)
+\item 
+void \hyperlink{class_shadow_mapper_a5438f906adc558347171a1d4fbbe616d}{set\+Gaussian\+Filter\+Params} (Ogre\+::uint8 kernel\+Radius, float gaussian\+Deviation\+Factor=0.\+5f)
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a05511961c2261cd32eacf534bf0873a8}\label{class_shadow_mapper_a05511961c2261cd32eacf534bf0873a8}} 
+void {\bfseries create\+Shadow\+Map} (Ogre\+::\+Id\+Type id, Ogre\+::\+Texture\+Ptr \&height\+Map\+Tex)
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_aaa7a869e868690bf241b83d9bcb8626d}\label{class_shadow_mapper_aaa7a869e868690bf241b83d9bcb8626d}} 
+void {\bfseries destroy\+Shadow\+Map} (void)
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_afa29619eed1b51a4088bbfbd64cf1a1a}\label{class_shadow_mapper_afa29619eed1b51a4088bbfbd64cf1a1a}} 
+void {\bfseries update\+Shadow\+Map} (const Ogre\+::\+Vector3 \&light\+Dir, const Ogre\+::\+Vector2 \&xz\+Dimensions, float height\+Scale)
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a993ea2a8424fc5b966bac231b14c5353}\label{class_shadow_mapper_a993ea2a8424fc5b966bac231b14c5353}} 
+void {\bfseries fill\+Uav\+Data\+For\+Compositor\+Channel} (Ogre\+::\+Compositor\+Channel \&out\+Channel, Ogre\+::\+Resource\+Layout\+Map \&out\+Initial\+Layouts, Ogre\+::\+Resource\+Access\+Map \&out\+Initial\+Uav\+Access) const
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a624f59c26a8831b0e3bbabb82ef9a822}\label{class_shadow_mapper_a624f59c26a8831b0e3bbabb82ef9a822}} 
+Ogre\+::\+Texture\+Ptr {\bfseries get\+Shadow\+Map\+Tex} (void) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shadow_mapper_a5438f906adc558347171a1d4fbbe616d}\label{class_shadow_mapper_a5438f906adc558347171a1d4fbbe616d}} 
+\index{Shadow\+Mapper@{Shadow\+Mapper}!set\+Gaussian\+Filter\+Params@{set\+Gaussian\+Filter\+Params}}
+\index{set\+Gaussian\+Filter\+Params@{set\+Gaussian\+Filter\+Params}!Shadow\+Mapper@{Shadow\+Mapper}}
+\subsubsection{\texorpdfstring{set\+Gaussian\+Filter\+Params()}{setGaussianFilterParams()}}
+{\footnotesize\ttfamily void Shadow\+Mapper\+::set\+Gaussian\+Filter\+Params (\begin{DoxyParamCaption}\item[{Ogre\+::uint8}]{kernel\+Radius,  }\item[{float}]{gaussian\+Deviation\+Factor = {\ttfamily 0.5f} }\end{DoxyParamCaption})}
+
+Sets the parameter of the gaussian filter we apply to the shadow map. 
+\begin{DoxyParams}{Parameters}
+{\em kernel\+Radius} & Kernel radius. Must be an even number. \\
+\hline
+{\em gaussian\+Deviation\+Factor} & Expressed in terms of gaussian\+Deviation = kernel\+Radius $\ast$ gaussian\+Deviation\+Factor \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/include/\+Terrain/Terrain\+Shadow\+Mapper.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/src/\+Terrain/Terrain\+Shadow\+Mapper.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,113 @@
+\hypertarget{class_terrain}{}\section{Terrain Class Reference}
+\label{class_terrain}\index{Terrain@{Terrain}}
+
+
+Inheritance diagram for Terrain\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{class_terrain__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_terrain_a8f77d3aac1e178496309536f980c27fe}\label{class_terrain_a8f77d3aac1e178496309536f980c27fe}} 
+virtual void {\bfseries load} (Ogre\+::\+Image \&image, const Ogre\+::\+Vector3 center, const Ogre\+::\+Vector3 \&dimensions)
+\item 
+\mbox{\Hypertarget{class_terrain_a02b19ca469ed94b895ceadfc526203c3}\label{class_terrain_a02b19ca469ed94b895ceadfc526203c3}} 
+virtual bool {\bfseries get\+Height\+At} (Ogre\+::\+Vector3 \&v\+Pos) const
+\item 
+\mbox{\Hypertarget{class_terrain_a5802486dd915b658773e292f797fd72b}\label{class_terrain_a5802486dd915b658773e292f797fd72b}} 
+virtual const Ogre\+::\+Vector2 \& {\bfseries get\+X\+Z\+Dimensions} (void) const
+\item 
+\mbox{\Hypertarget{class_terrain_a65bec8a0b02007377f8f7432645d9290}\label{class_terrain_a65bec8a0b02007377f8f7432645d9290}} 
+virtual const Ogre\+::\+Vector2 \& {\bfseries get\+X\+Z\+Inv\+Dimensions} (void) const
+\item 
+\mbox{\Hypertarget{class_terrain_a9a99a3fd62c958faea6cc07f0e23e8d9}\label{class_terrain_a9a99a3fd62c958faea6cc07f0e23e8d9}} 
+virtual float {\bfseries get\+Height} (void) const
+\item 
+\mbox{\Hypertarget{class_terrain_a22b6a113ff0f3bd7ff43b9d2fb201a68}\label{class_terrain_a22b6a113ff0f3bd7ff43b9d2fb201a68}} 
+virtual const Ogre\+::\+Vector3 \& {\bfseries get\+Terrain\+Origin} (void) const
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_terrain_a54f91ef044931634522b62bdcb692e3f}\label{class_terrain_a54f91ef044931634522b62bdcb692e3f}} 
+virtual Ogre\+::\+Image {\bfseries load\+Image} (const Ogre\+::\+String \&image\+Name)
+\item 
+\mbox{\Hypertarget{class_terrain_aac07c957e4dda6deaca7c1924f58cb99}\label{class_terrain_aac07c957e4dda6deaca7c1924f58cb99}} 
+virtual void {\bfseries create\+Heightmap} (Ogre\+::\+Image \&image)
+\item 
+\mbox{\Hypertarget{class_terrain_a36055197e9913fba0b3a6ef7ed35a01d}\label{class_terrain_a36055197e9913fba0b3a6ef7ed35a01d}} 
+void {\bfseries create\+Heightmap\+Texture} (const Ogre\+::\+String \&image\+Name, const Ogre\+::\+Image \&image)
+\item 
+\mbox{\Hypertarget{class_terrain_a30772767fde11e818ff80a0d60be2283}\label{class_terrain_a30772767fde11e818ff80a0d60be2283}} 
+void {\bfseries destroy\+Heightmap\+Texture} (void)
+\item 
+\mbox{\Hypertarget{class_terrain_af53bde3d676e2627132f65e70527f900}\label{class_terrain_af53bde3d676e2627132f65e70527f900}} 
+virtual \hyperlink{struct_grid_point}{Grid\+Point} {\bfseries world\+To\+Grid} (const Ogre\+::\+Vector3 \&v\+Pos) const
+\item 
+\mbox{\Hypertarget{class_terrain_a3ded300819839623b59f9d4c8809b8cd}\label{class_terrain_a3ded300819839623b59f9d4c8809b8cd}} 
+virtual Ogre\+::\+Vector2 {\bfseries grid\+To\+World} (const \hyperlink{struct_grid_point}{Grid\+Point} \&g\+Pos) const
+\item 
+\mbox{\Hypertarget{class_terrain_a1446e1ac3b4d31613fdb82b38c6e055f}\label{class_terrain_a1446e1ac3b4d31613fdb82b38c6e055f}} 
+virtual void {\bfseries calculate\+Optimum\+Skirt\+Size} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_terrain_a0e7124f6a957a2adabe4820f9f96609d}\label{class_terrain_a0e7124f6a957a2adabe4820f9f96609d}} 
+std\+::vector$<$ float $>$ {\bfseries m\+Height\+Map}
+\item 
+\mbox{\Hypertarget{class_terrain_a6ea67033a348cbe2c2f1a30130ee9fa2}\label{class_terrain_a6ea67033a348cbe2c2f1a30130ee9fa2}} 
+Ogre\+::uint32 {\bfseries m\+Width}
+\item 
+\mbox{\Hypertarget{class_terrain_a0c09ca663727370da6c32e700260c97d}\label{class_terrain_a0c09ca663727370da6c32e700260c97d}} 
+Ogre\+::uint32 {\bfseries m\+Depth}
+\item 
+\mbox{\Hypertarget{class_terrain_a069c3ccaa388a69a0234cd439613f227}\label{class_terrain_a069c3ccaa388a69a0234cd439613f227}} 
+float {\bfseries m\+Depth\+Width\+Ratio}
+\item 
+\mbox{\Hypertarget{class_terrain_a954d59e15e7015f7d35dfd540eec5614}\label{class_terrain_a954d59e15e7015f7d35dfd540eec5614}} 
+float {\bfseries m\+Skirt\+Size}
+\item 
+\mbox{\Hypertarget{class_terrain_a3c2af35db2a535399da1042dfaa33f7a}\label{class_terrain_a3c2af35db2a535399da1042dfaa33f7a}} 
+float {\bfseries m\+Inv\+Width}
+\item 
+\mbox{\Hypertarget{class_terrain_a7a558b8126aa9cbe1db94d8594c23b10}\label{class_terrain_a7a558b8126aa9cbe1db94d8594c23b10}} 
+float {\bfseries m\+Inv\+Depth}
+\item 
+\mbox{\Hypertarget{class_terrain_a51ed9c18ce43049069d91050725b02f6}\label{class_terrain_a51ed9c18ce43049069d91050725b02f6}} 
+Ogre\+::uint32 {\bfseries m\+Base\+Pixel\+Dimension}
+\item 
+\mbox{\Hypertarget{class_terrain_aa69fad98c484b1693e6799dd43b63740}\label{class_terrain_aa69fad98c484b1693e6799dd43b63740}} 
+Ogre\+::\+Vector2 {\bfseries m\+X\+Z\+Dimensions}
+\item 
+\mbox{\Hypertarget{class_terrain_a259c829335b24569bd1a4b14f8a0112f}\label{class_terrain_a259c829335b24569bd1a4b14f8a0112f}} 
+Ogre\+::\+Vector2 {\bfseries m\+X\+Z\+Inv\+Dimensions}
+\item 
+\mbox{\Hypertarget{class_terrain_a957653a8d23d3655c025765914f54fbf}\label{class_terrain_a957653a8d23d3655c025765914f54fbf}} 
+Ogre\+::\+Vector2 {\bfseries m\+X\+Z\+Relative\+Size}
+\item 
+\mbox{\Hypertarget{class_terrain_afb0c042f174d26d388fa4ccbcf5e7b35}\label{class_terrain_afb0c042f174d26d388fa4ccbcf5e7b35}} 
+float {\bfseries m\+Height}
+\item 
+\mbox{\Hypertarget{class_terrain_a96a43b46173a00ed494f4e33e479692e}\label{class_terrain_a96a43b46173a00ed494f4e33e479692e}} 
+Ogre\+::\+Vector3 {\bfseries m\+Terrain\+Origin}
+\item 
+\mbox{\Hypertarget{class_terrain_a2531cf9b13520ac5a59d03850057ec30}\label{class_terrain_a2531cf9b13520ac5a59d03850057ec30}} 
+Ogre\+::\+Texture\+Ptr {\bfseries m\+Height\+Map\+Tex}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_terrain_a403e723a938a88a4e53eb87b478db7c0}\label{class_terrain_a403e723a938a88a4e53eb87b478db7c0}} 
+class {\bfseries Terrain\+Cell}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/include/\+Terrain/Terrain.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/src/\+Terrain/Terrain.\+cpp\end{DoxyCompactItemize}

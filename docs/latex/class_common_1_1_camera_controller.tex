@@ -1,0 +1,98 @@
+\hypertarget{class_common_1_1_camera_controller}{}\section{Common\+:\+:Camera\+Controller Class Reference}
+\label{class_common_1_1_camera_controller}\index{Common\+::\+Camera\+Controller@{Common\+::\+Camera\+Controller}}
+
+
+Inheritance diagram for Common\+:\+:Camera\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{class_common_1_1_camera_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Common\+:\+:Camera\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_common_1_1_camera_controller__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a09c9f866ac2161de31ff45694dd711fd}\label{class_common_1_1_camera_controller_a09c9f866ac2161de31ff45694dd711fd}} 
+{\bfseries Camera\+Controller} (\hyperlink{class_common_1_1_graphics_system}{Graphics\+System} $\ast$graphics\+System, bool use\+Scene\+Node=false)
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a5d11cbced7f78eec997b96bb489d0806}\label{class_common_1_1_camera_controller_a5d11cbced7f78eec997b96bb489d0806}} 
+virtual void {\bfseries update} (float time\+Since\+Last)
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_aefb0839a3f45e4390c764762b7a053a1}\label{class_common_1_1_camera_controller_aefb0839a3f45e4390c764762b7a053a1}} 
+virtual bool \hyperlink{class_common_1_1_camera_controller_aefb0839a3f45e4390c764762b7a053a1}{key\+Pressed} (const \hyperlink{struct_s_d_l___keyboard_event}{S\+D\+L\+\_\+\+Keyboard\+Event} \&arg)
+\begin{DoxyCompactList}\small\item\em Returns true if we\textquotesingle{}ve handled the event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a2ade17644b5c6a9249b6fcff6c358b2e}\label{class_common_1_1_camera_controller_a2ade17644b5c6a9249b6fcff6c358b2e}} 
+virtual bool \hyperlink{class_common_1_1_camera_controller_a2ade17644b5c6a9249b6fcff6c358b2e}{key\+Released} (const \hyperlink{struct_s_d_l___keyboard_event}{S\+D\+L\+\_\+\+Keyboard\+Event} \&arg)
+\begin{DoxyCompactList}\small\item\em Returns true if we\textquotesingle{}ve handled the event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_af56a45fb24b5c2e5603210be8377aa8d}\label{class_common_1_1_camera_controller_af56a45fb24b5c2e5603210be8377aa8d}} 
+virtual void {\bfseries mouse\+Moved} (const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&arg)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a89119788b0320e34bd0322006bbd9734}\label{class_common_1_1_camera_controller_a89119788b0320e34bd0322006bbd9734}} 
+float {\bfseries m\+Camera\+Base\+Speed}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a043ce9247c01a9cc852b7e58e0b46e06}\label{class_common_1_1_camera_controller_a043ce9247c01a9cc852b7e58e0b46e06}} 
+float {\bfseries m\+Camera\+Speed\+Boost}
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_af299b39b39b578b2235220e5fa8dfc01}\label{class_common_1_1_camera_controller_af299b39b39b578b2235220e5fa8dfc01}} 
+enum {\bfseries Action} \{ \newline
+{\bfseries Forward}, 
+{\bfseries Backward}, 
+{\bfseries Leftward}, 
+{\bfseries Rightward}, 
+\newline
+{\bfseries Up}, 
+{\bfseries Down}, 
+{\bfseries Run}
+ \}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a75aa76cde460aabcb220ca664f3d40a1}\label{class_common_1_1_camera_controller_a75aa76cde460aabcb220ca664f3d40a1}} 
+typedef std\+::pair$<$ S\+D\+L\+\_\+\+Keycode, bool $>$ {\bfseries Key\+State}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a33ec61812e24b2f120a08127435c52dc}\label{class_common_1_1_camera_controller_a33ec61812e24b2f120a08127435c52dc}} 
+typedef std\+::map$<$ Action, Key\+State $>$ {\bfseries Keymap\+State}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_aa2db4d904aadf4af7f663e6385fa1a7e}\label{class_common_1_1_camera_controller_aa2db4d904aadf4af7f663e6385fa1a7e}} 
+bool {\bfseries m\+Use\+Scene\+Node}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a074c334b4156cf5b7c334e41b7e34619}\label{class_common_1_1_camera_controller_a074c334b4156cf5b7c334e41b7e34619}} 
+bool {\bfseries m\+Use\+Collision}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a3652121296a21279131ce9197ea57995}\label{class_common_1_1_camera_controller_a3652121296a21279131ce9197ea57995}} 
+bool {\bfseries m\+Speed\+Modifier}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a6de401fd5501b9f48aab9efc11e5da68}\label{class_common_1_1_camera_controller_a6de401fd5501b9f48aab9efc11e5da68}} 
+Keymap\+State {\bfseries m\+Keymap\+State}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_af0c031abefd0e2caebdc18795d1953df}\label{class_common_1_1_camera_controller_af0c031abefd0e2caebdc18795d1953df}} 
+float {\bfseries m\+Camera\+Yaw}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_a53ffb8220c31ac47f8c7c336a4bebe62}\label{class_common_1_1_camera_controller_a53ffb8220c31ac47f8c7c336a4bebe62}} 
+float {\bfseries m\+Camera\+Pitch}
+\item 
+\mbox{\Hypertarget{class_common_1_1_camera_controller_ae2970e63d46f18b24b8a0ae4b6acf247}\label{class_common_1_1_camera_controller_ae2970e63d46f18b24b8a0ae4b6acf247}} 
+\hyperlink{class_common_1_1_graphics_system}{Graphics\+System} $\ast$ {\bfseries m\+Graphics\+System}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/include/Camera\+Controller.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/src/Camera\+Controller.\+cpp\end{DoxyCompactItemize}

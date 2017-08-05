@@ -1,0 +1,38 @@
+\hypertarget{class_common_1_1_mq_1_1_message_queue_system}{}\section{Common\+:\+:Mq\+:\+:Message\+Queue\+System Class Reference}
+\label{class_common_1_1_mq_1_1_message_queue_system}\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
+
+
+Inheritance diagram for Common\+:\+:Mq\+:\+:Message\+Queue\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_common_1_1_mq_1_1_message_queue_system__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}\label{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries queue\+Send\+Message} (\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} $\ast$dst\+System, Mq\+::\+Message\+Id message\+Id, const T \&msg)
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}\label{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}} 
+void {\bfseries flush\+Queued\+Messages} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}\label{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries receive\+Message\+Immediately} (Mq\+::\+Message\+Id message\+Id, const T \&msg)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}\label{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}} 
+void {\bfseries process\+Incoming\+Messages} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}\label{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}} 
+virtual void {\bfseries process\+Incoming\+Message} (Mq\+::\+Message\+Id message\+Id, const void $\ast$data)=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/include/\+Threading/Message\+Queue\+System.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/src/\+Threading/Messages\+Queue\+System.\+cpp\end{DoxyCompactItemize}

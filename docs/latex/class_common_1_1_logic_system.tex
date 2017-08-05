@@ -1,0 +1,98 @@
+\hypertarget{class_common_1_1_logic_system}{}\section{Common\+:\+:Logic\+System Class Reference}
+\label{class_common_1_1_logic_system}\index{Common\+::\+Logic\+System@{Common\+::\+Logic\+System}}
+
+
+Inheritance diagram for Common\+:\+:Logic\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{class_common_1_1_logic_system__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Common\+:\+:Logic\+System\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_common_1_1_logic_system__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a414d0489e458dea69dd8386fd556acc2}\label{class_common_1_1_logic_system_a414d0489e458dea69dd8386fd556acc2}} 
+{\bfseries Logic\+System} (\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$game\+State)
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a6e1389a1e2ed8dd21b46fabdedee5d22}\label{class_common_1_1_logic_system_a6e1389a1e2ed8dd21b46fabdedee5d22}} 
+void {\bfseries initialize} ()
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a0897460fb4f985b0bd85c2d130b9d585}\label{class_common_1_1_logic_system_a0897460fb4f985b0bd85c2d130b9d585}} 
+void {\bfseries \+\_\+notify\+Graphics\+System} (\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$graphics\+System)
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a5eb233fa1e610dbf2b52a76d06ce9782}\label{class_common_1_1_logic_system_a5eb233fa1e610dbf2b52a76d06ce9782}} 
+void {\bfseries \+\_\+notify\+Game\+Entity\+Manager} (\hyperlink{class_common_1_1_game_entity_manager}{Game\+Entity\+Manager} $\ast$mgr)
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a8f11d71f1f95adbb95dcb6c4281d699a}\label{class_common_1_1_logic_system_a8f11d71f1f95adbb95dcb6c4281d699a}} 
+void {\bfseries update} (float time\+Since\+Last)
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a4aeed6252b67c4213bd2ba0ca2a6e39c}\label{class_common_1_1_logic_system_a4aeed6252b67c4213bd2ba0ca2a6e39c}} 
+void {\bfseries finish\+Frame\+Parallel} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a957d149fb5f02d2d00ec4a4a1827fc2e}\label{class_common_1_1_logic_system_a957d149fb5f02d2d00ec4a4a1827fc2e}} 
+\hyperlink{class_common_1_1_game_entity_manager}{Game\+Entity\+Manager} $\ast$ {\bfseries get\+Game\+Entity\+Manager} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a175efaf2f8faf4949e9141cb90a477ce}\label{class_common_1_1_logic_system_a175efaf2f8faf4949e9141cb90a477ce}} 
+Ogre\+::uint32 {\bfseries get\+Current\+Transform\+Idx} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a1172de6e34685a951f956235ca10ca52}\label{class_common_1_1_logic_system_a1172de6e34685a951f956235ca10ca52}} 
+bt\+Dynamics\+World $\ast$ {\bfseries get\+World} (void) const
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a8ff1976c824aab7d67481390b5e81a4d}\label{class_common_1_1_logic_system_a8ff1976c824aab7d67481390b5e81a4d}} 
+void {\bfseries add\+Game\+Entity} (const \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Game\+Entity\+Manager\+::\+Created\+Game\+Entity} $\ast$cge)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a0b7ac4ad3cc62da7681f649ad6e9823d}\label{class_common_1_1_logic_system_a0b7ac4ad3cc62da7681f649ad6e9823d}} 
+\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$ {\bfseries m\+Graphics\+System}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a4495ecadf034103ad58deab6802543fa}\label{class_common_1_1_logic_system_a4495ecadf034103ad58deab6802543fa}} 
+virtual void {\bfseries process\+Incoming\+Message} (Mq\+::\+Message\+Id message\+Id, const void $\ast$data)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a2bd41b9185b04aa8d0cc243dacf07a30}\label{class_common_1_1_logic_system_a2bd41b9185b04aa8d0cc243dacf07a30}} 
+\hyperlink{class_common_1_1_game_entity_manager}{Game\+Entity\+Manager} $\ast$ {\bfseries m\+Game\+Entity\+Manager}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a8ff50f813ec112a68298ccf2a44a5a8b}\label{class_common_1_1_logic_system_a8ff50f813ec112a68298ccf2a44a5a8b}} 
+bt\+Dynamics\+World $\ast$ {\bfseries m\+World}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_af317bbd8f5bda6b3516ced4e575da248}\label{class_common_1_1_logic_system_af317bbd8f5bda6b3516ced4e575da248}} 
+bt\+Default\+Collision\+Configuration $\ast$ {\bfseries m\+Collision\+Configuration}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_afab3b81f6dd1a32d91a4b2fbe5153fd9}\label{class_common_1_1_logic_system_afab3b81f6dd1a32d91a4b2fbe5153fd9}} 
+bt\+Collision\+Dispatcher $\ast$ {\bfseries m\+Dispatcher}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_adf97b2bb9e373e9b81e8b52936c5e8d8}\label{class_common_1_1_logic_system_adf97b2bb9e373e9b81e8b52936c5e8d8}} 
+bt\+Dbvt\+Broadphase $\ast$ {\bfseries m\+Broadphase}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_ab9394f7c8ca427c4121e0445f8ae151d}\label{class_common_1_1_logic_system_ab9394f7c8ca427c4121e0445f8ae151d}} 
+bt\+Sequential\+Impulse\+Constraint\+Solver $\ast$ {\bfseries m\+Solver}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_a86139251209b2eba41382475544fc41b}\label{class_common_1_1_logic_system_a86139251209b2eba41382475544fc41b}} 
+Ogre\+::uint32 {\bfseries m\+Current\+Transform\+Idx}
+\item 
+\mbox{\Hypertarget{class_common_1_1_logic_system_ae196e1204c52d372075ffa8d15a7548a}\label{class_common_1_1_logic_system_ae196e1204c52d372075ffa8d15a7548a}} 
+std\+::deque$<$ Ogre\+::uint32 $>$ {\bfseries m\+Available\+Transform\+Idx}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/include/Logic\+System.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/src/Logic\+System.\+cpp\end{DoxyCompactItemize}
