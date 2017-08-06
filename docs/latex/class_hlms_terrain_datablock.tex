@@ -161,6 +161,10 @@ class {\bfseries Hlms\+Terrain}
 \subsection{Detailed Description}
 Contains information needed by T\+E\+R\+RA (Physically Based Shading) for Open\+GL 3+ \& D3\+D11+ 
 
+Definition at line 133 of file Hlms\+Terrain\+Datablock.\+h.
+
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_hlms_terrain_datablock_af9f5260f2d4238492c9ef2d78e1bc0cb}\label{class_hlms_terrain_datablock_af9f5260f2d4238492c9ef2d78e1bc0cb}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!\+\_\+get\+Texture\+Idx@{\+\_\+get\+Texture\+Idx}}
@@ -168,13 +172,21 @@ Contains information needed by T\+E\+R\+RA (Physically Based Shading) for Open\+
 \subsubsection{\texorpdfstring{\+\_\+get\+Texture\+Idx()}{\_getTextureIdx()}}
 {\footnotesize\ttfamily Ogre\+::uint16 Hlms\+Terrain\+Datablock\+::\+\_\+get\+Texture\+Idx (\begin{DoxyParamCaption}\item[{Terrain\+Texture\+Types}]{tex\+Type }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-Returns the internal index to the array in a texture array. Note\+: If there is no texture assigned to the given tex\+Type, returned value is undefined \mbox{\Hypertarget{class_hlms_terrain_datablock_a19f88d8e892a4fbad4f535dcb41387d5}\label{class_hlms_terrain_datablock_a19f88d8e892a4fbad4f535dcb41387d5}} 
+Returns the internal index to the array in a texture array. Note\+: If there is no texture assigned to the given tex\+Type, returned value is undefined 
+
+Definition at line 217 of file Hlms\+Terrain\+Datablock.\+h.
+
+\mbox{\Hypertarget{class_hlms_terrain_datablock_a19f88d8e892a4fbad4f535dcb41387d5}\label{class_hlms_terrain_datablock_a19f88d8e892a4fbad4f535dcb41387d5}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!\+\_\+get\+Texture\+Slice\+Array\+Index@{\+\_\+get\+Texture\+Slice\+Array\+Index}}
 \index{\+\_\+get\+Texture\+Slice\+Array\+Index@{\+\_\+get\+Texture\+Slice\+Array\+Index}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
 \subsubsection{\texorpdfstring{\+\_\+get\+Texture\+Slice\+Array\+Index()}{\_getTextureSliceArrayIndex()}}
 {\footnotesize\ttfamily Ogre\+::uint16 Hlms\+Terrain\+Datablock\+::\+\_\+get\+Texture\+Slice\+Array\+Index (\begin{DoxyParamCaption}\item[{Terrain\+Texture\+Types}]{tex\+Type }\end{DoxyParamCaption}) const}
 
-Returns the index to the slice in the texture array. i.\+e. the shader will perform texture( texture\+Array, vec3( uv.\+xy, get\+Texture\+Slice\+Array\+Index() ) ); If there is no texture, return value is undefined. \mbox{\Hypertarget{class_hlms_terrain_datablock_a9491ff27ef7052bcce3edb825acc61fe}\label{class_hlms_terrain_datablock_a9491ff27ef7052bcce3edb825acc61fe}} 
+Returns the index to the slice in the texture array. i.\+e. the shader will perform texture( texture\+Array, vec3( uv.\+xy, get\+Texture\+Slice\+Array\+Index() ) ); If there is no texture, return value is undefined. 
+
+Definition at line 368 of file Hlms\+Terrain\+Datablock.\+cpp.
+
+\mbox{\Hypertarget{class_hlms_terrain_datablock_a9491ff27ef7052bcce3edb825acc61fe}\label{class_hlms_terrain_datablock_a9491ff27ef7052bcce3edb825acc61fe}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!\+\_\+set\+Textures@{\+\_\+set\+Textures}}
 \index{\+\_\+set\+Textures@{\+\_\+set\+Textures}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
 \subsubsection{\texorpdfstring{\+\_\+set\+Textures()}{\_setTextures()}}
@@ -185,19 +197,31 @@ Advanced function for setting all textures at once, instead of one by one, for p
 {\em packed\+Textures} & The reference count in packed\+Textures\mbox{[}i\mbox{]}.samplerblock is assumed to have already been increased prior to calling this function. We will not increase. If null, a default samplerblock will be assigned \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 239 of file Hlms\+Terrain\+Datablock.\+cpp.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_a08b7b8e53cd57ca6729929602d24411a}\label{class_hlms_terrain_datablock_a08b7b8e53cd57ca6729929602d24411a}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!get\+Baked\+Texture\+Idx@{get\+Baked\+Texture\+Idx}}
 \index{get\+Baked\+Texture\+Idx@{get\+Baked\+Texture\+Idx}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
 \subsubsection{\texorpdfstring{get\+Baked\+Texture\+Idx()}{getBakedTextureIdx()}}
 {\footnotesize\ttfamily Ogre\+::uint8 Hlms\+Terrain\+Datablock\+::get\+Baked\+Texture\+Idx (\begin{DoxyParamCaption}\item[{Terrain\+Texture\+Types}]{tex\+Type }\end{DoxyParamCaption}) const}
 
-Returns the index to m\+Baked\+Textures. Returns N\+U\+M\+\_\+\+T\+E\+R\+R\+A\+I\+N\+\_\+\+T\+E\+X\+T\+U\+R\+E\+\_\+\+T\+Y\+P\+ES if there is no texture assigned to tex\+Type \mbox{\Hypertarget{class_hlms_terrain_datablock_ab4d3d4b79e5fa6340579ad40f8be945f}\label{class_hlms_terrain_datablock_ab4d3d4b79e5fa6340579ad40f8be945f}} 
+Returns the index to m\+Baked\+Textures. Returns N\+U\+M\+\_\+\+T\+E\+R\+R\+A\+I\+N\+\_\+\+T\+E\+X\+T\+U\+R\+E\+\_\+\+T\+Y\+P\+ES if there is no texture assigned to tex\+Type 
+
+Definition at line 364 of file Hlms\+Terrain\+Datablock.\+cpp.
+
+\mbox{\Hypertarget{class_hlms_terrain_datablock_ab4d3d4b79e5fa6340579ad40f8be945f}\label{class_hlms_terrain_datablock_ab4d3d4b79e5fa6340579ad40f8be945f}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!set\+Brdf@{set\+Brdf}}
 \index{set\+Brdf@{set\+Brdf}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
 \subsubsection{\texorpdfstring{set\+Brdf()}{setBrdf()}}
 {\footnotesize\ttfamily void Hlms\+Terrain\+Datablock\+::set\+Brdf (\begin{DoxyParamCaption}\item[{Terrain\+Brdf\+::\+Terrain\+Brdf}]{brdf }\end{DoxyParamCaption})}
 
-Changes the B\+R\+DF in use. Calling this function may trigger an Ogre\+::\+Hlms\+Datablock\+::flush\+Renderables \mbox{\Hypertarget{class_hlms_terrain_datablock_af4b0ac3a3030192a4bb2200567dcc1fd}\label{class_hlms_terrain_datablock_af4b0ac3a3030192a4bb2200567dcc1fd}} 
+Changes the B\+R\+DF in use. Calling this function may trigger an Ogre\+::\+Hlms\+Datablock\+::flush\+Renderables 
+
+Definition at line 381 of file Hlms\+Terrain\+Datablock.\+cpp.
+
+\mbox{\Hypertarget{class_hlms_terrain_datablock_af4b0ac3a3030192a4bb2200567dcc1fd}\label{class_hlms_terrain_datablock_af4b0ac3a3030192a4bb2200567dcc1fd}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!set\+Detail\+Map\+Offset\+Scale@{set\+Detail\+Map\+Offset\+Scale}}
 \index{set\+Detail\+Map\+Offset\+Scale@{set\+Detail\+Map\+Offset\+Scale}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
 \subsubsection{\texorpdfstring{set\+Detail\+Map\+Offset\+Scale()}{setDetailMapOffsetScale()}}
@@ -213,6 +237,10 @@ A value of Ogre\+::\+Vector4( 0, 0, 1, 1 ) will cause a flush\+Renderables as we
 {\em offset\+Scale} & XY = Contains the UV offset. ZW = Constains the UV scale. Default value is Ogre\+::\+Vector4( 0, 0, 1, 1 ) \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 346 of file Hlms\+Terrain\+Datablock.\+cpp.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_acd5e39eb1968ddda8f05d5537fe3f945}\label{class_hlms_terrain_datablock_acd5e39eb1968ddda8f05d5537fe3f945}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!set\+Metalness@{set\+Metalness}}
 \index{set\+Metalness@{set\+Metalness}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
@@ -230,6 +258,10 @@ set\+Workflow;
 {\em metalness} & Value in range \mbox{[}0; 1\mbox{]} \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 230 of file Hlms\+Terrain\+Datablock.\+cpp.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_a4e7f40cdd79957bdbfbfd77ecd511c9a}\label{class_hlms_terrain_datablock_a4e7f40cdd79957bdbfbfd77ecd511c9a}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!set\+Samplerblock@{set\+Samplerblock}}
 \index{set\+Samplerblock@{set\+Samplerblock}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
@@ -243,6 +275,10 @@ Sets a new sampler block to be associated with the texture (i.\+e. filtering mod
 {\em params} & The sampler block to use as reference. \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 327 of file Hlms\+Terrain\+Datablock.\+cpp.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_a1b27f8fe762d440e239b082b063dccc3}\label{class_hlms_terrain_datablock_a1b27f8fe762d440e239b082b063dccc3}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!set\+Texture@{set\+Texture}}
 \index{set\+Texture@{set\+Texture}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
@@ -260,6 +296,10 @@ Sets a new texture for rendering. Calling this function may trigger an Ogre\+::\
 {\em params} & Optional. We\textquotesingle{}ll create (or retrieve an existing) samplerblock based on the input parameters. When null, we leave the previously set samplerblock (if a texture is being set, and if no samplerblock was set, we\textquotesingle{}ll create a default one) \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 269 of file Hlms\+Terrain\+Datablock.\+cpp.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_a255f81387aab3171b922b9a55fea2647}\label{class_hlms_terrain_datablock_a255f81387aab3171b922b9a55fea2647}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!suggest\+Map\+Type\+Based\+On\+Texture\+Type@{suggest\+Map\+Type\+Based\+On\+Texture\+Type}}
 \index{suggest\+Map\+Type\+Based\+On\+Texture\+Type@{suggest\+Map\+Type\+Based\+On\+Texture\+Type}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
@@ -284,6 +324,10 @@ Remember that if \char`\"{}my\+Texture\char`\"{} was loaded as T\+E\+X\+T\+U\+R\
         HlmsTerrainDatablock::MaterialSizeInGpu,
         4 * 4)
 \end{DoxyCode}
+
+
+Definition at line 278 of file Hlms\+Terrain\+Datablock.\+h.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_aec0c1743fab32d302e794a1149139443}\label{class_hlms_terrain_datablock_aec0c1743fab32d302e794a1149139443}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!m\+Brdf@{m\+Brdf}}
 \index{m\+Brdf@{m\+Brdf}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
@@ -293,6 +337,10 @@ Remember that if \char`\"{}my\+Texture\char`\"{} was loaded as T\+E\+X\+T\+U\+R\
 \begin{DoxySeeAlso}{See also}
 Terrain\+Brdf\+::\+Terrain\+Brdf 
 \end{DoxySeeAlso}
+
+
+Definition at line 153 of file Hlms\+Terrain\+Datablock.\+h.
+
 \mbox{\Hypertarget{class_hlms_terrain_datablock_acb2652e4731f6cf65b232393531b1d11}\label{class_hlms_terrain_datablock_acb2652e4731f6cf65b232393531b1d11}} 
 \index{Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}!m\+Tex\+To\+Baked\+Texture\+Idx@{m\+Tex\+To\+Baked\+Texture\+Idx}}
 \index{m\+Tex\+To\+Baked\+Texture\+Idx@{m\+Tex\+To\+Baked\+Texture\+Idx}!Hlms\+Terrain\+Datablock@{Hlms\+Terrain\+Datablock}}
@@ -300,6 +348,10 @@ Terrain\+Brdf\+::\+Terrain\+Brdf
 {\footnotesize\ttfamily Ogre\+::uint8 Hlms\+Terrain\+Datablock\+::m\+Tex\+To\+Baked\+Texture\+Idx\mbox{[}N\+U\+M\+\_\+\+T\+E\+R\+R\+A\+I\+N\+\_\+\+T\+E\+X\+T\+U\+R\+E\+\_\+\+T\+Y\+P\+ES\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
 
 The way to read this variable is i.\+e. get diffuse texture, m\+Baked\+Textures\mbox{[}m\+Tex\+To\+Baked\+Texture\+Idx\mbox{[}T\+E\+R\+R\+A\+I\+N\+\_\+\+D\+I\+F\+F\+U\+SE\mbox{]}\mbox{]} Then read m\+Tex\+Indices\mbox{[}T\+E\+R\+R\+A\+I\+N\+\_\+\+D\+I\+F\+F\+U\+SE\mbox{]} to know which slice of the texture array. 
+
+Definition at line 148 of file Hlms\+Terrain\+Datablock.\+h.
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,0 +1,139 @@
+\hypertarget{group___common}{}\section{Common}
+\label{group___common}\index{Common@{Common}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_common_1_1_base_system}{Common\+::\+Base\+System}
+\begin{DoxyCompactList}\small\item\em Simple System implementing basic functions. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_camera_controller}{Common\+::\+Camera\+Controller}
+\begin{DoxyCompactList}\small\item\em Simple \hyperlink{class_common_1_1_camera_controller}{Camera\+Controller}
+
+This class does not implement more than rotate and move a Ogre\+::\+Camera or Ogre\+::\+Scene\+Node. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_movable_object_definition}{Common\+::\+Movable\+Object\+Definition}
+\begin{DoxyCompactList}\small\item\em Struct defining Movable Object. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_collision_object_definition}{Common\+::\+Collision\+Object\+Definition}
+\begin{DoxyCompactList}\small\item\em Struct defining Collision Object. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_game_entity_transform}{Common\+::\+Game\+Entity\+Transform}
+\begin{DoxyCompactList}\small\item\em Struct defining the transform available for \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_game_entity}{Common\+::\+Game\+Entity}
+\begin{DoxyCompactList}\small\item\em Struct defining Game Entity. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Common\+::\+Game\+Entity\+Manager\+::\+Created\+Game\+Entity}
+\begin{DoxyCompactList}\small\item\em Struct describing a \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} and its \hyperlink{struct_common_1_1_game_entity_transform}{Game\+Entity\+Transform}. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_game_entity_manager}{Common\+::\+Game\+Entity\+Manager}
+\begin{DoxyCompactList}\small\item\em Class managing \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_graphics_system}{Common\+::\+Graphics\+System}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_graphics_system}{Graphics\+System} managing Graphics. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_mouse_listener}{Common\+::\+Mouse\+Listener}
+\begin{DoxyCompactList}\small\item\em Simple Listener implementing mouse functions. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_keyboard_listener}{Common\+::\+Keyboard\+Listener}
+\begin{DoxyCompactList}\small\item\em Simple Listener implementing keyboard functions. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_joystick_listener}{Common\+::\+Joystick\+Listener}
+\begin{DoxyCompactList}\small\item\em Simple Listener implementing joystick functions. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_logic_system}{Common\+::\+Logic\+System}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_logic_system}{Logic\+System} managing the logics (Collisions ...) \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_static_plugin_loader}{Common\+::\+Static\+Plugin\+Loader}
+\begin{DoxyCompactList}\small\item\em Utility class to load plugins statically. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Common\+::\+Mq\+::\+Message\+Queue\+System}
+\begin{DoxyCompactList}\small\item\em Class providing system for threads to communicate. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_thread_data}{Common\+::\+Thread\+Data}
+\begin{DoxyCompactList}\small\item\em Basic struct containing data shared between threads
+
+This struct should be overloaded to contain more data, like \hyperlink{class_common_1_1_base_system}{Base\+System}. \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_thread_manager}{Common\+::\+Thread\+Manager}
+\begin{DoxyCompactList}\small\item\em Class to manage threads (register and run them) \end{DoxyCompactList}\item 
+class \hyperlink{class_common_1_1_yield_timer}{Common\+::\+Yield\+Timer}
+\begin{DoxyCompactList}\small\item\em Timer using an external timer to wait until frame\+Time + start\+Time = timer time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned long($\ast$ \hyperlink{group___common_ga30c64a033e17f4a1fd985caa74ccf922}{Common\+::\+Thread\+Func}) (Ogre\+::\+Thread\+Handle $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___common_gaf299b39b39b578b2235220e5fa8dfc01}{Common\+::\+Camera\+Controller\+::\+Action} \{ \newline
+{\bfseries Forward}, 
+{\bfseries Backward}, 
+{\bfseries Leftward}, 
+{\bfseries Rightward}, 
+\newline
+{\bfseries Up}, 
+{\bfseries Down}, 
+{\bfseries Run}, 
+{\bfseries N\+U\+M\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+I\+DS}
+ \}
+\item 
+\mbox{\Hypertarget{group___common_gaa693ad2642037f65cbba42cdc3e41636}\label{group___common_gaa693ad2642037f65cbba42cdc3e41636}} 
+enum \hyperlink{group___common_gaa693ad2642037f65cbba42cdc3e41636}{Common\+::\+Movable\+Object\+Type} \{ {\bfseries Mo\+Type\+Item}, 
+{\bfseries Mo\+Type\+Entity}, 
+{\bfseries Num\+Movable\+Object\+Type}
+ \}\begin{DoxyCompactList}\small\item\em Type of Movable Object (Graphics) \end{DoxyCompactList}
+\item 
+\mbox{\Hypertarget{group___common_ga955f008a0c60257af5dc9f2a478be51f}\label{group___common_ga955f008a0c60257af5dc9f2a478be51f}} 
+enum \hyperlink{group___common_ga955f008a0c60257af5dc9f2a478be51f}{Common\+::\+Collision\+Object\+Type} \{ {\bfseries Co\+Rigid\+Body}, 
+{\bfseries Co\+Ghost\+Object}, 
+{\bfseries Co\+Soft\+Body}, 
+{\bfseries Num\+Collision\+Object\+Type}
+ \}\begin{DoxyCompactList}\small\item\em Type of Collision Object (Collision) \end{DoxyCompactList}
+\item 
+enum \hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Common\+::\+Mq\+::\+Message\+Id} \{ \newline
+{\bfseries L\+O\+G\+I\+C\+F\+R\+A\+M\+E\+\_\+\+F\+I\+N\+I\+S\+H\+ED}, 
+{\bfseries G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+A\+D\+D\+ED}, 
+{\bfseries G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+R\+E\+M\+O\+V\+ED}, 
+{\bfseries G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+D\+\_\+\+F\+O\+R\+\_\+\+R\+E\+M\+O\+V\+A\+L\+\_\+\+S\+L\+OT}, 
+\newline
+{\bfseries S\+D\+L\+\_\+\+E\+V\+E\+NT}, 
+{\bfseries N\+U\+M\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+I\+DS}
+ \}\begin{DoxyCompactList}\small\item\em Type of Message transmitted. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Group owning all Common related 
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{group___common_ga30c64a033e17f4a1fd985caa74ccf922}\label{group___common_ga30c64a033e17f4a1fd985caa74ccf922}} 
+\index{Common@{Common}!Thread\+Func@{Thread\+Func}}
+\index{Thread\+Func@{Thread\+Func}!Common@{Common}}
+\subsubsection{\texorpdfstring{Thread\+Func}{ThreadFunc}}
+{\footnotesize\ttfamily Common\+::\+Thread\+Func}
+
+Typedef of thread function
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_thread_manager_a79a947a3ff5c8a34e51cc41007832aeb}{Thread\+Manager\+::register\+Thread} 
+\end{DoxySeeAlso}
+
+
+Definition at line 16 of file Thread\+Manager.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group___common_gaf299b39b39b578b2235220e5fa8dfc01}\label{group___common_gaf299b39b39b578b2235220e5fa8dfc01}} 
+\index{Common@{Common}!Action@{Action}}
+\index{Action@{Action}!Common@{Common}}
+\subsubsection{\texorpdfstring{Action}{Action}}
+{\footnotesize\ttfamily enum \hyperlink{group___common_gaf299b39b39b578b2235220e5fa8dfc01}{Common\+::\+Camera\+Controller\+::\+Action}\hspace{0.3cm}{\ttfamily [protected]}}
+
+Enum describing the available Actions 
+
+Definition at line 30 of file Camera\+Controller.\+h.
+
+\mbox{\Hypertarget{group___common_gaa8c87d2b450282716c906da283e149e6}\label{group___common_gaa8c87d2b450282716c906da283e149e6}} 
+\index{Common@{Common}!Message\+Id@{Message\+Id}}
+\index{Message\+Id@{Message\+Id}!Common@{Common}}
+\subsubsection{\texorpdfstring{Message\+Id}{MessageId}}
+{\footnotesize\ttfamily enum \hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Common\+::\+Mq\+::\+Message\+Id}}
+
+
+
+Type of Message transmitted. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System}, \hyperlink{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}{Message\+Queue\+System\+::queue\+Send\+Message} 
+\end{DoxySeeAlso}
+
+
+Definition at line 17 of file Mq\+Messages.\+h.
+

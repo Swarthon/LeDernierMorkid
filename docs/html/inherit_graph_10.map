@@ -1,8 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="8,5,187,32"/>
-<area shape="rect" id="node2" href="$class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="237,56,387,83"/>
-<area shape="rect" id="node3" href="$class_graphics_game_state.html" title="GraphicsGameState" alt="" coords="435,31,575,57"/>
-<area shape="rect" id="node4" href="$class_logic_game_state.html" title="LogicGameState" alt="" coords="445,81,564,108"/>
-<area shape="rect" id="node5" href="$class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="5,56,189,83"/>
-<area shape="rect" id="node6" href="$class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="13,107,181,133"/>
+<area shape="rect" id="node1" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="5,23,205,65"/>
+<area shape="rect" id="node2" href="$class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="253,31,412,57"/>
+<area shape="rect" id="node3" href="$class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. " alt="" coords="460,5,640,32"/>
+<area shape="rect" id="node5" href="$class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) " alt="" coords="471,56,629,83"/>
+<area shape="rect" id="node4" href="$class_le_dernier_morkid_graphics_system.html" title="UniformScalableTask" alt="" coords="688,5,835,32"/>
 </map>

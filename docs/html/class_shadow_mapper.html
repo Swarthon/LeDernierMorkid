@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_shadow_mapper.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,10 +81,11 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_shadow_mapper-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ShadowMapper Class Reference</div>  </div>
@@ -90,8 +114,163 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fillUavDataForComposi
 <tr class="memitem:a624f59c26a8831b0e3bbabb82ef9a822"><td class="memItemLeft" align="right" valign="top"><a id="a624f59c26a8831b0e3bbabb82ef9a822"></a>
 Ogre::TexturePtr&#160;</td><td class="memItemRight" valign="bottom"><b>getShadowMapTex</b> (void) const</td></tr>
 <tr class="separator:a624f59c26a8831b0e3bbabb82ef9a822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a54d854ea5525ec6cffaf5958d1d4077a"><td class="memItemLeft" align="right" valign="top"><a id="a54d854ea5525ec6cffaf5958d1d4077a"></a>
+static size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getStartsPtrCount</b> (Ogre::int32 *starts, Ogre::int32 *startsBase)</td></tr>
+<tr class="separator:a54d854ea5525ec6cffaf5958d1d4077a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a0aa58c648464248c2a9060f522921"><td class="memItemLeft" align="right" valign="top">static Ogre::int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shadow_mapper.html#a35a0aa58c648464248c2a9060f522921">getXStepsNeededToReachY</a> (Ogre::uint32 y, float fStep)</td></tr>
+<tr class="separator:a35a0aa58c648464248c2a9060f522921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95d31a0216503b8838738e959e32b1c"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_shadow_mapper.html#ae95d31a0216503b8838738e959e32b1c">getErrorAfterXsteps</a> (Ogre::uint32 xIterationsToSkip, float dx, float dy)</td></tr>
+<tr class="separator:ae95d31a0216503b8838738e959e32b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b07d0963a08cede75e24c8a99c5f52f"><td class="memItemLeft" align="right" valign="top"><a id="a1b07d0963a08cede75e24c8a99c5f52f"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>setGaussianFilterParams</b> (Ogre::HlmsComputeJob *job, Ogre::uint8 kernelRadius, float gaussianDeviationFactor=0.5f)</td></tr>
+<tr class="separator:a1b07d0963a08cede75e24c8a99c5f52f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae776a60c15e939d1f410e2c76f11c36b"><td class="memItemLeft" align="right" valign="top"><a id="ae776a60c15e939d1f410e2c76f11c36b"></a>
+Ogre::TexturePtr&#160;</td><td class="memItemRight" valign="bottom"><b>mHeightMapTex</b></td></tr>
+<tr class="separator:ae776a60c15e939d1f410e2c76f11c36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25a59b36221761ff585466bd007b57b6"><td class="memItemLeft" align="right" valign="top"><a id="a25a59b36221761ff585466bd007b57b6"></a>
+Ogre::ConstBufferPacked *&#160;</td><td class="memItemRight" valign="bottom"><b>mShadowStarts</b></td></tr>
+<tr class="separator:a25a59b36221761ff585466bd007b57b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadb1c723556b6bd7f820367a61def60d"><td class="memItemLeft" align="right" valign="top"><a id="aadb1c723556b6bd7f820367a61def60d"></a>
+Ogre::ConstBufferPacked *&#160;</td><td class="memItemRight" valign="bottom"><b>mShadowPerGroupData</b></td></tr>
+<tr class="separator:aadb1c723556b6bd7f820367a61def60d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af384525eff0397e825335cac1383035a"><td class="memItemLeft" align="right" valign="top"><a id="af384525eff0397e825335cac1383035a"></a>
+Ogre::CompositorWorkspace *&#160;</td><td class="memItemRight" valign="bottom"><b>mShadowWorkspace</b></td></tr>
+<tr class="separator:af384525eff0397e825335cac1383035a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ce21c6dc95445db1260e5c63a9b385"><td class="memItemLeft" align="right" valign="top"><a id="aa4ce21c6dc95445db1260e5c63a9b385"></a>
+Ogre::TexturePtr&#160;</td><td class="memItemRight" valign="bottom"><b>mShadowMapTex</b></td></tr>
+<tr class="separator:aa4ce21c6dc95445db1260e5c63a9b385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c17b8b5ec20194c4fb4a7ff1de984f5"><td class="memItemLeft" align="right" valign="top"><a id="a5c17b8b5ec20194c4fb4a7ff1de984f5"></a>
+Ogre::HlmsComputeJob *&#160;</td><td class="memItemRight" valign="bottom"><b>mShadowJob</b></td></tr>
+<tr class="separator:a5c17b8b5ec20194c4fb4a7ff1de984f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05350d603d5cfad35eda8743abc1ecac"><td class="memItemLeft" align="right" valign="top"><a id="a05350d603d5cfad35eda8743abc1ecac"></a>
+Ogre::ShaderParams::Param *&#160;</td><td class="memItemRight" valign="bottom"><b>mJobParamDelta</b></td></tr>
+<tr class="separator:a05350d603d5cfad35eda8743abc1ecac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadeaa1e03b1336e1a7766cb0bbd6ce6d"><td class="memItemLeft" align="right" valign="top"><a id="aadeaa1e03b1336e1a7766cb0bbd6ce6d"></a>
+Ogre::ShaderParams::Param *&#160;</td><td class="memItemRight" valign="bottom"><b>mJobParamXYStep</b></td></tr>
+<tr class="separator:aadeaa1e03b1336e1a7766cb0bbd6ce6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71ddf6f440e83eaefe0c896fc5b2829"><td class="memItemLeft" align="right" valign="top"><a id="ae71ddf6f440e83eaefe0c896fc5b2829"></a>
+Ogre::ShaderParams::Param *&#160;</td><td class="memItemRight" valign="bottom"><b>mJobParamIsStep</b></td></tr>
+<tr class="separator:ae71ddf6f440e83eaefe0c896fc5b2829"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51147036e095f3889d5529a61c83157e"><td class="memItemLeft" align="right" valign="top"><a id="a51147036e095f3889d5529a61c83157e"></a>
+Ogre::ShaderParams::Param *&#160;</td><td class="memItemRight" valign="bottom"><b>mJobParamHeightDelta</b></td></tr>
+<tr class="separator:a51147036e095f3889d5529a61c83157e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb39870c1d238da7f6c91001a6fa860"><td class="memItemLeft" align="right" valign="top"><a id="aceb39870c1d238da7f6c91001a6fa860"></a>
+Ogre::SceneManager *&#160;</td><td class="memItemRight" valign="bottom"><b>mSceneManager</b></td></tr>
+<tr class="separator:aceb39870c1d238da7f6c91001a6fa860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa176dac98a1f33e9b27b6bff4e8e8f0"><td class="memItemLeft" align="right" valign="top"><a id="afa176dac98a1f33e9b27b6bff4e8e8f0"></a>
+Ogre::CompositorManager2 *&#160;</td><td class="memItemRight" valign="bottom"><b>mCompositorManager</b></td></tr>
+<tr class="separator:afa176dac98a1f33e9b27b6bff4e8e8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_terrain_shadow_mapper_8h_source.html#l00014">14</a> of file <a class="el" href="_terrain_shadow_mapper_8h_source.html">TerrainShadowMapper.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae95d31a0216503b8838738e959e32b1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae95d31a0216503b8838738e959e32b1c">&#9670;&nbsp;</a></span>getErrorAfterXsteps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ShadowMapper::getErrorAfterXsteps </td>
+          <td>(</td>
+          <td class="paramtype">Ogre::uint32&#160;</td>
+          <td class="paramname"><em>xIterationsToSkip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculates the value of the error at position x = xIterationsToSkip from Bresenham's algorithm. </p><dl class="section remark"><dt>Remarks</dt><dd>We use this function so we can start Bresenham from '0' but resuming as if we wouldn't be starting from 0. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xIterationsToSkip</td><td>The X position in which we want the error. </td></tr>
+    <tr><td class="paramname">dx</td><td>delta.x </td></tr>
+    <tr><td class="paramname">dy</td><td>delta.y </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The error at position (xIterationsToSkip; y) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_terrain_shadow_mapper_8cpp_source.html#l00129">129</a> of file <a class="el" href="_terrain_shadow_mapper_8cpp_source.html">TerrainShadowMapper.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a35a0aa58c648464248c2a9060f522921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a0aa58c648464248c2a9060f522921">&#9670;&nbsp;</a></span>getXStepsNeededToReachY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Ogre::int32 ShadowMapper::getXStepsNeededToReachY </td>
+          <td>(</td>
+          <td class="paramtype">Ogre::uint32&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fStep</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Gets how many steps are needed in Bresenham's algorithm to reach certain height, given its dx / dy ratio where: dx = abs( x1 - x0 ); dy = abs( y1 - y0 ); and Bresenham is drawn in ranges [x0; x1) and [y0; y1) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y</td><td>Height to reach </td></tr>
+    <tr><td class="paramname">fStep</td><td>(dx * 0.5f) / dy; </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of X iterations needed to reach the the pixel at height 'y' The returned value is at position (retVal; y) which means (retVal-1; y-1) is true unless y = 0; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_terrain_shadow_mapper_8cpp_source.html#l00125">125</a> of file <a class="el" href="_terrain_shadow_mapper_8cpp_source.html">TerrainShadowMapper.cpp</a>.</p>
+
+</div>
+</div>
 <a id="a5438f906adc558347171a1d4fbbe616d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5438f906adc558347171a1d4fbbe616d">&#9670;&nbsp;</a></span>setGaussianFilterParams()</h2>
 
@@ -125,18 +304,25 @@ Ogre::TexturePtr&#160;</td><td class="memItemRight" valign="bottom"><b>getShadow
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_terrain_shadow_mapper_8cpp_source.html#l00324">324</a> of file <a class="el" href="_terrain_shadow_mapper_8cpp_source.html">TerrainShadowMapper.cpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/louis/projects/LeDernierMorkid/include/Terrain/<a class="el" href="_terrain_shadow_mapper_8h_source.html">TerrainShadowMapper.h</a></li>
-<li>/home/louis/projects/LeDernierMorkid/src/Terrain/TerrainShadowMapper.cpp</li>
+<li>/home/louis/projects/LeDernierMorkid/src/Terrain/<a class="el" href="_terrain_shadow_mapper_8cpp_source.html">TerrainShadowMapper.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_shadow_mapper.html">ShadowMapper</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <map id="Common::GameState" name="Common::GameState">
-<area shape="rect" id="node2" href="$class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="5,5,173,32"/>
-<area shape="rect" id="node3" href="$class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="197,5,381,32"/>
-<area shape="rect" id="node4" href="$class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="405,5,584,32"/>
+<area shape="rect" id="node2" href="$class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="5,5,173,32"/>
+<area shape="rect" id="node3" href="$class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="197,5,381,32"/>
+<area shape="rect" id="node4" href="$class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="405,5,584,32"/>
 </map>

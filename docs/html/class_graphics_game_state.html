@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_graphics_game_state.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,7 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -74,32 +96,32 @@ Inheritance diagram for GraphicsGameState:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphics_game_state__inherit__graph.png" border="0" usemap="#_graphics_game_state_inherit__map" alt="Inheritance graph"/></div>
 <map name="_graphics_game_state_inherit__map" id="_graphics_game_state_inherit__map">
-<area shape="rect" id="node2" href="class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="215,80,364,107"/>
-<area shape="rect" id="node3" href="class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="5,5,173,32"/>
-<area shape="rect" id="node4" href="class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="197,5,381,32"/>
-<area shape="rect" id="node5" href="class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="405,5,584,32"/>
+<area shape="rect" id="node2" href="class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="215,80,364,107"/>
+<area shape="rect" id="node3" href="class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="5,5,173,32"/>
+<area shape="rect" id="node4" href="class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="197,5,381,32"/>
+<area shape="rect" id="node5" href="class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="405,5,584,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for GraphicsGameState:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_graphics_game_state__coll__graph.png" border="0" usemap="#_graphics_game_state_coll__map" alt="Collaboration graph"/></div>
 <map name="_graphics_game_state_coll__map" id="_graphics_game_state_coll__map">
-<area shape="rect" id="node2" href="class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="264,216,413,243"/>
-<area shape="rect" id="node8" href="class_common_1_1_base_system.html" title="Common::BaseSystem" alt="" coords="629,167,787,193"/>
-<area shape="rect" id="node3" href="class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="13,165,181,192"/>
-<area shape="rect" id="node4" href="class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="5,216,189,243"/>
-<area shape="rect" id="node5" href="class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="8,267,187,293"/>
-<area shape="rect" id="node6" href="class_common_1_1_camera_controller.html" title="Common::CameraController" alt="" coords="1319,176,1504,203"/>
-<area shape="rect" id="node7" href="class_common_1_1_graphics_system.html" title="Common::GraphicsSystem" alt="" coords="977,115,1157,141"/>
-<area shape="rect" id="node9" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="239,141,439,182"/>
-<area shape="rect" id="node11" href="class_common_1_1_static_plugin_loader.html" title="Common::StaticPluginLoader" alt="" coords="612,56,804,83"/>
-<area shape="rect" id="node12" href="class_common_1_1_sdl_input_handler.html" title="Common::SdlInputHandler" alt="" coords="620,107,796,133"/>
-<area shape="rect" id="node13" href="class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="1354,312,1469,339"/>
-<area shape="rect" id="node14" href="class_terrain.html" title="Terrain" alt="" coords="1036,277,1099,304"/>
-<area shape="rect" id="node16" href="class_shadow_mapper.html" title="ShadowMapper" alt="" coords="1011,379,1123,405"/>
+<area shape="rect" id="node2" href="class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="264,248,413,275"/>
+<area shape="rect" id="node8" href="class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="612,168,771,195"/>
+<area shape="rect" id="node3" href="class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="13,197,181,224"/>
+<area shape="rect" id="node4" href="class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="5,248,189,275"/>
+<area shape="rect" id="node5" href="class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="8,299,187,325"/>
+<area shape="rect" id="node6" href="class_common_1_1_camera_controller.html" title="Simple CameraControllerThis class does not implement more than rotate and move a Ogre::Camera or Ogre..." alt="" coords="1583,220,1768,247"/>
+<area shape="rect" id="node7" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. " alt="" coords="1241,159,1421,185"/>
+<area shape="rect" id="node12" href="class_common_1_1_sdl_input_handler.html" title="Common::SdlInputHandler" alt="" coords="884,220,1060,247"/>
+<area shape="rect" id="node9" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="239,161,439,202"/>
+<area shape="rect" id="node11" href="class_common_1_1_static_plugin_loader.html" title="Utility class to load plugins statically. " alt="" coords="876,56,1068,83"/>
+<area shape="rect" id="node13" href="class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="1618,356,1733,383"/>
+<area shape="rect" id="node14" href="class_terrain.html" title="Terrain" alt="" coords="1300,321,1363,348"/>
+<area shape="rect" id="node16" href="class_shadow_mapper.html" title="ShadowMapper" alt="" coords="1275,423,1387,449"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,59 +129,78 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>_notifyGraphicsSystem</b> (<a class="el" href="class_common_1_1_graphics_system.html">Common::GraphicsSystem</a> *graphicsSystem)</td></tr>
 <tr class="separator:a0e81886306b906569add56b43e8da91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8e2cd857387dd301edc894bfb8a7ac5"><td class="memItemLeft" align="right" valign="top"><a id="af8e2cd857387dd301edc894bfb8a7ac5"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>createScene</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_game_state.html#af8e2cd857387dd301edc894bfb8a7ac5">createScene</a> (void)</td></tr>
+<tr class="memdesc:af8e2cd857387dd301edc894bfb8a7ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the scene. <br /></td></tr>
 <tr class="separator:af8e2cd857387dd301edc894bfb8a7ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a2543a4cdd551c98f4540707bc7213e"><td class="memItemLeft" align="right" valign="top"><a id="a5a2543a4cdd551c98f4540707bc7213e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (float timeSinceLast)</td></tr>
+<tr class="memitem:a5a2543a4cdd551c98f4540707bc7213e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_game_state.html#a5a2543a4cdd551c98f4540707bc7213e">update</a> (float timeSinceLast)</td></tr>
 <tr class="separator:a5a2543a4cdd551c98f4540707bc7213e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7a7e707169e5c0cdbe2f54c8b1be2f6"><td class="memItemLeft" align="right" valign="top"><a id="ae7a7e707169e5c0cdbe2f54c8b1be2f6"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>keyPressed</b> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_game_state.html#ae7a7e707169e5c0cdbe2f54c8b1be2f6">keyPressed</a> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
+<tr class="memdesc:ae7a7e707169e5c0cdbe2f54c8b1be2f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when a key is pressed. <br /></td></tr>
 <tr class="separator:ae7a7e707169e5c0cdbe2f54c8b1be2f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a63e8acad9cb3d9e3c389f88e303665"><td class="memItemLeft" align="right" valign="top"><a id="a9a63e8acad9cb3d9e3c389f88e303665"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>keyReleased</b> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_game_state.html#a9a63e8acad9cb3d9e3c389f88e303665">keyReleased</a> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
+<tr class="memdesc:a9a63e8acad9cb3d9e3c389f88e303665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when a key is released. <br /></td></tr>
 <tr class="separator:a9a63e8acad9cb3d9e3c389f88e303665"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdf08d6cfd2610be0186047adbda912e"><td class="memItemLeft" align="right" valign="top"><a id="acdf08d6cfd2610be0186047adbda912e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMoved</b> (const <a class="el" href="union_s_d_l___event.html">SDL_Event</a> &amp;arg)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_game_state.html#acdf08d6cfd2610be0186047adbda912e">mouseMoved</a> (const <a class="el" href="union_s_d_l___event.html">SDL_Event</a> &amp;arg)</td></tr>
+<tr class="memdesc:acdf08d6cfd2610be0186047adbda912e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when mouse is moved. <br /></td></tr>
 <tr class="separator:acdf08d6cfd2610be0186047adbda912e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_common_1_1_game_state"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_common_1_1_game_state')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_common_1_1_game_state.html">Common::GameState</a></td></tr>
+<tr class="memitem:a481604dc59d2ced7a30f8c04421888e2 inherit pub_methods_class_common_1_1_game_state"><td class="memItemLeft" align="right" valign="top"><a id="a481604dc59d2ced7a30f8c04421888e2"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_game_state.html#a481604dc59d2ced7a30f8c04421888e2">~GameState</a> ()</td></tr>
+<tr class="memdesc:a481604dc59d2ced7a30f8c04421888e2 inherit pub_methods_class_common_1_1_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Destructor. <br /></td></tr>
+<tr class="separator:a481604dc59d2ced7a30f8c04421888e2 inherit pub_methods_class_common_1_1_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e7fa2fbc9080111213ce379eb33d082 inherit pub_methods_class_common_1_1_game_state"><td class="memItemLeft" align="right" valign="top"><a id="a4e7fa2fbc9080111213ce379eb33d082"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_game_state.html#a4e7fa2fbc9080111213ce379eb33d082">initialize</a> (void)</td></tr>
+<tr class="memdesc:a4e7fa2fbc9080111213ce379eb33d082 inherit pub_methods_class_common_1_1_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize. <br /></td></tr>
 <tr class="separator:a4e7fa2fbc9080111213ce379eb33d082 inherit pub_methods_class_common_1_1_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cda78fa6c4a405ead90c6e0bc895c85 inherit pub_methods_class_common_1_1_game_state"><td class="memItemLeft" align="right" valign="top"><a id="a7cda78fa6c4a405ead90c6e0bc895c85"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>deinitialize</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_game_state.html#a7cda78fa6c4a405ead90c6e0bc895c85">deinitialize</a> (void)</td></tr>
+<tr class="memdesc:a7cda78fa6c4a405ead90c6e0bc895c85 inherit pub_methods_class_common_1_1_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize. <br /></td></tr>
 <tr class="separator:a7cda78fa6c4a405ead90c6e0bc895c85 inherit pub_methods_class_common_1_1_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03176055b9cb064b2cea5b64cbf6647a inherit pub_methods_class_common_1_1_game_state"><td class="memItemLeft" align="right" valign="top"><a id="a03176055b9cb064b2cea5b64cbf6647a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyScene</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_game_state.html#a03176055b9cb064b2cea5b64cbf6647a">destroyScene</a> (void)</td></tr>
+<tr class="memdesc:a03176055b9cb064b2cea5b64cbf6647a inherit pub_methods_class_common_1_1_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the scene. <br /></td></tr>
 <tr class="separator:a03176055b9cb064b2cea5b64cbf6647a inherit pub_methods_class_common_1_1_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d8b5d245f12f68432653a50de46ca4 inherit pub_methods_class_common_1_1_game_state"><td class="memItemLeft" align="right" valign="top"><a id="af9d8b5d245f12f68432653a50de46ca4"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>finishFrameParallel</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_game_state.html#af9d8b5d245f12f68432653a50de46ca4">finishFrameParallel</a> (void)</td></tr>
+<tr class="memdesc:af9d8b5d245f12f68432653a50de46ca4 inherit pub_methods_class_common_1_1_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call at the end of the frame. <br /></td></tr>
 <tr class="separator:af9d8b5d245f12f68432653a50de46ca4 inherit pub_methods_class_common_1_1_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade96417c05bf3ad03e5bea4ee8578d89 inherit pub_methods_class_common_1_1_game_state"><td class="memItemLeft" align="right" valign="top"><a id="ade96417c05bf3ad03e5bea4ee8578d89"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>finishFrame</b> (void)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_game_state.html#ade96417c05bf3ad03e5bea4ee8578d89">finishFrame</a> (void)</td></tr>
+<tr class="memdesc:ade96417c05bf3ad03e5bea4ee8578d89 inherit pub_methods_class_common_1_1_game_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call at the end of the frame. <br /></td></tr>
 <tr class="separator:ade96417c05bf3ad03e5bea4ee8578d89 inherit pub_methods_class_common_1_1_game_state"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_common_1_1_mouse_listener"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_common_1_1_mouse_listener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_common_1_1_mouse_listener.html">Common::MouseListener</a></td></tr>
 <tr class="memitem:a5b62c0b51cdb3a99ea099c72fb2fa767 inherit pub_methods_class_common_1_1_mouse_listener"><td class="memItemLeft" align="right" valign="top"><a id="a5b62c0b51cdb3a99ea099c72fb2fa767"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mousePressed</b> (const <a class="el" href="struct_s_d_l___mouse_button_event.html">SDL_MouseButtonEvent</a> &amp;arg, Ogre::uint8 id)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_mouse_listener.html#a5b62c0b51cdb3a99ea099c72fb2fa767">mousePressed</a> (const <a class="el" href="struct_s_d_l___mouse_button_event.html">SDL_MouseButtonEvent</a> &amp;arg, Ogre::uint8 id)</td></tr>
+<tr class="memdesc:a5b62c0b51cdb3a99ea099c72fb2fa767 inherit pub_methods_class_common_1_1_mouse_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when mouse's button is pressed. <br /></td></tr>
 <tr class="separator:a5b62c0b51cdb3a99ea099c72fb2fa767 inherit pub_methods_class_common_1_1_mouse_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a820334fbe8a5094938512ebe13965fdc inherit pub_methods_class_common_1_1_mouse_listener"><td class="memItemLeft" align="right" valign="top"><a id="a820334fbe8a5094938512ebe13965fdc"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseReleased</b> (const <a class="el" href="struct_s_d_l___mouse_button_event.html">SDL_MouseButtonEvent</a> &amp;arg, Ogre::uint8 id)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_mouse_listener.html#a820334fbe8a5094938512ebe13965fdc">mouseReleased</a> (const <a class="el" href="struct_s_d_l___mouse_button_event.html">SDL_MouseButtonEvent</a> &amp;arg, Ogre::uint8 id)</td></tr>
+<tr class="memdesc:a820334fbe8a5094938512ebe13965fdc inherit pub_methods_class_common_1_1_mouse_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when mouse's button is released. <br /></td></tr>
 <tr class="separator:a820334fbe8a5094938512ebe13965fdc inherit pub_methods_class_common_1_1_mouse_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_common_1_1_keyboard_listener"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_common_1_1_keyboard_listener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_common_1_1_keyboard_listener.html">Common::KeyboardListener</a></td></tr>
 <tr class="memitem:ac59d0721df35da0d3346b102845a92b2 inherit pub_methods_class_common_1_1_keyboard_listener"><td class="memItemLeft" align="right" valign="top"><a id="ac59d0721df35da0d3346b102845a92b2"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>textInput</b> (const SDL_TextInputEvent &amp;arg)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_keyboard_listener.html#ac59d0721df35da0d3346b102845a92b2">textInput</a> (const SDL_TextInputEvent &amp;arg)</td></tr>
+<tr class="memdesc:ac59d0721df35da0d3346b102845a92b2 inherit pub_methods_class_common_1_1_keyboard_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when text is entered. <br /></td></tr>
 <tr class="separator:ac59d0721df35da0d3346b102845a92b2 inherit pub_methods_class_common_1_1_keyboard_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_common_1_1_joystick_listener"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_common_1_1_joystick_listener')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_common_1_1_joystick_listener.html">Common::JoystickListener</a></td></tr>
 <tr class="memitem:a0b1d0c64903a2ac2e5c5f7f8bfb7ce81 inherit pub_methods_class_common_1_1_joystick_listener"><td class="memItemLeft" align="right" valign="top"><a id="a0b1d0c64903a2ac2e5c5f7f8bfb7ce81"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>joyButtonPressed</b> (const SDL_JoyButtonEvent &amp;evt, int button)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_joystick_listener.html#a0b1d0c64903a2ac2e5c5f7f8bfb7ce81">joyButtonPressed</a> (const SDL_JoyButtonEvent &amp;evt, int button)</td></tr>
+<tr class="memdesc:a0b1d0c64903a2ac2e5c5f7f8bfb7ce81 inherit pub_methods_class_common_1_1_joystick_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when a joystick's button is pressed. <br /></td></tr>
 <tr class="separator:a0b1d0c64903a2ac2e5c5f7f8bfb7ce81 inherit pub_methods_class_common_1_1_joystick_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ed8cc90e3644cdbd00355acba3cb1e5 inherit pub_methods_class_common_1_1_joystick_listener"><td class="memItemLeft" align="right" valign="top"><a id="a9ed8cc90e3644cdbd00355acba3cb1e5"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>joyButtonReleased</b> (const SDL_JoyButtonEvent &amp;evt, int button)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_joystick_listener.html#a9ed8cc90e3644cdbd00355acba3cb1e5">joyButtonReleased</a> (const SDL_JoyButtonEvent &amp;evt, int button)</td></tr>
+<tr class="memdesc:a9ed8cc90e3644cdbd00355acba3cb1e5 inherit pub_methods_class_common_1_1_joystick_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when a joystick's button is released. <br /></td></tr>
 <tr class="separator:a9ed8cc90e3644cdbd00355acba3cb1e5 inherit pub_methods_class_common_1_1_joystick_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8cc8de4cab46d53f99c496247ec381e inherit pub_methods_class_common_1_1_joystick_listener"><td class="memItemLeft" align="right" valign="top"><a id="ad8cc8de4cab46d53f99c496247ec381e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>joyAxisMoved</b> (const SDL_JoyAxisEvent &amp;arg, int axis)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_joystick_listener.html#ad8cc8de4cab46d53f99c496247ec381e">joyAxisMoved</a> (const SDL_JoyAxisEvent &amp;arg, int axis)</td></tr>
+<tr class="memdesc:ad8cc8de4cab46d53f99c496247ec381e inherit pub_methods_class_common_1_1_joystick_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when a joystick is moved. <br /></td></tr>
 <tr class="separator:ad8cc8de4cab46d53f99c496247ec381e inherit pub_methods_class_common_1_1_joystick_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac18be87a19beedcd9b93b38849575062 inherit pub_methods_class_common_1_1_joystick_listener"><td class="memItemLeft" align="right" valign="top"><a id="ac18be87a19beedcd9b93b38849575062"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>joyPovMoved</b> (const SDL_JoyHatEvent &amp;arg, int index)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_joystick_listener.html#ac18be87a19beedcd9b93b38849575062">joyPovMoved</a> (const SDL_JoyHatEvent &amp;arg, int index)</td></tr>
+<tr class="memdesc:ac18be87a19beedcd9b93b38849575062 inherit pub_methods_class_common_1_1_joystick_listener"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function called when a joystick is moved. <br /></td></tr>
 <tr class="separator:ac18be87a19beedcd9b93b38849575062 inherit pub_methods_class_common_1_1_joystick_listener"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
@@ -186,16 +227,56 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>mEnableInterpolation<
 Ogre::Light *&#160;</td><td class="memItemRight" valign="bottom"><b>mSunLight</b></td></tr>
 <tr class="separator:a59e90f7396f9ae5db563c3be4ac89139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_graphics_game_state_8h_source.html#l00014">14</a> of file <a class="el" href="_graphics_game_state_8h_source.html">GraphicsGameState.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5a2543a4cdd551c98f4540707bc7213e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a2543a4cdd551c98f4540707bc7213e">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GraphicsGameState::update </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>timeSinceLast</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Update the GameState param timeSinceLast Time past since last frame </p>
+
+<p>Reimplemented from <a class="el" href="class_common_1_1_game_state.html#a38271924996d8c1bbdcbfee6ffe63f95">Common::GameState</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_graphics_game_state_8cpp_source.html#l00135">135</a> of file <a class="el" href="_graphics_game_state_8cpp_source.html">GraphicsGameState.cpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/louis/projects/LeDernierMorkid/include/Graphics/<a class="el" href="_graphics_game_state_8h_source.html">GraphicsGameState.h</a></li>
-<li>/home/louis/projects/LeDernierMorkid/src/Graphics/GraphicsGameState.cpp</li>
+<li>/home/louis/projects/LeDernierMorkid/src/Graphics/<a class="el" href="_graphics_game_state_8cpp_source.html">GraphicsGameState.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_graphics_game_state.html">GraphicsGameState</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

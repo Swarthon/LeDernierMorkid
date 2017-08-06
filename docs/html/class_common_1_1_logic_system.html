@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_common_1_1_logic_system.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Common</b></li><li class="navelem"><a class="el" href="class_common_1_1_logic_system.html">LogicSystem</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -71,160 +89,384 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_common_1_1_logic_system-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Common::LogicSystem Class Reference</div>  </div>
+<div class="title">Common::LogicSystem Class Reference<div class="ingroups"><a class="el" href="group___common.html">Common</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) ">LogicSystem</a> managing the logics (Collisions ...)  
+ <a href="class_common_1_1_logic_system.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_logic_system_8h_source.html">LogicSystem.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Common::LogicSystem:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_common_1_1_logic_system__inherit__graph.png" border="0" usemap="#_common_1_1_logic_system_inherit__map" alt="Inheritance graph"/></div>
 <map name="_common_1_1_logic_system_inherit__map" id="_common_1_1_logic_system_inherit__map">
-<area shape="rect" id="node2" href="class_common_1_1_base_system.html" title="Common::BaseSystem" alt="" coords="26,95,185,121"/>
-<area shape="rect" id="node3" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="5,5,205,47"/>
+<area shape="rect" id="node2" href="class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="26,95,185,121"/>
+<area shape="rect" id="node3" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="5,5,205,47"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Common::LogicSystem:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_common_1_1_logic_system__coll__graph.png" border="0" usemap="#_common_1_1_logic_system_coll__map" alt="Collaboration graph"/></div>
 <map name="_common_1_1_logic_system_coll__map" id="_common_1_1_logic_system_coll__map">
-<area shape="rect" id="node2" href="class_common_1_1_base_system.html" title="Common::BaseSystem" alt="" coords="47,185,206,212"/>
-<area shape="rect" id="node3" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="5,81,205,123"/>
-<area shape="rect" id="node4" href="class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="229,89,379,115"/>
-<area shape="rect" id="node5" href="class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="20,5,188,32"/>
-<area shape="rect" id="node6" href="class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="212,5,396,32"/>
-<area shape="rect" id="node7" href="class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="420,5,599,32"/>
-<area shape="rect" id="node8" href="class_common_1_1_game_entity_manager.html" title="Common::GameEntityManager" alt="" coords="231,185,433,212"/>
+<area shape="rect" id="node8" href="class_common_1_1_game_entity_manager.html" title="Class managing GameEntity. " alt="" coords="48,364,251,391"/>
+<area shape="rect" id="node2" href="class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="205,185,363,212"/>
+<area shape="rect" id="node3" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="5,81,205,123"/>
+<area shape="rect" id="node4" href="class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="229,89,379,115"/>
+<area shape="rect" id="node5" href="class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="20,5,188,32"/>
+<area shape="rect" id="node6" href="class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="212,5,396,32"/>
+<area shape="rect" id="node7" href="class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="420,5,599,32"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a414d0489e458dea69dd8386fd556acc2"><td class="memItemLeft" align="right" valign="top"><a id="a414d0489e458dea69dd8386fd556acc2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LogicSystem</b> (<a class="el" href="class_common_1_1_game_state.html">GameState</a> *gameState)</td></tr>
+<tr class="memitem:a414d0489e458dea69dd8386fd556acc2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a414d0489e458dea69dd8386fd556acc2">LogicSystem</a> (<a class="el" href="class_common_1_1_game_state.html">GameState</a> *gameState)</td></tr>
 <tr class="separator:a414d0489e458dea69dd8386fd556acc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab74dcdd9856b3185ec19cfa2887992d"><td class="memItemLeft" align="right" valign="top"><a id="aab74dcdd9856b3185ec19cfa2887992d"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#aab74dcdd9856b3185ec19cfa2887992d">~LogicSystem</a> ()</td></tr>
+<tr class="memdesc:aab74dcdd9856b3185ec19cfa2887992d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Destructor. <br /></td></tr>
+<tr class="separator:aab74dcdd9856b3185ec19cfa2887992d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e1389a1e2ed8dd21b46fabdedee5d22"><td class="memItemLeft" align="right" valign="top"><a id="a6e1389a1e2ed8dd21b46fabdedee5d22"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>initialize</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a6e1389a1e2ed8dd21b46fabdedee5d22">initialize</a> ()</td></tr>
+<tr class="memdesc:a6e1389a1e2ed8dd21b46fabdedee5d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the system. <br /></td></tr>
 <tr class="separator:a6e1389a1e2ed8dd21b46fabdedee5d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0897460fb4f985b0bd85c2d130b9d585"><td class="memItemLeft" align="right" valign="top"><a id="a0897460fb4f985b0bd85c2d130b9d585"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_notifyGraphicsSystem</b> (<a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> *graphicsSystem)</td></tr>
+<tr class="memitem:a0897460fb4f985b0bd85c2d130b9d585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a0897460fb4f985b0bd85c2d130b9d585">_notifyGraphicsSystem</a> (<a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> *graphicsSystem)</td></tr>
 <tr class="separator:a0897460fb4f985b0bd85c2d130b9d585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5eb233fa1e610dbf2b52a76d06ce9782"><td class="memItemLeft" align="right" valign="top"><a id="a5eb233fa1e610dbf2b52a76d06ce9782"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_notifyGameEntityManager</b> (<a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *mgr)</td></tr>
+<tr class="memitem:a5eb233fa1e610dbf2b52a76d06ce9782"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a5eb233fa1e610dbf2b52a76d06ce9782">_notifyGameEntityManager</a> (<a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *mgr)</td></tr>
 <tr class="separator:a5eb233fa1e610dbf2b52a76d06ce9782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f11d71f1f95adbb95dcb6c4281d699a"><td class="memItemLeft" align="right" valign="top"><a id="a8f11d71f1f95adbb95dcb6c4281d699a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (float timeSinceLast)</td></tr>
+<tr class="memitem:a8f11d71f1f95adbb95dcb6c4281d699a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a8f11d71f1f95adbb95dcb6c4281d699a">update</a> (float timeSinceLast)</td></tr>
 <tr class="separator:a8f11d71f1f95adbb95dcb6c4281d699a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aeed6252b67c4213bd2ba0ca2a6e39c"><td class="memItemLeft" align="right" valign="top"><a id="a4aeed6252b67c4213bd2ba0ca2a6e39c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>finishFrameParallel</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a4aeed6252b67c4213bd2ba0ca2a6e39c">finishFrameParallel</a> (void)</td></tr>
+<tr class="memdesc:a4aeed6252b67c4213bd2ba0ca2a6e39c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call at the end of the frame. <br /></td></tr>
 <tr class="separator:a4aeed6252b67c4213bd2ba0ca2a6e39c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a957d149fb5f02d2d00ec4a4a1827fc2e"><td class="memItemLeft" align="right" valign="top"><a id="a957d149fb5f02d2d00ec4a4a1827fc2e"></a>
-<a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getGameEntityManager</b> (void)</td></tr>
+<a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a957d149fb5f02d2d00ec4a4a1827fc2e">getGameEntityManager</a> (void)</td></tr>
+<tr class="memdesc:a957d149fb5f02d2d00ec4a4a1827fc2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get mGameEntityManager. <br /></td></tr>
 <tr class="separator:a957d149fb5f02d2d00ec4a4a1827fc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a175efaf2f8faf4949e9141cb90a477ce"><td class="memItemLeft" align="right" valign="top"><a id="a175efaf2f8faf4949e9141cb90a477ce"></a>
-Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentTransformIdx</b> (void) const</td></tr>
+Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a175efaf2f8faf4949e9141cb90a477ce">getCurrentTransformIdx</a> (void) const</td></tr>
+<tr class="memdesc:a175efaf2f8faf4949e9141cb90a477ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get mCurrentTransformIdx. <br /></td></tr>
 <tr class="separator:a175efaf2f8faf4949e9141cb90a477ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1172de6e34685a951f956235ca10ca52"><td class="memItemLeft" align="right" valign="top"><a id="a1172de6e34685a951f956235ca10ca52"></a>
-btDynamicsWorld *&#160;</td><td class="memItemRight" valign="bottom"><b>getWorld</b> (void) const</td></tr>
+btDynamicsWorld *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a1172de6e34685a951f956235ca10ca52">getWorld</a> (void) const</td></tr>
+<tr class="memdesc:a1172de6e34685a951f956235ca10ca52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get mWorld. <br /></td></tr>
 <tr class="separator:a1172de6e34685a951f956235ca10ca52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff1976c824aab7d67481390b5e81a4d"><td class="memItemLeft" align="right" valign="top"><a id="a8ff1976c824aab7d67481390b5e81a4d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addGameEntity</b> (const <a class="el" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html">GameEntityManager::CreatedGameEntity</a> *cge)</td></tr>
+<tr class="memitem:a8ff1976c824aab7d67481390b5e81a4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a8ff1976c824aab7d67481390b5e81a4d">addGameEntity</a> (const <a class="el" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html">GameEntityManager::CreatedGameEntity</a> *cge)</td></tr>
 <tr class="separator:a8ff1976c824aab7d67481390b5e81a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_common_1_1_base_system"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_common_1_1_base_system')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_common_1_1_base_system.html">Common::BaseSystem</a></td></tr>
-<tr class="memitem:a420a9f2bb9ccec58af8de74cfc71a9fd inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a420a9f2bb9ccec58af8de74cfc71a9fd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BaseSystem</b> (<a class="el" href="class_common_1_1_game_state.html">GameState</a> *gameState)</td></tr>
+<tr class="memitem:a420a9f2bb9ccec58af8de74cfc71a9fd inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a420a9f2bb9ccec58af8de74cfc71a9fd">BaseSystem</a> (<a class="el" href="class_common_1_1_game_state.html">GameState</a> *gameState)</td></tr>
 <tr class="separator:a420a9f2bb9ccec58af8de74cfc71a9fd inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a081f0d3daaff552efe736e6096d329e9 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a081f0d3daaff552efe736e6096d329e9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>deinitialize</b> (void)</td></tr>
+<tr class="memitem:a90dcca3acf8e4a37aa0036125ec6b830 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a90dcca3acf8e4a37aa0036125ec6b830"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a90dcca3acf8e4a37aa0036125ec6b830">~BaseSystem</a> ()</td></tr>
+<tr class="memdesc:a90dcca3acf8e4a37aa0036125ec6b830 inherit pub_methods_class_common_1_1_base_system"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple Destructor. <br /></td></tr>
+<tr class="separator:a90dcca3acf8e4a37aa0036125ec6b830 inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a081f0d3daaff552efe736e6096d329e9 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a081f0d3daaff552efe736e6096d329e9">deinitialize</a> (void)</td></tr>
 <tr class="separator:a081f0d3daaff552efe736e6096d329e9 inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f26fc7376152a90de585fd50c396427 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a1f26fc7376152a90de585fd50c396427"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>createScene</b> (void)</td></tr>
+<tr class="memitem:a1f26fc7376152a90de585fd50c396427 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a1f26fc7376152a90de585fd50c396427">createScene</a> (void)</td></tr>
 <tr class="separator:a1f26fc7376152a90de585fd50c396427 inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04ce870b4d3429942afb58137fd376ca inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a04ce870b4d3429942afb58137fd376ca"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>destroyScene</b> (void)</td></tr>
+<tr class="memitem:a04ce870b4d3429942afb58137fd376ca inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a04ce870b4d3429942afb58137fd376ca">destroyScene</a> (void)</td></tr>
 <tr class="separator:a04ce870b4d3429942afb58137fd376ca inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a631f234a7a0e46e9f6476520cd2f9bab inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a631f234a7a0e46e9f6476520cd2f9bab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>beginFrameParallel</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a631f234a7a0e46e9f6476520cd2f9bab">beginFrameParallel</a> (void)</td></tr>
+<tr class="memdesc:a631f234a7a0e46e9f6476520cd2f9bab inherit pub_methods_class_common_1_1_base_system"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call at the beginning of the Frame. <br /></td></tr>
 <tr class="separator:a631f234a7a0e46e9f6476520cd2f9bab inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af71a7156da8b0a4feab83ad72162a0c2 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="af71a7156da8b0a4feab83ad72162a0c2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (float timeSinceLast)</td></tr>
+<tr class="memitem:af71a7156da8b0a4feab83ad72162a0c2 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#af71a7156da8b0a4feab83ad72162a0c2">update</a> (float timeSinceLast)</td></tr>
 <tr class="separator:af71a7156da8b0a4feab83ad72162a0c2 inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50d9e0044a1cc4b400b847c923913d81 inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a50d9e0044a1cc4b400b847c923913d81"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>finishFrameParallel</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a50d9e0044a1cc4b400b847c923913d81">finishFrameParallel</a> (void)</td></tr>
+<tr class="memdesc:a50d9e0044a1cc4b400b847c923913d81 inherit pub_methods_class_common_1_1_base_system"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call at the end of the frame. <br /></td></tr>
 <tr class="separator:a50d9e0044a1cc4b400b847c923913d81 inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8d31cde53383edccb40c3b986252f1c inherit pub_methods_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="ad8d31cde53383edccb40c3b986252f1c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>finishFrame</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#ad8d31cde53383edccb40c3b986252f1c">finishFrame</a> (void)</td></tr>
+<tr class="memdesc:ad8d31cde53383edccb40c3b986252f1c inherit pub_methods_class_common_1_1_base_system"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to call at the end of the frame. <br /></td></tr>
 <tr class="separator:ad8d31cde53383edccb40c3b986252f1c inherit pub_methods_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_common_1_1_mq_1_1_message_queue_system')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html">Common::Mq::MessageQueueSystem</a></td></tr>
-<tr class="memitem:ab9a6196ad22221175ec636ea2b08ec5d inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplParams" colspan="2"><a id="ab9a6196ad22221175ec636ea2b08ec5d"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ab9a6196ad22221175ec636ea2b08ec5d inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>queueSendMessage</b> (<a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html">MessageQueueSystem</a> *dstSystem, Mq::MessageId messageId, const T &amp;msg)</td></tr>
+<tr class="memitem:a0b823b0430b6d72c503ee6dcd72f93d7 inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memItemLeft" align="right" valign="top"><a id="a0b823b0430b6d72c503ee6dcd72f93d7"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html#a0b823b0430b6d72c503ee6dcd72f93d7">~MessageQueueSystem</a> ()</td></tr>
+<tr class="memdesc:a0b823b0430b6d72c503ee6dcd72f93d7 inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simple void destructor. <br /></td></tr>
+<tr class="separator:a0b823b0430b6d72c503ee6dcd72f93d7 inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9a6196ad22221175ec636ea2b08ec5d inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ab9a6196ad22221175ec636ea2b08ec5d inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html#ab9a6196ad22221175ec636ea2b08ec5d">queueSendMessage</a> (<a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html">MessageQueueSystem</a> *dstSystem, <a class="el" href="group___common.html#gaa8c87d2b450282716c906da283e149e6">Mq::MessageId</a> messageId, const T &amp;msg)</td></tr>
 <tr class="separator:ab9a6196ad22221175ec636ea2b08ec5d inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6294a354a094e6ae8fc53e6b936d1963 inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memItemLeft" align="right" valign="top"><a id="a6294a354a094e6ae8fc53e6b936d1963"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>flushQueuedMessages</b> (void)</td></tr>
+<tr class="memitem:a6294a354a094e6ae8fc53e6b936d1963 inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html#a6294a354a094e6ae8fc53e6b936d1963">flushQueuedMessages</a> (void)</td></tr>
 <tr class="separator:a6294a354a094e6ae8fc53e6b936d1963 inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82f4a342971fc840169465d29b78b02f inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplParams" colspan="2"><a id="a82f4a342971fc840169465d29b78b02f"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a82f4a342971fc840169465d29b78b02f inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>receiveMessageImmediately</b> (Mq::MessageId messageId, const T &amp;msg)</td></tr>
+<tr class="memitem:a82f4a342971fc840169465d29b78b02f inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a82f4a342971fc840169465d29b78b02f inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html#a82f4a342971fc840169465d29b78b02f">receiveMessageImmediately</a> (<a class="el" href="group___common.html#gaa8c87d2b450282716c906da283e149e6">Mq::MessageId</a> messageId, const T &amp;msg)</td></tr>
 <tr class="separator:a82f4a342971fc840169465d29b78b02f inherit pub_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0b7ac4ad3cc62da7681f649ad6e9823d"><td class="memItemLeft" align="right" valign="top"><a id="a0b7ac4ad3cc62da7681f649ad6e9823d"></a>
-<a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mGraphicsSystem</b></td></tr>
+<a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a0b7ac4ad3cc62da7681f649ad6e9823d">mGraphicsSystem</a></td></tr>
+<tr class="memdesc:a0b7ac4ad3cc62da7681f649ad6e9823d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) ">LogicSystem</a> to which communicate. <br /></td></tr>
 <tr class="separator:a0b7ac4ad3cc62da7681f649ad6e9823d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a4495ecadf034103ad58deab6802543fa"><td class="memItemLeft" align="right" valign="top"><a id="a4495ecadf034103ad58deab6802543fa"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>processIncomingMessage</b> (Mq::MessageId messageId, const void *data)</td></tr>
+<tr class="memitem:a4495ecadf034103ad58deab6802543fa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a4495ecadf034103ad58deab6802543fa">processIncomingMessage</a> (<a class="el" href="group___common.html#gaa8c87d2b450282716c906da283e149e6">Mq::MessageId</a> messageId, const void *data)</td></tr>
 <tr class="separator:a4495ecadf034103ad58deab6802543fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_common_1_1_mq_1_1_message_queue_system"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_common_1_1_mq_1_1_message_queue_system')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html">Common::Mq::MessageQueueSystem</a></td></tr>
-<tr class="memitem:abc956172e5948e71547202f429e5e505 inherit pro_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memItemLeft" align="right" valign="top"><a id="abc956172e5948e71547202f429e5e505"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processIncomingMessages</b> (void)</td></tr>
+<tr class="memitem:abc956172e5948e71547202f429e5e505 inherit pro_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html#abc956172e5948e71547202f429e5e505">processIncomingMessages</a> (void)</td></tr>
 <tr class="separator:abc956172e5948e71547202f429e5e505 inherit pro_methods_class_common_1_1_mq_1_1_message_queue_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a2bd41b9185b04aa8d0cc243dacf07a30"><td class="memItemLeft" align="right" valign="top"><a id="a2bd41b9185b04aa8d0cc243dacf07a30"></a>
-<a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mGameEntityManager</b></td></tr>
+<a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a2bd41b9185b04aa8d0cc243dacf07a30">mGameEntityManager</a></td></tr>
+<tr class="memdesc:a2bd41b9185b04aa8d0cc243dacf07a30"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_common_1_1_game_entity_manager.html" title="Class managing GameEntity. ">GameEntityManager</a> to manage entities. <br /></td></tr>
 <tr class="separator:a2bd41b9185b04aa8d0cc243dacf07a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ff50f813ec112a68298ccf2a44a5a8b"><td class="memItemLeft" align="right" valign="top"><a id="a8ff50f813ec112a68298ccf2a44a5a8b"></a>
-btDynamicsWorld *&#160;</td><td class="memItemRight" valign="bottom"><b>mWorld</b></td></tr>
+btDynamicsWorld *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a8ff50f813ec112a68298ccf2a44a5a8b">mWorld</a></td></tr>
+<tr class="memdesc:a8ff50f813ec112a68298ccf2a44a5a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bullet Collision World. <br /></td></tr>
 <tr class="separator:a8ff50f813ec112a68298ccf2a44a5a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af317bbd8f5bda6b3516ced4e575da248"><td class="memItemLeft" align="right" valign="top"><a id="af317bbd8f5bda6b3516ced4e575da248"></a>
-btDefaultCollisionConfiguration *&#160;</td><td class="memItemRight" valign="bottom"><b>mCollisionConfiguration</b></td></tr>
+btDefaultCollisionConfiguration *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#af317bbd8f5bda6b3516ced4e575da248">mCollisionConfiguration</a></td></tr>
+<tr class="memdesc:af317bbd8f5bda6b3516ced4e575da248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision Configuration. <br /></td></tr>
 <tr class="separator:af317bbd8f5bda6b3516ced4e575da248"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afab3b81f6dd1a32d91a4b2fbe5153fd9"><td class="memItemLeft" align="right" valign="top"><a id="afab3b81f6dd1a32d91a4b2fbe5153fd9"></a>
-btCollisionDispatcher *&#160;</td><td class="memItemRight" valign="bottom"><b>mDispatcher</b></td></tr>
+btCollisionDispatcher *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#afab3b81f6dd1a32d91a4b2fbe5153fd9">mDispatcher</a></td></tr>
+<tr class="memdesc:afab3b81f6dd1a32d91a4b2fbe5153fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision Dispatcher. <br /></td></tr>
 <tr class="separator:afab3b81f6dd1a32d91a4b2fbe5153fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf97b2bb9e373e9b81e8b52936c5e8d8"><td class="memItemLeft" align="right" valign="top"><a id="adf97b2bb9e373e9b81e8b52936c5e8d8"></a>
-btDbvtBroadphase *&#160;</td><td class="memItemRight" valign="bottom"><b>mBroadphase</b></td></tr>
+btDbvtBroadphase *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#adf97b2bb9e373e9b81e8b52936c5e8d8">mBroadphase</a></td></tr>
+<tr class="memdesc:adf97b2bb9e373e9b81e8b52936c5e8d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision Broadphase. <br /></td></tr>
 <tr class="separator:adf97b2bb9e373e9b81e8b52936c5e8d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9394f7c8ca427c4121e0445f8ae151d"><td class="memItemLeft" align="right" valign="top"><a id="ab9394f7c8ca427c4121e0445f8ae151d"></a>
-btSequentialImpulseConstraintSolver *&#160;</td><td class="memItemRight" valign="bottom"><b>mSolver</b></td></tr>
+btSequentialImpulseConstraintSolver *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#ab9394f7c8ca427c4121e0445f8ae151d">mSolver</a></td></tr>
+<tr class="memdesc:ab9394f7c8ca427c4121e0445f8ae151d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collision Constraint Solver. <br /></td></tr>
 <tr class="separator:ab9394f7c8ca427c4121e0445f8ae151d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86139251209b2eba41382475544fc41b"><td class="memItemLeft" align="right" valign="top"><a id="a86139251209b2eba41382475544fc41b"></a>
-Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><b>mCurrentTransformIdx</b></td></tr>
+Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#a86139251209b2eba41382475544fc41b">mCurrentTransformIdx</a></td></tr>
+<tr class="memdesc:a86139251209b2eba41382475544fc41b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current transform id. <br /></td></tr>
 <tr class="separator:a86139251209b2eba41382475544fc41b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae196e1204c52d372075ffa8d15a7548a"><td class="memItemLeft" align="right" valign="top"><a id="ae196e1204c52d372075ffa8d15a7548a"></a>
-std::deque&lt; Ogre::uint32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mAvailableTransformIdx</b></td></tr>
+std::deque&lt; Ogre::uint32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_logic_system.html#ae196e1204c52d372075ffa8d15a7548a">mAvailableTransformIdx</a></td></tr>
+<tr class="memdesc:ae196e1204c52d372075ffa8d15a7548a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available transform id. <br /></td></tr>
 <tr class="separator:ae196e1204c52d372075ffa8d15a7548a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_common_1_1_base_system"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_common_1_1_base_system')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_common_1_1_base_system.html">Common::BaseSystem</a></td></tr>
-<tr class="memitem:a3095d1d1ab984296739697daa2af3393 inherit pro_attribs_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a id="a3095d1d1ab984296739697daa2af3393"></a>
-<a class="el" href="class_common_1_1_game_state.html">GameState</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mCurrentGameState</b></td></tr>
-<tr class="separator:a3095d1d1ab984296739697daa2af3393 inherit pro_attribs_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e8e37eb4089bbde95459e16291b87a inherit pro_attribs_class_common_1_1_base_system"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_common_1_1_game_state.html">GameState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_base_system.html#a18e8e37eb4089bbde95459e16291b87a">mCurrentGameState</a></td></tr>
+<tr class="memdesc:a18e8e37eb4089bbde95459e16291b87a inherit pro_attribs_class_common_1_1_base_system"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current <a class="el" href="class_common_1_1_game_state.html" title="Simple GameState class. ">GameState</a> to which is transmitted the events.  <a href="class_common_1_1_base_system.html#a18e8e37eb4089bbde95459e16291b87a">More...</a><br /></td></tr>
+<tr class="separator:a18e8e37eb4089bbde95459e16291b87a inherit pro_attribs_class_common_1_1_base_system"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) ">LogicSystem</a> managing the logics (Collisions ...) </p>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8h_source.html#l00024">24</a> of file <a class="el" href="_logic_system_8h_source.html">LogicSystem.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a414d0489e458dea69dd8386fd556acc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414d0489e458dea69dd8386fd556acc2">&#9670;&nbsp;</a></span>LogicSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Common::LogicSystem::LogicSystem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_common_1_1_game_state.html">GameState</a> *&#160;</td>
+          <td class="paramname"><em>gameState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructor </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gameState</td><td><a class="el" href="class_common_1_1_game_state.html" title="Simple GameState class. ">GameState</a> to which transmit the events </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8cpp_source.html#l00027">27</a> of file <a class="el" href="_logic_system_8cpp_source.html">LogicSystem.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5eb233fa1e610dbf2b52a76d06ce9782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb233fa1e610dbf2b52a76d06ce9782">&#9670;&nbsp;</a></span>_notifyGameEntityManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::LogicSystem::_notifyGameEntityManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> *&#160;</td>
+          <td class="paramname"><em>mgr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the <a class="el" href="class_common_1_1_game_entity_manager.html" title="Class managing GameEntity. ">GameEntityManager</a> through which create the entities </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mgr</td><td><a class="el" href="class_common_1_1_game_entity_manager.html" title="Class managing GameEntity. ">GameEntityManager</a> to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8h_source.html#l00084">84</a> of file <a class="el" href="_logic_system_8h_source.html">LogicSystem.h</a>.</p>
+
+</div>
+</div>
+<a id="a0897460fb4f985b0bd85c2d130b9d585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0897460fb4f985b0bd85c2d130b9d585">&#9670;&nbsp;</a></span>_notifyGraphicsSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::LogicSystem::_notifyGraphicsSystem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> *&#160;</td>
+          <td class="paramname"><em>graphicsSystem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the <a class="el" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. ">GraphicsSystem</a> to which send the notifications </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graphicsSystem</td><td><a class="el" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. ">GraphicsSystem</a> to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8h_source.html#l00078">78</a> of file <a class="el" href="_logic_system_8h_source.html">LogicSystem.h</a>.</p>
+
+</div>
+</div>
+<a id="a8ff1976c824aab7d67481390b5e81a4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff1976c824aab7d67481390b5e81a4d">&#9670;&nbsp;</a></span>addGameEntity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::LogicSystem::addGameEntity </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html">GameEntityManager::CreatedGameEntity</a> *&#160;</td>
+          <td class="paramname"><em>cge</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adding collision to <a class="el" href="struct_common_1_1_game_entity.html" title="Struct defining Game Entity. ">GameEntity</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cge</td><td>The created <a class="el" href="struct_common_1_1_game_entity.html" title="Struct defining Game Entity. ">GameEntity</a> that need to be completed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8cpp_source.html#l00105">105</a> of file <a class="el" href="_logic_system_8cpp_source.html">LogicSystem.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4495ecadf034103ad58deab6802543fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4495ecadf034103ad58deab6802543fa">&#9670;&nbsp;</a></span>processIncomingMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::LogicSystem::processIncomingMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___common.html#gaa8c87d2b450282716c906da283e149e6">Mq::MessageId</a>&#160;</td>
+          <td class="paramname"><em>messageId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Process received messages </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messageId</td><td>The Mq::MessageId of the message, used to know what kind of message it is </td></tr>
+    <tr><td class="paramname">data</td><td>The data sent with the message, could be anything. Depending on the messageId, a conversion will be needed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html#ad6eb849b72f03e3e4f09c6457c8ecda6">Common::Mq::MessageQueueSystem::processIncomingMessage</a> </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_common_1_1_base_system.html#a6820dfed1ee63f376e5773b361e3d2a8">Common::BaseSystem</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8cpp_source.html#l00087">87</a> of file <a class="el" href="_logic_system_8cpp_source.html">LogicSystem.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8f11d71f1f95adbb95dcb6c4281d699a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f11d71f1f95adbb95dcb6c4281d699a">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::LogicSystem::update </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>timeSinceLast</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Update the system. To call every frame </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeSinceLast</td><td>Time past since last frame </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_logic_system_8cpp_source.html#l00052">52</a> of file <a class="el" href="_logic_system_8cpp_source.html">LogicSystem.cpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/louis/projects/LeDernierMorkid/Common/include/<a class="el" href="_logic_system_8h_source.html">LogicSystem.h</a></li>
-<li>/home/louis/projects/LeDernierMorkid/Common/src/LogicSystem.cpp</li>
+<li>/home/louis/projects/LeDernierMorkid/Common/src/<a class="el" href="_logic_system_8cpp_source.html">LogicSystem.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Common</b></li><li class="navelem"><a class="el" href="class_common_1_1_logic_system.html">LogicSystem</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

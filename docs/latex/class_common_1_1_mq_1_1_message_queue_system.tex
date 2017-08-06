@@ -2,6 +2,15 @@
 \label{class_common_1_1_mq_1_1_message_queue_system}\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
 
 
+Class providing system for threads to communicate.  
+
+
+
+
+{\ttfamily \#include $<$Message\+Queue\+System.\+h$>$}
+
+
+
 Inheritance diagram for Common\+:\+:Mq\+:\+:Message\+Queue\+System\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -12,24 +21,155 @@ Inheritance diagram for Common\+:\+:Mq\+:\+:Message\+Queue\+System\+:\nopagebrea
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}\label{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}} 
-{\footnotesize template$<$typename T $>$ }\\void {\bfseries queue\+Send\+Message} (\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} $\ast$dst\+System, Mq\+::\+Message\+Id message\+Id, const T \&msg)
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a0b823b0430b6d72c503ee6dcd72f93d7}\label{class_common_1_1_mq_1_1_message_queue_system_a0b823b0430b6d72c503ee6dcd72f93d7}} 
+virtual \hyperlink{class_common_1_1_mq_1_1_message_queue_system_a0b823b0430b6d72c503ee6dcd72f93d7}{$\sim$\+Message\+Queue\+System} ()
+\begin{DoxyCompactList}\small\item\em Simple void destructor. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}{queue\+Send\+Message} (\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} $\ast$dst\+System, \hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id} message\+Id, const T \&msg)
 \item 
-\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}\label{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}} 
-void {\bfseries flush\+Queued\+Messages} (void)
+void \hyperlink{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}{flush\+Queued\+Messages} (void)
 \item 
-\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}\label{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}} 
-{\footnotesize template$<$typename T $>$ }\\void {\bfseries receive\+Message\+Immediately} (Mq\+::\+Message\+Id message\+Id, const T \&msg)
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}{receive\+Message\+Immediately} (\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id} message\+Id, const T \&msg)
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}\label{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}} 
-void {\bfseries process\+Incoming\+Messages} (void)
+void \hyperlink{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}{process\+Incoming\+Messages} (void)
 \item 
-\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}\label{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}} 
-virtual void {\bfseries process\+Incoming\+Message} (Mq\+::\+Message\+Id message\+Id, const void $\ast$data)=0
+virtual void \hyperlink{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}{process\+Incoming\+Message} (\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id} message\+Id, const void $\ast$data)=0
 \end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a36ef39384450cb9f027aa9b09ae06034}\label{class_common_1_1_mq_1_1_message_queue_system_a36ef39384450cb9f027aa9b09ae06034}} 
+typedef Ogre\+::\+Fast\+Array$<$ unsigned char $>$ {\bfseries Message\+Array}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a0de51c98004bd121fcae2ace2fdb28d7}\label{class_common_1_1_mq_1_1_message_queue_system_a0de51c98004bd121fcae2ace2fdb28d7}} 
+typedef std\+::map$<$ \hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} $\ast$, Message\+Array $>$ {\bfseries Pending\+Message\+Map}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ad92c12ef9927d9534d3575929aef5ec0}\label{class_common_1_1_mq_1_1_message_queue_system_ad92c12ef9927d9534d3575929aef5ec0}} 
+{\footnotesize template$<$typename T $>$ }\\static void {\bfseries store\+Message\+To\+Queue} (Message\+Array \&queue, \hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id} message\+Id, const T \&msg)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_aa5491126000d094951d933a780d8c92d}\label{class_common_1_1_mq_1_1_message_queue_system_aa5491126000d094951d933a780d8c92d}} 
+Ogre\+::\+Lightweight\+Mutex {\bfseries m\+Message\+Queue\+Mutex}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a987ec96d98e48eb3b8176da9c5c56788}\label{class_common_1_1_mq_1_1_message_queue_system_a987ec96d98e48eb3b8176da9c5c56788}} 
+Pending\+Message\+Map {\bfseries m\+Pending\+Outgoing\+Messages}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a98b14d23055f603fbdad7563ce506334}\label{class_common_1_1_mq_1_1_message_queue_system_a98b14d23055f603fbdad7563ce506334}} 
+Message\+Array {\bfseries m\+Incoming\+Messages} \mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_af72809ed23d11daf72afd93fd34f394e}\label{class_common_1_1_mq_1_1_message_queue_system_af72809ed23d11daf72afd93fd34f394e}} 
+static const size\+\_\+t {\bfseries c\+Size\+Of\+Header} = Ogre\+::align\+To\+Next\+Multiple(sizeof(Ogre\+::uint32) $\ast$ 2, sizeof(size\+\_\+t))
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class providing system for threads to communicate. 
+
+Definition at line 20 of file Message\+Queue\+System.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}\label{class_common_1_1_mq_1_1_message_queue_system_a6294a354a094e6ae8fc53e6b936d1963}} 
+\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}!flush\+Queued\+Messages@{flush\+Queued\+Messages}}
+\index{flush\+Queued\+Messages@{flush\+Queued\+Messages}!Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
+\subsubsection{\texorpdfstring{flush\+Queued\+Messages()}{flushQueuedMessages()}}
+{\footnotesize\ttfamily void Common\+::\+Mq\+::\+Message\+Queue\+System\+::flush\+Queued\+Messages (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sends all the messages queued via \hyperlink{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}{queue\+Send\+Message()} \begin{DoxyRemark}{Remarks}
+Must be called from the thread that owns \textquotesingle{}this\textquotesingle{} 
+\end{DoxyRemark}
+
+
+Definition at line 81 of file Message\+Queue\+System.\+h.
+
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}\label{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}} 
+\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}!process\+Incoming\+Message@{process\+Incoming\+Message}}
+\index{process\+Incoming\+Message@{process\+Incoming\+Message}!Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
+\subsubsection{\texorpdfstring{process\+Incoming\+Message()}{processIncomingMessage()}}
+{\footnotesize\ttfamily virtual void Common\+::\+Mq\+::\+Message\+Queue\+System\+::process\+Incoming\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id}}]{message\+Id,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+Method describing the way classes manage the message 
+\begin{DoxyParams}{Parameters}
+{\em message\+Id} & The Mq\+::\+Message\+Id of the message, used to know what kind of message it is \\
+\hline
+{\em data} & The data sent with the message, could be anything. Depending on the message\+Id, a conversion will be needed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Derived classes must implement this function to process the incoming message 
+\end{DoxyRemark}
+
+
+Implemented in \hyperlink{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}{Common\+::\+Graphics\+System}, \hyperlink{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}{Common\+::\+Base\+System}, and \hyperlink{class_common_1_1_logic_system_a4495ecadf034103ad58deab6802543fa}{Common\+::\+Logic\+System}.
+
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}\label{class_common_1_1_mq_1_1_message_queue_system_abc956172e5948e71547202f429e5e505}} 
+\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}!process\+Incoming\+Messages@{process\+Incoming\+Messages}}
+\index{process\+Incoming\+Messages@{process\+Incoming\+Messages}!Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
+\subsubsection{\texorpdfstring{process\+Incoming\+Messages()}{processIncomingMessages()}}
+{\footnotesize\ttfamily void Common\+::\+Mq\+::\+Message\+Queue\+System\+::process\+Incoming\+Messages (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Processes all incoming messages received from other threads. \begin{DoxyRemark}{Remarks}
+Should be called from the thread that owns \textquotesingle{}this\textquotesingle{} 
+\end{DoxyRemark}
+
+
+Definition at line 123 of file Message\+Queue\+System.\+h.
+
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}\label{class_common_1_1_mq_1_1_message_queue_system_ab9a6196ad22221175ec636ea2b08ec5d}} 
+\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}!queue\+Send\+Message@{queue\+Send\+Message}}
+\index{queue\+Send\+Message@{queue\+Send\+Message}!Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
+\subsubsection{\texorpdfstring{queue\+Send\+Message()}{queueSendMessage()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Common\+::\+Mq\+::\+Message\+Queue\+System\+::queue\+Send\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} $\ast$}]{dst\+System,  }\item[{\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id}}]{message\+Id,  }\item[{const T \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Queues message \textquotesingle{}msg\textquotesingle{} to be sent to a destination \hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System}. This function {\itshape must} be called from the thread that owns \textquotesingle{}this\textquotesingle{} The \textquotesingle{}dst\+System\textquotesingle{} may live in any other thread. 
+\begin{DoxyParams}{Parameters}
+{\em dst\+System} & The \hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} we want to send a message to. \\
+\hline
+{\em message\+Id} & The type of message sended \\
+\hline
+{\em msg} & The message itself. Structure must be P\+OD. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+The message is not instantely delivered. It will be sent when flush\+Queued\+Messages gets called. 
+\end{DoxyRemark}
+
+
+Definition at line 69 of file Message\+Queue\+System.\+h.
+
+\mbox{\Hypertarget{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}\label{class_common_1_1_mq_1_1_message_queue_system_a82f4a342971fc840169465d29b78b02f}} 
+\index{Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}!receive\+Message\+Immediately@{receive\+Message\+Immediately}}
+\index{receive\+Message\+Immediately@{receive\+Message\+Immediately}!Common\+::\+Mq\+::\+Message\+Queue\+System@{Common\+::\+Mq\+::\+Message\+Queue\+System}}
+\subsubsection{\texorpdfstring{receive\+Message\+Immediately()}{receiveMessageImmediately()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Common\+::\+Mq\+::\+Message\+Queue\+System\+::receive\+Message\+Immediately (\begin{DoxyParamCaption}\item[{\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id}}]{message\+Id,  }\item[{const T \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sends a message to \textquotesingle{}this\textquotesingle{} base system immediately. Use it only for time critical messages or if the sender thread doesn\textquotesingle{}t own its own \hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Message\+Queue\+System} class. 
+\begin{DoxyParams}{Parameters}
+{\em message\+Id} & The type of message sended \\
+\hline
+{\em msg} & The message itself. Structure must be P\+OD. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Abusing this function can degrade performance as it would perform frequent locking. See queue\+Send\+Message 
+\end{DoxyRemark}
+
+
+Definition at line 111 of file Message\+Queue\+System.\+h.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

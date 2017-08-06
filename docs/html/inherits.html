@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -45,6 +53,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('hierarchy.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -79,18 +101,18 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_2.png" border="0" alt="" usemap="#_common_1_1_camera_controller"/>
 <map name="_common_1_1_camera_controller" id="_common_1_1_camera_controller">
-<area shape="rect" id="node1" href="class_common_1_1_camera_controller.html" title="Common::CameraController" alt="" coords="5,13,191,39"/>
+<area shape="rect" id="node1" href="class_common_1_1_camera_controller.html" title="Simple CameraControllerThis class does not implement more than rotate and move a Ogre::Camera or Ogre..." alt="" coords="5,13,191,39"/>
 <area shape="rect" id="node2" href="class_collision_1_1_collision_camera_controller.html" title="Camera Controller using Collision. " alt="" coords="239,5,415,47"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" alt="" usemap="#_common_1_1_collision_object_definition"/>
 <map name="_common_1_1_collision_object_definition" id="_common_1_1_collision_object_definition">
-<area shape="rect" id="node1" href="struct_common_1_1_collision_object_definition.html" title="Common::CollisionObjectDefinition" alt="" coords="5,5,232,32"/>
+<area shape="rect" id="node1" href="struct_common_1_1_collision_object_definition.html" title="Struct defining Collision Object. " alt="" coords="5,5,232,32"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_4.png" border="0" alt="" usemap="#_common_1_1_game_entity"/>
 <map name="_common_1_1_game_entity" id="_common_1_1_game_entity">
-<area shape="rect" id="node1" href="struct_common_1_1_game_entity.html" title="Common::GameEntity" alt="" coords="5,5,157,32"/>
+<area shape="rect" id="node1" href="struct_common_1_1_game_entity.html" title="Struct defining Game Entity. " alt="" coords="5,5,157,32"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_5.png" border="0" alt="" usemap="#_common_1_1_game_entity_cmp"/>
@@ -100,174 +122,183 @@ $(function() {
 </td></tr>
 <tr><td><img src="inherit_graph_6.png" border="0" alt="" usemap="#_common_1_1_game_entity_manager"/>
 <map name="_common_1_1_game_entity_manager" id="_common_1_1_game_entity_manager">
-<area shape="rect" id="node1" href="class_common_1_1_game_entity_manager.html" title="Common::GameEntityManager" alt="" coords="5,5,208,32"/>
+<area shape="rect" id="node1" href="class_common_1_1_game_entity_manager.html" title="Class managing GameEntity. " alt="" coords="5,5,208,32"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_7.png" border="0" alt="" usemap="#_common_1_1_game_entity_manager_1_1_created_game_entity"/>
 <map name="_common_1_1_game_entity_manager_1_1_created_game_entity" id="_common_1_1_game_entity_manager_1_1_created_game_entity">
-<area shape="rect" id="node1" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html" title="Common::GameEntityManager\l::CreatedGameEntity" alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node1" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html" title="Struct describing a GameEntity and its GameEntityTransform. " alt="" coords="5,5,208,47"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_8.png" border="0" alt="" usemap="#_common_1_1_game_entity_transform"/>
+<tr><td><img src="inherit_graph_8.png" border="0" alt="" usemap="#_common_1_1_game_entity_manager_1_1_region"/>
+<map name="_common_1_1_game_entity_manager_1_1_region" id="_common_1_1_game_entity_manager_1_1_region">
+<area shape="rect" id="node1" href="struct_common_1_1_game_entity_manager_1_1_region.html" title="Common::GameEntityManager\l::Region" alt="" coords="5,5,208,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_9.png" border="0" alt="" usemap="#_common_1_1_game_entity_transform"/>
 <map name="_common_1_1_game_entity_transform" id="_common_1_1_game_entity_transform">
-<area shape="rect" id="node1" href="struct_common_1_1_game_entity_transform.html" title="Common::GameEntityTransform" alt="" coords="5,5,216,32"/>
+<area shape="rect" id="node1" href="struct_common_1_1_game_entity_transform.html" title="Struct defining the transform available for GameEntity. " alt="" coords="5,5,216,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_9.png" border="0" alt="" usemap="#_common_1_1_graphics_system"/>
+<tr><td><img src="inherit_graph_10.png" border="0" alt="" usemap="#_common_1_1_graphics_system"/>
 <map name="_common_1_1_graphics_system" id="_common_1_1_graphics_system">
-<area shape="rect" id="node1" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="5,23,205,65"/>
-<area shape="rect" id="node2" href="class_common_1_1_base_system.html" title="Common::BaseSystem" alt="" coords="253,31,412,57"/>
-<area shape="rect" id="node3" href="class_common_1_1_graphics_system.html" title="Common::GraphicsSystem" alt="" coords="460,5,640,32"/>
-<area shape="rect" id="node5" href="class_common_1_1_logic_system.html" title="Common::LogicSystem" alt="" coords="471,56,629,83"/>
+<area shape="rect" id="node1" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="5,23,205,65"/>
+<area shape="rect" id="node2" href="class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="253,31,412,57"/>
+<area shape="rect" id="node3" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. " alt="" coords="460,5,640,32"/>
+<area shape="rect" id="node5" href="class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) " alt="" coords="471,56,629,83"/>
 <area shape="rect" id="node4" href="class_le_dernier_morkid_graphics_system.html" title="UniformScalableTask" alt="" coords="688,5,835,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_10.png" border="0" alt="" usemap="#_common_1_1_mouse_listener"/>
+<tr><td><img src="inherit_graph_11.png" border="0" alt="" usemap="#_common_1_1_mouse_listener"/>
 <map name="_common_1_1_mouse_listener" id="_common_1_1_mouse_listener">
-<area shape="rect" id="node1" href="class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="8,5,187,32"/>
-<area shape="rect" id="node2" href="class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="237,56,387,83"/>
+<area shape="rect" id="node1" href="class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="8,5,187,32"/>
+<area shape="rect" id="node2" href="class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="237,56,387,83"/>
 <area shape="rect" id="node3" href="class_graphics_game_state.html" title="GraphicsGameState" alt="" coords="435,31,575,57"/>
 <area shape="rect" id="node4" href="class_logic_game_state.html" title="LogicGameState" alt="" coords="445,81,564,108"/>
-<area shape="rect" id="node5" href="class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="5,56,189,83"/>
-<area shape="rect" id="node6" href="class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="13,107,181,133"/>
+<area shape="rect" id="node5" href="class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="5,56,189,83"/>
+<area shape="rect" id="node6" href="class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="13,107,181,133"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_11.png" border="0" alt="" usemap="#_common_1_1_movable_object_definition"/>
+<tr><td><img src="inherit_graph_12.png" border="0" alt="" usemap="#_common_1_1_movable_object_definition"/>
 <map name="_common_1_1_movable_object_definition" id="_common_1_1_movable_object_definition">
-<area shape="rect" id="node1" href="struct_common_1_1_movable_object_definition.html" title="Common::MovableObjectDefinition" alt="" coords="5,5,231,32"/>
+<area shape="rect" id="node1" href="struct_common_1_1_movable_object_definition.html" title="Struct defining Movable Object. " alt="" coords="5,5,231,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_12.png" border="0" alt="" usemap="#_common_1_1_sdl_input_handler"/>
+<tr><td><img src="inherit_graph_13.png" border="0" alt="" usemap="#_common_1_1_sdl_input_handler"/>
 <map name="_common_1_1_sdl_input_handler" id="_common_1_1_sdl_input_handler">
 <area shape="rect" id="node1" href="class_common_1_1_sdl_input_handler.html" title="Common::SdlInputHandler" alt="" coords="5,5,181,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_13.png" border="0" alt="" usemap="#_common_1_1_static_plugin_loader"/>
+<tr><td><img src="inherit_graph_14.png" border="0" alt="" usemap="#_common_1_1_static_plugin_loader"/>
 <map name="_common_1_1_static_plugin_loader" id="_common_1_1_static_plugin_loader">
-<area shape="rect" id="node1" href="class_common_1_1_static_plugin_loader.html" title="Common::StaticPluginLoader" alt="" coords="5,5,197,32"/>
+<area shape="rect" id="node1" href="class_common_1_1_static_plugin_loader.html" title="Utility class to load plugins statically. " alt="" coords="5,5,197,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_14.png" border="0" alt="" usemap="#_common_1_1_yield_timer"/>
+<tr><td><img src="inherit_graph_15.png" border="0" alt="" usemap="#_common_1_1_thread_data"/>
+<map name="_common_1_1_thread_data" id="_common_1_1_thread_data">
+<area shape="rect" id="node1" href="struct_common_1_1_thread_data.html" title="Basic struct containing data shared between threadsThis struct should be overloaded to contain more d..." alt="" coords="5,13,156,39"/>
+<area shape="rect" id="node2" href="struct_le_dernier_morkid_1_1_le_dernier_morkid_thread_data.html" title="LeDernierMorkid::LeDernier\lMorkidThreadData" alt="" coords="204,5,385,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_16.png" border="0" alt="" usemap="#_common_1_1_thread_manager"/>
+<map name="_common_1_1_thread_manager" id="_common_1_1_thread_manager">
+<area shape="rect" id="node1" href="class_common_1_1_thread_manager.html" title="Class to manage threads (register and run them) " alt="" coords="5,5,179,32"/>
+<area shape="rect" id="node2" href="class_le_dernier_morkid.html" title="LeDernierMorkid" alt="" coords="227,5,344,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_17.png" border="0" alt="" usemap="#_common_1_1_yield_timer"/>
 <map name="_common_1_1_yield_timer" id="_common_1_1_yield_timer">
-<area shape="rect" id="node1" href="class_common_1_1_yield_timer.html" title="Common::YieldTimer" alt="" coords="5,5,151,32"/>
+<area shape="rect" id="node1" href="class_common_1_1_yield_timer.html" title="Timer using an external timer to wait until frameTime + startTime = timer time. " alt="" coords="5,5,151,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_15.png" border="0" alt="" usemap="#_grid_direction"/>
+<tr><td><img src="inherit_graph_18.png" border="0" alt="" usemap="#_grid_direction"/>
 <map name="_grid_direction" id="_grid_direction">
 <area shape="rect" id="node1" href="struct_grid_direction.html" title="GridDirection" alt="" coords="5,5,104,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_16.png" border="0" alt="" usemap="#_grid_point"/>
+<tr><td><img src="inherit_graph_19.png" border="0" alt="" usemap="#_grid_point"/>
 <map name="_grid_point" id="_grid_point">
 <area shape="rect" id="node1" href="struct_grid_point.html" title="GridPoint" alt="" coords="5,5,81,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_17.png" border="0" alt="" usemap="#_hlms_pbs_terrain_shadows"/>
+<tr><td><img src="inherit_graph_20.png" border="0" alt="" usemap="#_hlms_pbs_terrain_shadows"/>
 <map name="_hlms_pbs_terrain_shadows" id="_hlms_pbs_terrain_shadows">
 <area shape="rect" id="node2" href="class_hlms_pbs_terrain_shadows.html" title="HlmsPbsTerrainShadows" alt="" coords="152,5,323,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_18.png" border="0" alt="" usemap="#_hlms_terrain"/>
+<tr><td><img src="inherit_graph_21.png" border="0" alt="" usemap="#_hlms_terrain"/>
 <map name="_hlms_terrain" id="_hlms_terrain">
 <area shape="rect" id="node2" href="class_hlms_terrain.html" title="HlmsTerrain" alt="" coords="192,31,285,57"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_19.png" border="0" alt="" usemap="#_hlms_terrain_1_1_pass_data"/>
+<tr><td><img src="inherit_graph_22.png" border="0" alt="" usemap="#_hlms_terrain_1_1_pass_data"/>
 <map name="_hlms_terrain_1_1_pass_data" id="_hlms_terrain_1_1_pass_data">
 <area shape="rect" id="node1" href="struct_hlms_terrain_1_1_pass_data.html" title="HlmsTerrain::PassData" alt="" coords="5,5,164,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_20.png" border="0" alt="" usemap="#_hlms_terrain_datablock"/>
+<tr><td><img src="inherit_graph_23.png" border="0" alt="" usemap="#_hlms_terrain_datablock"/>
 <map name="_hlms_terrain_datablock" id="_hlms_terrain_datablock">
 <area shape="rect" id="node2" href="class_hlms_terrain_datablock.html" title="HlmsTerrainDatablock" alt="" coords="200,31,352,57"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_21.png" border="0" alt="" usemap="#_packed_texture"/>
+<tr><td><img src="inherit_graph_24.png" border="0" alt="" usemap="#_packed_texture"/>
 <map name="_packed_texture" id="_packed_texture">
 <area shape="rect" id="node1" href="struct_packed_texture.html" title="PackedTexture" alt="" coords="5,5,116,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_22.png" border="0" alt="" usemap="#_pbs_terrain_property"/>
+<tr><td><img src="inherit_graph_25.png" border="0" alt="" usemap="#_pbs_terrain_property"/>
 <map name="_pbs_terrain_property" id="_pbs_terrain_property">
 <area shape="rect" id="node1" href="struct_pbs_terrain_property.html" title="PbsTerrainProperty" alt="" coords="5,5,140,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_23.png" border="0" alt="" usemap="#_s_d_l___event"/>
+<tr><td><img src="inherit_graph_26.png" border="0" alt="" usemap="#_s_d_l___event"/>
 <map name="_s_d_l___event" id="_s_d_l___event">
 <area shape="rect" id="node1" href="union_s_d_l___event.html" title="SDL_Event" alt="" coords="5,5,95,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_24.png" border="0" alt="" usemap="#_s_d_l___keyboard_event"/>
+<tr><td><img src="inherit_graph_27.png" border="0" alt="" usemap="#_s_d_l___keyboard_event"/>
 <map name="_s_d_l___keyboard_event" id="_s_d_l___keyboard_event">
 <area shape="rect" id="node1" href="struct_s_d_l___keyboard_event.html" title="SDL_KeyboardEvent" alt="" coords="5,5,149,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_25.png" border="0" alt="" usemap="#_s_d_l___keysym"/>
+<tr><td><img src="inherit_graph_28.png" border="0" alt="" usemap="#_s_d_l___keysym"/>
 <map name="_s_d_l___keysym" id="_s_d_l___keysym">
 <area shape="rect" id="node1" href="struct_s_d_l___keysym.html" title="SDL_Keysym" alt="" coords="5,5,108,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_26.png" border="0" alt="" usemap="#_s_d_l___mouse_button_event"/>
+<tr><td><img src="inherit_graph_29.png" border="0" alt="" usemap="#_s_d_l___mouse_button_event"/>
 <map name="_s_d_l___mouse_button_event" id="_s_d_l___mouse_button_event">
 <area shape="rect" id="node1" href="struct_s_d_l___mouse_button_event.html" title="SDL_MouseButtonEvent" alt="" coords="5,5,172,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_27.png" border="0" alt="" usemap="#_s_d_l___mouse_motion_event"/>
+<tr><td><img src="inherit_graph_30.png" border="0" alt="" usemap="#_s_d_l___mouse_motion_event"/>
 <map name="_s_d_l___mouse_motion_event" id="_s_d_l___mouse_motion_event">
 <area shape="rect" id="node1" href="struct_s_d_l___mouse_motion_event.html" title="SDL_MouseMotionEvent" alt="" coords="5,5,172,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_28.png" border="0" alt="" usemap="#_s_d_l___mouse_wheel_event"/>
+<tr><td><img src="inherit_graph_31.png" border="0" alt="" usemap="#_s_d_l___mouse_wheel_event"/>
 <map name="_s_d_l___mouse_wheel_event" id="_s_d_l___mouse_wheel_event">
 <area shape="rect" id="node1" href="struct_s_d_l___mouse_wheel_event.html" title="SDL_MouseWheelEvent" alt="" coords="5,5,171,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_29.png" border="0" alt="" usemap="#_shadow_mapper"/>
+<tr><td><img src="inherit_graph_32.png" border="0" alt="" usemap="#_shadow_mapper"/>
 <map name="_shadow_mapper" id="_shadow_mapper">
 <area shape="rect" id="node1" href="class_shadow_mapper.html" title="ShadowMapper" alt="" coords="5,5,117,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_30.png" border="0" alt="" usemap="#_terrain"/>
+<tr><td><img src="inherit_graph_33.png" border="0" alt="" usemap="#_terrain"/>
 <map name="_terrain" id="_terrain">
 <area shape="rect" id="node2" href="class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="163,5,277,32"/>
 <area shape="rect" id="node3" href="class_terrain.html" title="Terrain" alt="" coords="29,56,91,83"/>
 <area shape="rect" id="node4" href="class_collision_terrain.html" title="CollisionTerrain" alt="" coords="164,56,276,83"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_31.png" border="0" alt="" usemap="#_terrain_baked_texture"/>
+<tr><td><img src="inherit_graph_34.png" border="0" alt="" usemap="#_terrain_baked_texture"/>
 <map name="_terrain_baked_texture" id="_terrain_baked_texture">
 <area shape="rect" id="node1" href="struct_terrain_baked_texture.html" title="TerrainBakedTexture" alt="" coords="5,5,148,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_32.png" border="0" alt="" usemap="#_terrain_cell"/>
+<tr><td><img src="inherit_graph_35.png" border="0" alt="" usemap="#_terrain_cell"/>
 <map name="_terrain_cell" id="_terrain_cell">
 <area shape="rect" id="node2" href="class_terrain_cell.html" title="TerrainCell" alt="" coords="141,5,227,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_33.png" border="0" alt="" usemap="#_terrain_property"/>
+<tr><td><img src="inherit_graph_36.png" border="0" alt="" usemap="#_terrain_property"/>
 <map name="_terrain_property" id="_terrain_property">
 <area shape="rect" id="node1" href="struct_terrain_property.html" title="TerrainProperty" alt="" coords="5,5,116,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_34.png" border="0" alt="" usemap="#_thread_data"/>
-<map name="_thread_data" id="_thread_data">
-<area shape="rect" id="node1" href="struct_thread_data.html" title="ThreadData" alt="" coords="5,13,96,39"/>
-<area shape="rect" id="node2" href="struct_le_dernier_morkid_1_1_le_dernier_morkid_thread_data.html" title="LeDernierMorkid::LeDernier\lMorkidThreadData" alt="" coords="144,5,325,47"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_35.png" border="0" alt="" usemap="#_thread_manager"/>
-<map name="_thread_manager" id="_thread_manager">
-<area shape="rect" id="node1" href="class_thread_manager.html" title="ThreadManager" alt="" coords="5,5,117,32"/>
-<area shape="rect" id="node2" href="class_le_dernier_morkid.html" title="LeDernierMorkid" alt="" coords="165,5,283,32"/>
-</map>
-</td></tr>
 </table>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

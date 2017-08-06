@@ -25,20 +25,19 @@ Collaboration diagram for Graphics\+Game\+State\+:\nopagebreak
 void {\bfseries \+\_\+notify\+Graphics\+System} (\hyperlink{class_common_1_1_graphics_system}{Common\+::\+Graphics\+System} $\ast$graphics\+System)
 \item 
 \mbox{\Hypertarget{class_graphics_game_state_af8e2cd857387dd301edc894bfb8a7ac5}\label{class_graphics_game_state_af8e2cd857387dd301edc894bfb8a7ac5}} 
-virtual void {\bfseries create\+Scene} (void)
-\item 
-\mbox{\Hypertarget{class_graphics_game_state_a5a2543a4cdd551c98f4540707bc7213e}\label{class_graphics_game_state_a5a2543a4cdd551c98f4540707bc7213e}} 
-virtual void {\bfseries update} (float time\+Since\+Last)
+virtual void \hyperlink{class_graphics_game_state_af8e2cd857387dd301edc894bfb8a7ac5}{create\+Scene} (void)
+\begin{DoxyCompactList}\small\item\em Create the scene. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_graphics_game_state_a5a2543a4cdd551c98f4540707bc7213e}{update} (float time\+Since\+Last)
 \item 
 \mbox{\Hypertarget{class_graphics_game_state_ae7a7e707169e5c0cdbe2f54c8b1be2f6}\label{class_graphics_game_state_ae7a7e707169e5c0cdbe2f54c8b1be2f6}} 
-virtual void {\bfseries key\+Pressed} (const \hyperlink{struct_s_d_l___keyboard_event}{S\+D\+L\+\_\+\+Keyboard\+Event} \&arg)
-\item 
+virtual void \hyperlink{class_graphics_game_state_ae7a7e707169e5c0cdbe2f54c8b1be2f6}{key\+Pressed} (const \hyperlink{struct_s_d_l___keyboard_event}{S\+D\+L\+\_\+\+Keyboard\+Event} \&arg)
+\begin{DoxyCompactList}\small\item\em Function called when a key is pressed. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_graphics_game_state_a9a63e8acad9cb3d9e3c389f88e303665}\label{class_graphics_game_state_a9a63e8acad9cb3d9e3c389f88e303665}} 
-virtual void {\bfseries key\+Released} (const \hyperlink{struct_s_d_l___keyboard_event}{S\+D\+L\+\_\+\+Keyboard\+Event} \&arg)
-\item 
+virtual void \hyperlink{class_graphics_game_state_a9a63e8acad9cb3d9e3c389f88e303665}{key\+Released} (const \hyperlink{struct_s_d_l___keyboard_event}{S\+D\+L\+\_\+\+Keyboard\+Event} \&arg)
+\begin{DoxyCompactList}\small\item\em Function called when a key is released. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_graphics_game_state_acdf08d6cfd2610be0186047adbda912e}\label{class_graphics_game_state_acdf08d6cfd2610be0186047adbda912e}} 
-virtual void {\bfseries mouse\+Moved} (const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&arg)
-\end{DoxyCompactItemize}
+virtual void \hyperlink{class_graphics_game_state_acdf08d6cfd2610be0186047adbda912e}{mouse\+Moved} (const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&arg)
+\begin{DoxyCompactList}\small\item\em Function called when mouse is moved. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,6 +62,30 @@ bool {\bfseries m\+Enable\+Interpolation}
 \mbox{\Hypertarget{class_graphics_game_state_a59e90f7396f9ae5db563c3be4ac89139}\label{class_graphics_game_state_a59e90f7396f9ae5db563c3be4ac89139}} 
 Ogre\+::\+Light $\ast$ {\bfseries m\+Sun\+Light}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file Graphics\+Game\+State.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graphics_game_state_a5a2543a4cdd551c98f4540707bc7213e}\label{class_graphics_game_state_a5a2543a4cdd551c98f4540707bc7213e}} 
+\index{Graphics\+Game\+State@{Graphics\+Game\+State}!update@{update}}
+\index{update@{update}!Graphics\+Game\+State@{Graphics\+Game\+State}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Graphics\+Game\+State\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Since\+Last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Update the Game\+State param time\+Since\+Last Time past since last frame 
+
+Reimplemented from \hyperlink{class_common_1_1_game_state_a38271924996d8c1bbdcbfee6ffe63f95}{Common\+::\+Game\+State}.
+
+
+
+Definition at line 135 of file Graphics\+Game\+State.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

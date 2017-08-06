@@ -21,8 +21,10 @@ Collaboration diagram for Thread\+Manager\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_thread_manager_a7f63f89915ef17f37f741ae29c19682f}\label{class_thread_manager_a7f63f89915ef17f37f741ae29c19682f}} 
-virtual void {\bfseries register\+Thread} (Thread\+Func thread, Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+P\+O\+I\+NT internal\+Thread)
+\mbox{\Hypertarget{class_thread_manager_a613b13ebf45502e4d86c2f9317ec5871}\label{class_thread_manager_a613b13ebf45502e4d86c2f9317ec5871}} 
+\hyperlink{class_thread_manager_a613b13ebf45502e4d86c2f9317ec5871}{Thread\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Simple constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_thread_manager_a7f63f89915ef17f37f741ae29c19682f}{register\+Thread} (Thread\+Func thread, Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+P\+O\+I\+NT internal\+Thread)
 \item 
 \mbox{\Hypertarget{class_thread_manager_afec21d2b814f77ef06221f0529e6e8b4}\label{class_thread_manager_afec21d2b814f77ef06221f0529e6e8b4}} 
 virtual void {\bfseries run} ()
@@ -42,6 +44,37 @@ std\+::vector$<$ std\+::pair$<$ Thread\+Func, Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+
 \mbox{\Hypertarget{class_thread_manager_a8bce7db0b6a5369556a31d906cb30ff1}\label{class_thread_manager_a8bce7db0b6a5369556a31d906cb30ff1}} 
 \hyperlink{struct_thread_data}{Thread\+Data} $\ast$ {\bfseries m\+Thread\+Data}
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_thread_manager_a7f63f89915ef17f37f741ae29c19682f}\label{class_thread_manager_a7f63f89915ef17f37f741ae29c19682f}} 
+\index{Thread\+Manager@{Thread\+Manager}!register\+Thread@{register\+Thread}}
+\index{register\+Thread@{register\+Thread}!Thread\+Manager@{Thread\+Manager}}
+\subsubsection{\texorpdfstring{register\+Thread()}{registerThread()}}
+{\footnotesize\ttfamily void Thread\+Manager\+::register\+Thread (\begin{DoxyParamCaption}\item[{Thread\+Func}]{thread,  }\item[{Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+P\+O\+I\+NT}]{internal\+Thread }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Add thread to list of the threads to run 
+\begin{DoxyParams}{Parameters}
+{\em thread} & Thread function to add \\
+\hline
+{\em internal\+Thread} & Internal thread function to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+To make a thread, create a static function which returns an unsigned long and takes an Ogre\+::\+Thread\+Handle$\ast$ as parameter. Then to get the internal thread, do in the header \+: 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} THREAD\_DEFINE(thread); 
+\end{DoxyCode}
+ Then in the source file 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} THREAD\_DECLARE(thread); 
+\end{DoxyCode}
+ And to call the function \+: 
+\begin{DoxyCode}
+threadManager->registerThread(thread, THREAD\_GET(thread)); 
+\end{DoxyCode}
+ 
+\end{DoxyRemark}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

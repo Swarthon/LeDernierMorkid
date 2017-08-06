@@ -1,6 +1,12 @@
 <map id="LogicGameState" name="LogicGameState">
-<area shape="rect" id="node2" href="$class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="215,80,364,107"/>
-<area shape="rect" id="node3" href="$class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="5,5,173,32"/>
-<area shape="rect" id="node4" href="$class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="197,5,381,32"/>
-<area shape="rect" id="node5" href="$class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="405,5,584,32"/>
+<area shape="rect" id="node2" href="$class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="264,93,413,119"/>
+<area shape="rect" id="node7" href="$class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="612,114,771,141"/>
+<area shape="rect" id="node3" href="$class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="13,42,181,69"/>
+<area shape="rect" id="node4" href="$class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="5,93,189,119"/>
+<area shape="rect" id="node5" href="$class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="8,143,187,170"/>
+<area shape="rect" id="node6" href="$class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) " alt="" coords="932,117,1091,143"/>
+<area shape="rect" id="node9" href="$class_common_1_1_game_entity_manager.html" title="Class managing GameEntity. " alt="" coords="1273,162,1476,189"/>
+<area shape="rect" id="node8" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="239,164,439,205"/>
+<area shape="rect" id="node10" href="$class_collision_terrain.html" title="CollisionTerrain" alt="" coords="955,42,1067,69"/>
+<area shape="rect" id="node11" href="$class_terrain.html" title="Terrain" alt="" coords="660,42,723,69"/>
 </map>

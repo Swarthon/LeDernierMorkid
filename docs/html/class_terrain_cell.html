@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_terrain_cell.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,10 +81,10 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_terrain_cell-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">TerrainCell Class Reference</div>  </div>
@@ -71,12 +94,17 @@ $(function() {
 Inheritance diagram for TerrainCell:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_terrain_cell__inherit__graph.png" border="0" usemap="#_terrain_cell_inherit__map" alt="Inheritance graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for TerrainCell:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_terrain_cell__coll__graph.png" border="0" usemap="#_terrain_cell_coll__map" alt="Collaboration graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<map name="_terrain_cell_coll__map" id="_terrain_cell_coll__map">
+<area shape="rect" id="node3" href="class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="154,95,269,121"/>
+<area shape="rect" id="node4" href="class_terrain.html" title="Terrain" alt="" coords="52,5,115,32"/>
+<area shape="rect" id="node6" href="class_shadow_mapper.html" title="ShadowMapper" alt="" coords="309,5,421,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -109,8 +137,41 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>getWorldTrans
 <tr class="memitem:ae50fc017b6a731a35c4764df52f46628"><td class="memItemLeft" align="right" valign="top"><a id="ae50fc017b6a731a35c4764df52f46628"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>getCastsShadows</b> (void) const</td></tr>
 <tr class="separator:ae50fc017b6a731a35c4764df52f46628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3fc98b2ee05739280e3dec8c4d91e290"><td class="memItemLeft" align="right" valign="top"><a id="a3fc98b2ee05739280e3dec8c4d91e290"></a>
+Ogre::int32&#160;</td><td class="memItemRight" valign="bottom"><b>mGridX</b></td></tr>
+<tr class="separator:a3fc98b2ee05739280e3dec8c4d91e290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac01ed3002ab87b2c6c2c1e5a39ab5d4d"><td class="memItemLeft" align="right" valign="top"><a id="ac01ed3002ab87b2c6c2c1e5a39ab5d4d"></a>
+Ogre::int32&#160;</td><td class="memItemRight" valign="bottom"><b>mGridZ</b></td></tr>
+<tr class="separator:ac01ed3002ab87b2c6c2c1e5a39ab5d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9f1535a3da3c3e1c80d9567681047c"><td class="memItemLeft" align="right" valign="top"><a id="abc9f1535a3da3c3e1c80d9567681047c"></a>
+Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><b>mLodLevel</b></td></tr>
+<tr class="separator:abc9f1535a3da3c3e1c80d9567681047c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fd4b491f1498c0b7361e6d96e4f68b4"><td class="memItemLeft" align="right" valign="top"><a id="a1fd4b491f1498c0b7361e6d96e4f68b4"></a>
+Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><b>mVerticesPerLine</b></td></tr>
+<tr class="separator:a1fd4b491f1498c0b7361e6d96e4f68b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2945051368d39ae7c66c3141512494aa"><td class="memItemLeft" align="right" valign="top"><a id="a2945051368d39ae7c66c3141512494aa"></a>
+Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><b>mSizeX</b></td></tr>
+<tr class="separator:a2945051368d39ae7c66c3141512494aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8d4da89fae46ce6f992b3ac3bdebb3a"><td class="memItemLeft" align="right" valign="top"><a id="af8d4da89fae46ce6f992b3ac3bdebb3a"></a>
+Ogre::uint32&#160;</td><td class="memItemRight" valign="bottom"><b>mSizeZ</b></td></tr>
+<tr class="separator:af8d4da89fae46ce6f992b3ac3bdebb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee45ec139b4e355c80177b69a615273"><td class="memItemLeft" align="right" valign="top"><a id="acee45ec139b4e355c80177b69a615273"></a>
+Ogre::VaoManager *&#160;</td><td class="memItemRight" valign="bottom"><b>mVaoManager</b></td></tr>
+<tr class="separator:acee45ec139b4e355c80177b69a615273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7231f8324675209a60f0bb97628143e5"><td class="memItemLeft" align="right" valign="top"><a id="a7231f8324675209a60f0bb97628143e5"></a>
+<a class="el" href="class_graphics_terrain.html">GraphicsTerrain</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mParentTerrain</b></td></tr>
+<tr class="separator:a7231f8324675209a60f0bb97628143e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6389d57d6de64f4c2bcdc56aa5feccd1"><td class="memItemLeft" align="right" valign="top"><a id="a6389d57d6de64f4c2bcdc56aa5feccd1"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>mUseSkirts</b></td></tr>
+<tr class="separator:a6389d57d6de64f4c2bcdc56aa5feccd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_terrain_cell_8h_source.html#l00010">10</a> of file <a class="el" href="_terrain_cell_8h_source.html">TerrainCell.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a18155abf464d4f6d1f3bf59a21eee301"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a18155abf464d4f6d1f3bf59a21eee301">&#9670;&nbsp;</a></span>merge()</h2>
 
@@ -135,18 +196,25 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>getCastsShado
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>False if couldn't merge, true on success. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_terrain_cell_8cpp_source.html#l00079">79</a> of file <a class="el" href="_terrain_cell_8cpp_source.html">TerrainCell.cpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/louis/projects/LeDernierMorkid/include/Terrain/<a class="el" href="_terrain_cell_8h_source.html">TerrainCell.h</a></li>
-<li>/home/louis/projects/LeDernierMorkid/src/Terrain/TerrainCell.cpp</li>
+<li>/home/louis/projects/LeDernierMorkid/src/Terrain/<a class="el" href="_terrain_cell_8cpp_source.html">TerrainCell.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_terrain_cell.html">TerrainCell</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

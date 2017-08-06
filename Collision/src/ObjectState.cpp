@@ -7,8 +7,8 @@
 namespace Collision {
 	ObjectState::ObjectState(btTransform& initial, Common::GameEntity* gameEntity, const Common::LogicSystem* logicSystem) {
 		mWorldTransform = initial;
-		mGameEntity      = gameEntity;
-		mLogicSystem     = logicSystem;
+		mGameEntity     = gameEntity;
+		mLogicSystem    = logicSystem;
 	}
 	ObjectState::~ObjectState() {
 	}

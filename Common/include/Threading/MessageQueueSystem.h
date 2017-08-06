@@ -10,6 +10,13 @@
 
 namespace Common {
 	namespace Mq {
+
+		/**
+		 * @class MessageQueueSystem
+		 * @brief
+		 *	Class providing system for threads to communicate
+		 * @ingroup Common
+		 */
 		class MessageQueueSystem {
 			static const size_t cSizeOfHeader;
 
@@ -43,7 +50,21 @@ namespace Common {
 			}
 
 		public:
+			/// Simple void destructor
 			virtual ~MessageQueueSystem() {}
+			/**
+			 * Queues message 'msg' to be sent to a destination MessageQueueSystem.
+            		 * This function *must* be called from the thread that owns 'this'
+            		 * The 'dstSystem' may live in any other thread.
+        		 * @param dstSystem
+			 *	The MessageQueueSystem we want to send a message to.
+			 * @param messageId
+			 *	The type of message sended
+	    		 * @param msg
+			 *	The message itself. Structure must be POD.
+			 * @remarks
+			 *	The message is not instantely delivered. It will be sent when flushQueuedMessages gets called.
+	    		 */
 			template <typename T>
 			void queueSendMessage(MessageQueueSystem* dstSystem,
 			                      Mq::MessageId       messageId,
@@ -52,6 +73,11 @@ namespace Common {
 				        mPendingOutgoingMessages[dstSystem], messageId, msg);
 			}
 
+			/**
+			 * Sends all the messages queued via queueSendMessage()
+			 * @remarks
+			 *	Must be called from the thread that owns 'this'
+			 */
 			void flushQueuedMessages(void) {
 				PendingMessageMap::iterator itMap = mPendingOutgoingMessages.begin();
 				PendingMessageMap::iterator enMap = mPendingOutgoingMessages.end();
@@ -72,6 +98,15 @@ namespace Common {
 				}
 			}
 
+			/**
+			 * Sends a message to 'this' base system immediately. Use it only for time critical messages or if the sender thread doesn't own its own MessageQueueSystem class.
+			 * @param messageId
+			 *	The type of message sended
+			 * @param msg
+			 *	The message itself. Structure must be POD.
+			 * @remarks
+			 *	Abusing this function can degrade performance as it would perform frequent locking. See queueSendMessage
+			 */
 			template <typename T>
 			void receiveMessageImmediately(Mq::MessageId messageId, const T& msg) {
 				mMessageQueueMutex.lock();
@@ -80,6 +115,11 @@ namespace Common {
 			}
 
 		protected:
+			/**
+			 * Processes all incoming messages received from other threads.
+        		 * @remarks
+			 *	Should be called from the thread that owns 'this'
+			 */
 			void processIncomingMessages(void) {
 				mMessageQueueMutex.lock();
 				mIncomingMessages[0].swap(mIncomingMessages[1]);
@@ -105,6 +145,15 @@ namespace Common {
 				mIncomingMessages[1].clear();
 			}
 
+			/**
+			 * Method describing the way classes manage the message
+			 * @param messageId
+			 *	The Mq::MessageId of the message, used to know what kind of message it is
+			 * @param data
+			 *	The data sent with the message, could be anything. Depending on the messageId, a conversion will be needed
+			 * @remarks
+			 *	Derived classes must implement this function to process the incoming message
+			 */
 			virtual void processIncomingMessage(Mq::MessageId messageId,
 			                                    const void*   data) = 0;
 		};

@@ -34,6 +34,18 @@ Collaboration diagram for Collision\+:\+:Collision\+Camera\+Controller\+:\nopage
 \item 
 virtual void \hyperlink{class_collision_1_1_collision_camera_controller_ac25037b29b022a2ccf77b16fe0bda670}{update} (float time\+Since\+Last)
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_collision_1_1_collision_camera_controller_a63cbe384f546c982ea24bbe8918a07d4}\label{class_collision_1_1_collision_camera_controller_a63cbe384f546c982ea24bbe8918a07d4}} 
+bt\+Dynamics\+World $\ast$ \hyperlink{class_collision_1_1_collision_camera_controller_a63cbe384f546c982ea24bbe8918a07d4}{m\+World}
+\begin{DoxyCompactList}\small\item\em bt\+Dynamics\+World in which the Camera evolve \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_collision_1_1_collision_camera_controller_a6f4788c90fef7434302dec9d78e2e87c}\label{class_collision_1_1_collision_camera_controller_a6f4788c90fef7434302dec9d78e2e87c}} 
+bt\+Pair\+Caching\+Ghost\+Object $\ast$ \hyperlink{class_collision_1_1_collision_camera_controller_a6f4788c90fef7434302dec9d78e2e87c}{m\+Ghost\+Object}
+\begin{DoxyCompactList}\small\item\em Attribute which provide collision to the Camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_collision_1_1_collision_camera_controller_aeeb0d5cda4e63c73aeda6cf87e5b4b3d}\label{class_collision_1_1_collision_camera_controller_aeeb0d5cda4e63c73aeda6cf87e5b4b3d}} 
+bt\+Kinematic\+Character\+Controller $\ast$ \hyperlink{class_collision_1_1_collision_camera_controller_aeeb0d5cda4e63c73aeda6cf87e5b4b3d}{m\+Character}
+\begin{DoxyCompactList}\small\item\em Kinematic Object used to control m\+Ghost\+Object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -41,6 +53,10 @@ virtual void \hyperlink{class_collision_1_1_collision_camera_controller_ac25037b
 Camera Controller using Collision. 
 
 Camera Controller using bt\+Ghost\+Object and bt\+Kinematic\+Character\+Controller to move the Camera 
+
+Definition at line 15 of file Collision\+Camera\+Controller.\+h.
+
+
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_collision_1_1_collision_camera_controller_ac22915566c34afa0c50400e26dcb667b}\label{class_collision_1_1_collision_camera_controller_ac22915566c34afa0c50400e26dcb667b}} 
@@ -58,6 +74,10 @@ Constructor of \hyperlink{class_collision_1_1_collision_camera_controller}{Colli
 \end{DoxyParams}
 
 
+Definition at line 13 of file Collision\+Camera\+Controller.\+cpp.
+
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_collision_1_1_collision_camera_controller_ac25037b29b022a2ccf77b16fe0bda670}\label{class_collision_1_1_collision_camera_controller_ac25037b29b022a2ccf77b16fe0bda670}} 
 \index{Collision\+::\+Collision\+Camera\+Controller@{Collision\+::\+Collision\+Camera\+Controller}!update@{update}}
@@ -72,7 +92,11 @@ Method called in order to move and rotate the bt\+Ghost\+Object and synchronize 
 \end{DoxyParams}
 
 
-Reimplemented from \hyperlink{class_common_1_1_camera_controller}{Common\+::\+Camera\+Controller}.
+Reimplemented from \hyperlink{class_common_1_1_camera_controller_a5d11cbced7f78eec997b96bb489d0806}{Common\+::\+Camera\+Controller}.
+
+
+
+Definition at line 30 of file Collision\+Camera\+Controller.\+cpp.
 
 
 

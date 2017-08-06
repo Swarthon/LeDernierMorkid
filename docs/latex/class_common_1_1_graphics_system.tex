@@ -2,6 +2,15 @@
 \label{class_common_1_1_graphics_system}\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
 
 
+\hyperlink{class_common_1_1_graphics_system}{Graphics\+System} managing Graphics.  
+
+
+
+
+{\ttfamily \#include $<$Graphics\+System.\+h$>$}
+
+
+
 Inheritance diagram for Common\+:\+:Graphics\+System\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,168 +30,381 @@ Collaboration diagram for Common\+:\+:Graphics\+System\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}\label{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}} 
-{\bfseries Graphics\+System} (\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$game\+State, Ogre\+::\+Colour\+Value background\+Colour=Ogre\+::\+Colour\+Value(0.f, 0.f, 0.f))
+\hyperlink{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}{Graphics\+System} (\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$game\+State, Ogre\+::\+Colour\+Value background\+Colour=Ogre\+::\+Colour\+Value(0.f, 0.f, 0.f))
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}\label{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}} 
-void {\bfseries \+\_\+notify\+Logic\+System} (\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$logic\+System)
+virtual \hyperlink{class_common_1_1_graphics_system_ad866bbb65f4043da5e6cab82d3eeb551}{$\sim$\+Graphics\+System} ()
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}\label{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}} 
-void {\bfseries initialize} (const Ogre\+::\+String \&window\+Title)
+void \hyperlink{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}{\+\_\+notify\+Logic\+System} (\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$logic\+System)
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}\label{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}} 
-void {\bfseries deinitialize} (void)
+void \hyperlink{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}{initialize} (const Ogre\+::\+String \&window\+Title)
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}\label{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}} 
-void {\bfseries update} (float time\+Since\+Last)
+void \hyperlink{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}{deinitialize} (void)
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}\label{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}} 
-void {\bfseries update\+Game\+Entities} (const Game\+Entity\+Vec \&game\+Entities, float weight)
+void \hyperlink{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}{update} (float time\+Since\+Last)
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}\label{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}} 
-virtual void {\bfseries execute} (size\+\_\+t thread\+Id, size\+\_\+t num\+Threads)
+void \hyperlink{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}{update\+Game\+Entities} (const Game\+Entity\+Vec \&game\+Entities, float weight)
+\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}{execute} (size\+\_\+t thread\+Id, size\+\_\+t num\+Threads)
 \item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_af658d1a3d1037affc4bce8a63ea33514}\label{class_common_1_1_graphics_system_af658d1a3d1037affc4bce8a63ea33514}} 
-const Game\+Entity\+Vec \& {\bfseries get\+Game\+Entities} (Ogre\+::\+Scene\+Memory\+Mgr\+Types type) const
-\item 
+const Game\+Entity\+Vec \& \hyperlink{class_common_1_1_graphics_system_af658d1a3d1037affc4bce8a63ea33514}{get\+Game\+Entities} (Ogre\+::\+Scene\+Memory\+Mgr\+Types type) const
+\begin{DoxyCompactList}\small\item\em Get m\+Game\+Entities. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a3996ebbb7e250c04cbf107efafd34984}\label{class_common_1_1_graphics_system_a3996ebbb7e250c04cbf107efafd34984}} 
-\hyperlink{class_common_1_1_sdl_input_handler}{Sdl\+Input\+Handler} $\ast$ {\bfseries get\+Input\+Handler} (void)
-\item 
+\hyperlink{class_common_1_1_sdl_input_handler}{Sdl\+Input\+Handler} $\ast$ \hyperlink{class_common_1_1_graphics_system_a3996ebbb7e250c04cbf107efafd34984}{get\+Input\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em Get m\+Input\+Handler. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_acdbed0670eef23789a3c68e00d88ac4c}\label{class_common_1_1_graphics_system_acdbed0670eef23789a3c68e00d88ac4c}} 
-void {\bfseries set\+Quit} (void)
-\item 
+void \hyperlink{class_common_1_1_graphics_system_acdbed0670eef23789a3c68e00d88ac4c}{set\+Quit} (void)
+\begin{DoxyCompactList}\small\item\em Set m\+Quit. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a216f755133f87e2074a36a556d303e41}\label{class_common_1_1_graphics_system_a216f755133f87e2074a36a556d303e41}} 
-bool {\bfseries get\+Quit} (void) const
-\item 
+bool \hyperlink{class_common_1_1_graphics_system_a216f755133f87e2074a36a556d303e41}{get\+Quit} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Quit. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a4a9abd5c431c9e61b48d4d167f775935}\label{class_common_1_1_graphics_system_a4a9abd5c431c9e61b48d4d167f775935}} 
-float {\bfseries get\+Accum\+Time\+Since\+Last\+Logic\+Frame} (void) const
-\item 
+float \hyperlink{class_common_1_1_graphics_system_a4a9abd5c431c9e61b48d4d167f775935}{get\+Accum\+Time\+Since\+Last\+Logic\+Frame} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Accum\+Time\+Since\+Last\+Logic\+Frame. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a0890b804419adb1857d359810dec34ff}\label{class_common_1_1_graphics_system_a0890b804419adb1857d359810dec34ff}} 
-Ogre\+::\+Root $\ast$ {\bfseries get\+Root} (void) const
-\item 
+Ogre\+::\+Root $\ast$ \hyperlink{class_common_1_1_graphics_system_a0890b804419adb1857d359810dec34ff}{get\+Root} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Root. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a7b330688e6c66c74e23ec57eab54f341}\label{class_common_1_1_graphics_system_a7b330688e6c66c74e23ec57eab54f341}} 
-Ogre\+::\+Render\+Window $\ast$ {\bfseries get\+Render\+Window} (void) const
-\item 
+Ogre\+::\+Render\+Window $\ast$ \hyperlink{class_common_1_1_graphics_system_a7b330688e6c66c74e23ec57eab54f341}{get\+Render\+Window} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Render\+Window. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_aef392cd73eb9571778a0910e9b991cac}\label{class_common_1_1_graphics_system_aef392cd73eb9571778a0910e9b991cac}} 
-Ogre\+::\+Scene\+Manager $\ast$ {\bfseries get\+Scene\+Manager} (void) const
-\item 
+Ogre\+::\+Scene\+Manager $\ast$ \hyperlink{class_common_1_1_graphics_system_aef392cd73eb9571778a0910e9b991cac}{get\+Scene\+Manager} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Scene\+Manager. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a7497c78b142d7dd1461418a75804bc58}\label{class_common_1_1_graphics_system_a7497c78b142d7dd1461418a75804bc58}} 
-Ogre\+::\+Camera $\ast$ {\bfseries get\+Camera} (void) const
-\item 
+Ogre\+::\+Camera $\ast$ \hyperlink{class_common_1_1_graphics_system_a7497c78b142d7dd1461418a75804bc58}{get\+Camera} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Camera. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a24280225a9fd08efd4ac9100c7de07c0}\label{class_common_1_1_graphics_system_a24280225a9fd08efd4ac9100c7de07c0}} 
-Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries get\+Compositor\+Workspace} (void) const
-\item 
+Ogre\+::\+Compositor\+Workspace $\ast$ \hyperlink{class_common_1_1_graphics_system_a24280225a9fd08efd4ac9100c7de07c0}{get\+Compositor\+Workspace} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Workspace. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_aab69bdc895c97c506caab1fa828b575a}\label{class_common_1_1_graphics_system_aab69bdc895c97c506caab1fa828b575a}} 
-virtual void {\bfseries stop\+Compositor} (void)
-\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_aab69bdc895c97c506caab1fa828b575a}{stop\+Compositor} (void)
+\begin{DoxyCompactList}\small\item\em Stop the Compositor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_aa7a5a6ce9e1da97940f5af5785bb4a8a}\label{class_common_1_1_graphics_system_aa7a5a6ce9e1da97940f5af5785bb4a8a}} 
-virtual void {\bfseries restart\+Compositor} (void)
-\end{DoxyCompactItemize}
+virtual void \hyperlink{class_common_1_1_graphics_system_aa7a5a6ce9e1da97940f5af5785bb4a8a}{restart\+Compositor} (void)
+\begin{DoxyCompactList}\small\item\em Restart the Compositor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a0fd3f9ba43027f8dcebeda885302e564}\label{class_common_1_1_graphics_system_a0fd3f9ba43027f8dcebeda885302e564}} 
-\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$ {\bfseries m\+Logic\+System}
-\end{DoxyCompactItemize}
+\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$ \hyperlink{class_common_1_1_graphics_system_a0fd3f9ba43027f8dcebeda885302e564}{m\+Logic\+System}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_logic_system}{Logic\+System} to which communicate. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}\label{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}} 
-void {\bfseries handle\+Window\+Event} (const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&evt)
+void \hyperlink{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}{handle\+Window\+Event} (const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&evt)
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}\label{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}} 
-virtual void {\bfseries process\+Incoming\+Message} (Mq\+::\+Message\+Id message\+Id, const void $\ast$data)
+virtual void \hyperlink{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}{process\+Incoming\+Message} (\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id} message\+Id, const void $\ast$data)
 \item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a6ca699c2cd358f6101d7c00f605a515a}\label{class_common_1_1_graphics_system_a6ca699c2cd358f6101d7c00f605a515a}} 
-virtual void {\bfseries setup\+Resources} (void)
-\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_a6ca699c2cd358f6101d7c00f605a515a}{setup\+Resources} (void)
+\begin{DoxyCompactList}\small\item\em Method to add resources location from the config file. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a17ad5ae3ca1efd63f7436d977e7f2657}\label{class_common_1_1_graphics_system_a17ad5ae3ca1efd63f7436d977e7f2657}} 
-virtual void {\bfseries register\+Hlms} (void)
-\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_a17ad5ae3ca1efd63f7436d977e7f2657}{register\+Hlms} (void)
+\begin{DoxyCompactList}\small\item\em Method to register hlms resources. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_ab91bf390248b3098db3b739e066092b1}\label{class_common_1_1_graphics_system_ab91bf390248b3098db3b739e066092b1}} 
-virtual void {\bfseries load\+Resources} (void)
-\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_ab91bf390248b3098db3b739e066092b1}{load\+Resources} (void)
+\begin{DoxyCompactList}\small\item\em Method to load the resources. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a6fc846f42d2011cfdeb465aa9ef44b20}\label{class_common_1_1_graphics_system_a6fc846f42d2011cfdeb465aa9ef44b20}} 
-virtual void {\bfseries choose\+Scene\+Manager} (void)
-\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_a6fc846f42d2011cfdeb465aa9ef44b20}{choose\+Scene\+Manager} (void)
+\begin{DoxyCompactList}\small\item\em Method initializing the Scene\+Manager. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a84373ea7cef6f794831d98ef60227abb}\label{class_common_1_1_graphics_system_a84373ea7cef6f794831d98ef60227abb}} 
-virtual void {\bfseries create\+Camera} (void)
-\item 
+virtual void \hyperlink{class_common_1_1_graphics_system_a84373ea7cef6f794831d98ef60227abb}{create\+Camera} (void)
+\begin{DoxyCompactList}\small\item\em Method to create the Camera. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a36c3548e669676eb5ad328d947454e81}\label{class_common_1_1_graphics_system_a36c3548e669676eb5ad328d947454e81}} 
-virtual Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries setup\+Compositor} (void)
-\item 
+virtual Ogre\+::\+Compositor\+Workspace $\ast$ \hyperlink{class_common_1_1_graphics_system_a36c3548e669676eb5ad328d947454e81}{setup\+Compositor} (void)
+\begin{DoxyCompactList}\small\item\em Method setting up the Compositor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a0c9ba8a9470920fe8dd3d19ad85698e0}\label{class_common_1_1_graphics_system_a0c9ba8a9470920fe8dd3d19ad85698e0}} 
-virtual void {\bfseries create\+Resource\+Listener} (void)
+virtual void \hyperlink{class_common_1_1_graphics_system_a0c9ba8a9470920fe8dd3d19ad85698e0}{create\+Resource\+Listener} (void)
+\begin{DoxyCompactList}\small\item\em Method to create the resource listener. \end{DoxyCompactList}\item 
+void \hyperlink{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}{game\+Entity\+Added} (const \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Game\+Entity\+Manager\+::\+Created\+Game\+Entity} $\ast$created\+Game\+Entity)
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}\label{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}} 
-void {\bfseries game\+Entity\+Added} (const \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Game\+Entity\+Manager\+::\+Created\+Game\+Entity} $\ast$created\+Game\+Entity)
-\item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}\label{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}} 
-void {\bfseries game\+Entity\+Removed} (\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$to\+Remove)
+void \hyperlink{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}{game\+Entity\+Removed} (\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$to\+Remove)
 \end{DoxyCompactItemize}
 \subsection*{Static Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}\label{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}} 
-static void {\bfseries add\+Resource\+Location} (const Ogre\+::\+String \&arch\+Name, const Ogre\+::\+String \&type\+Name, const Ogre\+::\+String \&sec\+Name)
+static void \hyperlink{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}{add\+Resource\+Location} (const Ogre\+::\+String \&arch\+Name, const Ogre\+::\+String \&type\+Name, const Ogre\+::\+String \&sec\+Name)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a92bb62174a5eb357a6765c31891649b5}\label{class_common_1_1_graphics_system_a92bb62174a5eb357a6765c31891649b5}} 
-S\+D\+L\+\_\+\+Window $\ast$ {\bfseries m\+Sdl\+Window}
-\item 
+S\+D\+L\+\_\+\+Window $\ast$ \hyperlink{class_common_1_1_graphics_system_a92bb62174a5eb357a6765c31891649b5}{m\+Sdl\+Window}
+\begin{DoxyCompactList}\small\item\em Window of the program. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a9ddbb67b87143d1c124e55a96d875150}\label{class_common_1_1_graphics_system_a9ddbb67b87143d1c124e55a96d875150}} 
-\hyperlink{class_common_1_1_sdl_input_handler}{Sdl\+Input\+Handler} $\ast$ {\bfseries m\+Input\+Handler}
-\item 
+\hyperlink{class_common_1_1_sdl_input_handler}{Sdl\+Input\+Handler} $\ast$ \hyperlink{class_common_1_1_graphics_system_a9ddbb67b87143d1c124e55a96d875150}{m\+Input\+Handler}
+\begin{DoxyCompactList}\small\item\em Handler managing input. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_adf9abc6e0d78256c7b8d2b16c01a6b98}\label{class_common_1_1_graphics_system_adf9abc6e0d78256c7b8d2b16c01a6b98}} 
-Ogre\+::\+Root $\ast$ {\bfseries m\+Root}
-\item 
+Ogre\+::\+Root $\ast$ \hyperlink{class_common_1_1_graphics_system_adf9abc6e0d78256c7b8d2b16c01a6b98}{m\+Root}
+\begin{DoxyCompactList}\small\item\em Root of Ogre stuff. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a14a142b2ccd792b6b50b9240b8b03bcd}\label{class_common_1_1_graphics_system_a14a142b2ccd792b6b50b9240b8b03bcd}} 
-Ogre\+::\+Render\+Window $\ast$ {\bfseries m\+Render\+Window}
-\item 
+Ogre\+::\+Render\+Window $\ast$ \hyperlink{class_common_1_1_graphics_system_a14a142b2ccd792b6b50b9240b8b03bcd}{m\+Render\+Window}
+\begin{DoxyCompactList}\small\item\em Window in which are rendered the graphics. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a6510b0288e263ca79514eccbc80e52d2}\label{class_common_1_1_graphics_system_a6510b0288e263ca79514eccbc80e52d2}} 
-Ogre\+::\+Scene\+Manager $\ast$ {\bfseries m\+Scene\+Manager}
-\item 
+Ogre\+::\+Scene\+Manager $\ast$ \hyperlink{class_common_1_1_graphics_system_a6510b0288e263ca79514eccbc80e52d2}{m\+Scene\+Manager}
+\begin{DoxyCompactList}\small\item\em Scene\+Manager to manage graphics. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_ac8f3870f3218f13e7883262d9db2ba0d}\label{class_common_1_1_graphics_system_ac8f3870f3218f13e7883262d9db2ba0d}} 
-Ogre\+::\+Camera $\ast$ {\bfseries m\+Camera}
-\item 
+Ogre\+::\+Camera $\ast$ \hyperlink{class_common_1_1_graphics_system_ac8f3870f3218f13e7883262d9db2ba0d}{m\+Camera}
+\begin{DoxyCompactList}\small\item\em Main Camera. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a5a80c19583bedfc79a0366d0d94be657}\label{class_common_1_1_graphics_system_a5a80c19583bedfc79a0366d0d94be657}} 
-Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries m\+Workspace}
-\item 
+Ogre\+::\+Compositor\+Workspace $\ast$ \hyperlink{class_common_1_1_graphics_system_a5a80c19583bedfc79a0366d0d94be657}{m\+Workspace}
+\begin{DoxyCompactList}\small\item\em Main Compositor\+Workspace. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_ad9d14ea53f9f8ddfd3025c58665c469c}\label{class_common_1_1_graphics_system_ad9d14ea53f9f8ddfd3025c58665c469c}} 
-Ogre\+::\+String {\bfseries m\+Plugins\+Path}
-\item 
+Ogre\+::\+String \hyperlink{class_common_1_1_graphics_system_ad9d14ea53f9f8ddfd3025c58665c469c}{m\+Plugins\+Path}
+\begin{DoxyCompactList}\small\item\em Path where the plugins are. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_acf0f1cb58173eca575b63dbea1010415}\label{class_common_1_1_graphics_system_acf0f1cb58173eca575b63dbea1010415}} 
-Ogre\+::\+String {\bfseries m\+Write\+Access\+Folder}
-\item 
+Ogre\+::\+String \hyperlink{class_common_1_1_graphics_system_acf0f1cb58173eca575b63dbea1010415}{m\+Write\+Access\+Folder}
+\begin{DoxyCompactList}\small\item\em Path to somewhere program can write. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_ad6c40d2244340da36c0a7853dc891196}\label{class_common_1_1_graphics_system_ad6c40d2244340da36c0a7853dc891196}} 
-Ogre\+::\+String {\bfseries m\+Resource\+Path}
-\item 
+Ogre\+::\+String \hyperlink{class_common_1_1_graphics_system_ad6c40d2244340da36c0a7853dc891196}{m\+Resource\+Path}
+\begin{DoxyCompactList}\small\item\em Path where the resource are. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a94edce8cb6c70b67a66ea65a4c989fce}\label{class_common_1_1_graphics_system_a94edce8cb6c70b67a66ea65a4c989fce}} 
-\hyperlink{class_common_1_1_static_plugin_loader}{Static\+Plugin\+Loader} {\bfseries m\+Static\+Plugin\+Loader}
-\item 
+\hyperlink{class_common_1_1_static_plugin_loader}{Static\+Plugin\+Loader} \hyperlink{class_common_1_1_graphics_system_a94edce8cb6c70b67a66ea65a4c989fce}{m\+Static\+Plugin\+Loader}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_static_plugin_loader}{Static\+Plugin\+Loader}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_ad8f0298ee17a2331e0e6406e16e6cd23}\label{class_common_1_1_graphics_system_ad8f0298ee17a2331e0e6406e16e6cd23}} 
-float {\bfseries m\+Accum\+Time\+Since\+Last\+Logic\+Frame}
-\item 
+float \hyperlink{class_common_1_1_graphics_system_ad8f0298ee17a2331e0e6406e16e6cd23}{m\+Accum\+Time\+Since\+Last\+Logic\+Frame}
+\begin{DoxyCompactList}\small\item\em Total time since the last logic frame. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a2a3acd30c5c38530b9b07f0b3a2dbce5}\label{class_common_1_1_graphics_system_a2a3acd30c5c38530b9b07f0b3a2dbce5}} 
-Ogre\+::uint32 {\bfseries m\+Current\+Transform\+Idx}
-\item 
+Ogre\+::uint32 \hyperlink{class_common_1_1_graphics_system_a2a3acd30c5c38530b9b07f0b3a2dbce5}{m\+Current\+Transform\+Idx}
+\begin{DoxyCompactList}\small\item\em Current transform Id. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a39c347647fabbfb8d86a8e7fc55825bd}\label{class_common_1_1_graphics_system_a39c347647fabbfb8d86a8e7fc55825bd}} 
-Game\+Entity\+Vec {\bfseries m\+Game\+Entities} \mbox{[}Ogre\+::\+N\+U\+M\+\_\+\+S\+C\+E\+N\+E\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+T\+Y\+P\+ES\mbox{]}
-\item 
+Game\+Entity\+Vec \hyperlink{class_common_1_1_graphics_system_a39c347647fabbfb8d86a8e7fc55825bd}{m\+Game\+Entities} \mbox{[}Ogre\+::\+N\+U\+M\+\_\+\+S\+C\+E\+N\+E\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+T\+Y\+P\+ES\mbox{]}
+\begin{DoxyCompactList}\small\item\em List of \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_adaf0d898cd16130084bdf36220f6111b}\label{class_common_1_1_graphics_system_adaf0d898cd16130084bdf36220f6111b}} 
-Game\+Entity\+Vec const  $\ast$ {\bfseries m\+Thread\+Game\+Entity\+To\+Update}
-\item 
+Game\+Entity\+Vec const  $\ast$ \hyperlink{class_common_1_1_graphics_system_adaf0d898cd16130084bdf36220f6111b}{m\+Thread\+Game\+Entity\+To\+Update}
+\begin{DoxyCompactList}\small\item\em List of \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} to update. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a41e916be28a4d889337a4c8c0868b3ed}\label{class_common_1_1_graphics_system_a41e916be28a4d889337a4c8c0868b3ed}} 
-float {\bfseries m\+Thread\+Weight}
-\item 
+float \hyperlink{class_common_1_1_graphics_system_a41e916be28a4d889337a4c8c0868b3ed}{m\+Thread\+Weight}
+\begin{DoxyCompactList}\small\item\em Number of threads running simultaneously. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a141239a20891b1a980e319a89420f2b0}\label{class_common_1_1_graphics_system_a141239a20891b1a980e319a89420f2b0}} 
-bool {\bfseries m\+Quit}
-\item 
+bool \hyperlink{class_common_1_1_graphics_system_a141239a20891b1a980e319a89420f2b0}{m\+Quit}
+\begin{DoxyCompactList}\small\item\em When true, the gameloop will stop. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_graphics_system_a64e431c0b8b4a8913e488a845afdc48d}\label{class_common_1_1_graphics_system_a64e431c0b8b4a8913e488a845afdc48d}} 
-Ogre\+::\+Colour\+Value {\bfseries m\+Background\+Colour}
-\end{DoxyCompactItemize}
+Ogre\+::\+Colour\+Value \hyperlink{class_common_1_1_graphics_system_a64e431c0b8b4a8913e488a845afdc48d}{m\+Background\+Colour}
+\begin{DoxyCompactList}\small\item\em Background colour of the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_common_1_1_graphics_system}{Graphics\+System} managing Graphics. 
+
+Definition at line 24 of file Graphics\+System.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}\label{class_common_1_1_graphics_system_a640e8520e276805c15f12d340a7b6090}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!Graphics\+System@{Graphics\+System}}
+\index{Graphics\+System@{Graphics\+System}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{Graphics\+System()}{GraphicsSystem()}}
+{\footnotesize\ttfamily Common\+::\+Graphics\+System\+::\+Graphics\+System (\begin{DoxyParamCaption}\item[{\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$}]{game\+State,  }\item[{Ogre\+::\+Colour\+Value}]{background\+Colour = {\ttfamily Ogre\+:\+:ColourValue(0.f,~0.f,~0.f)} }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em game\+State} & \hyperlink{class_common_1_1_game_state}{Game\+State} to which transmit the events \\
+\hline
+{\em background\+Colour} & Background colour of the scene \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad866bbb65f4043da5e6cab82d3eeb551}\label{class_common_1_1_graphics_system_ad866bbb65f4043da5e6cab82d3eeb551}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!````~Graphics\+System@{$\sim$\+Graphics\+System}}
+\index{````~Graphics\+System@{$\sim$\+Graphics\+System}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{$\sim$\+Graphics\+System()}{~GraphicsSystem()}}
+{\footnotesize\ttfamily Common\+::\+Graphics\+System\+::$\sim$\+Graphics\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Destructor \begin{DoxyRemark}{Remarks}
+Do not forget to call deinitialize before calling the destructor 
+\end{DoxyRemark}
+
+
+Definition at line 48 of file Graphics\+System.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}\label{class_common_1_1_graphics_system_a1bbb04c3ab640d4753f852d17a419df0}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!\+\_\+notify\+Logic\+System@{\+\_\+notify\+Logic\+System}}
+\index{\+\_\+notify\+Logic\+System@{\+\_\+notify\+Logic\+System}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{\+\_\+notify\+Logic\+System()}{\_notifyLogicSystem()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::\+\_\+notify\+Logic\+System (\begin{DoxyParamCaption}\item[{\hyperlink{class_common_1_1_base_system}{Base\+System} $\ast$}]{logic\+System }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the \hyperlink{class_common_1_1_logic_system}{Logic\+System} to which send the notifications 
+\begin{DoxyParams}{Parameters}
+{\em logic\+System} & \hyperlink{class_common_1_1_logic_system}{Logic\+System} to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 158 of file Graphics\+System.\+h.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}\label{class_common_1_1_graphics_system_a25c1257066ca90c4c6d9cf0dc1fa2bfb}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!add\+Resource\+Location@{add\+Resource\+Location}}
+\index{add\+Resource\+Location@{add\+Resource\+Location}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{add\+Resource\+Location()}{addResourceLocation()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::add\+Resource\+Location (\begin{DoxyParamCaption}\item[{const Ogre\+::\+String \&}]{arch\+Name,  }\item[{const Ogre\+::\+String \&}]{type\+Name,  }\item[{const Ogre\+::\+String \&}]{sec\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+Method to add a resource location to for a given resource group. 
+\begin{DoxyParams}{Parameters}
+{\em arch\+Name} & The name of the resource location; probably a directory, zip file, U\+RL etc. \\
+\hline
+{\em type\+Name} & The codename for the resource type, which must correspond to the Archive factory which is providing the implementation. \\
+\hline
+{\em sec\+Name} & The name of the resource group for which this location is to apply. Resource\+Group\+Manager\+::\+D\+E\+F\+A\+U\+L\+T\+\_\+\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+G\+R\+O\+U\+P\+\_\+\+N\+A\+ME is the default group which always exists, and can be used for resources which are unlikely to be unloaded until application shutdown. Otherwise it must be the name of a group; if it has not already been created with create\+Resource\+Group then it is created automatically. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+This method only call Ogre\+::\+Resource\+Group\+Manager\+::get\+Singleton().add\+Resource\+Location 
+\end{DoxyRemark}
+
+
+Definition at line 269 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}\label{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!deinitialize@{deinitialize}}
+\index{deinitialize@{deinitialize}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{deinitialize()}{deinitialize()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::deinitialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deinitialize the system 
+
+Reimplemented from \hyperlink{class_common_1_1_base_system_a081f0d3daaff552efe736e6096d329e9}{Common\+::\+Base\+System}.
+
+
+
+Definition at line 172 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}\label{class_common_1_1_graphics_system_af262817d8290de7fe06e88e424bd5588}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!execute@{execute}}
+\index{execute@{execute}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::execute (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{thread\+Id,  }\item[{size\+\_\+t}]{num\+Threads }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Overload Ogre\+::\+Uniform\+Scalable\+Task \begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}{update\+Game\+Entities} 
+\end{DoxySeeAlso}
+
+
+Definition at line 500 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}\label{class_common_1_1_graphics_system_aaaac50f8c51dad1746ef48aaf87cad8d}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!game\+Entity\+Added@{game\+Entity\+Added}}
+\index{game\+Entity\+Added@{game\+Entity\+Added}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{game\+Entity\+Added()}{gameEntityAdded()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::game\+Entity\+Added (\begin{DoxyParamCaption}\item[{const \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Game\+Entity\+Manager\+::\+Created\+Game\+Entity} $\ast$}]{created\+Game\+Entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Method called when an entity is added 
+\begin{DoxyParams}{Parameters}
+{\em created\+Game\+Entity} & The \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} which has been created and need to be registered \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 431 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}\label{class_common_1_1_graphics_system_ad10ea4363b7d49f6a43bee937b031559}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!game\+Entity\+Removed@{game\+Entity\+Removed}}
+\index{game\+Entity\+Removed@{game\+Entity\+Removed}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{game\+Entity\+Removed()}{gameEntityRemoved()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::game\+Entity\+Removed (\begin{DoxyParamCaption}\item[{\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$}]{to\+Remove }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Method called when an entity need to be remove 
+\begin{DoxyParams}{Parameters}
+{\em to\+Remove} & The \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} which need to be removed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 473 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}\label{class_common_1_1_graphics_system_a16f86321da0331beaa393b9e1bbd48bd}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!handle\+Window\+Event@{handle\+Window\+Event}}
+\index{handle\+Window\+Event@{handle\+Window\+Event}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{handle\+Window\+Event()}{handleWindowEvent()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::handle\+Window\+Event (\begin{DoxyParamCaption}\item[{const \hyperlink{union_s_d_l___event}{S\+D\+L\+\_\+\+Event} \&}]{evt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Apply transmitted window event 
+\begin{DoxyParams}{Parameters}
+{\em evt} & Event containing window event to apply \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 213 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}\label{class_common_1_1_graphics_system_ad6aec10b001fbfc10cd86cd009615745}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!initialize@{initialize}}
+\index{initialize@{initialize}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::initialize (\begin{DoxyParamCaption}\item[{const Ogre\+::\+String \&}]{window\+Title }\end{DoxyParamCaption})}
+
+Initialize the system 
+\begin{DoxyParams}{Parameters}
+{\em window\+Title} & Title of the window which will be created \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}\label{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!process\+Incoming\+Message@{process\+Incoming\+Message}}
+\index{process\+Incoming\+Message@{process\+Incoming\+Message}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{process\+Incoming\+Message()}{processIncomingMessage()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::process\+Incoming\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id}}]{message\+Id,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Process received messages 
+\begin{DoxyParams}{Parameters}
+{\em message\+Id} & The Mq\+::\+Message\+Id of the message, used to know what kind of message it is \\
+\hline
+{\em data} & The data sent with the message, could be anything. Depending on the message\+Id, a conversion will be needed \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}{Common\+::\+Mq\+::\+Message\+Queue\+System\+::process\+Incoming\+Message} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \hyperlink{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}{Common\+::\+Base\+System}.
+
+
+
+Definition at line 235 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}\label{class_common_1_1_graphics_system_ab2c01af1a20132c37964f34f7dfb645c}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!update@{update}}
+\index{update@{update}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Since\+Last }\end{DoxyParamCaption})}
+
+Update the system. To call every frame 
+\begin{DoxyParams}{Parameters}
+{\em time\+Since\+Last} & Time past since last frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 191 of file Graphics\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}\label{class_common_1_1_graphics_system_a9cabbf2ae25610cfa006d45a95f77d6a}} 
+\index{Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}!update\+Game\+Entities@{update\+Game\+Entities}}
+\index{update\+Game\+Entities@{update\+Game\+Entities}!Common\+::\+Graphics\+System@{Common\+::\+Graphics\+System}}
+\subsubsection{\texorpdfstring{update\+Game\+Entities()}{updateGameEntities()}}
+{\footnotesize\ttfamily void Common\+::\+Graphics\+System\+::update\+Game\+Entities (\begin{DoxyParamCaption}\item[{const Game\+Entity\+Vec \&}]{game\+Entities,  }\item[{float}]{weight }\end{DoxyParamCaption})}
+
+Updates the Scene\+Nodes of all the game entities in the container, interpolating them according to weight, reading the transforms from m\+Current\+Transform\+Idx and m\+Current\+Transform\+Idx-\/1. 
+\begin{DoxyParams}{Parameters}
+{\em game\+Entities} & The container with entities to update. \\
+\hline
+{\em weight} & The interpolation weight, ideally in range \mbox{[}0; 1\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 493 of file Graphics\+System.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,0 +1,147 @@
+\hypertarget{class_common_1_1_thread_manager}{}\section{Common\+:\+:Thread\+Manager Class Reference}
+\label{class_common_1_1_thread_manager}\index{Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}}
+
+
+Class to manage threads (register and run them)  
+
+
+
+
+{\ttfamily \#include $<$Thread\+Manager.\+h$>$}
+
+
+
+Inheritance diagram for Common\+:\+:Thread\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_common_1_1_thread_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Common\+:\+:Thread\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_common_1_1_thread_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_thread_manager_a7179821ef1420e23e7f87a5f62cd443a}\label{class_common_1_1_thread_manager_a7179821ef1420e23e7f87a5f62cd443a}} 
+\hyperlink{class_common_1_1_thread_manager_a7179821ef1420e23e7f87a5f62cd443a}{Thread\+Manager} ()
+\begin{DoxyCompactList}\small\item\em Simple constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_common_1_1_thread_manager_a79a947a3ff5c8a34e51cc41007832aeb}{register\+Thread} (Thread\+Func thread, Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+P\+O\+I\+NT internal\+Thread)
+\item 
+virtual void \hyperlink{class_common_1_1_thread_manager_adeceb4a130b2a8987e724dfda0efccbb}{run} ()
+\item 
+\mbox{\Hypertarget{class_common_1_1_thread_manager_aed92881e192cdfb4ab3d28c465f3a900}\label{class_common_1_1_thread_manager_aed92881e192cdfb4ab3d28c465f3a900}} 
+virtual void \hyperlink{class_common_1_1_thread_manager_aed92881e192cdfb4ab3d28c465f3a900}{set\+Thread\+Data} (\hyperlink{struct_common_1_1_thread_data}{Thread\+Data} $\ast$thread\+Data)
+\begin{DoxyCompactList}\small\item\em Set m\+Thread\+Data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_thread_manager_aaad49e99ae379d164451cb3cbae002eb}\label{class_common_1_1_thread_manager_aaad49e99ae379d164451cb3cbae002eb}} 
+virtual \hyperlink{struct_common_1_1_thread_data}{Thread\+Data} $\ast$ \hyperlink{class_common_1_1_thread_manager_aaad49e99ae379d164451cb3cbae002eb}{get\+Thread\+Data} ()
+\begin{DoxyCompactList}\small\item\em Get m\+Thread\+Data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ Thread\+Func, Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+P\+O\+I\+NT $>$ $>$ \hyperlink{class_common_1_1_thread_manager_a92ea3cda744e1e89df5b27111caed238}{m\+Registered\+Threads}
+\item 
+\hyperlink{struct_common_1_1_thread_data}{Thread\+Data} $\ast$ \hyperlink{class_common_1_1_thread_manager_a2a3cc720d802c7270f36bbb69fc19a98}{m\+Thread\+Data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to manage threads (register and run them) 
+
+Definition at line 40 of file Thread\+Manager.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_common_1_1_thread_manager_a79a947a3ff5c8a34e51cc41007832aeb}\label{class_common_1_1_thread_manager_a79a947a3ff5c8a34e51cc41007832aeb}} 
+\index{Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}!register\+Thread@{register\+Thread}}
+\index{register\+Thread@{register\+Thread}!Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}}
+\subsubsection{\texorpdfstring{register\+Thread()}{registerThread()}}
+{\footnotesize\ttfamily void Common\+::\+Thread\+Manager\+::register\+Thread (\begin{DoxyParamCaption}\item[{Thread\+Func}]{thread,  }\item[{Ogre\+::\+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+P\+O\+I\+NT}]{internal\+Thread }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Add thread to list of the threads to run 
+\begin{DoxyParams}{Parameters}
+{\em thread} & Thread function to add \\
+\hline
+{\em internal\+Thread} & Internal thread function to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+To make a thread, create a static function which returns an unsigned long and takes an Ogre\+::\+Thread\+Handle$\ast$ as parameter. Then to get the internal thread, do in the header \+: 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} THREAD\_DEFINE(thread);
+\end{DoxyCode}
+ Then in the source file 
+\begin{DoxyCode}
+\textcolor{keyword}{extern} THREAD\_DECLARE(thread);
+\end{DoxyCode}
+ And call the function \+: 
+\begin{DoxyCode}
+threadManager->registerThread(thread, THREAD\_GET(thread));
+\end{DoxyCode}
+ 
+\end{DoxyRemark}
+
+
+Definition at line 9 of file Thread\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_thread_manager_adeceb4a130b2a8987e724dfda0efccbb}\label{class_common_1_1_thread_manager_adeceb4a130b2a8987e724dfda0efccbb}} 
+\index{Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}!run@{run}}
+\index{run@{run}!Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Common\+::\+Thread\+Manager\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Run all the registered threads 
+\begin{DoxyExceptions}{Exceptions}
+{\em Asserts} & can be thrown if m\+Thread\+Data is not defined or if there isn\textquotesingle{}t any thread in m\+Registered\+Threads \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_thread_manager_a79a947a3ff5c8a34e51cc41007832aeb}{register\+Thread}, \hyperlink{struct_common_1_1_thread_data}{Thread\+Data} 
+\end{DoxySeeAlso}
+
+
+Definition at line 13 of file Thread\+Manager.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_common_1_1_thread_manager_a92ea3cda744e1e89df5b27111caed238}\label{class_common_1_1_thread_manager_a92ea3cda744e1e89df5b27111caed238}} 
+\index{Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}!m\+Registered\+Threads@{m\+Registered\+Threads}}
+\index{m\+Registered\+Threads@{m\+Registered\+Threads}!Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}}
+\subsubsection{\texorpdfstring{m\+Registered\+Threads}{mRegisteredThreads}}
+{\footnotesize\ttfamily Common\+::\+Thread\+Manager\+::m\+Registered\+Threads\hspace{0.3cm}{\ttfamily [protected]}}
+
+Registered threads \begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_thread_manager_a79a947a3ff5c8a34e51cc41007832aeb}{register\+Thread} 
+\end{DoxySeeAlso}
+
+
+Definition at line 87 of file Thread\+Manager.\+h.
+
+\mbox{\Hypertarget{class_common_1_1_thread_manager_a2a3cc720d802c7270f36bbb69fc19a98}\label{class_common_1_1_thread_manager_a2a3cc720d802c7270f36bbb69fc19a98}} 
+\index{Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}!m\+Thread\+Data@{m\+Thread\+Data}}
+\index{m\+Thread\+Data@{m\+Thread\+Data}!Common\+::\+Thread\+Manager@{Common\+::\+Thread\+Manager}}
+\subsubsection{\texorpdfstring{m\+Thread\+Data}{mThreadData}}
+{\footnotesize\ttfamily Common\+::\+Thread\+Manager\+::m\+Thread\+Data\hspace{0.3cm}{\ttfamily [protected]}}
+
+Data shared between threads \begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_thread_manager_aed92881e192cdfb4ab3d28c465f3a900}{set\+Thread\+Data}, \hyperlink{class_common_1_1_thread_manager_aaad49e99ae379d164451cb3cbae002eb}{get\+Thread\+Data} 
+\end{DoxySeeAlso}
+
+
+Definition at line 95 of file Thread\+Manager.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/include/\+Threading/Thread\+Manager.\+h\item 
+/home/louis/projects/\+Le\+Dernier\+Morkid/\+Common/src/\+Threading/Thread\+Manager.\+cpp\end{DoxyCompactItemize}

@@ -44,16 +44,33 @@ namespace Ogre {
 }
 
 namespace Common {
+
+	/**
+	 * @class StaticPluginLoader
+	 * @brief
+	 *	Utility class to load plugins statically
+	 * @remarks
+	 *	This class is only useful if you want to use the Metal Rendersystem
+	 * @ingroup Common
+	 */
 	class StaticPluginLoader {
 #ifdef OGRE_STATIC_LIB
 #ifdef OGRE_BUILD_RENDERSYSTEM_METAL
+		/// The MetalPlugin, only activated with the Metal Rendersystem
 		Ogre::MetalPlugin* mMetalPlugin;
 #endif
 #endif
 	public:
+		/// Simple Constructor
 		StaticPluginLoader();
+		/// Simple Destructor
 		~StaticPluginLoader();
 
+		/**
+		 * Method which install Metal plugin depending on your Ogre configuration
+		 * @param root
+		 *	The Ogre::Root who will install the plugin
+		 */
 		void install(Ogre::Root* root);
 	};
 }

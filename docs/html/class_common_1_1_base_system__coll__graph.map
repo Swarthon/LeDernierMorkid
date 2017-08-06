@@ -1,7 +1,7 @@
 <map id="Common::BaseSystem" name="Common::BaseSystem">
-<area shape="rect" id="node2" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="5,81,205,123"/>
-<area shape="rect" id="node3" href="$class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="229,89,379,115"/>
-<area shape="rect" id="node4" href="$class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="20,5,188,32"/>
-<area shape="rect" id="node5" href="$class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="212,5,396,32"/>
-<area shape="rect" id="node6" href="$class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="420,5,599,32"/>
+<area shape="rect" id="node2" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="5,81,205,123"/>
+<area shape="rect" id="node3" href="$class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="229,89,379,115"/>
+<area shape="rect" id="node4" href="$class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="20,5,188,32"/>
+<area shape="rect" id="node5" href="$class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="212,5,396,32"/>
+<area shape="rect" id="node6" href="$class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="420,5,599,32"/>
 </map>

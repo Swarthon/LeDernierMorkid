@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_common_1_1_yield_timer.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,38 +81,159 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Common</b></li><li class="navelem"><a class="el" href="class_common_1_1_yield_timer.html">YieldTimer</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_common_1_1_yield_timer-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Common::YieldTimer Class Reference</div>  </div>
+<div class="title">Common::YieldTimer Class Reference<div class="ingroups"><a class="el" href="group___common.html">Common</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Timer using an external timer to wait until frameTime + startTime = timer time.  
+ <a href="class_common_1_1_yield_timer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_yield_timer_8h_source.html">YieldTimer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4d1c12e6e3f5e825d796286f0c1e2345"><td class="memItemLeft" align="right" valign="top"><a id="a4d1c12e6e3f5e825d796286f0c1e2345"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>YieldTimer</b> (Ogre::Timer *externalTimer)</td></tr>
+<tr class="memitem:a4d1c12e6e3f5e825d796286f0c1e2345"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_yield_timer.html#a4d1c12e6e3f5e825d796286f0c1e2345">YieldTimer</a> (Ogre::Timer *externalTimer)</td></tr>
 <tr class="separator:a4d1c12e6e3f5e825d796286f0c1e2345"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55ba2e4b796cc59768c5200cc38d303c"><td class="memItemLeft" align="right" valign="top"><a id="a55ba2e4b796cc59768c5200cc38d303c"></a>
-unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>yield</b> (double frameTime, unsigned long startTime)</td></tr>
+<tr class="memitem:a55ba2e4b796cc59768c5200cc38d303c"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_yield_timer.html#a55ba2e4b796cc59768c5200cc38d303c">yield</a> (double frameTime, unsigned long startTime)</td></tr>
 <tr class="separator:a55ba2e4b796cc59768c5200cc38d303c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4c2a436d618e91f6634ec932cf4e1a9c"><td class="memItemLeft" align="right" valign="top">Ogre::Timer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_yield_timer.html#a4c2a436d618e91f6634ec932cf4e1a9c">mExternalTimer</a></td></tr>
+<tr class="separator:a4c2a436d618e91f6634ec932cf4e1a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Timer using an external timer to wait until frameTime + startTime = timer time. </p>
+
+<p class="definition">Definition at line <a class="el" href="_yield_timer_8h_source.html#l00015">15</a> of file <a class="el" href="_yield_timer_8h_source.html">YieldTimer.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4d1c12e6e3f5e825d796286f0c1e2345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d1c12e6e3f5e825d796286f0c1e2345">&#9670;&nbsp;</a></span>YieldTimer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Common::YieldTimer::YieldTimer </td>
+          <td>(</td>
+          <td class="paramtype">Ogre::Timer *&#160;</td>
+          <td class="paramname"><em>externalTimer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructor </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">externalTimer</td><td>Timer providing the extenral time </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_yield_timer_8h_source.html#l00030">30</a> of file <a class="el" href="_yield_timer_8h_source.html">YieldTimer.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a55ba2e4b796cc59768c5200cc38d303c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ba2e4b796cc59768c5200cc38d303c">&#9670;&nbsp;</a></span>yield()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long Common::YieldTimer::yield </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>frameTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>startTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Function waiting until time provided by mExternalTimer is higher than frameTime + startTime </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frameTime</td><td>Time of a frame </td></tr>
+    <tr><td class="paramname">startTime</td><td>Time of the start of the frame </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>end time of the frame </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_yield_timer_8h_source.html#l00042">42</a> of file <a class="el" href="_yield_timer_8h_source.html">YieldTimer.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4c2a436d618e91f6634ec932cf4e1a9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c2a436d618e91f6634ec932cf4e1a9c">&#9670;&nbsp;</a></span>mExternalTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Common::YieldTimer::mExternalTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Data shared between threads </p><dl class="section see"><dt>See also</dt><dd>setThreadData, getThreadData </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_yield_timer_8h_source.html#l00022">22</a> of file <a class="el" href="_yield_timer_8h_source.html">YieldTimer.h</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/louis/projects/LeDernierMorkid/Common/include/Threading/<a class="el" href="_yield_timer_8h_source.html">YieldTimer.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Common</b></li><li class="navelem"><a class="el" href="class_common_1_1_yield_timer.html">YieldTimer</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

@@ -23,9 +23,113 @@ void {\bfseries fill\+Uav\+Data\+For\+Compositor\+Channel} (Ogre\+::\+Compositor
 \mbox{\Hypertarget{class_shadow_mapper_a624f59c26a8831b0e3bbabb82ef9a822}\label{class_shadow_mapper_a624f59c26a8831b0e3bbabb82ef9a822}} 
 Ogre\+::\+Texture\+Ptr {\bfseries get\+Shadow\+Map\+Tex} (void) const
 \end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a54d854ea5525ec6cffaf5958d1d4077a}\label{class_shadow_mapper_a54d854ea5525ec6cffaf5958d1d4077a}} 
+static size\+\_\+t {\bfseries get\+Starts\+Ptr\+Count} (Ogre\+::int32 $\ast$starts, Ogre\+::int32 $\ast$starts\+Base)
+\item 
+static Ogre\+::int32 \hyperlink{class_shadow_mapper_a35a0aa58c648464248c2a9060f522921}{get\+X\+Steps\+Needed\+To\+ReachY} (Ogre\+::uint32 y, float f\+Step)
+\item 
+static float \hyperlink{class_shadow_mapper_ae95d31a0216503b8838738e959e32b1c}{get\+Error\+After\+Xsteps} (Ogre\+::uint32 x\+Iterations\+To\+Skip, float dx, float dy)
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a1b07d0963a08cede75e24c8a99c5f52f}\label{class_shadow_mapper_a1b07d0963a08cede75e24c8a99c5f52f}} 
+static void {\bfseries set\+Gaussian\+Filter\+Params} (Ogre\+::\+Hlms\+Compute\+Job $\ast$job, Ogre\+::uint8 kernel\+Radius, float gaussian\+Deviation\+Factor=0.\+5f)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_ae776a60c15e939d1f410e2c76f11c36b}\label{class_shadow_mapper_ae776a60c15e939d1f410e2c76f11c36b}} 
+Ogre\+::\+Texture\+Ptr {\bfseries m\+Height\+Map\+Tex}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a25a59b36221761ff585466bd007b57b6}\label{class_shadow_mapper_a25a59b36221761ff585466bd007b57b6}} 
+Ogre\+::\+Const\+Buffer\+Packed $\ast$ {\bfseries m\+Shadow\+Starts}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_aadb1c723556b6bd7f820367a61def60d}\label{class_shadow_mapper_aadb1c723556b6bd7f820367a61def60d}} 
+Ogre\+::\+Const\+Buffer\+Packed $\ast$ {\bfseries m\+Shadow\+Per\+Group\+Data}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_af384525eff0397e825335cac1383035a}\label{class_shadow_mapper_af384525eff0397e825335cac1383035a}} 
+Ogre\+::\+Compositor\+Workspace $\ast$ {\bfseries m\+Shadow\+Workspace}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_aa4ce21c6dc95445db1260e5c63a9b385}\label{class_shadow_mapper_aa4ce21c6dc95445db1260e5c63a9b385}} 
+Ogre\+::\+Texture\+Ptr {\bfseries m\+Shadow\+Map\+Tex}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a5c17b8b5ec20194c4fb4a7ff1de984f5}\label{class_shadow_mapper_a5c17b8b5ec20194c4fb4a7ff1de984f5}} 
+Ogre\+::\+Hlms\+Compute\+Job $\ast$ {\bfseries m\+Shadow\+Job}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a05350d603d5cfad35eda8743abc1ecac}\label{class_shadow_mapper_a05350d603d5cfad35eda8743abc1ecac}} 
+Ogre\+::\+Shader\+Params\+::\+Param $\ast$ {\bfseries m\+Job\+Param\+Delta}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_aadeaa1e03b1336e1a7766cb0bbd6ce6d}\label{class_shadow_mapper_aadeaa1e03b1336e1a7766cb0bbd6ce6d}} 
+Ogre\+::\+Shader\+Params\+::\+Param $\ast$ {\bfseries m\+Job\+Param\+X\+Y\+Step}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_ae71ddf6f440e83eaefe0c896fc5b2829}\label{class_shadow_mapper_ae71ddf6f440e83eaefe0c896fc5b2829}} 
+Ogre\+::\+Shader\+Params\+::\+Param $\ast$ {\bfseries m\+Job\+Param\+Is\+Step}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_a51147036e095f3889d5529a61c83157e}\label{class_shadow_mapper_a51147036e095f3889d5529a61c83157e}} 
+Ogre\+::\+Shader\+Params\+::\+Param $\ast$ {\bfseries m\+Job\+Param\+Height\+Delta}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_aceb39870c1d238da7f6c91001a6fa860}\label{class_shadow_mapper_aceb39870c1d238da7f6c91001a6fa860}} 
+Ogre\+::\+Scene\+Manager $\ast$ {\bfseries m\+Scene\+Manager}
+\item 
+\mbox{\Hypertarget{class_shadow_mapper_afa176dac98a1f33e9b27b6bff4e8e8f0}\label{class_shadow_mapper_afa176dac98a1f33e9b27b6bff4e8e8f0}} 
+Ogre\+::\+Compositor\+Manager2 $\ast$ {\bfseries m\+Compositor\+Manager}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file Terrain\+Shadow\+Mapper.\+h.
+
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shadow_mapper_ae95d31a0216503b8838738e959e32b1c}\label{class_shadow_mapper_ae95d31a0216503b8838738e959e32b1c}} 
+\index{Shadow\+Mapper@{Shadow\+Mapper}!get\+Error\+After\+Xsteps@{get\+Error\+After\+Xsteps}}
+\index{get\+Error\+After\+Xsteps@{get\+Error\+After\+Xsteps}!Shadow\+Mapper@{Shadow\+Mapper}}
+\subsubsection{\texorpdfstring{get\+Error\+After\+Xsteps()}{getErrorAfterXsteps()}}
+{\footnotesize\ttfamily float Shadow\+Mapper\+::get\+Error\+After\+Xsteps (\begin{DoxyParamCaption}\item[{Ogre\+::uint32}]{x\+Iterations\+To\+Skip,  }\item[{float}]{dx,  }\item[{float}]{dy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+Calculates the value of the error at position x = x\+Iterations\+To\+Skip from Bresenham\textquotesingle{}s algorithm. \begin{DoxyRemark}{Remarks}
+We use this function so we can start Bresenham from \textquotesingle{}0\textquotesingle{} but resuming as if we wouldn\textquotesingle{}t be starting from 0. 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Iterations\+To\+Skip} & The X position in which we want the error. \\
+\hline
+{\em dx} & delta.\+x \\
+\hline
+{\em dy} & delta.\+y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The error at position (x\+Iterations\+To\+Skip; y) 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file Terrain\+Shadow\+Mapper.\+cpp.
+
+\mbox{\Hypertarget{class_shadow_mapper_a35a0aa58c648464248c2a9060f522921}\label{class_shadow_mapper_a35a0aa58c648464248c2a9060f522921}} 
+\index{Shadow\+Mapper@{Shadow\+Mapper}!get\+X\+Steps\+Needed\+To\+ReachY@{get\+X\+Steps\+Needed\+To\+ReachY}}
+\index{get\+X\+Steps\+Needed\+To\+ReachY@{get\+X\+Steps\+Needed\+To\+ReachY}!Shadow\+Mapper@{Shadow\+Mapper}}
+\subsubsection{\texorpdfstring{get\+X\+Steps\+Needed\+To\+Reach\+Y()}{getXStepsNeededToReachY()}}
+{\footnotesize\ttfamily Ogre\+::int32 Shadow\+Mapper\+::get\+X\+Steps\+Needed\+To\+ReachY (\begin{DoxyParamCaption}\item[{Ogre\+::uint32}]{y,  }\item[{float}]{f\+Step }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+Gets how many steps are needed in Bresenham\textquotesingle{}s algorithm to reach certain height, given its dx / dy ratio where\+: dx = abs( x1 -\/ x0 ); dy = abs( y1 -\/ y0 ); and Bresenham is drawn in ranges \mbox{[}x0; x1) and \mbox{[}y0; y1) 
+\begin{DoxyParams}{Parameters}
+{\em y} & Height to reach \\
+\hline
+{\em f\+Step} & (dx $\ast$ 0.\+5f) / dy; \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of X iterations needed to reach the the pixel at height \textquotesingle{}y\textquotesingle{} The returned value is at position (ret\+Val; y) which means (ret\+Val-\/1; y-\/1) is true unless y = 0; 
+\end{DoxyReturn}
+
+
+Definition at line 125 of file Terrain\+Shadow\+Mapper.\+cpp.
+
 \mbox{\Hypertarget{class_shadow_mapper_a5438f906adc558347171a1d4fbbe616d}\label{class_shadow_mapper_a5438f906adc558347171a1d4fbbe616d}} 
 \index{Shadow\+Mapper@{Shadow\+Mapper}!set\+Gaussian\+Filter\+Params@{set\+Gaussian\+Filter\+Params}}
 \index{set\+Gaussian\+Filter\+Params@{set\+Gaussian\+Filter\+Params}!Shadow\+Mapper@{Shadow\+Mapper}}
@@ -39,6 +143,10 @@ Sets the parameter of the gaussian filter we apply to the shadow map.
 {\em gaussian\+Deviation\+Factor} & Expressed in terms of gaussian\+Deviation = kernel\+Radius $\ast$ gaussian\+Deviation\+Factor \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 324 of file Terrain\+Shadow\+Mapper.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

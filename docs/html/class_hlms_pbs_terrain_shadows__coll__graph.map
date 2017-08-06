@@ -1,2 +1,5 @@
 <map id="HlmsPbsTerrainShadows" name="HlmsPbsTerrainShadows">
+<area shape="rect" id="node3" href="$class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="165,95,279,121"/>
+<area shape="rect" id="node4" href="$class_terrain.html" title="Terrain" alt="" coords="63,5,125,32"/>
+<area shape="rect" id="node6" href="$class_shadow_mapper.html" title="ShadowMapper" alt="" coords="319,5,431,32"/>
 </map>

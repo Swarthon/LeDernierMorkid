@@ -25,11 +25,43 @@ Collaboration diagram for Logic\+Game\+State\+:\nopagebreak
 void {\bfseries \+\_\+notify\+Logic\+System} (\hyperlink{class_common_1_1_logic_system}{Common\+::\+Logic\+System} $\ast$logic\+System)
 \item 
 \mbox{\Hypertarget{class_logic_game_state_a8ac73ebad7575ebdb5e36fdd59799332}\label{class_logic_game_state_a8ac73ebad7575ebdb5e36fdd59799332}} 
-virtual void {\bfseries create\+Scene} (void)
-\item 
-\mbox{\Hypertarget{class_logic_game_state_a144a2deb659d903956bd955d86c4d6b7}\label{class_logic_game_state_a144a2deb659d903956bd955d86c4d6b7}} 
-virtual void {\bfseries update} (float time\+Since\+Last)
+virtual void \hyperlink{class_logic_game_state_a8ac73ebad7575ebdb5e36fdd59799332}{create\+Scene} (void)
+\begin{DoxyCompactList}\small\item\em Create the scene. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_logic_game_state_a144a2deb659d903956bd955d86c4d6b7}{update} (float time\+Since\+Last)
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_logic_game_state_a58c6a54b8bd2267a6aa849e09d9327de}\label{class_logic_game_state_a58c6a54b8bd2267a6aa849e09d9327de}} 
+\hyperlink{class_common_1_1_logic_system}{Common\+::\+Logic\+System} $\ast$ {\bfseries m\+Logic\+System}
+\item 
+\mbox{\Hypertarget{class_logic_game_state_a64509df6336615d8f8fc7eb789614108}\label{class_logic_game_state_a64509df6336615d8f8fc7eb789614108}} 
+\hyperlink{class_collision_terrain}{Collision\+Terrain} $\ast$ {\bfseries m\+Terrain}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 16 of file Logic\+Game\+State.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_logic_game_state_a144a2deb659d903956bd955d86c4d6b7}\label{class_logic_game_state_a144a2deb659d903956bd955d86c4d6b7}} 
+\index{Logic\+Game\+State@{Logic\+Game\+State}!update@{update}}
+\index{update@{update}!Logic\+Game\+State@{Logic\+Game\+State}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Logic\+Game\+State\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Since\+Last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Update the Game\+State param time\+Since\+Last Time past since last frame 
+
+Reimplemented from \hyperlink{class_common_1_1_game_state_a38271924996d8c1bbdcbfee6ffe63f95}{Common\+::\+Game\+State}.
+
+
+
+Definition at line 27 of file Logic\+Game\+State.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

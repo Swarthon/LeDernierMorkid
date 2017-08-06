@@ -1,9 +1,29 @@
 \hypertarget{class_common_1_1_game_entity_manager}{}\section{Common\+:\+:Game\+Entity\+Manager Class Reference}
 \label{class_common_1_1_game_entity_manager}\index{Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}}
+
+
+Class managing \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Entity\+Manager.\+h$>$}
+
+
+
+Collaboration diagram for Common\+:\+:Game\+Entity\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_common_1_1_game_entity_manager__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{struct_common_1_1_game_entity_manager_1_1_created_game_entity}{Created\+Game\+Entity}
+\begin{DoxyCompactList}\small\item\em Struct describing a \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} and its \hyperlink{struct_common_1_1_game_entity_transform}{Game\+Entity\+Transform}. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_common_1_1_game_entity_manager_1_1_region}{Region}
 \end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
@@ -14,21 +34,165 @@ typedef std\+::vector$<$ Game\+Entity\+Vec $>$ {\bfseries Game\+Entity\+Vec\+Vec
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_game_entity_manager_abd796010d78cf6d9b6b6f8f7eddbba89}\label{class_common_1_1_game_entity_manager_abd796010d78cf6d9b6b6f8f7eddbba89}} 
-{\bfseries Game\+Entity\+Manager} (\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Mq\+::\+Message\+Queue\+System} $\ast$graphics\+System, \hyperlink{class_common_1_1_logic_system}{Logic\+System} $\ast$logic\+System)
+\hyperlink{class_common_1_1_game_entity_manager_abd796010d78cf6d9b6b6f8f7eddbba89}{Game\+Entity\+Manager} (\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Mq\+::\+Message\+Queue\+System} $\ast$graphics\+System, \hyperlink{class_common_1_1_logic_system}{Logic\+System} $\ast$logic\+System)
 \item 
-\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a982abe1d421f8a59fb1ca21ebca97b5f}\label{class_common_1_1_game_entity_manager_a982abe1d421f8a59fb1ca21ebca97b5f}} 
-\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$ {\bfseries add\+Game\+Entity} (Ogre\+::\+Scene\+Memory\+Mgr\+Types type, const \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} $\ast$mo\+Definition, const \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} $\ast$co\+Definition, const Ogre\+::\+Vector3 \&initial\+Pos, const Ogre\+::\+Quaternion \&initial\+Rot, const Ogre\+::\+Vector3 \&initial\+Scale)
+\hyperlink{class_common_1_1_game_entity_manager_aed2c3af1b541c879abf7d78f43085e79}{$\sim$\+Game\+Entity\+Manager} ()
 \item 
-\mbox{\Hypertarget{class_common_1_1_game_entity_manager_ab08fbd68fbafbf170abe71f7815b7a13}\label{class_common_1_1_game_entity_manager_ab08fbd68fbafbf170abe71f7815b7a13}} 
-void {\bfseries remove\+Game\+Entity} (\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$to\+Remove)
+\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$ \hyperlink{class_common_1_1_game_entity_manager_a982abe1d421f8a59fb1ca21ebca97b5f}{add\+Game\+Entity} (Ogre\+::\+Scene\+Memory\+Mgr\+Types type, const \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} $\ast$mo\+Definition, const \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} $\ast$co\+Definition, const Ogre\+::\+Vector3 \&initial\+Pos, const Ogre\+::\+Quaternion \&initial\+Rot, const Ogre\+::\+Vector3 \&initial\+Scale)
 \item 
-\mbox{\Hypertarget{class_common_1_1_game_entity_manager_ac1cb3aaa00139aaaca96a96e391fa2dc}\label{class_common_1_1_game_entity_manager_ac1cb3aaa00139aaaca96a96e391fa2dc}} 
-void {\bfseries \+\_\+notify\+Game\+Entities\+Removed} (size\+\_\+t slot)
+void \hyperlink{class_common_1_1_game_entity_manager_ab08fbd68fbafbf170abe71f7815b7a13}{remove\+Game\+Entity} (\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$to\+Remove)
+\item 
+void \hyperlink{class_common_1_1_game_entity_manager_ac1cb3aaa00139aaaca96a96e391fa2dc}{\+\_\+notify\+Game\+Entities\+Removed} (size\+\_\+t slot)
 \item 
 \mbox{\Hypertarget{class_common_1_1_game_entity_manager_a3f8cae1b23e5f53152c1af65b250dcdd}\label{class_common_1_1_game_entity_manager_a3f8cae1b23e5f53152c1af65b250dcdd}} 
-void {\bfseries finish\+Frame\+Parallel} (void)
+void \hyperlink{class_common_1_1_game_entity_manager_a3f8cae1b23e5f53152c1af65b250dcdd}{finish\+Frame\+Parallel} (void)
+\begin{DoxyCompactList}\small\item\em Must be called every frame from the L\+O\+G\+IC T\+H\+R\+E\+AD. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a1f5d1d6fa7658fb1b09d38933c3d04d1}\label{class_common_1_1_game_entity_manager_a1f5d1d6fa7658fb1b09d38933c3d04d1}} 
+Ogre\+::uint32 {\bfseries get\+Scheduled\+For\+Removal\+Available\+Slot} (void)
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a337fbb5e1e9cdd57694c9f87f792ae24}\label{class_common_1_1_game_entity_manager_a337fbb5e1e9cdd57694c9f87f792ae24}} 
+void {\bfseries destroy\+All\+Game\+Entities\+In} (Game\+Entity\+Vec \&container)
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a6c10977c6e16842aab2e5e230f5039df}\label{class_common_1_1_game_entity_manager_a6c10977c6e16842aab2e5e230f5039df}} 
+void {\bfseries aquire\+Transform\+Slot} (size\+\_\+t \&out\+Slot, size\+\_\+t \&out\+Buffer\+Idx)
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a409b2f64087e2e8443d6dbe9cd61c928}\label{class_common_1_1_game_entity_manager_a409b2f64087e2e8443d6dbe9cd61c928}} 
+void {\bfseries release\+Transform\+Slot} (size\+\_\+t buffer\+Idx, \hyperlink{struct_common_1_1_game_entity_transform}{Game\+Entity\+Transform} $\ast$transform)
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a45f10e0964dc22d3db811ff28dc6da55}\label{class_common_1_1_game_entity_manager_a45f10e0964dc22d3db811ff28dc6da55}} 
+Ogre\+::uint32 \hyperlink{class_common_1_1_game_entity_manager_a45f10e0964dc22d3db811ff28dc6da55}{m\+Current\+Id}
+\begin{DoxyCompactList}\small\item\em Current Id for \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} creating. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a7332d715d5c9518860fba2fb0aefc3c9}\label{class_common_1_1_game_entity_manager_a7332d715d5c9518860fba2fb0aefc3c9}} 
+Game\+Entity\+Vec \hyperlink{class_common_1_1_game_entity_manager_a7332d715d5c9518860fba2fb0aefc3c9}{m\+Game\+Entities} \mbox{[}Ogre\+::\+N\+U\+M\+\_\+\+S\+C\+E\+N\+E\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+M\+A\+N\+A\+G\+E\+R\+\_\+\+T\+Y\+P\+ES\mbox{]}
+\begin{DoxyCompactList}\small\item\em Created \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a991cd183485129e72a3144982ea788cf}\label{class_common_1_1_game_entity_manager_a991cd183485129e72a3144982ea788cf}} 
+std\+::vector$<$ \hyperlink{struct_common_1_1_game_entity_transform}{Game\+Entity\+Transform} $\ast$ $>$ {\bfseries m\+Transform\+Buffers}
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_aa068de11d71bc5192d1b92d7d59fbb63}\label{class_common_1_1_game_entity_manager_aa068de11d71bc5192d1b92d7d59fbb63}} 
+std\+::vector$<$ \hyperlink{struct_common_1_1_game_entity_manager_1_1_region}{Region} $>$ {\bfseries m\+Available\+Transforms}
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a608f0beb843d870520094ba4b46af394}\label{class_common_1_1_game_entity_manager_a608f0beb843d870520094ba4b46af394}} 
+Game\+Entity\+Vec\+Vec \hyperlink{class_common_1_1_game_entity_manager_a608f0beb843d870520094ba4b46af394}{m\+Scheduled\+For\+Removal}
+\begin{DoxyCompactList}\small\item\em Game\+Entities waiting for removal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a13e1ddfcd9e269ab11836e5f0333dcbb}\label{class_common_1_1_game_entity_manager_a13e1ddfcd9e269ab11836e5f0333dcbb}} 
+size\+\_\+t {\bfseries m\+Scheduled\+For\+Removal\+Current\+Slot}
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a8e28087a746ac5b44b7c7200226c85f7}\label{class_common_1_1_game_entity_manager_a8e28087a746ac5b44b7c7200226c85f7}} 
+std\+::vector$<$ size\+\_\+t $>$ {\bfseries m\+Scheduled\+For\+Removal\+Available\+Slots}
+\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_aacead10c62bd45635679ca8161201794}\label{class_common_1_1_game_entity_manager_aacead10c62bd45635679ca8161201794}} 
+\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Mq\+::\+Message\+Queue\+System} $\ast$ \hyperlink{class_common_1_1_game_entity_manager_aacead10c62bd45635679ca8161201794}{m\+Graphics\+System}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_graphics_system}{Graphics\+System} managing Graphics. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a9ea718e158804544184545fe7ae5dc6b}\label{class_common_1_1_game_entity_manager_a9ea718e158804544184545fe7ae5dc6b}} 
+\hyperlink{class_common_1_1_logic_system}{Logic\+System} $\ast$ \hyperlink{class_common_1_1_game_entity_manager_a9ea718e158804544184545fe7ae5dc6b}{m\+Logic\+System}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_logic_system}{Logic\+System} creating \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class managing \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. 
+
+Definition at line 17 of file Game\+Entity\+Manager.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_abd796010d78cf6d9b6b6f8f7eddbba89}\label{class_common_1_1_game_entity_manager_abd796010d78cf6d9b6b6f8f7eddbba89}} 
+\index{Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}!Game\+Entity\+Manager@{Game\+Entity\+Manager}}
+\index{Game\+Entity\+Manager@{Game\+Entity\+Manager}!Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}}
+\subsubsection{\texorpdfstring{Game\+Entity\+Manager()}{GameEntityManager()}}
+{\footnotesize\ttfamily Common\+::\+Game\+Entity\+Manager\+::\+Game\+Entity\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{class_common_1_1_mq_1_1_message_queue_system}{Mq\+::\+Message\+Queue\+System} $\ast$}]{graphics\+System,  }\item[{\hyperlink{class_common_1_1_logic_system}{Logic\+System} $\ast$}]{logic\+System }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em graphics\+System} & \hyperlink{class_common_1_1_graphics_system}{Graphics\+System} managing Graphics \\
+\hline
+{\em logic\+System} & \hyperlink{class_common_1_1_logic_system}{Logic\+System} which create the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 9 of file Game\+Entity\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_aed2c3af1b541c879abf7d78f43085e79}\label{class_common_1_1_game_entity_manager_aed2c3af1b541c879abf7d78f43085e79}} 
+\index{Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}!````~Game\+Entity\+Manager@{$\sim$\+Game\+Entity\+Manager}}
+\index{````~Game\+Entity\+Manager@{$\sim$\+Game\+Entity\+Manager}!Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Game\+Entity\+Manager()}{~GameEntityManager()}}
+{\footnotesize\ttfamily Common\+::\+Game\+Entity\+Manager\+::$\sim$\+Game\+Entity\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor 
+
+Definition at line 18 of file Game\+Entity\+Manager.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_ac1cb3aaa00139aaaca96a96e391fa2dc}\label{class_common_1_1_game_entity_manager_ac1cb3aaa00139aaaca96a96e391fa2dc}} 
+\index{Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}!\+\_\+notify\+Game\+Entities\+Removed@{\+\_\+notify\+Game\+Entities\+Removed}}
+\index{\+\_\+notify\+Game\+Entities\+Removed@{\+\_\+notify\+Game\+Entities\+Removed}!Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}}
+\subsubsection{\texorpdfstring{\+\_\+notify\+Game\+Entities\+Removed()}{\_notifyGameEntitiesRemoved()}}
+{\footnotesize\ttfamily void Common\+::\+Game\+Entity\+Manager\+::\+\_\+notify\+Game\+Entities\+Removed (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{slot }\end{DoxyParamCaption})}
+
+Notify the Game\+System that a \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} has been removed \begin{DoxyRemark}{Remarks}
+Must be called by \hyperlink{class_common_1_1_logic_system}{Logic\+System} when Mq\+::\+G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+D\+\_\+\+F\+O\+R\+\_\+\+R\+E\+M\+O\+V\+A\+L\+\_\+\+S\+L\+OT message arrives 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em Slot} & of the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 88 of file Game\+Entity\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_a982abe1d421f8a59fb1ca21ebca97b5f}\label{class_common_1_1_game_entity_manager_a982abe1d421f8a59fb1ca21ebca97b5f}} 
+\index{Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}!add\+Game\+Entity@{add\+Game\+Entity}}
+\index{add\+Game\+Entity@{add\+Game\+Entity}!Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}}
+\subsubsection{\texorpdfstring{add\+Game\+Entity()}{addGameEntity()}}
+{\footnotesize\ttfamily \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$ Common\+::\+Game\+Entity\+Manager\+::add\+Game\+Entity (\begin{DoxyParamCaption}\item[{Ogre\+::\+Scene\+Memory\+Mgr\+Types}]{type,  }\item[{const \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} $\ast$}]{mo\+Definition,  }\item[{const \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} $\ast$}]{co\+Definition,  }\item[{const Ogre\+::\+Vector3 \&}]{initial\+Pos,  }\item[{const Ogre\+::\+Quaternion \&}]{initial\+Rot,  }\item[{const Ogre\+::\+Vector3 \&}]{initial\+Scale }\end{DoxyParamCaption})}
+
+Creates a \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}, adding it to the world, and scheduling for the Graphics thread to create the appropiate Scene\+Node and Item pointers. M\+U\+ST BE C\+A\+L\+L\+ED F\+R\+OM L\+O\+G\+IC T\+H\+R\+E\+AD. 
+\begin{DoxyParams}{Parameters}
+{\em type} & Whether this \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} is dynamic (going to change transform frequently), or static (will move/rotate/scale very, very infrequently) \\
+\hline
+{\em mo\+Definition} & Definition of the Movable\+Object (Graphics) \\
+\hline
+{\em co\+Definition} & Definition of the Collision\+Object (Collisions) \\
+\hline
+{\em initial\+Pos} & Starting position of the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} \\
+\hline
+{\em initial\+Rot} & Starting orientation of the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} \\
+\hline
+{\em initial\+Scale} & Starting scale of the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer of \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} ready to be used by the Logic thread. Take in mind not all of its pointers may filled yet (the ones that are not meant to be used by the logic thread) 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file Game\+Entity\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_game_entity_manager_ab08fbd68fbafbf170abe71f7815b7a13}\label{class_common_1_1_game_entity_manager_ab08fbd68fbafbf170abe71f7815b7a13}} 
+\index{Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}!remove\+Game\+Entity@{remove\+Game\+Entity}}
+\index{remove\+Game\+Entity@{remove\+Game\+Entity}!Common\+::\+Game\+Entity\+Manager@{Common\+::\+Game\+Entity\+Manager}}
+\subsubsection{\texorpdfstring{remove\+Game\+Entity()}{removeGameEntity()}}
+{\footnotesize\ttfamily void Common\+::\+Game\+Entity\+Manager\+::remove\+Game\+Entity (\begin{DoxyParamCaption}\item[{\hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$}]{to\+Remove }\end{DoxyParamCaption})}
+
+Removes the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} from the world. The pointer is not immediately destroyed, we first need to release data in other threads (i.\+e. Graphics). It will be destroyed after the Render thread confirms it is done with it (via a Mq\+::\+G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+D\+\_\+\+F\+O\+R\+\_\+\+R\+E\+M\+O\+V\+A\+L\+\_\+\+S\+L\+OT message) 
+\begin{DoxyParams}{Parameters}
+{\em to\+Remove} & \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 77 of file Game\+Entity\+Manager.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

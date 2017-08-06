@@ -1,3 +1,3 @@
 <map id="Collision::CollisionCameraController" name="Collision::CollisionCameraController">
-<area shape="rect" id="node2" href="$class_common_1_1_camera_controller.html" title="Common::CameraController" alt="" coords="5,5,191,32"/>
+<area shape="rect" id="node2" href="$class_common_1_1_camera_controller.html" title="Simple CameraControllerThis class does not implement more than rotate and move a Ogre::Camera or Ogre..." alt="" coords="5,5,191,32"/>
 </map>

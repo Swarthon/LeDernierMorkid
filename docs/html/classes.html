@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -45,6 +53,20 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classes.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -64,48 +86,53 @@ $(function() {
 <div class="title">Class Index</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_b">b</a>&#160;|&#160;<a class="qindex" href="#letter_c">c</a>&#160;|&#160;<a class="qindex" href="#letter_g">g</a>&#160;|&#160;<a class="qindex" href="#letter_h">h</a>&#160;|&#160;<a class="qindex" href="#letter_j">j</a>&#160;|&#160;<a class="qindex" href="#letter_k">k</a>&#160;|&#160;<a class="qindex" href="#letter_l">l</a>&#160;|&#160;<a class="qindex" href="#letter_m">m</a>&#160;|&#160;<a class="qindex" href="#letter_o">o</a>&#160;|&#160;<a class="qindex" href="#letter_p">p</a>&#160;|&#160;<a class="qindex" href="#letter_s">s</a>&#160;|&#160;<a class="qindex" href="#letter_t">t</a>&#160;|&#160;<a class="qindex" href="#letter_y">y</a></div>
+<div class="qindex"><a class="qindex" href="#letter_b">b</a>&#160;|&#160;<a class="qindex" href="#letter_c">c</a>&#160;|&#160;<a class="qindex" href="#letter_g">g</a>&#160;|&#160;<a class="qindex" href="#letter_h">h</a>&#160;|&#160;<a class="qindex" href="#letter_j">j</a>&#160;|&#160;<a class="qindex" href="#letter_k">k</a>&#160;|&#160;<a class="qindex" href="#letter_l">l</a>&#160;|&#160;<a class="qindex" href="#letter_m">m</a>&#160;|&#160;<a class="qindex" href="#letter_o">o</a>&#160;|&#160;<a class="qindex" href="#letter_p">p</a>&#160;|&#160;<a class="qindex" href="#letter_r">r</a>&#160;|&#160;<a class="qindex" href="#letter_s">s</a>&#160;|&#160;<a class="qindex" href="#letter_t">t</a>&#160;|&#160;<a class="qindex" href="#letter_y">y</a></div>
 <table class="classindex">
 <tr><td rowspan="2" valign="bottom"><a name="letter_b"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;b&#160;&#160;</div></td></tr></table>
 </td><td valign="top"><a class="el" href="struct_common_1_1_game_entity_transform.html">GameEntityTransform</a> (Common)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_l"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;l&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="struct_hlms_terrain_1_1_pass_data.html">HlmsTerrain::PassData</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_terrain_baked_texture.html">TerrainBakedTexture</a>&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_common_1_1_game_state.html">GameState</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_pbs_terrain_property.html">PbsTerrainProperty</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_terrain_cell.html">TerrainCell</a>&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_graphics_game_state.html">GraphicsGameState</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_le_dernier_morkid.html">LeDernierMorkid</a>&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_s"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;s&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="struct_terrain_property.html">TerrainProperty</a>&#160;&#160;&#160;</td></tr>
-<tr><td rowspan="2" valign="bottom"><a name="letter_c"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;c&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_le_dernier_morkid_graphics_system.html">LeDernierMorkidGraphicsSystem</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_thread_data.html">ThreadData</a>&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_graphics_terrain.html">GraphicsTerrain</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_le_dernier_morkid_1_1_le_dernier_morkid_thread_data.html">LeDernierMorkid::LeDernierMorkidThreadData</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="union_s_d_l___event.html">SDL_Event</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_thread_manager.html">ThreadManager</a>&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_common_1_1_camera_controller.html">CameraController</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_grid_direction.html">GridDirection</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_logic_game_state.html">LogicGameState</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a>&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_y"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;y&#160;&#160;</div></td></tr></table>
+</td><td valign="top"><a class="el" href="struct_hlms_terrain_1_1_pass_data.html">HlmsTerrain::PassData</a>&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_t"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;t&#160;&#160;</div></td></tr></table>
 </td></tr>
-<tr><td valign="top"><a class="el" href="class_collision_1_1_collision_camera_controller.html">CollisionCameraController</a> (Collision)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_grid_point.html">GridPoint</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_logic_system.html">LogicSystem</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___keysym.html">SDL_Keysym</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_common_1_1_game_state.html">GameState</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_pbs_terrain_property.html">PbsTerrainProperty</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_common_1_1_base_system.html">BaseSystem</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_graphics_game_state.html">GraphicsGameState</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_le_dernier_morkid.html">LeDernierMorkid</a>&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_r"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;r&#160;&#160;</div></td></tr></table>
+</td><td valign="top"><a class="el" href="class_terrain.html">Terrain</a>&#160;&#160;&#160;</td></tr>
+<tr><td rowspan="2" valign="bottom"><a name="letter_c"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;c&#160;&#160;</div></td></tr></table>
+</td><td valign="top"><a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_le_dernier_morkid_graphics_system.html">LeDernierMorkidGraphicsSystem</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_terrain_baked_texture.html">TerrainBakedTexture</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_graphics_terrain.html">GraphicsTerrain</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_le_dernier_morkid_1_1_le_dernier_morkid_thread_data.html">LeDernierMorkid::LeDernierMorkidThreadData</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_common_1_1_game_entity_manager_1_1_region.html">GameEntityManager::Region</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_terrain_cell.html">TerrainCell</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_common_1_1_camera_controller.html">CameraController</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_grid_direction.html">GridDirection</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_logic_game_state.html">LogicGameState</a>&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_s"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;s&#160;&#160;</div></td></tr></table>
+</td><td valign="top"><a class="el" href="struct_terrain_property.html">TerrainProperty</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_collision_1_1_collision_camera_controller.html">CollisionCameraController</a> (Collision)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_grid_point.html">GridPoint</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_logic_system.html">LogicSystem</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_common_1_1_thread_data.html">ThreadData</a> (Common)&#160;&#160;&#160;</td></tr>
 <tr><td valign="top"><a class="el" href="struct_common_1_1_collision_object_definition.html">CollisionObjectDefinition</a> (Common)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_h"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;h&#160;&#160;</div></td></tr></table>
 </td><td rowspan="2" valign="bottom"><a name="letter_m"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;m&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="struct_s_d_l___mouse_button_event.html">SDL_MouseButtonEvent</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_yield_timer.html">YieldTimer</a> (Common)&#160;&#160;&#160;</td></tr>
-<tr><td valign="top"><a class="el" href="class_collision_terrain.html">CollisionTerrain</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___mouse_motion_event.html">SDL_MouseMotionEvent</a>&#160;&#160;&#160;</td><td></td></tr>
-<tr><td valign="top"><a class="el" href="class_collision_1_1_converter.html">Converter</a> (Collision)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_hlms_pbs_terrain_shadows.html">HlmsPbsTerrainShadows</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html">MessageQueueSystem</a> (Common::Mq)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___mouse_wheel_event.html">SDL_MouseWheelEvent</a>&#160;&#160;&#160;</td><td></td></tr>
-<tr><td valign="top"><a class="el" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html">GameEntityManager::CreatedGameEntity</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_hlms_terrain.html">HlmsTerrain</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_mouse_listener.html">MouseListener</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_sdl_input_handler.html">SdlInputHandler</a> (Common)&#160;&#160;&#160;</td><td></td></tr>
+</td><td valign="top"><a class="el" href="union_s_d_l___event.html">SDL_Event</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_thread_manager.html">ThreadManager</a> (Common)&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="class_collision_terrain.html">CollisionTerrain</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a>&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_y"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;y&#160;&#160;</div></td></tr></table>
+</td></tr>
+<tr><td valign="top"><a class="el" href="class_collision_1_1_converter.html">Converter</a> (Collision)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_hlms_pbs_terrain_shadows.html">HlmsPbsTerrainShadows</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_mq_1_1_message_queue_system.html">MessageQueueSystem</a> (Common::Mq)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___keysym.html">SDL_Keysym</a>&#160;&#160;&#160;</td></tr>
+<tr><td valign="top"><a class="el" href="struct_common_1_1_game_entity_manager_1_1_created_game_entity.html">GameEntityManager::CreatedGameEntity</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_hlms_terrain.html">HlmsTerrain</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_mouse_listener.html">MouseListener</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___mouse_button_event.html">SDL_MouseButtonEvent</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_yield_timer.html">YieldTimer</a> (Common)&#160;&#160;&#160;</td></tr>
 <tr><td rowspan="2" valign="bottom"><a name="letter_g"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;g&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="class_hlms_terrain_datablock.html">HlmsTerrainDatablock</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_common_1_1_movable_object_definition.html">MovableObjectDefinition</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_shadow_mapper.html">ShadowMapper</a>&#160;&#160;&#160;</td><td></td></tr>
+</td><td valign="top"><a class="el" href="class_hlms_terrain_datablock.html">HlmsTerrainDatablock</a>&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_common_1_1_movable_object_definition.html">MovableObjectDefinition</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_s_d_l___mouse_motion_event.html">SDL_MouseMotionEvent</a>&#160;&#160;&#160;</td><td></td></tr>
 <tr><td rowspan="2" valign="bottom"><a name="letter_j"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;j&#160;&#160;</div></td></tr></table>
 </td><td rowspan="2" valign="bottom"><a name="letter_o"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;o&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="class_common_1_1_static_plugin_loader.html">StaticPluginLoader</a> (Common)&#160;&#160;&#160;</td><td></td></tr>
-<tr><td valign="top"><a class="el" href="struct_common_1_1_game_entity.html">GameEntity</a> (Common)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_t"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;t&#160;&#160;</div></td></tr></table>
-</td><td></td></tr>
-<tr><td valign="top"><a class="el" href="struct_common_1_1_game_entity_cmp.html">GameEntityCmp</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_joystick_listener.html">JoystickListener</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_collision_1_1_object_state.html">ObjectState</a> (Collision)&#160;&#160;&#160;</td><td></td></tr>
+</td><td valign="top"><a class="el" href="struct_s_d_l___mouse_wheel_event.html">SDL_MouseWheelEvent</a>&#160;&#160;&#160;</td><td></td></tr>
+<tr><td valign="top"><a class="el" href="struct_common_1_1_game_entity.html">GameEntity</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_sdl_input_handler.html">SdlInputHandler</a> (Common)&#160;&#160;&#160;</td><td></td></tr>
+<tr><td valign="top"><a class="el" href="struct_common_1_1_game_entity_cmp.html">GameEntityCmp</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_common_1_1_joystick_listener.html">JoystickListener</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_collision_1_1_object_state.html">ObjectState</a> (Collision)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="class_shadow_mapper.html">ShadowMapper</a>&#160;&#160;&#160;</td><td></td></tr>
 <tr><td valign="top"><a class="el" href="class_common_1_1_game_entity_manager.html">GameEntityManager</a> (Common)&#160;&#160;&#160;</td><td rowspan="2" valign="bottom"><a name="letter_k"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;k&#160;&#160;</div></td></tr></table>
 </td><td rowspan="2" valign="bottom"><a name="letter_p"></a><table border="0" cellspacing="0" cellpadding="0"><tr><td><div class="ah">&#160;&#160;p&#160;&#160;</div></td></tr></table>
-</td><td valign="top"><a class="el" href="class_terrain.html">Terrain</a>&#160;&#160;&#160;</td><td></td></tr>
+</td><td valign="top"><a class="el" href="class_common_1_1_static_plugin_loader.html">StaticPluginLoader</a> (Common)&#160;&#160;&#160;</td><td></td></tr>
 <tr><td></td><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a class="el" href="class_common_1_1_keyboard_listener.html">KeyboardListener</a> (Common)&#160;&#160;&#160;</td><td valign="top"><a class="el" href="struct_packed_texture.html">PackedTexture</a>&#160;&#160;&#160;</td><td></td><td></td></tr>
 <tr><td></td><td></td><td></td><td></td><td></td></tr>
 </table>
-<div class="qindex"><a class="qindex" href="#letter_b">b</a>&#160;|&#160;<a class="qindex" href="#letter_c">c</a>&#160;|&#160;<a class="qindex" href="#letter_g">g</a>&#160;|&#160;<a class="qindex" href="#letter_h">h</a>&#160;|&#160;<a class="qindex" href="#letter_j">j</a>&#160;|&#160;<a class="qindex" href="#letter_k">k</a>&#160;|&#160;<a class="qindex" href="#letter_l">l</a>&#160;|&#160;<a class="qindex" href="#letter_m">m</a>&#160;|&#160;<a class="qindex" href="#letter_o">o</a>&#160;|&#160;<a class="qindex" href="#letter_p">p</a>&#160;|&#160;<a class="qindex" href="#letter_s">s</a>&#160;|&#160;<a class="qindex" href="#letter_t">t</a>&#160;|&#160;<a class="qindex" href="#letter_y">y</a></div>
+<div class="qindex"><a class="qindex" href="#letter_b">b</a>&#160;|&#160;<a class="qindex" href="#letter_c">c</a>&#160;|&#160;<a class="qindex" href="#letter_g">g</a>&#160;|&#160;<a class="qindex" href="#letter_h">h</a>&#160;|&#160;<a class="qindex" href="#letter_j">j</a>&#160;|&#160;<a class="qindex" href="#letter_k">k</a>&#160;|&#160;<a class="qindex" href="#letter_l">l</a>&#160;|&#160;<a class="qindex" href="#letter_m">m</a>&#160;|&#160;<a class="qindex" href="#letter_o">o</a>&#160;|&#160;<a class="qindex" href="#letter_p">p</a>&#160;|&#160;<a class="qindex" href="#letter_r">r</a>&#160;|&#160;<a class="qindex" href="#letter_s">s</a>&#160;|&#160;<a class="qindex" href="#letter_t">t</a>&#160;|&#160;<a class="qindex" href="#letter_y">y</a></div>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

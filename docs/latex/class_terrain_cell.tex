@@ -15,7 +15,7 @@ Collaboration diagram for Terrain\+Cell\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=173pt]{class_terrain_cell__coll__graph}
+\includegraphics[width=350pt]{class_terrain_cell__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -50,6 +50,43 @@ virtual void {\bfseries get\+World\+Transforms} (Ogre\+::\+Matrix4 $\ast$xform) 
 \mbox{\Hypertarget{class_terrain_cell_ae50fc017b6a731a35c4764df52f46628}\label{class_terrain_cell_ae50fc017b6a731a35c4764df52f46628}} 
 virtual bool {\bfseries get\+Casts\+Shadows} (void) const
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_a3fc98b2ee05739280e3dec8c4d91e290}\label{class_terrain_cell_a3fc98b2ee05739280e3dec8c4d91e290}} 
+Ogre\+::int32 {\bfseries m\+GridX}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_ac01ed3002ab87b2c6c2c1e5a39ab5d4d}\label{class_terrain_cell_ac01ed3002ab87b2c6c2c1e5a39ab5d4d}} 
+Ogre\+::int32 {\bfseries m\+GridZ}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_abc9f1535a3da3c3e1c80d9567681047c}\label{class_terrain_cell_abc9f1535a3da3c3e1c80d9567681047c}} 
+Ogre\+::uint32 {\bfseries m\+Lod\+Level}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_a1fd4b491f1498c0b7361e6d96e4f68b4}\label{class_terrain_cell_a1fd4b491f1498c0b7361e6d96e4f68b4}} 
+Ogre\+::uint32 {\bfseries m\+Vertices\+Per\+Line}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_a2945051368d39ae7c66c3141512494aa}\label{class_terrain_cell_a2945051368d39ae7c66c3141512494aa}} 
+Ogre\+::uint32 {\bfseries m\+SizeX}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_af8d4da89fae46ce6f992b3ac3bdebb3a}\label{class_terrain_cell_af8d4da89fae46ce6f992b3ac3bdebb3a}} 
+Ogre\+::uint32 {\bfseries m\+SizeZ}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_acee45ec139b4e355c80177b69a615273}\label{class_terrain_cell_acee45ec139b4e355c80177b69a615273}} 
+Ogre\+::\+Vao\+Manager $\ast$ {\bfseries m\+Vao\+Manager}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_a7231f8324675209a60f0bb97628143e5}\label{class_terrain_cell_a7231f8324675209a60f0bb97628143e5}} 
+\hyperlink{class_graphics_terrain}{Graphics\+Terrain} $\ast$ {\bfseries m\+Parent\+Terrain}
+\item 
+\mbox{\Hypertarget{class_terrain_cell_a6389d57d6de64f4c2bcdc56aa5feccd1}\label{class_terrain_cell_a6389d57d6de64f4c2bcdc56aa5feccd1}} 
+bool {\bfseries m\+Use\+Skirts}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Terrain\+Cell.\+h.
+
 
 
 \subsection{Member Function Documentation}
@@ -70,6 +107,10 @@ Merge will only happen if the cells are of the same L\+OD level and are contiguo
 \begin{DoxyReturn}{Returns}
 False if couldn\textquotesingle{}t merge, true on success. 
 \end{DoxyReturn}
+
+
+Definition at line 79 of file Terrain\+Cell.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

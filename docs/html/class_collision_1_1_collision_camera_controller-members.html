@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_collision_1_1_collision_camera_controller.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Collision</b></li><li class="navelem"><a class="el" href="class_collision_1_1_collision_camera_controller.html">CollisionCameraController</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Collision::CollisionCameraController Member List</div>  </div>
@@ -71,9 +89,9 @@ $(function() {
 
 <p>This is the complete list of members for <a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Action</b> enum name (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="group___common.html#gaf299b39b39b578b2235220e5fa8dfc01">Action</a> enum name</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Backward</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>CameraController</b>(GraphicsSystem *graphicsSystem, bool useSceneNode=false) (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a09c9f866ac2161de31ff45694dd711fd">CameraController</a>(GraphicsSystem *graphicsSystem, bool useSceneNode=false)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html#ac22915566c34afa0c50400e26dcb667b">CollisionCameraController</a>(Common::GraphicsSystem *graphicsSystem, btDynamicsWorld *world)</td><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Down</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Forward</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
@@ -82,26 +100,33 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a2ade17644b5c6a9249b6fcff6c358b2e">keyReleased</a>(const SDL_KeyboardEvent &amp;arg)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>KeyState</b> typedef (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Leftward</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mCameraBaseSpeed</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mCameraPitch</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mCameraSpeedBoost</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mCameraYaw</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mGraphicsSystem</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mKeymapState</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mouseMoved</b>(const SDL_Event &amp;arg) (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mSpeedModifier</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>mUseCollision</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>mUseSceneNode</b> (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Rightward</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Run</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Up</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html#ac25037b29b022a2ccf77b16fe0bda670">update</a>(float timeSinceLast)</td><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a89119788b0320e34bd0322006bbd9734">mCameraBaseSpeed</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a53ffb8220c31ac47f8c7c336a4bebe62">mCameraPitch</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a043ce9247c01a9cc852b7e58e0b46e06">mCameraSpeedBoost</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#af0c031abefd0e2caebdc18795d1953df">mCameraYaw</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html#aeeb0d5cda4e63c73aeda6cf87e5b4b3d">mCharacter</a></td><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html#a6f4788c90fef7434302dec9d78e2e87c">mGhostObject</a></td><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#ae2970e63d46f18b24b8a0ae4b6acf247">mGraphicsSystem</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a6de401fd5501b9f48aab9efc11e5da68">mKeymapState</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#af56a45fb24b5c2e5603210be8377aa8d">mouseMoved</a>(const SDL_Event &amp;arg)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a3652121296a21279131ce9197ea57995">mSpeedModifier</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html#a193fd601715f0b7aa3bf772f078200d0">mUseSceneNode</a></td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html#a63cbe384f546c982ea24bbe8918a07d4">mWorld</a></td><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>NUM_ACTION_IDS</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Rightward</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>Run</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Up</b> enum value (defined in <a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a>)</td><td class="entry"><a class="el" href="class_common_1_1_camera_controller.html">Common::CameraController</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html#ac25037b29b022a2ccf77b16fe0bda670">update</a>(float timeSinceLast)</td><td class="entry"><a class="el" href="class_collision_1_1_collision_camera_controller.html">Collision::CollisionCameraController</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

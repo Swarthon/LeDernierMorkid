@@ -2,6 +2,15 @@
 \label{class_common_1_1_base_system}\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}}
 
 
+Simple System implementing basic functions.  
+
+
+
+
+{\ttfamily \#include $<$Base\+System.\+h$>$}
+
+
+
 Inheritance diagram for Common\+:\+:Base\+System\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,43 +30,197 @@ Collaboration diagram for Common\+:\+:Base\+System\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a420a9f2bb9ccec58af8de74cfc71a9fd}\label{class_common_1_1_base_system_a420a9f2bb9ccec58af8de74cfc71a9fd}} 
-{\bfseries Base\+System} (\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$game\+State)
+\hyperlink{class_common_1_1_base_system_a420a9f2bb9ccec58af8de74cfc71a9fd}{Base\+System} (\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$game\+State)
 \item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a84f42ac8703c9121f29e341070a26c4f}\label{class_common_1_1_base_system_a84f42ac8703c9121f29e341070a26c4f}} 
-virtual void {\bfseries initialize} (void)
+\mbox{\Hypertarget{class_common_1_1_base_system_a90dcca3acf8e4a37aa0036125ec6b830}\label{class_common_1_1_base_system_a90dcca3acf8e4a37aa0036125ec6b830}} 
+virtual \hyperlink{class_common_1_1_base_system_a90dcca3acf8e4a37aa0036125ec6b830}{$\sim$\+Base\+System} ()
+\begin{DoxyCompactList}\small\item\em Simple Destructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_common_1_1_base_system_a84f42ac8703c9121f29e341070a26c4f}{initialize} (void)
 \item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a081f0d3daaff552efe736e6096d329e9}\label{class_common_1_1_base_system_a081f0d3daaff552efe736e6096d329e9}} 
-virtual void {\bfseries deinitialize} (void)
+virtual void \hyperlink{class_common_1_1_base_system_a081f0d3daaff552efe736e6096d329e9}{deinitialize} (void)
 \item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a1f26fc7376152a90de585fd50c396427}\label{class_common_1_1_base_system_a1f26fc7376152a90de585fd50c396427}} 
-virtual void {\bfseries create\+Scene} (void)
+virtual void \hyperlink{class_common_1_1_base_system_a1f26fc7376152a90de585fd50c396427}{create\+Scene} (void)
 \item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a04ce870b4d3429942afb58137fd376ca}\label{class_common_1_1_base_system_a04ce870b4d3429942afb58137fd376ca}} 
-virtual void {\bfseries destroy\+Scene} (void)
+virtual void \hyperlink{class_common_1_1_base_system_a04ce870b4d3429942afb58137fd376ca}{destroy\+Scene} (void)
 \item 
 \mbox{\Hypertarget{class_common_1_1_base_system_a631f234a7a0e46e9f6476520cd2f9bab}\label{class_common_1_1_base_system_a631f234a7a0e46e9f6476520cd2f9bab}} 
-void {\bfseries begin\+Frame\+Parallel} (void)
-\item 
-\mbox{\Hypertarget{class_common_1_1_base_system_af71a7156da8b0a4feab83ad72162a0c2}\label{class_common_1_1_base_system_af71a7156da8b0a4feab83ad72162a0c2}} 
-void {\bfseries update} (float time\+Since\+Last)
+void \hyperlink{class_common_1_1_base_system_a631f234a7a0e46e9f6476520cd2f9bab}{begin\+Frame\+Parallel} (void)
+\begin{DoxyCompactList}\small\item\em Method to call at the beginning of the Frame. \end{DoxyCompactList}\item 
+void \hyperlink{class_common_1_1_base_system_af71a7156da8b0a4feab83ad72162a0c2}{update} (float time\+Since\+Last)
 \item 
 \mbox{\Hypertarget{class_common_1_1_base_system_a50d9e0044a1cc4b400b847c923913d81}\label{class_common_1_1_base_system_a50d9e0044a1cc4b400b847c923913d81}} 
-void {\bfseries finish\+Frame\+Parallel} (void)
-\item 
+void \hyperlink{class_common_1_1_base_system_a50d9e0044a1cc4b400b847c923913d81}{finish\+Frame\+Parallel} (void)
+\begin{DoxyCompactList}\small\item\em Method to call at the end of the frame. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_common_1_1_base_system_ad8d31cde53383edccb40c3b986252f1c}\label{class_common_1_1_base_system_ad8d31cde53383edccb40c3b986252f1c}} 
-void {\bfseries finish\+Frame} (void)
-\item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}\label{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}} 
-void {\bfseries process\+Incoming\+Message} (Mq\+::\+Message\+Id message\+Id, const void $\ast$data)
+void \hyperlink{class_common_1_1_base_system_ad8d31cde53383edccb40c3b986252f1c}{finish\+Frame} (void)
+\begin{DoxyCompactList}\small\item\em Method to call at the end of the frame. \end{DoxyCompactList}\item 
+void \hyperlink{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}{process\+Incoming\+Message} (\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id} message\+Id, const void $\ast$data)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_base_system_a3095d1d1ab984296739697daa2af3393}\label{class_common_1_1_base_system_a3095d1d1ab984296739697daa2af3393}} 
-\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$ {\bfseries m\+Current\+Game\+State}
-\end{DoxyCompactItemize}
+\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$ \hyperlink{class_common_1_1_base_system_a18e8e37eb4089bbde95459e16291b87a}{m\+Current\+Game\+State}
+\begin{DoxyCompactList}\small\item\em Current \hyperlink{class_common_1_1_game_state}{Game\+State} to which is transmitted the events. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Simple System implementing basic functions. 
+
+\begin{DoxyRemark}{Remarks}
+This class is not useful without inheritance, you should implement it to fit with your expectations 
+\end{DoxyRemark}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_graphics_system}{Graphics\+System}, \hyperlink{class_common_1_1_logic_system}{Logic\+System} 
+\end{DoxySeeAlso}
+
+
+Definition at line 19 of file Base\+System.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_common_1_1_base_system_a420a9f2bb9ccec58af8de74cfc71a9fd}\label{class_common_1_1_base_system_a420a9f2bb9ccec58af8de74cfc71a9fd}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!Base\+System@{Base\+System}}
+\index{Base\+System@{Base\+System}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{Base\+System()}{BaseSystem()}}
+{\footnotesize\ttfamily Common\+::\+Base\+System\+::\+Base\+System (\begin{DoxyParamCaption}\item[{\hyperlink{class_common_1_1_game_state}{Game\+State} $\ast$}]{game\+State }\end{DoxyParamCaption})}
+
+Constructor of \hyperlink{class_common_1_1_base_system}{Base\+System} 
+\begin{DoxyParams}{Parameters}
+{\em game\+State} & \hyperlink{class_common_1_1_game_state}{Game\+State} to which transmit the events \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 7 of file Base\+System.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_common_1_1_base_system_a1f26fc7376152a90de585fd50c396427}\label{class_common_1_1_base_system_a1f26fc7376152a90de585fd50c396427}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!create\+Scene@{create\+Scene}}
+\index{create\+Scene@{create\+Scene}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{create\+Scene()}{createScene()}}
+{\footnotesize\ttfamily void Common\+::\+Base\+System\+::create\+Scene (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Create the Scene through \hyperlink{class_common_1_1_game_state_a30b77d03dd849ebb2d6698686e9e7619}{Game\+State\+::create\+Scene} \begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_game_state_a30b77d03dd849ebb2d6698686e9e7619}{Game\+State\+::create\+Scene} 
+\end{DoxySeeAlso}
+
+
+Definition at line 16 of file Base\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_base_system_a081f0d3daaff552efe736e6096d329e9}\label{class_common_1_1_base_system_a081f0d3daaff552efe736e6096d329e9}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!deinitialize@{deinitialize}}
+\index{deinitialize@{deinitialize}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{deinitialize()}{deinitialize()}}
+{\footnotesize\ttfamily void Common\+::\+Base\+System\+::deinitialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Deinitialize the System \begin{DoxySeeAlso}{See also}
+Game\+State\+::uninitialize 
+\end{DoxySeeAlso}
+
+
+Reimplemented in \hyperlink{class_common_1_1_graphics_system_ade2d4efd6e535d312818a92230eb7dcf}{Common\+::\+Graphics\+System}.
+
+
+
+Definition at line 14 of file Base\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_base_system_a04ce870b4d3429942afb58137fd376ca}\label{class_common_1_1_base_system_a04ce870b4d3429942afb58137fd376ca}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!destroy\+Scene@{destroy\+Scene}}
+\index{destroy\+Scene@{destroy\+Scene}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{destroy\+Scene()}{destroyScene()}}
+{\footnotesize\ttfamily void Common\+::\+Base\+System\+::destroy\+Scene (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Destroy the Scene through \hyperlink{class_common_1_1_game_state_a03176055b9cb064b2cea5b64cbf6647a}{Game\+State\+::destroy\+Scene} \begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_game_state_a03176055b9cb064b2cea5b64cbf6647a}{Game\+State\+::destroy\+Scene} 
+\end{DoxySeeAlso}
+
+
+Definition at line 18 of file Base\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_base_system_a84f42ac8703c9121f29e341070a26c4f}\label{class_common_1_1_base_system_a84f42ac8703c9121f29e341070a26c4f}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!initialize@{initialize}}
+\index{initialize@{initialize}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Common\+::\+Base\+System\+::initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Initialize the System \begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_game_state_a4e7fa2fbc9080111213ce379eb33d082}{Game\+State\+::initialize} 
+\end{DoxySeeAlso}
+
+
+Reimplemented in \hyperlink{class_common_1_1_logic_system_a6e1389a1e2ed8dd21b46fabdedee5d22}{Common\+::\+Logic\+System}.
+
+
+
+Definition at line 12 of file Base\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}\label{class_common_1_1_base_system_a6820dfed1ee63f376e5773b361e3d2a8}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!process\+Incoming\+Message@{process\+Incoming\+Message}}
+\index{process\+Incoming\+Message@{process\+Incoming\+Message}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{process\+Incoming\+Message()}{processIncomingMessage()}}
+{\footnotesize\ttfamily void Common\+::\+Base\+System\+::process\+Incoming\+Message (\begin{DoxyParamCaption}\item[{\hyperlink{group___common_gaa8c87d2b450282716c906da283e149e6}{Mq\+::\+Message\+Id}}]{message\+Id,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Process received messages 
+\begin{DoxyParams}{Parameters}
+{\em message\+Id} & The Mq\+::\+Message\+Id of the message, used to know what kind of message it is \\
+\hline
+{\em data} & The data sent with the message, could be anything. Depending on the message\+Id, a conversion will be needed \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}{Common\+::\+Mq\+::\+Message\+Queue\+System\+::process\+Incoming\+Message} 
+\end{DoxySeeAlso}
+
+
+Implements \hyperlink{class_common_1_1_mq_1_1_message_queue_system_ad6eb849b72f03e3e4f09c6457c8ecda6}{Common\+::\+Mq\+::\+Message\+Queue\+System}.
+
+
+
+Reimplemented in \hyperlink{class_common_1_1_graphics_system_a8d286a151ed9a65f0eebe1ac119e2d59}{Common\+::\+Graphics\+System}, and \hyperlink{class_common_1_1_logic_system_a4495ecadf034103ad58deab6802543fa}{Common\+::\+Logic\+System}.
+
+
+
+Definition at line 32 of file Base\+System.\+cpp.
+
+\mbox{\Hypertarget{class_common_1_1_base_system_af71a7156da8b0a4feab83ad72162a0c2}\label{class_common_1_1_base_system_af71a7156da8b0a4feab83ad72162a0c2}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!update@{update}}
+\index{update@{update}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Common\+::\+Base\+System\+::update (\begin{DoxyParamCaption}\item[{float}]{time\+Since\+Last }\end{DoxyParamCaption})}
+
+Method to update the System. Call it one time per frame 
+\begin{DoxyParams}{Parameters}
+{\em time\+Since\+Last} & Time since the last frame \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file Base\+System.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_common_1_1_base_system_a18e8e37eb4089bbde95459e16291b87a}\label{class_common_1_1_base_system_a18e8e37eb4089bbde95459e16291b87a}} 
+\index{Common\+::\+Base\+System@{Common\+::\+Base\+System}!m\+Current\+Game\+State@{m\+Current\+Game\+State}}
+\index{m\+Current\+Game\+State@{m\+Current\+Game\+State}!Common\+::\+Base\+System@{Common\+::\+Base\+System}}
+\subsubsection{\texorpdfstring{m\+Current\+Game\+State}{mCurrentGameState}}
+{\footnotesize\ttfamily Common\+::\+Base\+System\+::m\+Current\+Game\+State\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Current \hyperlink{class_common_1_1_game_state}{Game\+State} to which is transmitted the events. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_common_1_1_base_system_a420a9f2bb9ccec58af8de74cfc71a9fd}{Base\+System\+::\+Base\+System} 
+\end{DoxySeeAlso}
+
+
+Definition at line 28 of file Base\+System.\+h.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

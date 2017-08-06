@@ -1,11 +1,55 @@
 \hypertarget{class_common_1_1_static_plugin_loader}{}\section{Common\+:\+:Static\+Plugin\+Loader Class Reference}
 \label{class_common_1_1_static_plugin_loader}\index{Common\+::\+Static\+Plugin\+Loader@{Common\+::\+Static\+Plugin\+Loader}}
+
+
+Utility class to load plugins statically.  
+
+
+
+
+{\ttfamily \#include $<$Static\+Plugin\+Loader.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_common_1_1_static_plugin_loader_ad53a802ca29d709d2e2731be6304d274}\label{class_common_1_1_static_plugin_loader_ad53a802ca29d709d2e2731be6304d274}} 
-void {\bfseries install} (Ogre\+::\+Root $\ast$root)
+\mbox{\Hypertarget{class_common_1_1_static_plugin_loader_a4d07878bdf153243742618252174fdb1}\label{class_common_1_1_static_plugin_loader_a4d07878bdf153243742618252174fdb1}} 
+\hyperlink{class_common_1_1_static_plugin_loader_a4d07878bdf153243742618252174fdb1}{Static\+Plugin\+Loader} ()
+\begin{DoxyCompactList}\small\item\em Simple Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_common_1_1_static_plugin_loader_a664472b3a72a71fbe5be7653bcc29b38}\label{class_common_1_1_static_plugin_loader_a664472b3a72a71fbe5be7653bcc29b38}} 
+\hyperlink{class_common_1_1_static_plugin_loader_a664472b3a72a71fbe5be7653bcc29b38}{$\sim$\+Static\+Plugin\+Loader} ()
+\begin{DoxyCompactList}\small\item\em Simple Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_common_1_1_static_plugin_loader_ad53a802ca29d709d2e2731be6304d274}{install} (Ogre\+::\+Root $\ast$root)
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utility class to load plugins statically. 
+
+\begin{DoxyRemark}{Remarks}
+This class is only useful if you want to use the Metal Rendersystem 
+\end{DoxyRemark}
+
+
+Definition at line 56 of file Static\+Plugin\+Loader.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_common_1_1_static_plugin_loader_ad53a802ca29d709d2e2731be6304d274}\label{class_common_1_1_static_plugin_loader_ad53a802ca29d709d2e2731be6304d274}} 
+\index{Common\+::\+Static\+Plugin\+Loader@{Common\+::\+Static\+Plugin\+Loader}!install@{install}}
+\index{install@{install}!Common\+::\+Static\+Plugin\+Loader@{Common\+::\+Static\+Plugin\+Loader}}
+\subsubsection{\texorpdfstring{install()}{install()}}
+{\footnotesize\ttfamily void Common\+::\+Static\+Plugin\+Loader\+::install (\begin{DoxyParamCaption}\item[{Ogre\+::\+Root $\ast$}]{root }\end{DoxyParamCaption})}
+
+Method which install Metal plugin depending on your Ogre configuration 
+\begin{DoxyParams}{Parameters}
+{\em root} & The Ogre\+::\+Root who will install the plugin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 61 of file Static\+Plugin\+Loader.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

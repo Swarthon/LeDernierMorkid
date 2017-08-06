@@ -24,7 +24,7 @@ Collaboration diagram for Collision\+:\+:Object\+State\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=192pt]{class_collision_1_1_object_state__coll__graph}
+\includegraphics[width=350pt]{class_collision_1_1_object_state__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -38,6 +38,18 @@ virtual void \hyperlink{class_collision_1_1_object_state_a2bfa06b1f231cad379fbbd
 \item 
 virtual void \hyperlink{class_collision_1_1_object_state_a7aeced5d3e1ae27eb7a31f2604ab227c}{set\+World\+Transform} (const bt\+Transform \&world\+Trans)
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_collision_1_1_object_state_ad0917d300eec0439ee54009b09abd9a1}\label{class_collision_1_1_object_state_ad0917d300eec0439ee54009b09abd9a1}} 
+\hyperlink{struct_common_1_1_game_entity}{Common\+::\+Game\+Entity} $\ast$ \hyperlink{class_collision_1_1_object_state_ad0917d300eec0439ee54009b09abd9a1}{m\+Game\+Entity}
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_common_1_1_game_entity}{Common\+::\+Game\+Entity} to synchronize. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_collision_1_1_object_state_a3704d8a82f457b4c67a102188db4d950}\label{class_collision_1_1_object_state_a3704d8a82f457b4c67a102188db4d950}} 
+const \hyperlink{class_common_1_1_logic_system}{Common\+::\+Logic\+System} $\ast$ \hyperlink{class_collision_1_1_object_state_a3704d8a82f457b4c67a102188db4d950}{m\+Logic\+System}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_common_1_1_logic_system}{Common\+::\+Logic\+System} to which belongs m\+Game\+Entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_collision_1_1_object_state_aa1e96983ea35069a8801ee6aa0e76a24}\label{class_collision_1_1_object_state_aa1e96983ea35069a8801ee6aa0e76a24}} 
+bt\+Transform \hyperlink{class_collision_1_1_object_state_aa1e96983ea35069a8801ee6aa0e76a24}{m\+World\+Transform}
+\begin{DoxyCompactList}\small\item\em bt\+Transform value \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -49,6 +61,10 @@ rigidBody->setMotionState(\textcolor{keyword}{new} \hyperlink{class_collision_1_
       logicSystem));
 \end{DoxyCode}
  
+
+Definition at line 25 of file Object\+State.\+h.
+
+
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_collision_1_1_object_state_acd780ba908aac6389fc4b22a9257658a}\label{class_collision_1_1_object_state_acd780ba908aac6389fc4b22a9257658a}} 
@@ -66,6 +82,10 @@ Constructor of \hyperlink{class_collision_1_1_collision_camera_controller}{Colli
 {\em logic\+System} & the Logic\+System to which belongs the game\+Entity, used to get the transform of the \hyperlink{struct_common_1_1_game_entity}{Common\+::\+Game\+Entity} \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 8 of file Object\+State.\+cpp.
+
 \mbox{\Hypertarget{class_collision_1_1_object_state_a22a49e4cf7522a2b47fb128af6f65dc6}\label{class_collision_1_1_object_state_a22a49e4cf7522a2b47fb128af6f65dc6}} 
 \index{Collision\+::\+Object\+State@{Collision\+::\+Object\+State}!````~Object\+State@{$\sim$\+Object\+State}}
 \index{````~Object\+State@{$\sim$\+Object\+State}!Collision\+::\+Object\+State@{Collision\+::\+Object\+State}}
@@ -73,6 +93,10 @@ Constructor of \hyperlink{class_collision_1_1_collision_camera_controller}{Colli
 {\footnotesize\ttfamily Collision\+::\+Object\+State\+::$\sim$\+Object\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Simple destructor 
+
+Definition at line 13 of file Object\+State.\+cpp.
+
+
 
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{class_collision_1_1_object_state_a2bfa06b1f231cad379fbbd6a86cb9ac9}\label{class_collision_1_1_object_state_a2bfa06b1f231cad379fbbd6a86cb9ac9}} 
@@ -89,6 +113,10 @@ Method to get the bt\+Transform of the Object
 \begin{DoxyRemark}{Remarks}
 This method is used internaly by Bullet. Do not use it 
 \end{DoxyRemark}
+
+
+Definition at line 16 of file Object\+State.\+cpp.
+
 \mbox{\Hypertarget{class_collision_1_1_object_state_a7aeced5d3e1ae27eb7a31f2604ab227c}\label{class_collision_1_1_object_state_a7aeced5d3e1ae27eb7a31f2604ab227c}} 
 \index{Collision\+::\+Object\+State@{Collision\+::\+Object\+State}!set\+World\+Transform@{set\+World\+Transform}}
 \index{set\+World\+Transform@{set\+World\+Transform}!Collision\+::\+Object\+State@{Collision\+::\+Object\+State}}
@@ -103,6 +131,10 @@ Method to get the bt\+Transform of the Object
 \begin{DoxyRemark}{Remarks}
 This method is used internaly by Bullet. Do not use it 
 \end{DoxyRemark}
+
+
+Definition at line 19 of file Object\+State.\+cpp.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

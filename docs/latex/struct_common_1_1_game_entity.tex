@@ -2,6 +2,15 @@
 \label{struct_common_1_1_game_entity}\index{Common\+::\+Game\+Entity@{Common\+::\+Game\+Entity}}
 
 
+Struct defining Game Entity.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Entity.\+h$>$}
+
+
+
 Collaboration diagram for Common\+:\+:Game\+Entity\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -12,42 +21,98 @@ Collaboration diagram for Common\+:\+:Game\+Entity\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_common_1_1_game_entity_a1478181c16b5132fce75352afa88a3a8}\label{struct_common_1_1_game_entity_a1478181c16b5132fce75352afa88a3a8}} 
-{\bfseries Game\+Entity} (Ogre\+::uint32 id, const \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} $\ast$mo\+Definition, const \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} $\ast$co\+Definition, Ogre\+::\+Scene\+Memory\+Mgr\+Types type)
+\hyperlink{struct_common_1_1_game_entity_a1478181c16b5132fce75352afa88a3a8}{Game\+Entity} (Ogre\+::uint32 id, const \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} $\ast$mo\+Definition, const \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} $\ast$co\+Definition, Ogre\+::\+Scene\+Memory\+Mgr\+Types type)
 \item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_ada4fa423b9c2efaa5ac97f8a081c7d7b}\label{struct_common_1_1_game_entity_ada4fa423b9c2efaa5ac97f8a081c7d7b}} 
-Ogre\+::uint32 {\bfseries get\+Id} (void) const
-\item 
-\mbox{\Hypertarget{struct_common_1_1_game_entity_a9d46d0e1dfa65029ee7acda84b5d648f}\label{struct_common_1_1_game_entity_a9d46d0e1dfa65029ee7acda84b5d648f}} 
-bool {\bfseries operator$<$} (const \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$\+\_\+r) const
+Ogre\+::uint32 \hyperlink{struct_common_1_1_game_entity_ada4fa423b9c2efaa5ac97f8a081c7d7b}{get\+Id} (void) const
+\begin{DoxyCompactList}\small\item\em Get m\+Id. \end{DoxyCompactList}\item 
+bool \hyperlink{struct_common_1_1_game_entity_a9d46d0e1dfa65029ee7acda84b5d648f}{operator$<$} (const \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$\+\_\+r) const
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_ad6d1c510b4eb3e83e26c2fe78f5ea55c}\label{struct_common_1_1_game_entity_ad6d1c510b4eb3e83e26c2fe78f5ea55c}} 
-Ogre\+::\+Scene\+Node $\ast$ {\bfseries m\+Scene\+Node}
-\item 
+Ogre\+::\+Scene\+Node $\ast$ \hyperlink{struct_common_1_1_game_entity_ad6d1c510b4eb3e83e26c2fe78f5ea55c}{m\+Scene\+Node}
+\begin{DoxyCompactList}\small\item\em Scene\+Node. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_aa7394d089e8ddccaeaafd06ced6d2b54}\label{struct_common_1_1_game_entity_aa7394d089e8ddccaeaafd06ced6d2b54}} 
-Ogre\+::\+Movable\+Object $\ast$ {\bfseries m\+Movable\+Object}
-\item 
+Ogre\+::\+Movable\+Object $\ast$ \hyperlink{struct_common_1_1_game_entity_aa7394d089e8ddccaeaafd06ced6d2b54}{m\+Movable\+Object}
+\begin{DoxyCompactList}\small\item\em Movable\+Object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_afa2c88a6b49500a16cba74721a099b84}\label{struct_common_1_1_game_entity_afa2c88a6b49500a16cba74721a099b84}} 
-bt\+Collision\+Object $\ast$ {\bfseries m\+Collision\+Object}
-\item 
+bt\+Collision\+Object $\ast$ \hyperlink{struct_common_1_1_game_entity_afa2c88a6b49500a16cba74721a099b84}{m\+Collision\+Object}
+\begin{DoxyCompactList}\small\item\em Collision\+Object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_a36dc8cb7923177eb631dc333e37e22f9}\label{struct_common_1_1_game_entity_a36dc8cb7923177eb631dc333e37e22f9}} 
-\hyperlink{struct_common_1_1_game_entity_transform}{Game\+Entity\+Transform} $\ast$ {\bfseries m\+Transform} \mbox{[}N\+U\+M\+\_\+\+G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+B\+U\+F\+F\+E\+RS\mbox{]}
-\item 
+\hyperlink{struct_common_1_1_game_entity_transform}{Game\+Entity\+Transform} $\ast$ \hyperlink{struct_common_1_1_game_entity_a36dc8cb7923177eb631dc333e37e22f9}{m\+Transform} \mbox{[}N\+U\+M\+\_\+\+G\+A\+M\+E\+\_\+\+E\+N\+T\+I\+T\+Y\+\_\+\+B\+U\+F\+F\+E\+RS\mbox{]}
+\begin{DoxyCompactList}\small\item\em Actual transform of the \hyperlink{struct_common_1_1_game_entity}{Game\+Entity}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_a8d91c6cbb06d2c46d2b07b1461b62371}\label{struct_common_1_1_game_entity_a8d91c6cbb06d2c46d2b07b1461b62371}} 
-Ogre\+::\+Scene\+Memory\+Mgr\+Types {\bfseries m\+Type}
-\item 
+Ogre\+::\+Scene\+Memory\+Mgr\+Types \hyperlink{struct_common_1_1_game_entity_a8d91c6cbb06d2c46d2b07b1461b62371}{m\+Type}
+\begin{DoxyCompactList}\small\item\em Type of Scene\+Manager used. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_a7e663e00167ef9bf306c474988c949cd}\label{struct_common_1_1_game_entity_a7e663e00167ef9bf306c474988c949cd}} 
-\hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} const  $\ast$ {\bfseries m\+Mo\+Definition}
-\item 
+\hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} const  $\ast$ \hyperlink{struct_common_1_1_game_entity_a7e663e00167ef9bf306c474988c949cd}{m\+Mo\+Definition}
+\begin{DoxyCompactList}\small\item\em Definition of the Movable\+Object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_a87c7617ad8a3dcdd6dd424cca9fb1079}\label{struct_common_1_1_game_entity_a87c7617ad8a3dcdd6dd424cca9fb1079}} 
-\hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} const  $\ast$ {\bfseries m\+Co\+Definition}
-\item 
+\hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} const  $\ast$ \hyperlink{struct_common_1_1_game_entity_a87c7617ad8a3dcdd6dd424cca9fb1079}{m\+Co\+Definition}
+\begin{DoxyCompactList}\small\item\em Definition of the Collision\+Object. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_common_1_1_game_entity_a52127ea487808c64d5e974d2fefcd49b}\label{struct_common_1_1_game_entity_a52127ea487808c64d5e974d2fefcd49b}} 
-size\+\_\+t {\bfseries m\+Transform\+Buffer\+Idx}
-\end{DoxyCompactItemize}
+size\+\_\+t \hyperlink{struct_common_1_1_game_entity_a52127ea487808c64d5e974d2fefcd49b}{m\+Transform\+Buffer\+Idx}
+\begin{DoxyCompactList}\small\item\em ID of the transform\textquotesingle{}s buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_common_1_1_game_entity_aade9d274728bf5ed3625fde35d2fd4e7}\label{struct_common_1_1_game_entity_aade9d274728bf5ed3625fde35d2fd4e7}} 
+Ogre\+::uint32 \hyperlink{struct_common_1_1_game_entity_aade9d274728bf5ed3625fde35d2fd4e7}{m\+Id}
+\begin{DoxyCompactList}\small\item\em Unique ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Struct defining Game Entity. 
+
+Definition at line 81 of file Game\+Entity.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_common_1_1_game_entity_a1478181c16b5132fce75352afa88a3a8}\label{struct_common_1_1_game_entity_a1478181c16b5132fce75352afa88a3a8}} 
+\index{Common\+::\+Game\+Entity@{Common\+::\+Game\+Entity}!Game\+Entity@{Game\+Entity}}
+\index{Game\+Entity@{Game\+Entity}!Common\+::\+Game\+Entity@{Common\+::\+Game\+Entity}}
+\subsubsection{\texorpdfstring{Game\+Entity()}{GameEntity()}}
+{\footnotesize\ttfamily Common\+::\+Game\+Entity\+::\+Game\+Entity (\begin{DoxyParamCaption}\item[{Ogre\+::uint32}]{id,  }\item[{const \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} $\ast$}]{mo\+Definition,  }\item[{const \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} $\ast$}]{co\+Definition,  }\item[{Ogre\+::\+Scene\+Memory\+Mgr\+Types}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique ID to provide \\
+\hline
+{\em mo\+Definition} & \hyperlink{struct_common_1_1_movable_object_definition}{Movable\+Object\+Definition} describing Graphics items \\
+\hline
+{\em co\+Definition} & \hyperlink{struct_common_1_1_collision_object_definition}{Collision\+Object\+Definition} describing Collision item \\
+\hline
+{\em type} & Type of Scene\+Manager\textquotesingle{}s Memory used (as Ogre\+::\+S\+C\+E\+N\+E\+\_\+\+D\+Y\+N\+A\+M\+IC) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 130 of file Game\+Entity.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_common_1_1_game_entity_a9d46d0e1dfa65029ee7acda84b5d648f}\label{struct_common_1_1_game_entity_a9d46d0e1dfa65029ee7acda84b5d648f}} 
+\index{Common\+::\+Game\+Entity@{Common\+::\+Game\+Entity}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Common\+::\+Game\+Entity@{Common\+::\+Game\+Entity}}
+\subsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Common\+::\+Game\+Entity\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} $\ast$}]{\+\_\+r }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Compare two \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+r} & Second \hyperlink{struct_common_1_1_game_entity}{Game\+Entity} to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns whether \+\_\+r-\/$>$m\+Id is lower than this-\/$>$m\+Id 
+\end{DoxyReturn}
+
+
+Definition at line 154 of file Game\+Entity.\+h.
+
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}

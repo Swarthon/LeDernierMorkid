@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_common_1_1_camera_controller.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,11 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><b>Common</b></li><li class="navelem"><a class="el" href="class_common_1_1_camera_controller.html">CameraController</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -71,9 +89,14 @@ $(function() {
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_common_1_1_camera_controller-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Common::CameraController Class Reference</div>  </div>
+<div class="title">Common::CameraController Class Reference<div class="ingroups"><a class="el" href="group___common.html">Common</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Simple <a class="el" href="class_common_1_1_camera_controller.html" title="Simple CameraControllerThis class does not implement more than rotate and move a Ogre::Camera or Ogre...">CameraController</a>This class does not implement more than rotate and move a Ogre::Camera or Ogre::SceneNode.  
+ <a href="class_common_1_1_camera_controller.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_camera_controller_8h_source.html">CameraController.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Common::CameraController:</div>
 <div class="dyncontent">
@@ -81,56 +104,51 @@ Inheritance diagram for Common::CameraController:</div>
 <map name="_common_1_1_camera_controller_inherit__map" id="_common_1_1_camera_controller_inherit__map">
 <area shape="rect" id="node2" href="class_collision_1_1_collision_camera_controller.html" title="Camera Controller using Collision. " alt="" coords="10,80,186,121"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for Common::CameraController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_common_1_1_camera_controller__coll__graph.png" border="0" usemap="#_common_1_1_camera_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="_common_1_1_camera_controller_coll__map" id="_common_1_1_camera_controller_coll__map">
-<area shape="rect" id="node2" href="class_common_1_1_graphics_system.html" title="Common::GraphicsSystem" alt="" coords="977,94,1157,121"/>
-<area shape="rect" id="node3" href="class_common_1_1_base_system.html" title="Common::BaseSystem" alt="" coords="629,30,787,57"/>
-<area shape="rect" id="node4" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Common::Mq::MessageQueue\lSystem" alt="" coords="239,5,439,47"/>
-<area shape="rect" id="node5" href="class_common_1_1_game_state.html" title="Common::GameState" alt="" coords="264,71,413,98"/>
-<area shape="rect" id="node6" href="class_common_1_1_mouse_listener.html" title="Common::MouseListener" alt="" coords="13,21,181,47"/>
-<area shape="rect" id="node7" href="class_common_1_1_keyboard_listener.html" title="Common::KeyboardListener" alt="" coords="5,71,189,98"/>
-<area shape="rect" id="node8" href="class_common_1_1_joystick_listener.html" title="Common::JoystickListener" alt="" coords="8,122,187,149"/>
-<area shape="rect" id="node10" href="class_common_1_1_static_plugin_loader.html" title="Common::StaticPluginLoader" alt="" coords="612,137,804,163"/>
-<area shape="rect" id="node11" href="class_common_1_1_sdl_input_handler.html" title="Common::SdlInputHandler" alt="" coords="620,187,796,214"/>
+<area shape="rect" id="node2" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. " alt="" coords="1241,100,1421,127"/>
+<area shape="rect" id="node3" href="class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="612,39,771,65"/>
+<area shape="rect" id="node11" href="class_common_1_1_sdl_input_handler.html" title="Common::SdlInputHandler" alt="" coords="884,100,1060,127"/>
+<area shape="rect" id="node4" href="class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="239,14,439,55"/>
+<area shape="rect" id="node5" href="class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="264,80,413,107"/>
+<area shape="rect" id="node6" href="class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="13,29,181,56"/>
+<area shape="rect" id="node7" href="class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="5,80,189,107"/>
+<area shape="rect" id="node8" href="class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="8,131,187,157"/>
+<area shape="rect" id="node10" href="class_common_1_1_static_plugin_loader.html" title="Utility class to load plugins statically. " alt="" coords="876,201,1068,228"/>
 </map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a09c9f866ac2161de31ff45694dd711fd"><td class="memItemLeft" align="right" valign="top"><a id="a09c9f866ac2161de31ff45694dd711fd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CameraController</b> (<a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> *graphicsSystem, bool useSceneNode=false)</td></tr>
+<tr class="memitem:a09c9f866ac2161de31ff45694dd711fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a09c9f866ac2161de31ff45694dd711fd">CameraController</a> (<a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> *graphicsSystem, bool useSceneNode=false)</td></tr>
 <tr class="separator:a09c9f866ac2161de31ff45694dd711fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d11cbced7f78eec997b96bb489d0806"><td class="memItemLeft" align="right" valign="top"><a id="a5d11cbced7f78eec997b96bb489d0806"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (float timeSinceLast)</td></tr>
+<tr class="memitem:a5d11cbced7f78eec997b96bb489d0806"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a5d11cbced7f78eec997b96bb489d0806">update</a> (float timeSinceLast)</td></tr>
 <tr class="separator:a5d11cbced7f78eec997b96bb489d0806"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefb0839a3f45e4390c764762b7a053a1"><td class="memItemLeft" align="right" valign="top"><a id="aefb0839a3f45e4390c764762b7a053a1"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#aefb0839a3f45e4390c764762b7a053a1">keyPressed</a> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
-<tr class="memdesc:aefb0839a3f45e4390c764762b7a053a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if we've handled the event. <br /></td></tr>
+<tr class="memitem:aefb0839a3f45e4390c764762b7a053a1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#aefb0839a3f45e4390c764762b7a053a1">keyPressed</a> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
 <tr class="separator:aefb0839a3f45e4390c764762b7a053a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ade17644b5c6a9249b6fcff6c358b2e"><td class="memItemLeft" align="right" valign="top"><a id="a2ade17644b5c6a9249b6fcff6c358b2e"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a2ade17644b5c6a9249b6fcff6c358b2e">keyReleased</a> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
-<tr class="memdesc:a2ade17644b5c6a9249b6fcff6c358b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if we've handled the event. <br /></td></tr>
+<tr class="memitem:a2ade17644b5c6a9249b6fcff6c358b2e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a2ade17644b5c6a9249b6fcff6c358b2e">keyReleased</a> (const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;arg)</td></tr>
 <tr class="separator:a2ade17644b5c6a9249b6fcff6c358b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af56a45fb24b5c2e5603210be8377aa8d"><td class="memItemLeft" align="right" valign="top"><a id="af56a45fb24b5c2e5603210be8377aa8d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMoved</b> (const <a class="el" href="union_s_d_l___event.html">SDL_Event</a> &amp;arg)</td></tr>
+<tr class="memitem:af56a45fb24b5c2e5603210be8377aa8d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#af56a45fb24b5c2e5603210be8377aa8d">mouseMoved</a> (const <a class="el" href="union_s_d_l___event.html">SDL_Event</a> &amp;arg)</td></tr>
 <tr class="separator:af56a45fb24b5c2e5603210be8377aa8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a89119788b0320e34bd0322006bbd9734"><td class="memItemLeft" align="right" valign="top"><a id="a89119788b0320e34bd0322006bbd9734"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraBaseSpeed</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a89119788b0320e34bd0322006bbd9734">mCameraBaseSpeed</a></td></tr>
+<tr class="memdesc:a89119788b0320e34bd0322006bbd9734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Camera speed. <br /></td></tr>
 <tr class="separator:a89119788b0320e34bd0322006bbd9734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a043ce9247c01a9cc852b7e58e0b46e06"><td class="memItemLeft" align="right" valign="top"><a id="a043ce9247c01a9cc852b7e58e0b46e06"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraSpeedBoost</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a043ce9247c01a9cc852b7e58e0b46e06">mCameraSpeedBoost</a></td></tr>
+<tr class="memdesc:a043ce9247c01a9cc852b7e58e0b46e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Camera speed boost. <br /></td></tr>
 <tr class="separator:a043ce9247c01a9cc852b7e58e0b46e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
 Protected Types</h2></td></tr>
-<tr class="memitem:af299b39b39b578b2235220e5fa8dfc01"><td class="memItemLeft" align="right" valign="top"><a id="af299b39b39b578b2235220e5fa8dfc01"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Action</b> { <br />
+<tr class="memitem:gaf299b39b39b578b2235220e5fa8dfc01"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___common.html#gaf299b39b39b578b2235220e5fa8dfc01">Action</a> { <br />
 &#160;&#160;<b>Forward</b>, 
 <b>Backward</b>, 
 <b>Leftward</b>, 
@@ -138,51 +156,271 @@ Protected Types</h2></td></tr>
 <br />
 &#160;&#160;<b>Up</b>, 
 <b>Down</b>, 
-<b>Run</b>
+<b>Run</b>, 
+<b>NUM_ACTION_IDS</b>
 <br />
  }</td></tr>
-<tr class="separator:af299b39b39b578b2235220e5fa8dfc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gaf299b39b39b578b2235220e5fa8dfc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75aa76cde460aabcb220ca664f3d40a1"><td class="memItemLeft" align="right" valign="top"><a id="a75aa76cde460aabcb220ca664f3d40a1"></a>
 typedef std::pair&lt; SDL_Keycode, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>KeyState</b></td></tr>
 <tr class="separator:a75aa76cde460aabcb220ca664f3d40a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33ec61812e24b2f120a08127435c52dc"><td class="memItemLeft" align="right" valign="top"><a id="a33ec61812e24b2f120a08127435c52dc"></a>
-typedef std::map&lt; Action, KeyState &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>KeymapState</b></td></tr>
+typedef std::map&lt; <a class="el" href="group___common.html#gaf299b39b39b578b2235220e5fa8dfc01">Action</a>, KeyState &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>KeymapState</b></td></tr>
 <tr class="separator:a33ec61812e24b2f120a08127435c52dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa2db4d904aadf4af7f663e6385fa1a7e"><td class="memItemLeft" align="right" valign="top"><a id="aa2db4d904aadf4af7f663e6385fa1a7e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>mUseSceneNode</b></td></tr>
-<tr class="separator:aa2db4d904aadf4af7f663e6385fa1a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a074c334b4156cf5b7c334e41b7e34619"><td class="memItemLeft" align="right" valign="top"><a id="a074c334b4156cf5b7c334e41b7e34619"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>mUseCollision</b></td></tr>
-<tr class="separator:a074c334b4156cf5b7c334e41b7e34619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a193fd601715f0b7aa3bf772f078200d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a193fd601715f0b7aa3bf772f078200d0">mUseSceneNode</a></td></tr>
+<tr class="memdesc:a193fd601715f0b7aa3bf772f078200d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use SceneNode or not.  <a href="#a193fd601715f0b7aa3bf772f078200d0">More...</a><br /></td></tr>
+<tr class="separator:a193fd601715f0b7aa3bf772f078200d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3652121296a21279131ce9197ea57995"><td class="memItemLeft" align="right" valign="top"><a id="a3652121296a21279131ce9197ea57995"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>mSpeedModifier</b></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a3652121296a21279131ce9197ea57995">mSpeedModifier</a></td></tr>
+<tr class="memdesc:a3652121296a21279131ce9197ea57995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factor of speed. <br /></td></tr>
 <tr class="separator:a3652121296a21279131ce9197ea57995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6de401fd5501b9f48aab9efc11e5da68"><td class="memItemLeft" align="right" valign="top"><a id="a6de401fd5501b9f48aab9efc11e5da68"></a>
-KeymapState&#160;</td><td class="memItemRight" valign="bottom"><b>mKeymapState</b></td></tr>
-<tr class="separator:a6de401fd5501b9f48aab9efc11e5da68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0c031abefd0e2caebdc18795d1953df"><td class="memItemLeft" align="right" valign="top"><a id="af0c031abefd0e2caebdc18795d1953df"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraYaw</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#af0c031abefd0e2caebdc18795d1953df">mCameraYaw</a></td></tr>
+<tr class="memdesc:af0c031abefd0e2caebdc18795d1953df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total Y rotation of the camera. <br /></td></tr>
 <tr class="separator:af0c031abefd0e2caebdc18795d1953df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ffb8220c31ac47f8c7c336a4bebe62"><td class="memItemLeft" align="right" valign="top"><a id="a53ffb8220c31ac47f8c7c336a4bebe62"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>mCameraPitch</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a53ffb8220c31ac47f8c7c336a4bebe62">mCameraPitch</a></td></tr>
+<tr class="memdesc:a53ffb8220c31ac47f8c7c336a4bebe62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total X rotation of the camera. <br /></td></tr>
 <tr class="separator:a53ffb8220c31ac47f8c7c336a4bebe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6de401fd5501b9f48aab9efc11e5da68"><td class="memItemLeft" align="right" valign="top"><a id="a6de401fd5501b9f48aab9efc11e5da68"></a>
+KeymapState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#a6de401fd5501b9f48aab9efc11e5da68">mKeymapState</a></td></tr>
+<tr class="memdesc:a6de401fd5501b9f48aab9efc11e5da68"><td class="mdescLeft">&#160;</td><td class="mdescRight">States of keys. <br /></td></tr>
+<tr class="separator:a6de401fd5501b9f48aab9efc11e5da68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2970e63d46f18b24b8a0ae4b6acf247"><td class="memItemLeft" align="right" valign="top"><a id="ae2970e63d46f18b24b8a0ae4b6acf247"></a>
-<a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mGraphicsSystem</b></td></tr>
+<a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_common_1_1_camera_controller.html#ae2970e63d46f18b24b8a0ae4b6acf247">mGraphicsSystem</a></td></tr>
+<tr class="memdesc:ae2970e63d46f18b24b8a0ae4b6acf247"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. ">GraphicsSystem</a> to which belongs the camera. <br /></td></tr>
 <tr class="separator:ae2970e63d46f18b24b8a0ae4b6acf247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Simple <a class="el" href="class_common_1_1_camera_controller.html" title="Simple CameraControllerThis class does not implement more than rotate and move a Ogre::Camera or Ogre...">CameraController</a></p>
+<p>This class does not implement more than rotate and move a Ogre::Camera or Ogre::SceneNode. </p>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8h_source.html#l00023">23</a> of file <a class="el" href="_camera_controller_8h_source.html">CameraController.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a09c9f866ac2161de31ff45694dd711fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c9f866ac2161de31ff45694dd711fd">&#9670;&nbsp;</a></span>CameraController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Common::CameraController::CameraController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_common_1_1_graphics_system.html">GraphicsSystem</a> *&#160;</td>
+          <td class="paramname"><em>graphicsSystem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>useSceneNode</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructor </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">graphicsSystem</td><td><a class="el" href="class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. ">GraphicsSystem</a> to which belongs the camera </td></tr>
+    <tr><td class="paramname">useSceneNode</td><td>Choose whether to use Ogre::SceneNode or not </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8cpp_source.html#l00011">11</a> of file <a class="el" href="_camera_controller_8cpp_source.html">CameraController.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aefb0839a3f45e4390c764762b7a053a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb0839a3f45e4390c764762b7a053a1">&#9670;&nbsp;</a></span>keyPressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Common::CameraController::keyPressed </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method called when a key is pressed </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>Event containing all data needed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if we've handled the event </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8cpp_source.html#l00065">65</a> of file <a class="el" href="_camera_controller_8cpp_source.html">CameraController.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2ade17644b5c6a9249b6fcff6c358b2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ade17644b5c6a9249b6fcff6c358b2e">&#9670;&nbsp;</a></span>keyReleased()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Common::CameraController::keyReleased </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_s_d_l___keyboard_event.html">SDL_KeyboardEvent</a> &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method called when a key is released </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>Event containing all data needed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if we've handled the event </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8cpp_source.html#l00087">87</a> of file <a class="el" href="_camera_controller_8cpp_source.html">CameraController.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af56a45fb24b5c2e5603210be8377aa8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af56a45fb24b5c2e5603210be8377aa8d">&#9670;&nbsp;</a></span>mouseMoved()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::CameraController::mouseMoved </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="union_s_d_l___event.html">SDL_Event</a> &amp;&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method called when the mouse is moved </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>Event containing all data needed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8cpp_source.html#l00109">109</a> of file <a class="el" href="_camera_controller_8cpp_source.html">CameraController.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5d11cbced7f78eec997b96bb489d0806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d11cbced7f78eec997b96bb489d0806">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Common::CameraController::update </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>timeSinceLast</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method to update the <a class="el" href="class_common_1_1_camera_controller.html" title="Simple CameraControllerThis class does not implement more than rotate and move a Ogre::Camera or Ogre...">CameraController</a>. Call it one time per frame </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeSinceLast</td><td>Time since the last frame </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_collision_1_1_collision_camera_controller.html#ac25037b29b022a2ccf77b16fe0bda670">Collision::CollisionCameraController</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8cpp_source.html#l00028">28</a> of file <a class="el" href="_camera_controller_8cpp_source.html">CameraController.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a193fd601715f0b7aa3bf772f078200d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193fd601715f0b7aa3bf772f078200d0">&#9670;&nbsp;</a></span>mUseSceneNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Common::CameraController::mUseSceneNode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Use SceneNode or not. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_common_1_1_camera_controller.html#a09c9f866ac2161de31ff45694dd711fd">CameraController::CameraController</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_camera_controller_8h_source.html#l00050">50</a> of file <a class="el" href="_camera_controller_8h_source.html">CameraController.h</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/louis/projects/LeDernierMorkid/Common/include/<a class="el" href="_camera_controller_8h_source.html">CameraController.h</a></li>
-<li>/home/louis/projects/LeDernierMorkid/Common/src/CameraController.cpp</li>
+<li>/home/louis/projects/LeDernierMorkid/Common/src/<a class="el" href="_camera_controller_8cpp_source.html">CameraController.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Common</b></li><li class="navelem"><a class="el" href="class_common_1_1_camera_controller.html">CameraController</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>

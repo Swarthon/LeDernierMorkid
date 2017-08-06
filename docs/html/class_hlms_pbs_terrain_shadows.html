@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,10 +10,17 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -20,7 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png" height="90" width="90"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Le Dernier Morkid
    </div>
@@ -44,6 +52,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('class_hlms_pbs_terrain_shadows.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -58,10 +81,10 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_hlms_pbs_terrain_shadows-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">HlmsPbsTerrainShadows Class Reference</div>  </div>
@@ -71,12 +94,17 @@ $(function() {
 Inheritance diagram for HlmsPbsTerrainShadows:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_hlms_pbs_terrain_shadows__inherit__graph.png" border="0" usemap="#_hlms_pbs_terrain_shadows_inherit__map" alt="Inheritance graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for HlmsPbsTerrainShadows:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_hlms_pbs_terrain_shadows__coll__graph.png" border="0" usemap="#_hlms_pbs_terrain_shadows_coll__map" alt="Collaboration graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<map name="_hlms_pbs_terrain_shadows_coll__map" id="_hlms_pbs_terrain_shadows_coll__map">
+<area shape="rect" id="node3" href="class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="165,95,279,121"/>
+<area shape="rect" id="node4" href="class_terrain.html" title="Terrain" alt="" coords="63,5,125,32"/>
+<area shape="rect" id="node6" href="class_shadow_mapper.html" title="ShadowMapper" alt="" coords="319,5,431,32"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -98,17 +126,34 @@ virtual float *&#160;</td><td class="memItemRight" valign="bottom"><b>preparePas
 <tr class="memitem:aac00263a92c1b2ba60e10b87896f99cd"><td class="memItemLeft" align="right" valign="top"><a id="aac00263a92c1b2ba60e10b87896f99cd"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>hlmsTypeChanged</b> (bool casterPass, Ogre::CommandBuffer *commandBuffer, const Ogre::HlmsDatablock *datablock)</td></tr>
 <tr class="separator:aac00263a92c1b2ba60e10b87896f99cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7909859bf6e97ff16a4e1aba7df40cdd"><td class="memItemLeft" align="right" valign="top"><a id="a7909859bf6e97ff16a4e1aba7df40cdd"></a>
+<a class="el" href="class_graphics_terrain.html">GraphicsTerrain</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mTerrain</b></td></tr>
+<tr class="separator:a7909859bf6e97ff16a4e1aba7df40cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc80849ecab52b270f092942b56653b"><td class="memItemLeft" align="right" valign="top"><a id="a4fc80849ecab52b270f092942b56653b"></a>
+Ogre::HlmsSamplerblock const  *&#160;</td><td class="memItemRight" valign="bottom"><b>mTerrainSamplerblock</b></td></tr>
+<tr class="separator:a4fc80849ecab52b270f092942b56653b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_hlms_pbs_terrain_shadows_8h_source.html#l00037">37</a> of file <a class="el" href="_hlms_pbs_terrain_shadows_8h_source.html">HlmsPbsTerrainShadows.h</a>.</p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/louis/projects/LeDernierMorkid/include/Terrain/Hlms/PbsListener/<a class="el" href="_hlms_pbs_terrain_shadows_8h_source.html">HlmsPbsTerrainShadows.h</a></li>
-<li>/home/louis/projects/LeDernierMorkid/src/Terrain/Hlms/PbsListener/HlmsPbsTerrainShadows.cpp</li>
+<li>/home/louis/projects/LeDernierMorkid/src/Terrain/Hlms/PbsListener/<a class="el" href="_hlms_pbs_terrain_shadows_8cpp_source.html">HlmsPbsTerrainShadows.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_hlms_pbs_terrain_shadows.html">HlmsPbsTerrainShadows</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a></li>
+  </ul>
+</div>
 </body>
 </html>
