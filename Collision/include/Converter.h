@@ -17,6 +17,7 @@ namespace Collision {
 
 	/**
 	 * @class Converter
+	 * @ingroup Collision
 	 * @brief
 	 *	Converter between Bullet to Ogre
 	 *

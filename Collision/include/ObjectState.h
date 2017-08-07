@@ -13,6 +13,7 @@ namespace Collision {
 
 	/**
 	 * @class ObjectState
+	 * @ingroup
 	 * @brief
 	 *	Class defines the way Collision and Graphics are synchronized
 	 *

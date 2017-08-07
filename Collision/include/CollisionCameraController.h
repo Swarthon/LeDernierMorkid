@@ -7,6 +7,7 @@ namespace Collision {
 
 	/**
 	 * @class CollisionCameraController
+	 * @ingroup Collision
 	 * @brief
 	 * 	Camera Controller using Collision
 	 *
