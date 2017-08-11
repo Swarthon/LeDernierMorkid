@@ -1,4 +1,0 @@
-<map id="GraphicsTerrain" name="GraphicsTerrain">
-<area shape="rect" id="node2" href="$class_terrain.html" title="Terrain" alt="" coords="5,5,68,32"/>
-<area shape="rect" id="node4" href="$class_shadow_mapper.html" title="ShadowMapper" alt="" coords="262,5,374,32"/>
-</map>

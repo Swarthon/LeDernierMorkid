@@ -1,6 +1,0 @@
-<map id="Common::BaseSystem" name="Common::BaseSystem">
-<area shape="rect" id="node3" href="$class_common_1_1_graphics_system.html" title="GraphicsSystem managing Graphics. " alt="" coords="23,169,203,196"/>
-<area shape="rect" id="node5" href="$class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) " alt="" coords="227,169,385,196"/>
-<area shape="rect" id="node2" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="109,5,309,47"/>
-<area shape="rect" id="node4" href="$class_le_dernier_morkid_graphics_system.html" title="LeDernierMorkidGraphicsSystem" alt="" coords="5,244,220,271"/>
-</map>

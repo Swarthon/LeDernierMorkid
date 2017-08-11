@@ -115,7 +115,11 @@ namespace Common {
 		virtual void                       chooseSceneManager(void);
 		/// Method to create the Camera
 		virtual void                       createCamera(void);
-		/// Method setting up the Compositor
+		/**
+		 * Method setting up the Compositor
+		 * @returns
+		 *	Created CompositorWorkspace
+		 */
 		virtual Ogre::CompositorWorkspace* setupCompositor(void);
 
 		/// Method to create the resource listener

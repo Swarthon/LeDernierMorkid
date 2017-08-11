@@ -6,6 +6,10 @@
 
 #include "Threading/ThreadPrerequisites.h"
 
+/**
+ * @ingroup Thread
+ * Thread running the graphics loop
+ */
 extern unsigned long renderThread(Ogre::ThreadHandle* threadHandle);
 extern unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle);
 

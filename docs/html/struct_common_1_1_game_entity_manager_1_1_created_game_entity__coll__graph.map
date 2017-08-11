@@ -1,6 +1,0 @@
-<map id="Common::GameEntityManager::CreatedGameEntity" name="Common::GameEntityManager::CreatedGameEntity">
-<area shape="rect" id="node2" href="$struct_common_1_1_game_entity.html" title="Struct defining Game Entity. " alt="" coords="265,95,417,121"/>
-<area shape="rect" id="node3" href="$struct_common_1_1_game_entity_transform.html" title="Struct defining the transform available for GameEntity. " alt="" coords="5,5,216,32"/>
-<area shape="rect" id="node4" href="$struct_common_1_1_collision_object_definition.html" title="Struct defining Collision Object. " alt="" coords="240,5,467,32"/>
-<area shape="rect" id="node5" href="$struct_common_1_1_movable_object_definition.html" title="Struct defining Movable Object. " alt="" coords="491,5,717,32"/>
-</map>

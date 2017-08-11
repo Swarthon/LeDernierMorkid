@@ -1,4 +1,0 @@
-<map id="Common::LogicSystem" name="Common::LogicSystem">
-<area shape="rect" id="node2" href="$class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="26,95,185,121"/>
-<area shape="rect" id="node3" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="5,5,205,47"/>
-</map>

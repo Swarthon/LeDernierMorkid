@@ -66,7 +66,7 @@ namespace Common {
 		/// Method to call at the beginning of the Frame
 		void beginFrameParallel(void);
 		/**
-		 * Method to update the System. Call it one time per frame
+		 * Method to update the System. Call it once per frame
 		 * @param timeSinceLast
  		 *	Time since the last frame
 		 */

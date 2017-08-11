@@ -1,6 +1,0 @@
-<map id="LogicGameState" name="LogicGameState">
-<area shape="rect" id="node2" href="$class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="215,80,364,107"/>
-<area shape="rect" id="node3" href="$class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="5,5,173,32"/>
-<area shape="rect" id="node4" href="$class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="197,5,381,32"/>
-<area shape="rect" id="node5" href="$class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="405,5,584,32"/>
-</map>

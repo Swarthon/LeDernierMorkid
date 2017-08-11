@@ -13,16 +13,36 @@ namespace Common {
 	struct CollisionObjectDefinition;
 } // namespace Common
 
+/**
+ * @class LogicGameState
+ * @brief
+ *	LogicGameState describing how logics work
+ */
 class LogicGameState : public Common::GameState {
+	/// LogicSystem containing logics data
 	Common::LogicSystem* mLogicSystem;
+	/// Collision part of Terrain
 	CollisionTerrain*    mTerrain;
 
 public:
+	/// Simple Constructor
 	LogicGameState();
+	/// Simple Destructor
 	~LogicGameState();
 
+	/**
+	 * Set mLogicSystem value
+	 * @param logicSystem
+	 *	LogicSystem to set
+	 */
 	void _notifyLogicSystem(Common::LogicSystem* logicSystem) { mLogicSystem = logicSystem; }
+	/// Create the scene
 	virtual void                                 createScene(void);
+	/**
+	 * Update the State. Method to call once per frame
+	 * @param timeSinceLast
+	 *	Time past since last frame
+	 */
 	virtual void update(float timeSinceLast);
 };
 

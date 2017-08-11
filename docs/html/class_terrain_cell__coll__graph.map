@@ -1,5 +1,0 @@
-<map id="TerrainCell" name="TerrainCell">
-<area shape="rect" id="node3" href="$class_graphics_terrain.html" title="GraphicsTerrain" alt="" coords="154,95,269,121"/>
-<area shape="rect" id="node4" href="$class_terrain.html" title="Terrain" alt="" coords="52,5,115,32"/>
-<area shape="rect" id="node6" href="$class_shadow_mapper.html" title="ShadowMapper" alt="" coords="309,5,421,32"/>
-</map>

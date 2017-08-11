@@ -1,9 +1,0 @@
-<map id="Common::GameEntityManager" name="Common::GameEntityManager">
-<area shape="rect" id="node2" href="$class_common_1_1_logic_system.html" title="LogicSystem managing the logics (Collisions ...) " alt="" coords="155,275,314,301"/>
-<area shape="rect" id="node3" href="$class_common_1_1_base_system.html" title="Simple System implementing basic functions. " alt="" coords="233,185,391,212"/>
-<area shape="rect" id="node4" href="$class_common_1_1_mq_1_1_message_queue_system.html" title="Class providing system for threads to communicate. " alt="" coords="11,81,211,123"/>
-<area shape="rect" id="node5" href="$class_common_1_1_game_state.html" title="Simple GameState class. " alt="" coords="237,89,387,115"/>
-<area shape="rect" id="node6" href="$class_common_1_1_mouse_listener.html" title="Simple Listener implementing mouse functions. " alt="" coords="28,5,196,32"/>
-<area shape="rect" id="node7" href="$class_common_1_1_keyboard_listener.html" title="Simple Listener implementing keyboard functions. " alt="" coords="220,5,404,32"/>
-<area shape="rect" id="node8" href="$class_common_1_1_joystick_listener.html" title="Simple Listener implementing joystick functions. " alt="" coords="428,5,607,32"/>
-</map>

@@ -78,7 +78,7 @@ namespace Common {
 		CameraController(GraphicsSystem* graphicsSystem, bool useSceneNode = false);
 
 		/**
-		 * Method to update the CameraController. Call it one time per frame
+		 * Method to update the CameraController. Call it once per frame
 		 * @param timeSinceLast
  		 *	Time since the last frame
 		 */

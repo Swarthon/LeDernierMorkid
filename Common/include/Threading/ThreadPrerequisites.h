@@ -1,6 +1,11 @@
 #ifndef _THREADPREREQUISITES_H_
 #define _THREADPREREQUISITES_H_
 
+/**
+ * @defgroup Thread
+ * Group containing threads
+ */
+
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 #define THREAD_DEFINE(threadFunction) \
 	unsigned long OGRE_THREAD_CALL_CONVENTION threadFunction##_internal(void* argName);

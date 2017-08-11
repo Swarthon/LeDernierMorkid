@@ -6,6 +6,10 @@
 
 #include "Threading/ThreadPrerequisites.h"
 
+/**
+ * @ingroup Thread
+ * Thread running the logic loop
+ */
 extern unsigned long logicThread(Ogre::ThreadHandle* threadHandle);
 extern unsigned long logicThreadApp(Ogre::ThreadHandle* threadHandle);
 
