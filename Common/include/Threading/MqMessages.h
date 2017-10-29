@@ -20,6 +20,11 @@ namespace Common {
 			GAME_ENTITY_REMOVED,
 			GAME_ENTITY_SCHEDULED_FOR_REMOVAL_SLOT,
 			SDL_EVENT,
+                        STATE_ENTER,
+                        STATE_EXIT,
+                        STATE_RESUME,
+                        STATE_PAUSE,
+                        SHUTDOWN,
 			NUM_MESSAGE_IDS
 		};
 	}

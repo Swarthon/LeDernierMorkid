@@ -1,9 +1,9 @@
-#ifndef _GRAPHICSGAMESTATE_H_
-#define _GRAPHICSGAMESTATE_H_
+#ifndef _GRAPHICSState_H_
+#define _GRAPHICSState_H_
 
 #include <OgrePrerequisites.h>
 
-#include "GameState.h"
+#include "State/State.h"
 #include "Terrain/GraphicsTerrain.h"
 
 namespace Common {
@@ -12,11 +12,11 @@ namespace Common {
 } // namespace Common
 
 /**
- * @class GraphicsGameState
+ * @class GraphicsState
  * @brief
- *	GameState describing how graphics are
+ *	State describing how graphics are
  */
-class GraphicsGameState : public Common::GameState {
+class GraphicsState : public Common::State {
 protected:
 	/// Interpolation enabled
 	bool                      mEnableInterpolation;
@@ -39,9 +39,9 @@ protected:
 
 public:
 	/// Simple Constructor
-	GraphicsGameState();
+	GraphicsState();
 	/// Simple Destructor
-	virtual ~GraphicsGameState();
+	virtual ~GraphicsState();
 
 	/**
 	 * Set mGraphicsSystem value
@@ -51,14 +51,15 @@ public:
 	void _notifyGraphicsSystem(Common::GraphicsSystem* graphicsSystem);
 
 	/// Create the scene
-	virtual void createScene(void);
+	virtual void enter(void);
+        virtual void exit() {}
 
 	/**
 	 * Update the State. Method to call once per frame
 	 * @param timeSinceLast
 	 *	Time past since last frame
 	 */
-	virtual void update(float timeSinceLast);
+	virtual void update(double timeSinceLast);
 
 	/// Method called when a key is pressed
 	virtual void keyPressed(const SDL_KeyboardEvent& arg);
@@ -69,4 +70,4 @@ public:
 	virtual void mouseMoved(const SDL_Event& arg);
 };
 
-#endif // _GRAPHICSGAMESTATE_H_
+#endif // _GRAPHICSState_H_

@@ -55,7 +55,7 @@ namespace Common {
 		case SDL_MOUSEMOTION:
 			// Ignore this if it happened due to a warp
 			if (!handleWarpMotion(evt.motion)) {
-				// Try to keep the mouse inside the window
+                                // Try to keep the mouse inside the window
 				if (mWindowHasFocus)
 					wrapMousePointer(evt.motion);
 

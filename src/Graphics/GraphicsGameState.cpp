@@ -39,20 +39,20 @@
 
 extern const double cFrametime;
 
-GraphicsGameState::GraphicsGameState()
+GraphicsState::GraphicsState()
                 : mGraphicsSystem(0), mEnableInterpolation(true), mCameraController(0), mTerrain(0) {
 }
 //------------------------------------------------------------------------------------------------
-GraphicsGameState::~GraphicsGameState() {
+GraphicsState::~GraphicsState() {
 	delete mCameraController;
 	mCameraController = 0;
 }
 //------------------------------------------------------------------------------------------------
-void GraphicsGameState::_notifyGraphicsSystem(Common::GraphicsSystem* graphicsSystem) {
+void GraphicsState::_notifyGraphicsSystem(Common::GraphicsSystem* graphicsSystem) {
 	mGraphicsSystem = graphicsSystem;
 }
 //------------------------------------------------------------------------------------------------
-Ogre::CompositorWorkspace* GraphicsGameState::setupCompositor() {
+Ogre::CompositorWorkspace* GraphicsState::setupCompositor() {
 	Ogre::Root*               root              = mGraphicsSystem->getRoot();
 	Ogre::SceneManager*       sceneManager      = mGraphicsSystem->getSceneManager();
 	Ogre::RenderWindow*       renderWindow      = mGraphicsSystem->getRenderWindow();
@@ -76,7 +76,7 @@ Ogre::CompositorWorkspace* GraphicsGameState::setupCompositor() {
 	return compositorManager->addWorkspace(sceneManager, externalChannels, camera, "TerrainWorkspace", true, -1, (Ogre::UavBufferPackedVec*) 0, &initialLayouts, &initialUavAccess);
 }
 //------------------------------------------------------------------------------------------------
-void GraphicsGameState::createScene(void) {
+void GraphicsState::enter(void) {
 	Ogre::Root*         root         = mGraphicsSystem->getRoot();
 	Ogre::SceneManager* sceneManager = mGraphicsSystem->getSceneManager();
 	sceneManager->setAmbientLight(Ogre::ColourValue(0.5f, 0.5f, 0.5f), Ogre::ColourValue(0.5f, 0.5f, 0.5f), Ogre::Vector3::UNIT_Y);
@@ -132,7 +132,7 @@ void GraphicsGameState::createScene(void) {
 	setupCompositor();
 }
 //------------------------------------------------------------------------------------------------
-void GraphicsGameState::update(float timeSinceLast) {
+void GraphicsState::update(double timeSinceLast) {
 	float weight = mGraphicsSystem->getAccumTimeSinceLastLogicFrame() / cFrametime;
 	weight       = std::min(1.0f, weight);
 
@@ -146,26 +146,23 @@ void GraphicsGameState::update(float timeSinceLast) {
 	                                    weight);
 	if (mCameraController)
 		mCameraController->update(timeSinceLast);
-
-	Ogre::Camera* camera = mGraphicsSystem->getCamera();
-	Ogre::Vector3 camPos = camera->getPosition();
 }
 //------------------------------------------------------------------------------------------------
-void GraphicsGameState::keyPressed(const SDL_KeyboardEvent& arg) {
+void GraphicsState::keyPressed(const SDL_KeyboardEvent& arg) {
 	if (mCameraController)
 		mCameraController->keyPressed(arg);
-	GameState::keyPressed(arg);
+	State::keyPressed(arg);
 }
 //------------------------------------------------------------------------------------------------
-void GraphicsGameState::keyReleased(const SDL_KeyboardEvent& arg) {
+void GraphicsState::keyReleased(const SDL_KeyboardEvent& arg) {
 	if (mCameraController)
 		mCameraController->keyReleased(arg);
-	GameState::keyReleased(arg);
+	State::keyReleased(arg);
 }
 //------------------------------------------------------------------------------------------------
-void GraphicsGameState::mouseMoved(const SDL_Event& arg) {
+void GraphicsState::mouseMoved(const SDL_Event& arg) {
 	if (mCameraController)
 		mCameraController->mouseMoved(arg);
 
-	GameState::mouseMoved(arg);
+	State::mouseMoved(arg);
 }

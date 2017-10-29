@@ -15,7 +15,7 @@
 #include "CameraController.h"
 #include "GameEntity.h"
 #include "GameEntityManager.h"
-#include "GameState.h"
+#include "State.h"
 #include "GraphicsSystem.h"
 #include "InputListeners.h"
 #include "LogicSystem.h"

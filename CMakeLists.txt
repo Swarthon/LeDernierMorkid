@@ -8,7 +8,7 @@ file(GLOB GRAPHICSSRC "src/Graphics/*.cpp")
 file(GLOB LOGICSRC "src/Logic/*.cpp")
 file(GLOB TERRAINSRC "src/Terrain/*.cpp" "src/Terrain/Hlms/*.cpp" "src/Terrain/Hlms/PbsListener/*.cpp")
 file(GLOB COLLISIONSRC "Collision/src/*.cpp")
-file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp")
+file(GLOB COMMONSRC "Common/src/*.cpp" "Common/src/Threading/*.cpp" "Common/src/System/*.cpp" "Common/src/State/*.cpp")
 add_executable(LeDernierMorkid ${SRC} ${GRAPHICSSRC} ${LOGICSRC} ${TERRAINSRC} ${COLLISIONSRC} ${COMMONSRC})
 
 add_custom_target(run COMMAND LeDernierMorkid DEPENDS LeDernierMorkid WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
@@ -38,7 +38,8 @@ include_directories(${SDL2_INCLUDE_DIR})
 target_link_libraries(LeDernierMorkid ${SDL2_LIBRARY})
 
 find_package(CEGUI REQUIRED)
-include_directories(${CEGUI_INCLUDE_DIR} ${CEGUI_OgreRenderer_INCLUDE_DIRS})
+# On default the CMake script return a string ending with CEGUI/ using .. is a simple workaround to avoid breaking the includes
+include_directories(${CEGUI_INCLUDE_DIR}/..)
 target_link_libraries(LeDernierMorkid ${CEGUI_LIBRARIES} ${CEGUI_OgreRenderer_LIBRARIES})
 
 file(GLOB CONFIGFILES "config/*.cfg" )

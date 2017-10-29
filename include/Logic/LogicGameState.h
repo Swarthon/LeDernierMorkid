@@ -1,9 +1,9 @@
-#ifndef _LOGICGAMESTATE_H_
-#define _LOGICGAMESTATE_H_
+#ifndef _LOGICState_H_
+#define _LOGICState_H_
 
 #include <OgrePrerequisites.h>
 
-#include "GameState.h"
+#include "State/State.h"
 #include "Terrain/CollisionTerrain.h"
 
 namespace Common {
@@ -14,11 +14,11 @@ namespace Common {
 } // namespace Common
 
 /**
- * @class LogicGameState
+ * @class LogicState
  * @brief
- *	LogicGameState describing how logics work
+ *	LogicState describing how logics work
  */
-class LogicGameState : public Common::GameState {
+class LogicState : public Common::State {
 	/// LogicSystem containing logics data
 	Common::LogicSystem* mLogicSystem;
 	/// Collision part of Terrain
@@ -26,9 +26,9 @@ class LogicGameState : public Common::GameState {
 
 public:
 	/// Simple Constructor
-	LogicGameState();
+	LogicState();
 	/// Simple Destructor
-	~LogicGameState();
+	~LogicState();
 
 	/**
 	 * Set mLogicSystem value
@@ -37,13 +37,14 @@ public:
 	 */
 	void _notifyLogicSystem(Common::LogicSystem* logicSystem) { mLogicSystem = logicSystem; }
 	/// Create the scene
-	virtual void                                 createScene(void);
+	virtual void enter(void);
+        virtual void exit() {}
 	/**
 	 * Update the State. Method to call once per frame
 	 * @param timeSinceLast
 	 *	Time past since last frame
 	 */
-	virtual void update(float timeSinceLast);
+	virtual void update(double timeSinceLast);
 };
 
-#endif // _LOGICGAMESTATE_H_
+#endif // _LOGICState_H_

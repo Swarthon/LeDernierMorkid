@@ -60,10 +60,10 @@ namespace Common {
 	public:
 		/**
 		 * Constructor
-		 * @param gameState
- 		 *	GameState to which transmit the events
+		 * @param State
+ 		 *	State to which transmit the events
 		 */
-		LogicSystem(GameState* gameState);
+		LogicSystem(State* State);
 		/// Simple Destructor
 		virtual ~LogicSystem();
 
@@ -88,7 +88,7 @@ namespace Common {
 		 * @param timeSinceLast
 		 *	Time past since last frame
 		 */
-		void update(float timeSinceLast);
+		void update(double timeSinceLast);
 		/// Method to call at the end of the frame
 		void finishFrameParallel(void);
 
@@ -104,6 +104,10 @@ namespace Common {
 		 *	The created GameEntity that need to be completed
 		 */
 		void addGameEntity(const GameEntityManager::CreatedGameEntity* cge);
+
+
+
+                void createScene();
 	};
 }
 

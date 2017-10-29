@@ -16,7 +16,8 @@ unsigned long logicThread(Ogre::ThreadHandle* threadHandle) {
 		return 0; // Render thread cancelled early
 	}
 
-	logicSystem->createScene();
+        logicSystem->createScene();
+        
 	barrier->sync();
 
 	Ogre::RenderWindow* renderWindow = graphicsSystem->getRenderWindow();
@@ -43,9 +44,6 @@ unsigned long logicThread(Ogre::ThreadHandle* threadHandle) {
 		startTime = yieldTimer.yield(cFrametime, startTime);
 	}
 
-	barrier->sync();
-
-	logicSystem->destroyScene();
 	barrier->sync();
 
 	logicSystem->deinitialize();

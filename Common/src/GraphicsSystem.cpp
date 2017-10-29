@@ -1,7 +1,9 @@
 #include "GraphicsSystem.h"
 #include "GameEntity.h"
-#include "GameState.h"
+#include "State/State.h"
+#include "State/StateManager.h"
 #include "SdlInputHandler.h"
+#include "GUISystem.h"
 
 #include "Converter.h"
 #include "ObjectState.h"
@@ -28,9 +30,8 @@
 #include <SDL_syswm.h>
 
 namespace Common {
-	GraphicsSystem::GraphicsSystem(GameState* gameState, Ogre::ColourValue backgroundColour)
-	                : BaseSystem(gameState),
-	                  mLogicSystem(0),
+	GraphicsSystem::GraphicsSystem(State* state, Ogre::ColourValue backgroundColour)
+	                : mLogicSystem(0),
 	                  mSdlWindow(0),
 	                  mInputHandler(0),
 	                  mRoot(0),
@@ -43,7 +44,8 @@ namespace Common {
 	                  mThreadGameEntityToUpdate(0),
 	                  mThreadWeight(0),
 	                  mQuit(false),
-	                  mBackgroundColour(backgroundColour) {}
+	                  mBackgroundColour(backgroundColour) {
+        }
 	//------------------------------------------------------------------------------------------------
 	GraphicsSystem::~GraphicsSystem() { assert(!mRoot && "deinitialize() not called!!!"); }
 	//------------------------------------------------------------------------------------------------
@@ -62,12 +64,12 @@ namespace Common {
 		pluginsPath = mPluginsPath + "plugins.cfg";
 #endif
 #endif
-
+                
 		mRoot = OGRE_NEW Ogre::Root(
-		        pluginsPath, mWriteAccessFolder + "ogre.cfg", mWriteAccessFolder + "Ogre.log");
+                                            pluginsPath, mWriteAccessFolder + "ogre.cfg", mWriteAccessFolder + "Ogre.log");
 
 		mStaticPluginLoader.install(mRoot);
-
+                
 		Ogre::RenderSystem* rs = mRoot->getRenderSystemByName("OpenGL 3+ Rendering Subsystem");
 		if (!rs)
 			OGRE_EXCEPT(Ogre::Exception::ERR_INTERNAL_ERROR, "Wut", "");
@@ -101,12 +103,12 @@ namespace Common {
 		int                     screen     = 0;
 		int                     posX       = SDL_WINDOWPOS_CENTERED_DISPLAY(screen);
 		int                     posY       = SDL_WINDOWPOS_CENTERED_DISPLAY(screen);
-
+                
 		if (fullscreen) {
 			posX = SDL_WINDOWPOS_UNDEFINED_DISPLAY(screen);
 			posY = SDL_WINDOWPOS_UNDEFINED_DISPLAY(screen);
 		}
-
+                
 		mSdlWindow = SDL_CreateWindow(windowTitle.c_str(), // window title
 		                              posX,                // initial x position
 		                              posY,                // initial y position
@@ -146,15 +148,15 @@ namespace Common {
 #else
 		params.insert(std::make_pair("parentWindowHandle", winHandle));
 #endif
-
+                
 		params.insert(std::make_pair("title", windowTitle));
 		params.insert(std::make_pair("gamma", "true"));
 		params.insert(std::make_pair("FSAA", cfgOpts["FSAA"].currentValue));
 		params.insert(std::make_pair("vsync", cfgOpts["VSync"].currentValue));
-
+                
 		mRenderWindow = Ogre::Root::getSingleton().createRenderWindow(
 		        windowTitle, width, height, fullscreen, &params);
-
+                
 		setupResources();
 		loadResources();
 		chooseSceneManager();
@@ -164,7 +166,7 @@ namespace Common {
 		mInputHandler = new SdlInputHandler(
 		        mSdlWindow, this);
 		mInputHandler->addReceiver(this);
-		//		mInputHandler->addReceiver(mLogicSystem);
+		mInputHandler->addReceiver(mGUISystem);
 
 		BaseSystem::initialize();
 	}
@@ -202,6 +204,7 @@ namespace Common {
 			mInputHandler->_handleSdlEvents(evt);
 		}
 
+                StateManager::getSingleton()->updateGraphics(timeSinceLast);
 		BaseSystem::update(timeSinceLast);
 
 		if (mRenderWindow->isVisible())
@@ -262,6 +265,8 @@ namespace Common {
 			                       Mq::GAME_ENTITY_SCHEDULED_FOR_REMOVAL_SLOT,
 			                       *reinterpret_cast<const Ogre::uint32*>(data));
 			break;
+                case Mq::STATE_ENTER:
+                        //                        StateManager::getSingleton()->enterGraphics();
 		default: break;
 		}
 	}

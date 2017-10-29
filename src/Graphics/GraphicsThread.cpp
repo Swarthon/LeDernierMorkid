@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "LeDernierMorkid.h"
+#include "State/StateManager.h"
 
 unsigned long renderThread(Ogre::ThreadHandle* threadHandle) {
 	unsigned long retVal = -1;
@@ -28,6 +29,7 @@ unsigned long renderThread(Ogre::ThreadHandle* threadHandle) {
 unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle) {
 	LeDernierMorkid::LeDernierMorkidThreadData* threadData     = reinterpret_cast<LeDernierMorkid::LeDernierMorkidThreadData*>(threadHandle->getUserParam());
 	GraphicsSystem*                             graphicsSystem = threadData->graphicsSystem;
+	GUISystem*                                  guiSystem      = threadData->guiSystem;
 	Ogre::Barrier*                              barrier        = threadData->barrier;
 
 	graphicsSystem->initialize("Le Dernier Morkid");
@@ -40,7 +42,8 @@ unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle) {
 		return 0; // User cancelled config
 	}
 
-	graphicsSystem->createScene();
+        guiSystem->initialize(*graphicsSystem->getRenderWindow());
+        Common::StateManager::getSingleton()->enterGraphics();
 	barrier->sync();
 
 	Ogre::RenderWindow* renderWindow = graphicsSystem->getRenderWindow();
@@ -51,14 +54,16 @@ unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle) {
 
 	while (!graphicsSystem->getQuit()) {
 		graphicsSystem->beginFrameParallel();
+                guiSystem->beginFrameParallel();
 		graphicsSystem->update(timeSinceLast);
 		graphicsSystem->finishFrameParallel();
-
+                guiSystem->finishFrameParallel();
+                
 		if (!renderWindow->isVisible()) {
 			// Don't burn CPU cycles unnecessary when we're minimized.
 			Ogre::Threads::Sleep(500);
 		}
-
+                
 		unsigned long endTime = timer.getMicroseconds();
 		timeSinceLast         = (endTime - startTime) / 1000000.0;
 		timeSinceLast         = std::min(1.0, timeSinceLast); // Prevent from going haywire.
@@ -67,9 +72,7 @@ unsigned long renderThreadApp(Ogre::ThreadHandle* threadHandle) {
 
 	barrier->sync();
 
-	graphicsSystem->destroyScene();
-	barrier->sync();
-
+        guiSystem->deinitialize();
 	graphicsSystem->deinitialize();
 	barrier->sync();
 

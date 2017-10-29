@@ -13,6 +13,8 @@
 #include "Logic/LogicThread.h"
 #include "LogicSystem.h"
 
+#include "GUISystem.h"
+
 #include "Threading/ThreadManager.h"
 #include "Threading/YieldTimer.h"
 
@@ -32,13 +34,13 @@ class LeDernierMorkidGraphicsSystem : public GraphicsSystem {
 public:
 	/**
 	 * Constructor
-	 * @param gameState
-	 *	GameState to which transmit the events
+	 * @param State
+	 *	State to which transmit the events
 	 * @param colourValue
 	 *	Background colour value
 	 */
-	LeDernierMorkidGraphicsSystem(GraphicsGameState* gameState, Ogre::ColourValue colourValue)
-	                : GraphicsSystem(gameState, colourValue){};
+	LeDernierMorkidGraphicsSystem(GraphicsState* State, Ogre::ColourValue colourValue)
+	                : GraphicsSystem(State, colourValue){};
 
 protected:
 	/// Method to register hlms resources
@@ -64,13 +66,15 @@ public:
 	struct LeDernierMorkidThreadData : ThreadData {
 		GraphicsSystem* graphicsSystem;
 		LogicSystem*    logicSystem;
+                GUISystem*      guiSystem;
 	};
 
 protected:
-	GraphicsGameState* mGraphicsGameState;
-	LogicGameState*    mLogicGameState;
+	GraphicsState* mGraphicsState;
+	LogicState*    mLogicState;
 	GraphicsSystem*    mGraphicsSystem;
 	LogicSystem*       mLogicSystem;
+        GUISystem*         mGUISystem;
 	GameEntityManager* mGameEntityManager;
 };
 

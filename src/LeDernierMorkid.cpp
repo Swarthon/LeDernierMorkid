@@ -11,6 +11,8 @@
 #include <OgreRoot.h>
 
 #include "Terrain/Hlms/HlmsTerrain.h"
+#include "State/StateManager.h"
+#include "GameState.h"
 
 #include <iostream>
 
@@ -36,7 +38,7 @@ void LeDernierMorkidGraphicsSystem::registerHlms(void) {
 	Ogre::Archive* archivePbs = Ogre::ArchiveManager::getSingletonPtr()->load(
 	        dataFolder + "Hlms/Pbs/" + shaderSyntax, "FileSystem", true);
 	Ogre::Archive* archiveUnlit = Ogre::ArchiveManager::getSingletonPtr()->load(
-	        dataFolder + "Hlms/Unlit/" + shaderSyntax, "FileSystem", true);
+										    dataFolder + "Hlms/Unlit/" + shaderSyntax, "FileSystem", true);
 
 	Ogre::ArchiveVec library;
 	library.push_back(archiveLibrary);
@@ -57,18 +59,19 @@ void LeDernierMorkidGraphicsSystem::registerHlms(void) {
 }
 //---------------------------------------------------------------------
 LeDernierMorkid::LeDernierMorkid() {
-	mGraphicsGameState = new GraphicsGameState();
-	mLogicGameState    = new LogicGameState();
-
-	mGraphicsSystem = new LeDernierMorkidGraphicsSystem(mGraphicsGameState,
+	mGraphicsSystem = new LeDernierMorkidGraphicsSystem(mGraphicsState,
 	                                                    Ogre::ColourValue(0.41, 0.62, 1));
-	mLogicSystem = new LogicSystem(mLogicGameState);
+        mGUISystem   = new GUISystem();
+	mLogicSystem = new LogicSystem(mLogicState);
 
-	mGraphicsGameState->_notifyGraphicsSystem(mGraphicsSystem);
-	mLogicGameState->_notifyLogicSystem(mLogicSystem);
+        Common::StateManager* stateManager = Common::StateManager::createStateManager(mGraphicsSystem,mLogicSystem);
+        GameState::create(stateManager, "GameState");
+        stateManager->pushState(stateManager->findByName("GameState"));
 
 	mGraphicsSystem->_notifyLogicSystem(mLogicSystem);
 	mLogicSystem->_notifyGraphicsSystem(mGraphicsSystem);
+
+        mGraphicsSystem->mGUISystem = mGUISystem;
 
 	mGameEntityManager = new GameEntityManager(mGraphicsSystem, mLogicSystem);
 
@@ -78,5 +81,6 @@ LeDernierMorkid::LeDernierMorkid() {
 	mThreadData                                                = new LeDernierMorkidThreadData;
 	((LeDernierMorkidThreadData*) mThreadData)->graphicsSystem = mGraphicsSystem;
 	((LeDernierMorkidThreadData*) mThreadData)->logicSystem    = mLogicSystem;
+	((LeDernierMorkidThreadData*) mThreadData)->guiSystem      = mGUISystem;
 }
 //---------------------------------------------------------------------

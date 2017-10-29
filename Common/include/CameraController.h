@@ -3,7 +3,6 @@
 
 #include <OgrePrerequisites.h>
 
-#include "GameState.h"
 #include "GraphicsSystem.h"
 
 class btDynamicsWorld;

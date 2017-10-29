@@ -25,6 +25,8 @@ namespace Common {
 	public:
 		/// LogicSystem to which communicate
 		BaseSystem* mLogicSystem;
+                /// GUISystem to update
+                BaseSystem* mGUISystem;
 
 	protected:
 		/// Window of the program
@@ -140,12 +142,12 @@ namespace Common {
 	public:
 		/**
 		 * Constructor
-		 * @param gameState
- 		 *	GameState to which transmit the events
+		 * @param State
+ 		 *	State to which transmit the events
 		 * @param backgroundColour
 		 *	Background colour of the scene
 		 */
-		GraphicsSystem(GameState*        gameState,
+		GraphicsSystem(State*        State,
 		               Ogre::ColourValue backgroundColour = Ogre::ColourValue(0.f, 0.f, 0.f));
 		/**
 		 * Destructor

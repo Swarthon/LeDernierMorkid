@@ -1,6 +1,7 @@
 #include "LogicSystem.h"
 #include "GameEntityManager.h"
-#include "GameState.h"
+#include "State/State.h"
+#include "State/StateManager.h"
 #include "SdlInputHandler.h"
 
 #include "Converter.h"
@@ -24,9 +25,8 @@
 #include <SDL_syswm.h>
 
 namespace Common {
-	LogicSystem::LogicSystem(GameState* gameState)
-	                : BaseSystem(gameState),
-	                  mGraphicsSystem(0),
+	LogicSystem::LogicSystem(State* state)
+	                : mGraphicsSystem(0),
 	                  mGameEntityManager(0),
 	                  mCurrentTransformIdx(1),
 	                  mWorld(NULL) {
@@ -49,10 +49,11 @@ namespace Common {
 		mWorld->setGravity(btVector3(0.0, -9.8, 0.0));
 	}
 	//------------------------------------------------------------------------------------------------
-	void LogicSystem::update(float timeSinceLast) {
+	void LogicSystem::update(double timeSinceLast) {
 		if (mWorld)
 			mWorld->stepSimulation(timeSinceLast, 1, 1.0 / 60.0);
 		BaseSystem::update(timeSinceLast);
+                StateManager::getSingleton()->updateLogics(timeSinceLast);
 	}
 	//------------------------------------------------------------------------------------------------
 	void LogicSystem::finishFrameParallel(void) {
@@ -124,4 +125,11 @@ namespace Common {
 			            "LogicSystem::addGameEntity");
 		}
 	}
+
+
+
+
+        void LogicSystem::createScene() {
+                StateManager::getSingleton()->enterLogics();
+        }
 }
