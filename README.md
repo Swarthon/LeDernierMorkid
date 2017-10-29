@@ -50,6 +50,14 @@ Remember that this project is under development and bugs may be frequent. If you
 
 In order to contact me, you can send me an email at swarthon.gokan@gmail.com.
 
+## Contributing
+
+If you find a bug or if you want to develop a new feature, you can open a pull request. I will help you in your task.
+
+If you do not have time to do it, you can also add a memo [here](https://framemo.org/LeDernierMorkid), and I will make sure to solve it.
+
+I do not have a strict coding rule but you can find a .clang-format file with all the rules I try to follow.
+
 ## License
 
 This program and the [logo](#logo) are released under the GPL v3 license. See LICENSE file.
