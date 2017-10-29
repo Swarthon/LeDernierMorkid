@@ -11,7 +11,7 @@
 #include <OgreHardwarePixelBuffer.h>
 #include <OgreRenderTexture.h>
 
-#include <SDL2/SDL_events.h>
+#include <SDL2/SDL.h>
 
 #include <iostream>
 
@@ -87,9 +87,33 @@ namespace Common {
         }
         //----------------------------------------------------------------------------------------------------
         void GUISystem::mousePressed(const SDL_MouseButtonEvent& arg, Ogre::uint8 id) {
+                CEGUI::GUIContext& context = CEGUI::System::getSingleton().getDefaultGUIContext(); 
+                switch (id) {
+		case SDL_BUTTON_LEFT:
+			context.injectMouseButtonDown(CEGUI::LeftButton);
+			break;
+		case SDL_BUTTON_MIDDLE:
+			context.injectMouseButtonDown(CEGUI::MiddleButton);
+			break;
+		case SDL_BUTTON_RIGHT:
+			context.injectMouseButtonDown(CEGUI::RightButton);
+			break;
+                }
         }
         //----------------------------------------------------------------------------------------------------
         void GUISystem::mouseReleased(const SDL_MouseButtonEvent& arg, Ogre::uint8 id) {
+                CEGUI::GUIContext& context = CEGUI::System::getSingleton().getDefaultGUIContext(); 
+                switch (id) {
+                case SDL_BUTTON_LEFT:
+                        context.injectMouseButtonUp(CEGUI::LeftButton);
+                        break;
+                case SDL_BUTTON_MIDDLE:
+                        context.injectMouseButtonUp(CEGUI::MiddleButton);
+                        break;
+                case SDL_BUTTON_RIGHT:
+                        context.injectMouseButtonUp(CEGUI::RightButton);
+                        break;
+                }
         }
         //----------------------------------------------------------------------------------------------------
         void GUISystem::initialize(void) {}
@@ -106,22 +130,11 @@ namespace Common {
                 StateManager::getSingleton()->getActiveState()->keyReleased(arg);
         }
         //----------------------------------------------------------------------------------------------------
-        void GUISystem::joyButtonPressed(const SDL_JoyButtonEvent& evt, int button) {
-        }
+        void GUISystem::joyButtonPressed(const SDL_JoyButtonEvent& evt, int button) {}
         //----------------------------------------------------------------------------------------------------
-        void GUISystem::joyButtonReleased(const SDL_JoyButtonEvent& evt, int button) {
-        }
+        void GUISystem::joyButtonReleased(const SDL_JoyButtonEvent& evt, int button) {}
         //----------------------------------------------------------------------------------------------------
-        void GUISystem::joyAxisMoved(const SDL_JoyAxisEvent& arg, int axis) {
-        }
+        void GUISystem::joyAxisMoved(const SDL_JoyAxisEvent& arg, int axis) {}
         //----------------------------------------------------------------------------------------------------
-        void GUISystem::joyPovMoved(const SDL_JoyHatEvent& arg, int index) {
-        }
-
-
-
-
-
-
-
+        void GUISystem::joyPovMoved(const SDL_JoyHatEvent& arg, int index) {}
 }
